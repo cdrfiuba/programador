@@ -151,41 +151,19 @@ static	void	spi_rw ( void )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
-	byte_t	bit;
 	byte_t	mask;
-	byte_t*	addr;
 	byte_t	req;
-
+	byte_t	ans = 0;
+	
 	// Generic requests
 	req = data[1];
 	if	( req == USBTINY_ECHO )
 	{
-		return 8;
-	}
-	addr = (byte_t*) (int) data[4];
-	bit = data[2] & 7;
-	mask = 1 << bit;
-	if (req == USBTINY_SET) {
-	  PORT |= mask;
-	  return 0;
-	}
-	if (req == USBTINY_CLR) {
-	  PORT &= ~ mask;
-	  return 0;
-	}
-	if (req == USBTINY_WRITE) {
-	  PORT = data[2];
-	  return 0;
-	}
-	if (req == USBTINY_READ) {
-	  data[0] = PIN;
-	  return 1;
-	}
-	if (req == USBTINY_DDRWRITE) {
-	  DDR = data[2];
+//		return 8;
+		ans = 8;
 	}
 	// Programming requests
-	if	( req == USBTINY_POWERUP )
+	else if	( req == USBTINY_POWERUP )
 	{
 		sck_period = data[2];
 		mask = POWER_MASK;
@@ -196,59 +174,67 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		PORTD &= ~_BV(4);
 		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
 		PORT = mask;
-		return 0;
+		// return 0;
 	}
-	if	( req == USBTINY_POWERDOWN )
+	else if	( req == USBTINY_POWERDOWN )
 	{
 	  //PORT |= RESET_MASK;
 		DDR  = 0x00;
 		PORT = 0x00;
 		PORTD |= _BV(4);
-		return 0;
+		// return 0;
 	}
-	if	( ! PORT )
+	else if	( ! PORT )
 	{
-		return 0;
+		//return 0;
 	}
-	if	( req == USBTINY_SPI )
+	else if	( req == USBTINY_SPI )
 	{
 	  spi( data + 2, data + 0, 4 );
-		return 4;
+		ans = 4;
+		//return 4;
 	}
-	if	( req == USBTINY_SPI1 )
+	else if	( req == USBTINY_SPI1 )
 	{
 	  spi( data + 2, data + 0, 1 );
-		return 1;
+		ans = 1;
+		//return 1;
 	}
-	if	( req == USBTINY_POLL_BYTES )
+	else if	( req == USBTINY_POLL_BYTES )
 	{
 		poll1 = data[2];
 		poll2 = data[3];
-		return 0;
+		//return 0;
 	}
-	address = * (uint_t*) & data[4];
-	if	( req == USBTINY_FLASH_READ )
-	{
-		cmd0 = 0x20;
-		return 0xff;	// usb_in() will be called to get the data
+	else {
+		address = * (uint_t*) & data[4];
+		if	( req == USBTINY_FLASH_READ )
+		{
+			cmd0 = 0x20;
+			ans = 0xff;
+			//return 0xff;	// usb_in() will be called to get the data
+		}
+		else if	( req == USBTINY_EEPROM_READ )
+		{
+			cmd0 = 0xa0;
+			ans =  0xff;
+			//return 0xff;	// usb_in() will be called to get the data
+		}
+		else {
+			timeout = * (uint_t*) & data[2];
+			if	( req == USBTINY_FLASH_WRITE )
+			{
+				cmd0 = 0x40;
+				//return 0;	// data will be received by usb_out()
+			}
+			else if	( req == USBTINY_EEPROM_WRITE )
+			{
+				cmd0 = 0xc0;
+				//return 0;	// data will be received by usb_out()
+			}
+		}
 	}
-	if	( req == USBTINY_EEPROM_READ )
-	{
-		cmd0 = 0xa0;
-		return 0xff;	// usb_in() will be called to get the data
-	}
-	timeout = * (uint_t*) & data[2];
-	if	( req == USBTINY_FLASH_WRITE )
-	{
-		cmd0 = 0x40;
-		return 0;	// data will be received by usb_out()
-	}
-	if	( req == USBTINY_EEPROM_WRITE )
-	{
-		cmd0 = 0xc0;
-		return 0;	// data will be received by usb_out()
-	}
-	return 0;
+	return ans;
 }
 
 // ----------------------------------------------------------------------

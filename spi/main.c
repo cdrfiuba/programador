@@ -154,86 +154,70 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	byte_t	mask;
 	byte_t	req;
 	byte_t	ans = 0;
+	register uint_t	address_temp = * (uint_t*) & data[4];
+	register uint_t	timeout_temp = * (uint_t*) & data[2];
 	
 	// Generic requests
 	req = data[1];
-	if	( req == USBTINY_ECHO )
-	{
-//		return 8;
-		ans = 8;
-	}
-	// Programming requests
-	else if	( req == USBTINY_POWERUP )
-	{
-		sck_period = data[2];
-		mask = POWER_MASK;
-		if	( data[4] )
-		{
-			mask |= RESET_MASK;
-		}
-		PORTD &= ~_BV(4);
-		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
-		PORT = mask;
-		// return 0;
-	}
-	else if	( req == USBTINY_POWERDOWN )
-	{
-	  //PORT |= RESET_MASK;
-		DDR  = 0x00;
-		PORT = 0x00;
-		PORTD |= _BV(4);
-		// return 0;
-	}
-	else if	( ! PORT )
-	{
-		//return 0;
-	}
-	else if	( req == USBTINY_SPI )
-	{
-	  spi( data + 2, data + 0, 4 );
-		ans = 4;
-		//return 4;
-	}
-	else if	( req == USBTINY_SPI1 )
-	{
-	  spi( data + 2, data + 0, 1 );
-		ans = 1;
-		//return 1;
-	}
-	else if	( req == USBTINY_POLL_BYTES )
-	{
-		poll1 = data[2];
-		poll2 = data[3];
-		//return 0;
-	}
-	else {
-		address = * (uint_t*) & data[4];
-		if	( req == USBTINY_FLASH_READ )
-		{
+	
+	switch (req) {
+		case USBTINY_ECHO:
+			ans = 8;
+			break;
+		case USBTINY_POWERUP:
+			sck_period = data[2];
+			mask = POWER_MASK;
+			if	( data[4] )
+			{
+				mask |= RESET_MASK;
+			}
+			PORTD &= ~_BV(4);
+			DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+			PORT = mask;
+			break;
+		case USBTINY_POWERDOWN:
+		  	DDR  = 0x00;
+			PORT = 0x00;
+			PORTD |= _BV(4);
+			break;
+		case USBTINY_SPI:
+			spi( data + 2, data + 0, 4 );
+			ans = 4;
+			break;
+		case USBTINY_SPI1:
+			spi( data + 2, data + 0, 1 );
+			ans = 1;
+			break;
+		case USBTINY_POLL_BYTES:
+			poll1 = data[2];
+			poll2 = data[3];
+			break;
+		case USBTINY_FLASH_READ:
+			address = address_temp;
 			cmd0 = 0x20;
 			ans = 0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else if	( req == USBTINY_EEPROM_READ )
-		{
+			break;
+		case USBTINY_EEPROM_READ:
+			address = address_temp;
 			cmd0 = 0xa0;
 			ans =  0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else {
-			timeout = * (uint_t*) & data[2];
-			if	( req == USBTINY_FLASH_WRITE )
-			{
-				cmd0 = 0x40;
-				//return 0;	// data will be received by usb_out()
-			}
-			else if	( req == USBTINY_EEPROM_WRITE )
-			{
-				cmd0 = 0xc0;
-				//return 0;	// data will be received by usb_out()
-			}
-		}
+			break;
+		case USBTINY_FLASH_WRITE:
+			address = address_temp;
+			timeout = timeout_temp;
+			cmd0 = 0x40;
+			break;
+		case USBTINY_EEPROM_WRITE:
+			address = address_temp;
+			timeout = timeout_temp;
+			cmd0 = 0xc0;
+			break;
 	}
+			
+/*	else if	( ! PORT )
+	{
+		//return 0;
+	}*/	
 	return ans;
 }
 

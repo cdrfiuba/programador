@@ -28,7 +28,15 @@ enum
 	USBTINY_EEPROM_READ,	// read eeprom (wIndex:address)
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
 	USBTINY_DDRWRITE,        // set port direction
-	USBTINY_SPI1            // a single SPI command
+	USBTINY_SPI1,            // a single SPI command
+	USBTINY_INVERTED_SCK	 // if command sent, use the inverted sck for 8253.
+};
+
+enum
+{
+	AVR_SCK	= 0,		// AVR
+	INVERTED_SCK = 1	// Allows to use an inverted sck to program
+						// AT89S8253
 };
 
 // ----------------------------------------------------------------------
@@ -73,6 +81,8 @@ static	uint_t		timeout;	// write timeout in usec
 static	byte_t		cmd0;		// current read/write command byte
 static	byte_t		cmd[4];		// SPI command buffer
 static	byte_t		res[4];		// SPI result buffer
+static	byte_t		inverted_sck; // Allows to program uCs which reads
+								  // MOSI on sck descend pulse
 
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
@@ -92,6 +102,7 @@ static	void	delay ( void )
 // ----------------------------------------------------------------------
 // Issue one SPI command.
 // ----------------------------------------------------------------------
+//__attribute__((naked))
 static	void	spi ( byte_t* cmd, byte_t* res, int i )
 {
 	byte_t	c;
@@ -109,7 +120,9 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				PORT |= MOSI_MASK;
 			}
-			delay();
+			if (! inverted_sck )
+				delay();
+
 			PORT |= SCK_MASK;
 			delay();
 			r <<= 1;
@@ -117,8 +130,11 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				r++;
 			}
-			PORT &= ~ MOSI_MASK;
 			PORT &= ~ SCK_MASK;
+			if ( inverted_sck )
+				delay();
+			
+			PORT &= ~ MOSI_MASK;
 		}
 		*res++ = r;
 	}
@@ -157,13 +173,9 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	
 	// Generic requests
 	req = data[1];
-	if	( req == USBTINY_ECHO )
-	{
-//		return 8;
-		ans = 8;
-	}
+
 	// Programming requests
-	else if	( req == USBTINY_POWERUP )
+	if	( req == USBTINY_POWERUP )
 	{
 		sck_period = data[2];
 		mask = POWER_MASK;
@@ -171,6 +183,9 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		{
 			mask |= RESET_MASK;
 		}
+		// Use non inverted sck by default.
+		inverted_sck = AVR_SCK;
+		
 		PORTD &= ~_BV(4);
 		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
 		PORT = mask;
@@ -184,10 +199,14 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		PORTD |= _BV(4);
 		// return 0;
 	}
-	else if	( ! PORT )
+	else if ( req == USBTINY_INVERTED_SCK )
+	{
+		inverted_sck = INVERTED_SCK;
+	}
+	/*else if	( ! PORT )
 	{
 		//return 0;
-	}
+	}*/
 	else if	( req == USBTINY_SPI )
 	{
 	  spi( data + 2, data + 0, 4 );

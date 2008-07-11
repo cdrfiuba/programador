@@ -29,14 +29,7 @@ enum
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
 	USBTINY_DDRWRITE,        // set port direction
 	USBTINY_SPI1,            // a single SPI command
-	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253.
-};
-
-enum
-{
-	AVR_SCK	= 0,		// AVR
-	INVERTED_SCK = 1	// Allows to use an inverted sck to program
-						// AT89S8253
+	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253. (wValue = status, wIndex = comando)
 };
 
 // ----------------------------------------------------------------------
@@ -83,6 +76,8 @@ static	byte_t		cmd[4];		// SPI command buffer
 static	byte_t		res[4];		// SPI result buffer
 static	byte_t		status;		
 
+
+//ximmmTTT
 
 #define TAMANIO_MASK		0x07
 #define TAMANIO_AVR		0x04
@@ -133,7 +128,7 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				PORT |= MOSI_MASK;
 			}
-//			if (! status & INVERTED_SCK )
+//			if (! status & INVERTED_SCK_MASK )
 				delay();
 
 			PORT |= SCK_MASK;
@@ -144,7 +139,7 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 				r++;
 			}
 			PORT &= ~ SCK_MASK;
-//			if ( status & INVERTED_SCK )
+//			if ( status & INVERTED_SCK_MASK )
 //				delay();
 			
 			PORT &= ~ MOSI_MASK;
@@ -163,18 +158,14 @@ static	void	spi_rw ( void )
 
 	a = address++;
 	cmd[0] = cmd0;
-	if ( !(status & MICRO_S51_MASK) )
-	{	//Es AVR
-		if	( ! (cmd0 & 0x80) )
+	if ( !(status & MICRO_S51_MASK) &&  ( ! (cmd0 & 0x80) ) )
+	{	//Es AVR 			// NOT eeprom
+		if ( a & 1 )
 		{
-			// NOT eeprom
-			if	( a & 1 )
-			{
-				cmd[0] |= 0x08;	//La H
-				a >>= 1;	//Corro la direccion
-			}
+			cmd[0] |= 0x08;	//La H
 		}
-	} 	
+		a >>= 1;	//Corro la direccion
+	} 
 	cmd[1] = a >> 8;
 	cmd[2] = a;
 
@@ -273,11 +264,11 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 				cmd0_temp = 0xc0;
 				//return 0;	// data will be received by usb_out()
 			}
+		}	
 		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato en tmpo si estoy grabando un AVR	
 		{						//Si estoy programando un S51, tengo que pasarlo en la trama CONFIGURE
 			cmd0 = cmd0_temp;
 		}
-	}
 	}
 	return ans;
 }
@@ -321,7 +312,8 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 			}
 		}
 	}
-}
+}	 
+	 
 
 // ----------------------------------------------------------------------
 // Main

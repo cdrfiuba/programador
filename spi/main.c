@@ -29,7 +29,7 @@ enum
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
 	USBTINY_DDRWRITE,        // set port direction
 	USBTINY_SPI1,            // a single SPI command
-	USBTINY_INVERTED_SCK	 // if command sent, use the inverted sck for 8253.
+	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253.
 };
 
 enum
@@ -81,8 +81,21 @@ static	uint_t		timeout;	// write timeout in usec
 static	byte_t		cmd0;		// current read/write command byte
 static	byte_t		cmd[4];		// SPI command buffer
 static	byte_t		res[4];		// SPI result buffer
-static	byte_t		inverted_sck; // Allows to program uCs which reads
-								  // MOSI on sck descend pulse
+static	byte_t		status;		
+
+
+#define TAMANIO_MASK		0x07
+#define TAMANIO_AVR		0x04
+#define TAMANIO_8253		0x04
+#define TAMANIO_8252		0x03
+
+#define MICRO_S51_MASK		0x38
+#define MICRO_AVR		0x00
+#define MICRO_8253		0x08
+#define	MICRO_8252		0x10
+
+#define INVERTED_SCK_MASK	0x40	
+#define AVR_SCK			0x00
 
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
@@ -120,7 +133,7 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				PORT |= MOSI_MASK;
 			}
-			if (! inverted_sck )
+//			if (! status & INVERTED_SCK )
 				delay();
 
 			PORT |= SCK_MASK;
@@ -131,8 +144,8 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 				r++;
 			}
 			PORT &= ~ SCK_MASK;
-			if ( inverted_sck )
-				delay();
+//			if ( status & INVERTED_SCK )
+//				delay();
 			
 			PORT &= ~ MOSI_MASK;
 		}
@@ -146,20 +159,26 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 static	void	spi_rw ( void )
 {
 	uint_t	a;
+	byte_t	tam = status & TAMANIO_MASK;	
 
 	a = address++;
-	if	( cmd0 & 0x80 )
-	{	// eeprom
-		a <<= 1;
-	}
 	cmd[0] = cmd0;
-	if	( a & 1 )
-	{
-		cmd[0] |= 0x08;
-	}
-	cmd[1] = a >> 9;
-	cmd[2] = a >> 1;
-	spi( cmd, res, 4 );
+	if ( !(status & MICRO_S51_MASK) )
+	{	//Es AVR
+		if	( ! (cmd0 & 0x80) )
+		{
+			// NOT eeprom
+			if	( a & 1 )
+			{
+				cmd[0] |= 0x08;	//La H
+				a >>= 1;	//Corro la direccion
+			}
+		}
+	} 	
+	cmd[1] = a >> 8;
+	cmd[2] = a;
+
+	spi( cmd, res, tam );
 }
 
 // ----------------------------------------------------------------------
@@ -170,7 +189,8 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	byte_t	mask;
 	byte_t	req;
 	byte_t	ans = 0;
-	
+	byte_t	cmd0_temp;
+
 	// Generic requests
 	req = data[1];
 
@@ -183,8 +203,8 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		{
 			mask |= RESET_MASK;
 		}
-		// Use non inverted sck by default.
-		inverted_sck = AVR_SCK;
+		// Use AVR por default
+		status = AVR_SCK | MICRO_AVR | TAMANIO_AVR;
 		
 		PORTD &= ~_BV(4);
 		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
@@ -199,9 +219,10 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		PORTD |= _BV(4);
 		// return 0;
 	}
-	else if ( req == USBTINY_INVERTED_SCK )
+	else if ( req == USBTINY_CONFIGURE )
 	{
-		inverted_sck = INVERTED_SCK;
+		status = cmd[2];
+		cmd0 = cmd[4];
 	}
 	/*else if	( ! PORT )
 	{
@@ -225,17 +246,18 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		poll2 = data[3];
 		//return 0;
 	}
-	else {
+	else 
+	{
 		address = * (uint_t*) & data[4];
 		if	( req == USBTINY_FLASH_READ )
 		{
-			cmd0 = 0x20;
+			cmd0_temp = 0x20;
 			ans = 0xff;
 			//return 0xff;	// usb_in() will be called to get the data
 		}
 		else if	( req == USBTINY_EEPROM_READ )
 		{
-			cmd0 = 0xa0;
+			cmd0_temp = 0xa0;
 			ans =  0xff;
 			//return 0xff;	// usb_in() will be called to get the data
 		}
@@ -243,15 +265,19 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 			timeout = * (uint_t*) & data[2];
 			if	( req == USBTINY_FLASH_WRITE )
 			{
-				cmd0 = 0x40;
+				cmd0_temp = 0x40;
 				//return 0;	// data will be received by usb_out()
 			}
 			else if	( req == USBTINY_EEPROM_WRITE )
 			{
-				cmd0 = 0xc0;
+				cmd0_temp = 0xc0;
 				//return 0;	// data will be received by usb_out()
 			}
+		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato en tmpo si estoy grabando un AVR	
+		{						//Si estoy programando un S51, tengo que pasarlo en la trama CONFIGURE
+			cmd0 = cmd0_temp;
 		}
+	}
 	}
 	return ans;
 }

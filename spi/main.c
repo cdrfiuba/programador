@@ -154,12 +154,12 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 static	void	spi_rw ( void )
 {
 	uint_t	a;
-	byte_t	tam = status & TAMANIO_MASK;	
+	int	tam = status & TAMANIO_MASK;	
 
 	a = address++;
 	cmd[0] = cmd0;
-	if ( !(status & MICRO_S51_MASK) &&  ( ! (cmd0 & 0x80) ) )
-	{	//Es AVR 			// NOT eeprom
+	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
+	{	//Es AVR 							// NOT eeprom
 		if ( a & 1 )
 		{
 			cmd[0] |= 0x08;	//La H
@@ -169,7 +169,7 @@ static	void	spi_rw ( void )
 	cmd[1] = a >> 8;
 	cmd[2] = a;
 
-	spi( cmd, res, tam );
+	spi( cmd, res, 4 );
 }
 
 // ----------------------------------------------------------------------
@@ -212,8 +212,8 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	}
 	else if ( req == USBTINY_CONFIGURE )
 	{
-		status = cmd[2];
-		cmd0 = cmd[4];
+		status = data[2];
+		cmd0 = data[4];
 	}
 	/*else if	( ! PORT )
 	{
@@ -265,7 +265,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 				//return 0;	// data will be received by usb_out()
 			}
 		}	
-		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato en tmpo si estoy grabando un AVR	
+		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato temp en cmd0 si estoy grabando un AVR	
 		{						//Si estoy programando un S51, tengo que pasarlo en la trama CONFIGURE
 			cmd0 = cmd0_temp;
 		}

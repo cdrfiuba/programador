@@ -153,8 +153,9 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 // ----------------------------------------------------------------------
 static	void	spi_rw ( void )
 {
+	unsigned char offset = 0;
 	uint_t	a;
-	int	tam = status & TAMANIO_MASK;	
+	uint_t	tam = (status & TAMANIO_MASK);	
 
 	a = address++;
 	cmd[0] = cmd0;
@@ -168,8 +169,14 @@ static	void	spi_rw ( void )
 	} 
 	cmd[1] = a >> 8;
 	cmd[2] = a;
-
-	spi( cmd, res, 4 );
+	
+	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
+	{
+		cmd[1] <<= 3;
+		cmd[1] |= cmd0;
+		offset = 1;
+	}
+	spi( cmd + offset, res, tam );
 }
 
 // ----------------------------------------------------------------------

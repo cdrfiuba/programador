@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  19/8/2008-17:57:37
+# EESchema Netlist Version 1.1 created  21/3/2009-03:42:05
 (
  ( 4897077F $noname  P5 CONN_4 {Lib=CONN_4}
   (    1 GND )
@@ -187,8 +187,9 @@ $component R2
  SM0805
 $endlist
 $component C1
- C?
  SM*
+ C?
+ C1-1
 $endlist
 $component C2
  CP*
@@ -210,12 +211,14 @@ $component R1
  SM0805
 $endlist
 $component C4
- C?
  SM*
+ C?
+ C1-1
 $endlist
 $component C3
- C?
  SM*
+ C?
+ C1-1
 $endlist
 $endfootprintlist
 }

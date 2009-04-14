@@ -1,4 +1,5 @@
 \documentclass[a4paper,10pt]{article}
+\usepackage[spanish]{babel}
 
 
 %opening
@@ -11,62 +12,72 @@
 \tableofcontents
 
 \begin{abstract}
-Este documento describe como usar el usbtiny para programar micros de la familia 8051.
+Este documento describe como usar el usbtiny para programar micros de la
+familia 8051.
 \end{abstract}
 
 \section{Tramas}
 
+\subsection*{Trama POWERUP}
+\label{sec:powerup}
+\begin{description}
+ \item[wValue] El periodo del sck en micro segundos
+\item [wIndex] Se toma la parte baja:  si el reset es por bajo o por alto:  Si 
+es $0$ $\Rightarrow$ reset en bajo, si es distinto de $0$ $\Rightarrow$ reset
+alto.
 
-Trama POWERUP:
+En nuestro caso, el reset tiene que ser alto El sck, todavia no sabemos, ponelo
+en 10 que funciona con nuestros cristales. Luego pensamos como sacarlo.
+\end{description}
 
-wValue = El periodo del sck en micro segundos
-wIndex = Se toma la parte baja:  si el reset es por bajo o por alto:   0 => reset en bajo
-					       !=0  => reset alto
+La trama que se envía para el powerup se genera con el siguiente código:
+\begin{verbatim}
+usb_control( USBTINY_POWERUP, sck_period, resetState );
+\end{verbatim} 
 
-En nuestro caso, el reset tiene que ser alto 
-El sck, todavia no sabemos, ponelo en 10 que funciona con nuestros cristales. Luego pensamos como sacarlo.
+\subsection*{Trama Configure}
 
-La trama que manda el avrdude:
+\begin{description}
+ \item[wValue] Se divide en parte baja y alta.
+ \begin{description}
+  \item[wValue low] El byte de status \verb|ximmmTTT|
+\begin{description}
+ \item[TTT] cantidad de bytes a enviar por spi. \verb|100|: S8253, S52 y AVR
+tienen 4 bytes. \verb|011|: S8252 S53 tienen 3 bytes.
+\item [mmm] tipo del micro. \verb|000|	Avr \verb|001| S8253 (por ahora el S52
+es igual al S8253, pero tengo que ver bien la hoja de datos) \verb|010| S8252 y
+\verb|011| S53 (no lo agregue al attiny, pero tiene que ser un codigo distinto).
+\item [i] inverted sck. \verb|0|: el sck no esta invertido. En AVR, S82553, S52,
+S53 \verb|1|: el sck esta invertido en 8253.
+ \end{description}
+\item [wValue high] no se usa.
+  \end{description}
+\item [wIndex] Se divide en parte alta y baja.
+\begin{description}
+ \item[wIndex low] Es el comando a ejecutar en modo rafaga. Puede ser read/write
+flash/eprom. El micro lo necesita para armar el comando cuando le lleguen los
+bytes con los datos.
+\item [wIndex high] Si la funcion a realizar es un WRITE, el attiny apenas hace
+la escritura, hace una lectura del dato para ver si se terminó de escribir.
 
-	usb_control( USBTINY_POWERUP, sck_period, resetState );
-
-	
-Trama de Configure:
-
-wValue:  Se divide en parte baja y alta
-	wValue low: El byte de status
-
-	//ximmmTTT	TTT: cantidad de bytes a enviar por spi. 100: S8253, S52 y AVR tienen 4 bytes. 
-								 011: S8252 S53 tienen 3 bytes.
-			mmm: tipo del micro		000	Avr
-							001     S8253 (por ahora el S52 es igual al S8253, pero tengo que ver bien la hoja de datos)
-							010     S8252
-							011	S53    (no lo agregue al attiny, pero tiene que ser un codigo distinto)
-			i: inverted sck	 		0:      el sck no esta invertido. En AVR, S82553, S52, S53
-							1:	el sck esta invertido. En8253
-
-	 wValue high: no se usa.
-
-wIndex:  Se divide en parte alta y baja
-
-	wIndex low:     Es el comando a ejecutar en modo rafaga. Puede ser read/write flash/eprom. El micro lo necesita para armar el comando cuando le lleguen los 
-			bytes con los datos.
-
-	wIndex high:	Si la funcion a realizar es un WRITE, el attiny apenas hace la escritura, hace una lectura del dato para ver si se terminó de escribir.
-			En este byte se le pone el byte comando de lectura. Ademas permite ganar espacio en el Attiny al no tener que hacer la XOR en el micro (en AVR
-			y en todos los modelos aca usados, pasar de WRITE a READ, es hacer una xor)y se gana generalidad.
+En este byte se le pone el byte comando de lectura. Ademas permite ganar espacio
+en el Attiny al no tener que hacer la XOR en el micro (en AVR y en todos los
+modelos aca usados, pasar de WRITE a READ, es hacer una xor) y se gana
+generalidad.
+ \end{description}
+ \end{description}
 
 Ejemplo de la trama:
-
-	val = TAMANIO_8253 + MICRO_8253 + INVERTED_SCK_MASK;
-
-	usb_control(USBTINY_CONFIGURE,val,ind);
-
+\begin{itemize}
+ \item \verb|val = TAMANIO_8253 + MICRO_8253 + INVERTED_SCK_MASK;|
+\item \verb|usb_control(USBTINY_CONFIGURE,val,ind);|
+\end{itemize}
 
 \section{Defines + enums}
 
 Enum de las tramas:
 
+\begin{verbatim}
 enum
 {
 	// Generic requests
@@ -86,11 +97,13 @@ enum
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
 	USBTINY_DDRWRITE,        // set port direction
 	USBTINY_SPI1,            // a single SPI command
-	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253. (wValue = status, wIndex = comando)
-};
+	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for
+8253. (wValue = status, wIndex = comando)
+};  \end{verbatim} 
 
 Mascaras status:
 
+\begin{verbatim}
 #define TAMANIO_MASK		0x07
 #define TAMANIO_AVR		0x04
 #define TAMANIO_8253		0x04
@@ -100,25 +113,22 @@ Mascaras status:
 #define MICRO_AVR		0x00
 #define MICRO_8253		0x08 //incluye al S52 (ojo con el SCK)
 #define	MICRO_8252		0x10 //incluye al S53
-
-
-
 #define INVERTED_SCK_MASK	0x40	
-#define AVR_SCK			0x00
+#define AVR_SCK			0x00               			   
+\end{verbatim} 
 
 
 
-\section{Secuencia}
+\section{Secuencia de uso}
 
 Pasos a seguir
-
-1-
-Mandar trama de powerup al tiny: Configura los puertos y prende el led de programacion.
-los argumentos son 
-
-2- Mandar trama CONFIGURE
-
-Se pondra el status en lo que corresponda, el wIndex no tiene importancia al momento. 
-Es necesario mandar esta trama ahora para que el micro tenga bien la cantidad de bytes a mandar por el SPI, sino nunca podra entener la trama de ENABLE.
+\begin{enumerate}
+ \item Mandar trama de powerup al tiny: Configura los puertos y prende el led de
+programacion los argumentos son los explicados en \ref{sec:powerup}.
+\item Mandar trama CONFIGURE: Se pondra el status en lo que corresponda, el
+wIndex no tiene importancia al momento. Es necesario mandar esta trama ahora
+para que el micro tenga bien la cantidad de bytes a mandar por el SPI, sino
+nunca podra entener la trama de ENABLE.
+\end{enumerate}
 
 \end{document}

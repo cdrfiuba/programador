@@ -1,5 +1,5 @@
-update=23/10/2008-01:34:54
-last_client=pcbnew
+update=dom 12 sep 2010 11:26:40 ART
+last_client=cvpcb
 [general]
 version=1
 RootSch=placa_usb.sch
@@ -68,14 +68,6 @@ LibName25=cypress
 LibName26=siliconi
 LibName27=contrib
 LibName28=valves
-[cvpcb]
-version=1
-NetITyp=0
-NetIExt=.net
-PkgIExt=.pkg
-NetType=0
-[cvpcb/libraries]
-EquName1=devcms
 [pcbnew]
 version=1
 PadDrlX=906
@@ -131,7 +123,6 @@ MaxLnkS=3
 ShowRat=0
 ShowMRa=1
 [pcbnew/libraries]
-LibDir=
 LibName1=./CONN_USB-A
 LibName2=./conn_2x5_g
 LibName3=supports
@@ -142,3 +133,10 @@ LibName7=divers
 LibName8=libcms
 LibName9=display
 LibName10=valves
+LibName11=dip_sockets
+LibDir=
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

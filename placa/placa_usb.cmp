@@ -1,178 +1,171 @@
-Cmp-Mod V01 Created by Cvpcb (2007-01-15) date = 8/8/2008-17:46:22
+Cmp-Mod V01 Created by CvPCB (2010-03-14)-final date = dom 12 sep 2010 11:42:56 ART
 
 BeginCmp
-TimeStamp = 48667F87;
+TimeStamp = /48667F87;
 Reference = C1;
 ValeurCmp = 100n;
 IdModule  = C1;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667A9F;
+TimeStamp = /48667A9F;
 Reference = C2;
 ValeurCmp = 100u;
 IdModule  = C1V5;
 EndCmp
 
 BeginCmp
-TimeStamp = 486678DC;
+TimeStamp = /486678DC;
 Reference = C3;
 ValeurCmp = 22p;
 IdModule  = C1;
 EndCmp
 
 BeginCmp
-TimeStamp = 486678E1;
+TimeStamp = /486678E1;
 Reference = C4;
 ValeurCmp = 22p;
 IdModule  = C1;
 EndCmp
 
 BeginCmp
-TimeStamp = 486975F0;
+TimeStamp = /486975F0;
 Reference = D1;
 ValeurCmp = 3.6V;
 IdModule  = D5;
 EndCmp
 
 BeginCmp
-TimeStamp = 486975FC;
+TimeStamp = /486975FC;
 Reference = D2;
 ValeurCmp = 3.6V;
 IdModule  = D5;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697559;
+TimeStamp = /48697559;
 Reference = D3;
 ValeurCmp = LED;
 IdModule  = LEDV;
 EndCmp
 
 BeginCmp
-TimeStamp = 4869756B;
+TimeStamp = /4869756B;
 Reference = D4;
 ValeurCmp = LED;
 IdModule  = LEDV;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667B26;
+TimeStamp = /48667B26;
 Reference = JP1;
 ValeurCmp = JUMPER;
 IdModule  = PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697A3C;
+TimeStamp = /4C8CE694;
 Reference = JP2;
 ValeurCmp = JUMPER;
 IdModule  = PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp
-TimeStamp = 487642E9;
-Reference = JP3;
-ValeurCmp = JUMPER;
-IdModule  = PIN_ARRAY_2X1;
-EndCmp
-
-BeginCmp
-TimeStamp = 4869796F;
+TimeStamp = /4869796F;
 Reference = P1;
 ValeurCmp = CONN_5X2;
 IdModule  = P1;
 EndCmp
 
 BeginCmp
-TimeStamp = 486A7DD6;
+TimeStamp = /486A7DD6;
 Reference = P4;
 ValeurCmp = CONN_5X2;
 IdModule  = P1;
 EndCmp
 
 BeginCmp
-TimeStamp = 4897077F;
+TimeStamp = /4897077F;
 Reference = P5;
 ValeurCmp = CONN_4;
 IdModule  = USB_A;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667A2A;
+TimeStamp = /48667A2A;
 Reference = R1;
 ValeurCmp = 1.5K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697506;
+TimeStamp = /48697506;
 Reference = R2;
 ValeurCmp = 1.5K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697513;
+TimeStamp = /48697513;
 Reference = R3;
 ValeurCmp = 1.5K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 4869760C;
+TimeStamp = /4869760C;
 Reference = R4;
 ValeurCmp = 1.5K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697611;
+TimeStamp = /48697611;
 Reference = R5;
 ValeurCmp = 1.5K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48697D78;
+TimeStamp = /48697D78;
 Reference = R6;
 ValeurCmp = 10K;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667A75;
+TimeStamp = /48667A75;
 Reference = R7;
 ValeurCmp = 27;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667A7D;
+TimeStamp = /48667A7D;
 Reference = R8;
 ValeurCmp = 27;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667894;
+TimeStamp = /48667894;
 Reference = U1;
 ValeurCmp = 74HC125N;
 IdModule  = 14DIP-ELL300;
 EndCmp
 
 BeginCmp
-TimeStamp = 486679B7;
-Reference = X1;
-ValeurCmp = 12MHz;
-IdModule  = HC-18UV;
+TimeStamp = /48667824;
+Reference = U2;
+ValeurCmp = ATTINY2313DIP/SO;
+IdModule  = DIP-20__300_ELL;
 EndCmp
 
 BeginCmp
-TimeStamp = 48667824;
-Reference = _U1;
-ValeurCmp = ATTINY2313DIP/SO;
-IdModule  = 20DIP-ELL300;
+TimeStamp = /486679B7;
+Reference = X1;
+ValeurCmp = 12MHz;
+IdModule  = HC-18UV;
 EndCmp
 
 EndListe

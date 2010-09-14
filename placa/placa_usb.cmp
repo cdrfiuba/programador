@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPCB (2010-03-14)-final date = dom 12 sep 2010 11:42:56 ART
+Cmp-Mod V01 Created by CvPCB (2010-03-14)-final date = lun 13 sep 2010 23:53:48 ART
 
 BeginCmp
 TimeStamp = /48667F87;
@@ -57,13 +57,6 @@ IdModule  = LEDV;
 EndCmp
 
 BeginCmp
-TimeStamp = /48667B26;
-Reference = JP1;
-ValeurCmp = JUMPER;
-IdModule  = PIN_ARRAY_2X1;
-EndCmp
-
-BeginCmp
 TimeStamp = /4C8CE694;
 Reference = JP2;
 ValeurCmp = JUMPER;
@@ -78,17 +71,24 @@ IdModule  = P1;
 EndCmp
 
 BeginCmp
-TimeStamp = /486A7DD6;
-Reference = P4;
-ValeurCmp = CONN_5X2;
-IdModule  = P1;
-EndCmp
-
-BeginCmp
 TimeStamp = /4897077F;
 Reference = P5;
 ValeurCmp = CONN_4;
 IdModule  = USB_A;
+EndCmp
+
+BeginCmp
+TimeStamp = /4C8EE14E;
+Reference = P6;
+ValeurCmp = CONN_3X2;
+IdModule  = pin_array_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4C8EE071;
+Reference = P7;
+ValeurCmp = CONN_3X2;
+IdModule  = pin_array_3x2;
 EndCmp
 
 BeginCmp
@@ -144,6 +144,13 @@ BeginCmp
 TimeStamp = /48667A7D;
 Reference = R8;
 ValeurCmp = 27;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4C8ED529;
+Reference = R9;
+ValeurCmp = 470k;
 IdModule  = R3;
 EndCmp
 

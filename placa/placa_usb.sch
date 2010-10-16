@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date lun 13 sep 2010 23:50:50 ART
+EESchema Schematic File Version 2  date Fri 15 Oct 2010 20:51:48 ART
 LIBS:power
 LIBS:attiny
 LIBS:device
@@ -33,7 +33,7 @@ EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
 Title "Programador USB"
-Date "14 sep 2010"
+Date "15 oct 2010"
 Rev "1.5"
 Comp "Laboratorio de Microcomputadores"
 Comment1 "Club de Robótica"
@@ -463,15 +463,6 @@ F 1 "GND" H 10800 5400 30  0001 C CNN
 	1    10800 5470
 	1    0    0    -1  
 $EndComp
-$Comp
-L CONN_5X2 P1
-U 1 1 4869796F
-P 7890 3740
-F 0 "P1" H 7890 4040 60  0000 C CNN
-F 1 "CONN_5X2" V 7890 3740 50  0000 C CNN
-	1    7890 3740
-	1    0    0    -1  
-$EndComp
 Text Label 7700 5400 0    60   ~ 0
 RST_B
 Text Label 7700 5950 0    60   ~ 0
@@ -685,20 +676,20 @@ $EndComp
 $Comp
 L 74LS125 U1
 U 4 1 48667894
-P 8750 6500
-F 0 "U1" H 8750 6600 50  0000 L BNN
-F 1 "74HC125N" H 8800 6350 40  0000 L TNN
-	4    8750 6500
-	-1   0    0    -1  
+P 8750 4850
+F 0 "U1" H 8750 4950 50  0000 L BNN
+F 1 "74HC125N" H 8800 4700 40  0000 L TNN
+	4    8750 4850
+	1    0    0    -1  
 $EndComp
 $Comp
 L 74LS125 U1
 U 3 1 48667881
-P 8750 4850
-F 0 "U1" H 8750 4950 50  0000 L BNN
-F 1 "74HC125N" H 8800 4700 40  0000 L TNN
-	3    8750 4850
-	1    0    0    -1  
+P 8750 6500
+F 0 "U1" H 8750 6600 50  0000 L BNN
+F 1 "74HC125N" H 8800 6350 40  0000 L TNN
+	3    8750 6500
+	-1   0    0    -1  
 $EndComp
 $Comp
 L 74LS125 U1

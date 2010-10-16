@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPCB (2010-03-14)-final date = lun 13 sep 2010 23:53:48 ART
+Cmp-Mod V01 Created by CvPCB (20100406 SVN-R2509)-final date = Fri 15 Oct 2010 19:08:13 ART
 
 BeginCmp
 TimeStamp = /48667F87;
@@ -32,14 +32,14 @@ BeginCmp
 TimeStamp = /486975F0;
 Reference = D1;
 ValeurCmp = 3.6V;
-IdModule  = D5;
+IdModule  = D3;
 EndCmp
 
 BeginCmp
 TimeStamp = /486975FC;
 Reference = D2;
 ValeurCmp = 3.6V;
-IdModule  = D5;
+IdModule  = D3;
 EndCmp
 
 BeginCmp
@@ -61,13 +61,6 @@ TimeStamp = /4C8CE694;
 Reference = JP2;
 ValeurCmp = JUMPER;
 IdModule  = PIN_ARRAY_2X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4869796F;
-Reference = P1;
-ValeurCmp = CONN_5X2;
-IdModule  = P1;
 EndCmp
 
 BeginCmp
@@ -95,63 +88,63 @@ BeginCmp
 TimeStamp = /48667A2A;
 Reference = R1;
 ValeurCmp = 1.5K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697506;
 Reference = R2;
 ValeurCmp = 1.5K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697513;
 Reference = R3;
 ValeurCmp = 1.5K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4869760C;
 Reference = R4;
 ValeurCmp = 1.5K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697611;
 Reference = R5;
 ValeurCmp = 1.5K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697D78;
 Reference = R6;
 ValeurCmp = 10K;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48667A75;
 Reference = R7;
 ValeurCmp = 27;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /48667A7D;
 Reference = R8;
 ValeurCmp = 27;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4C8ED529;
 Reference = R9;
 ValeurCmp = 470k;
-IdModule  = R3;
+IdModule  = R1;
 EndCmp
 
 BeginCmp

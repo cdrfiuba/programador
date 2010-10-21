@@ -1,0 +1,262 @@
+# EESchema Netlist Version 1.1 created  Thu 21 Oct 2010 16:05:16 ART
+(
+ ( /48667F87 C1 C1 100n
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /48667A9F C1V5 C2 100u
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /486678DC C1 C3 22p
+  ( 1 N-000026 )
+  ( 2 GND )
+ )
+ ( /486678E1 C1 C4 22p
+  ( 1 N-000025 )
+  ( 2 GND )
+ )
+ ( /4CC08D1D C1 C5 100n
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /486975F0 D3 D1 3.6V
+  ( 1 GND )
+  ( 2 N-000031 )
+ )
+ ( /486975FC D3 D2 3.6V
+  ( 1 GND )
+  ( 2 N-000029 )
+ )
+ ( /48697559 LEDV D3 LED
+  ( 1 /Verde )
+  ( 2 N-000020 )
+ )
+ ( /4869756B LEDV D4 LED
+  ( 1 /Rojo )
+  ( 2 N-000022 )
+ )
+ ( /4C8CE694 SIL-2 JP1 VCC
+  ( 1 VCC )
+  ( 2 N-000013 )
+ )
+ ( /4897077F USB_A P5 CONN_4
+  ( 1 VCC )
+  ( 2 N-000029 )
+  ( 3 N-000031 )
+  ( 4 GND )
+ )
+ ( /4C8EE14E pin_array_3x2 P6 ISP
+  ( 1 /MISO )
+  ( 2 VCC )
+  ( 3 /SCK )
+  ( 4 /MOSI )
+  ( 5 /RST )
+  ( 6 GND )
+ )
+ ( /4C8EE071 pin_array_3x2 P7 Targ.
+  ( 1 N-000016 )
+  ( 2 N-000013 )
+  ( 3 N-000008 )
+  ( 4 N-000007 )
+  ( 5 N-000014 )
+  ( 6 GND )
+ )
+ ( /48667A2A R1 R1 1.5K
+  ( 1 /PD6 )
+  ( 2 N-000029 )
+ )
+ ( /48697506 R1 R2 1.5K
+  ( 1 N-000007 )
+  ( 2 N-000024 )
+ )
+ ( /48697513 R1 R3 1.5K
+  ( 1 N-000008 )
+  ( 2 N-000019 )
+ )
+ ( /4869760C R1 R4 1.5K
+  ( 1 N-000022 )
+  ( 2 GND )
+ )
+ ( /48697611 R1 R5 1.5K
+  ( 1 N-000020 )
+  ( 2 GND )
+ )
+ ( /48697D78 R1 R6 10K
+  ( 1 VCC )
+  ( 2 /RST )
+ )
+ ( /48667A75 R1 R7 27
+  ( 1 N-000029 )
+  ( 2 /PD3 )
+ )
+ ( /48667A7D R1 R8 27
+  ( 1 N-000031 )
+  ( 2 /PD2 )
+ )
+ ( /4C8ED529 R1 R9 470k
+  ( 1 VCC )
+  ( 2 /Enable )
+ )
+ ( /48667894 14DIP-ELL300 U1 74HC125N
+  ( 1 /Enable )
+  ( 2 /SCK )
+  ( 3 N-000019 )
+  ( 4 /Enable )
+  ( 5 /RST_B )
+  ( 6 N-000014 )
+  ( 7 GND )
+  ( 8 /MISO )
+  ( 9 N-000016 )
+  ( 10 /Enable )
+  ( 11 N-000024 )
+  ( 12 /MOSI )
+  ( 13 /Enable )
+  ( 14 VCC )
+ )
+ ( /48667824 DIP-20__300_ELL U2 ATTINY2313DIP/SO
+  ( 1 /RST )
+  ( 2 ? )
+  ( 3 ? )
+  ( 4 N-000026 )
+  ( 5 N-000025 )
+  ( 6 /PD2 )
+  ( 7 /PD3 )
+  ( 8 /Enable )
+  ( 9 /Verde )
+  ( 10 GND )
+  ( 11 /PD6 )
+  ( 12 /Rojo )
+  ( 13 ? )
+  ( 14 ? )
+  ( 15 ? )
+  ( 16 /RST_B )
+  ( 17 /MOSI )
+  ( 18 /MISO )
+  ( 19 /SCK )
+  ( 20 VCC )
+ )
+ ( /486679B7 HC-18UV X1 12MHz
+  ( 1 N-000026 )
+  ( 2 N-000025 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ CP*
+ SM*
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component D1
+ D?
+ SO*
+ SM*
+$endlist
+$component D2
+ D?
+ SO*
+ SM*
+$endlist
+$component D3
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D4
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$endfootprintlist
+}

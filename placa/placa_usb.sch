@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Thu 21 Oct 2010 16:43:00 ART
+EESchema Schematic File Version 2  date mié 27 oct 2010 01:00:31 ART
 LIBS:power
 LIBS:attiny
 LIBS:device
@@ -37,7 +37,7 @@ Date "21 oct 2010"
 Rev "1.6"
 Comp "Laboratorio de Microcomputadores"
 Comment1 "Club de Robótica"
-Comment2 "GPL v2 or later"
+Comment2 "CC Share Alike"
 Comment3 ""
 Comment4 ""
 $EndDescr

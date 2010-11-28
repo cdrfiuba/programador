@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 27 Nov 2010 22:39:32 ART
+EESchema Schematic File Version 2  date Sat 27 Nov 2010 23:32:31 ART
 LIBS:power
 LIBS:attiny
 LIBS:device
@@ -28,7 +28,6 @@ LIBS:siliconi
 LIBS:contrib
 LIBS:valves
 LIBS:usb_a
-LIBS:placa_usb-cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
@@ -526,7 +525,7 @@ L LED D4
 U 1 1 4869756B
 P 2050 5500
 F 0 "D4" H 2050 5600 50  0000 C CNN
-F 1 "LED" H 2050 5400 50  0000 C CNN
+F 1 "LED_ROJO" H 2050 5400 50  0000 C CNN
 	1    2050 5500
 	0    1    1    0   
 $EndComp
@@ -535,7 +534,7 @@ L LED D3
 U 1 1 48697559
 P 2350 5500
 F 0 "D3" H 2350 5600 50  0000 C CNN
-F 1 "LED" H 2350 5400 50  0000 C CNN
+F 1 "LED_VERDE" H 2350 5400 50  0000 C CNN
 	1    2350 5500
 	0    1    1    0   
 $EndComp

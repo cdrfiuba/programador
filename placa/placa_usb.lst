@@ -1,0 +1,31 @@
+eeschema (2010-05-05 BZR 2356)-stable  >> Creation date: Sat 27 Nov 2010 23:31:40 ART
+
+#Cmp ( order = Reference )
+| C1         100n        
+| C2         100u        
+| C3         22p         
+| C4         22p         
+| C5         100n        
+| D1         3.6V        
+| D2         3.6V        
+| D3         LED_VERDE   
+| D4         LED_ROJO    
+| JP1        VCC         
+| P5         USB_A       
+| P6         ISP         
+| P7         Targ.       
+| R1         1.5K        
+| R2         1.5K        
+| R3         1.5K        
+| R4         1.5K        
+| R5         1.5K        
+| R6         10K         
+| R7         27          
+| R8         27          
+| R9         470k        
+| U1         74HC125N    
+| U2         ATTINY2313DIP/SO
+| X1         12MHz       
+#End Cmp
+
+#End List

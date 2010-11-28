@@ -1,4 +1,4 @@
-update=Sat 27 Nov 2010 22:10:31 ART
+update=Sat 27 Nov 2010 23:15:45 ART
 last_client=pcbnew
 [general]
 version=1
@@ -6,11 +6,6 @@ RootSch=placa_usb.sch
 BoardNm=placa_usb.brd
 [common]
 NetDir=
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [eeschema]
 version=1
 LibDir=
@@ -76,11 +71,16 @@ LibName26=siliconi
 LibName27=contrib
 LibName28=valves
 LibName29=usb_a
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [pcbnew]
 version=1
-PadDrlX=394
-PadDimH=669
-PadDimV=669
+PadDrlX=400
+PadDimH=660
+PadDimV=660
 BoardThickness=630
 SgPcb45=1
 TxtPcbV=800
@@ -93,7 +93,7 @@ DrawLar=150
 EdgeLar=150
 TxtLar=120
 MSegLar=150
-LastNetListRead=
+LastNetListRead=placa_usb.net
 [pcbnew/libraries]
 LibDir=
 LibName1=supports

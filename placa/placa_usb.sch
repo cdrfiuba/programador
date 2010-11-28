@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 27 Nov 2010 22:17:13 ART
+EESchema Schematic File Version 2  date Sat 27 Nov 2010 22:39:32 ART
 LIBS:power
 LIBS:attiny
 LIBS:device
@@ -42,6 +42,8 @@ Comment2 "CC Share Alike"
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Label 9550 2100 0    60   ~ 0
+VCC
 $Comp
 L USB_A P5
 U 1 1 4CF1A8BC
@@ -439,7 +441,7 @@ F 1 "10K" V 2150 3950 50  0000 C CNN
 	1    2150 3950
 	1    0    0    -1  
 $EndComp
-Text Label 3300 4200 0    60   ~ 0
+Text Label 3200 4200 2    60   ~ 0
 RST
 $Comp
 L GND #PWR010

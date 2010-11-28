@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPCB (20100406 SVN-R2509)-final date = Thu 21 Oct 2010 16:05:16 ART
+Cmp-Mod V01 Created by CvPCB (2010-05-05 BZR 2356)-stable date = Sat 27 Nov 2010 22:57:20 ART
 
 BeginCmp
 TimeStamp = /48667F87;
@@ -71,10 +71,10 @@ IdModule  = SIL-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /4897077F;
+TimeStamp = /4CF1A8BC;
 Reference = P5;
-ValeurCmp = CONN_4;
-IdModule  = USB_A;
+ValeurCmp = USB_A;
+IdModule  = USB_A_custom;
 EndCmp
 
 BeginCmp

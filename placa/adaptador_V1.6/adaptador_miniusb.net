@@ -1,0 +1,17 @@
+# EESchema Netlist Version 1.1 created  Thu 02 Dec 2010 08:10:24 ART
+(
+ ( /4CF77555 USB_A_custom P1 USB_A
+  ( 1 N-000001 )
+  ( 2 N-000002 )
+  ( 3 N-000003 )
+  ( 4 N-000004 )
+ )
+ ( /4CF7755E USB_mini_B_smd P2 USB_MINI
+  ( 1 N-000001 )
+  ( 2 N-000002 )
+  ( 3 N-000003 )
+  ( 4 N-000004 )
+  ( 5 N-000004 )
+ )
+)
+*

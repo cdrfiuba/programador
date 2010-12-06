@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 27 Nov 2010 23:32:31 ART
+EESchema Schematic File Version 2  date Thu 02 Dec 2010 07:52:14 ART
 LIBS:power
 LIBS:attiny
 LIBS:device
@@ -27,13 +27,13 @@ LIBS:cypress
 LIBS:siliconi
 LIBS:contrib
 LIBS:valves
-LIBS:usb_a
+LIBS:usb
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
 Title "Programador USB"
-Date "28 nov 2010"
+Date "2 dec 2010"
 Rev "1.7"
 Comp "Laboratorio de Microcomputadores"
 Comment1 "Club de Robótica"
@@ -41,17 +41,26 @@ Comment2 "CC Share Alike"
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 9550 2100 0    60   ~ 0
-VCC
+$Comp
+L CAPAPOL C2
+U 1 1 48667A9F
+P 10250 2400
+F 0 "C2" H 10300 2500 50  0000 L CNN
+F 1 "100u" H 10300 2300 50  0000 L CNN
+	1    10250 2400
+	1    0    0    -1  
+$EndComp
 $Comp
 L USB_A P5
-U 1 1 4CF1A8BC
+U 1 1 4CF77A46
 P 9700 2400
 F 0 "P5" H 9600 2650 60  0000 C CNN
-F 1 "USB_A" H 9700 2100 60  0000 C CNN
+F 1 "USB_A" H 9750 2100 60  0000 C CNN
 	1    9700 2400
 	-1   0    0    -1  
 $EndComp
+Text Label 9550 2100 0    60   ~ 0
+VCC
 Wire Wire Line
 	5800 1900 6050 1900
 Wire Wire Line
@@ -596,15 +605,6 @@ P 9400 3050
 F 0 "#PWR014" H 9400 3050 30  0001 C CNN
 F 1 "GND" H 9400 2980 30  0001 C CNN
 	1    9400 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L CAPAPOL C2
-U 1 1 48667A9F
-P 10250 2400
-F 0 "C2" H 10300 2500 50  0000 L CNN
-F 1 "100u" H 10300 2300 50  0000 L CNN
-	1    10250 2400
 	1    0    0    -1  
 $EndComp
 $Comp

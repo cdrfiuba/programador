@@ -1,4 +1,4 @@
-update=Thu 02 Dec 2010 00:55:42 ART
+update=Thu 02 Dec 2010 17:57:25 ART
 last_client=pcbnew
 [general]
 version=1
@@ -6,6 +6,11 @@ RootSch=placa_usb.sch
 BoardNm=placa_usb.brd
 [common]
 NetDir=
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [eeschema]
 version=1
 LibDir=
@@ -70,12 +75,7 @@ LibName25=cypress
 LibName26=siliconi
 LibName27=contrib
 LibName28=valves
-LibName29=usb_a
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+LibName29=usb
 [pcbnew]
 version=1
 PadDrlX=400
@@ -105,4 +105,4 @@ LibName6=libcms
 LibName7=display
 LibName8=valves
 LibName9=dip_sockets
-LibName10=CONN_USB-A
+LibName10=CONN_USB

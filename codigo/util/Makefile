@@ -18,6 +18,6 @@ clobber:	clean
 	rm -f _libusb.so libusb.py
 
 _libusb.so:	libusb.i
-	swig -python -D'__attribute__(x)=' -w302,454 -I/usr/include $<
+	swig -python -D'__attribute__(x)=' -w302,454 -I/"D:/Gabi/Proyectos/ProgramadorUSB/avrdude_C/usbtinyis_repo/codigo/util" $<
 	gcc -s -shared -I$(PYTHONINC) -o _libusb.so libusb_wrap.c -lusb
 	@rm -f libusb_wrap.c

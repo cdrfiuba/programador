@@ -9,182 +9,20 @@
 
 #include <avr/io.h>
 #include "usb.h"
-
-enum
-{
-	// Generic requests
-	USBTINY_ECHO,		// echo test
-	USBTINY_READ,		// read byte
-	USBTINY_WRITE,		// write byte
-	USBTINY_CLR,		// clear bit 
-	USBTINY_SET,		// set bit
-	// Programming requests
-	USBTINY_POWERUP,	// apply power (wValue:SCK-period, wIndex:RESET)
-	USBTINY_POWERDOWN,	// remove power from chip
-	USBTINY_SPI,		// issue SPI command (wValue:c1c0, wIndex:c3c2)
-	USBTINY_POLL_BYTES,	// set poll bytes for write (wValue:p1p2)
-	USBTINY_FLASH_READ,	// read flash (wIndex:address)
-	USBTINY_FLASH_WRITE,	// write flash (wIndex:address, wValue:timeout)
-	USBTINY_EEPROM_READ,	// read eeprom (wIndex:address)
-	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
-	USBTINY_DDRWRITE,        // set port direction
-	USBTINY_SPI1,            // a single SPI command
-	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253. (wValue = status, wIndex = comando)
-};
-
-// ----------------------------------------------------------------------
-// Programmer output pins:
-//	LED	PB0	(D0)
-#define LED PB0
-//	VCC	PB1	(D1)
-//	VCC	PB2	(D2)
-//	VCC	PB3	(D3)
-//	RESET	PB5	(D4)
-#define RESET PB4
-//	MOSI	PB5	(D5)
-#define MOSI  PB5
-//	SCK	PB7	(D7)
-#define SCK   PB7
-
-// ----------------------------------------------------------------------
-#define	PORT		PORTB
-#define	DDR		DDRB
-#define	POWER_MASK	_BV(LED)
-#define	RESET_MASK	_BV(RESET)
-#define	SCK_MASK	_BV(SCK)
-#define	MOSI_MASK	_BV(MOSI)
-#define LED_MASK        _BV(LED)
-
-// ----------------------------------------------------------------------
-// Programmer input pins:
-//	MISO	PB6
-#define MISO       6
-// ----------------------------------------------------------------------
-#define	PIN		PINB
-#define	MISO_MASK	_BV(MISO)
-
-// ----------------------------------------------------------------------
-// Local data
-// ----------------------------------------------------------------------
-static	byte_t		sck_period;	// SCK period in microseconds (1..250)
-static	byte_t		poll1;		// first poll byte for write
-static	byte_t		poll2;		// second poll byte for write
-static	uint_t		address;	// read/write address
-static	uint_t		timeout;	// write timeout in usec
-static	byte_t		cmd0;		// current read/write command byte
-static	byte_t		cmd[4];		// SPI command buffer
-static	byte_t		res[4];		// SPI result buffer
-static	byte_t		status;		
+#include "usbtinyMod.h"
+#include "macros.h"
+#include "spi.h"
 
 
-//ximmmTTT
 
-#define TAMANIO_MASK		0x07
-#define TAMANIO_AVR			0x04
-#define TAMANIO_8253		0x04
-#define TAMANIO_8252		0x03
 
-#define MICRO_S51_MASK		0x38
-#define MICRO_AVR			0x00
-#define MICRO_8253			0x08
-#define	MICRO_8252			0x10
-
-#define INVERTED_SCK_MASK	0x40	
-#define AVR_SCK				0x00
-
-// ----------------------------------------------------------------------
-// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
-// ----------------------------------------------------------------------
-__attribute__((always_inline))
-static	void	delay ( void )
-{
-	asm volatile(
-		"	mov	__tmp_reg__,%0	\n"
-		"0:	rjmp	1f		\n"
-		"1:	nop			\n"
-		"	dec	__tmp_reg__	\n"
-		"	brne	0b		\n"
-		: : "r" (sck_period) );
-}
-
-// ----------------------------------------------------------------------
-// Issue one SPI command.
-// ----------------------------------------------------------------------
-//__attribute__((naked))
-static	void	spi ( byte_t* cmd, byte_t* res, int i )
-{
-	byte_t	c;
-	byte_t	r;
-	byte_t	mask;
-
-	while (i != 0)
-	{
-	  i--;
-		c = *cmd++;
-		r = 0;
-		for	( mask = 0x80; mask; mask >>= 1 )
-		{
-			if	( c & mask )
-			{
-				PORT |= MOSI_MASK;
-			}
-//			if (! status & INVERTED_SCK_MASK )
-				delay();
-
-			PORT |= SCK_MASK;
-			delay();
-			r <<= 1;
-			if	( PIN & MISO_MASK )
-			{
-				r++;
-			}
-			PORT &= ~ SCK_MASK;
-//			if ( status & INVERTED_SCK_MASK )
-//				delay();
-			
-			PORT &= ~ MOSI_MASK;
-		}
-		*res++ = r;
-	}
-}
-
-// ----------------------------------------------------------------------
-// Create and issue a read or write SPI command.
-// ----------------------------------------------------------------------
-static	void	spi_rw ( void )
-{
-	unsigned char offset = 0;
-	uint_t	a;
-	uint_t	tam = (status & TAMANIO_MASK);	
-
-	a = address++;
-	cmd[0] = cmd0;
-	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
-	{	//Es AVR 							// NOT eeprom
-		if ( a & 1 )
-		{
-			cmd[0] |= 0x08;	//La H
-		}
-		a >>= 1;	//Corro la direccion
-	} 
-	cmd[1] = a >> 8;
-	cmd[2] = a;
-	
-	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
-	{
-		cmd[1] <<= 3;
-		cmd[1] |= cmd0;
-		offset = 1;
-	}
-	spi( cmd + offset, res, tam );
-}
 
 // ----------------------------------------------------------------------
 // Handle a non-standard SETUP packet.
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
-	byte_t	mask;
+	/*byte_t	mask;
 	byte_t	req;
 	byte_t	ans = 0;
 	byte_t	cmd0_temp;
@@ -221,12 +59,12 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	{
 		status = data[2];
 		cmd0 = data[4];
-	}
+	}*/
 	/*else if	( ! PORT )
 	{
 		//return 0;
 	}*/
-	else if	( req == USBTINY_SPI )
+	/*else if	( req == USBTINY_SPI )
 	{
 	  spi( data + 2, data + 0, 4 );
 		ans = 4;
@@ -277,7 +115,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 			cmd0 = cmd0_temp;
 		}
 	}
-	return ans;
+	return ans;*/
 }
 
 // ----------------------------------------------------------------------
@@ -285,14 +123,14 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_in ( byte_t* data, byte_t len )
 {
-	byte_t	i;
+	/*byte_t	i;
 
 	for	( i = 0; i < len; i++ )
 	{
 		spi_rw();
 		data[i] = res[3];
 	}
-	return len;
+	return len;*/
 }
 
 // ----------------------------------------------------------------------
@@ -300,7 +138,7 @@ extern	byte_t	usb_in ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 extern	void	usb_out ( byte_t* data, byte_t len )
 {
-	byte_t	i;
+/*	byte_t	i;
 	uint_t	usec;
 	byte_t	r;
 
@@ -318,7 +156,7 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 				break;
 			}
 		}
-	}
+	}*/
 }	 
 	 
 
@@ -326,12 +164,15 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 // Main
 // ----------------------------------------------------------------------
 __attribute__((naked))		// suppress redundant SP initialization
-extern	int	main ( void )
+int	main ( void )
 {
   PORTD |= _BV(4);
   DDRD = _BV(6) | _BV(5) | _BV(4); // setup USB pullup, LED pin and buffer select pins to output
-  usb_init();
+  //usb_init();
   PORTD = _BV(6) | _BV(4); // pull pull-up and buffer disable high
+    ProgramLed();
+    
+    while(1);
 
   for	( ;; )
     {

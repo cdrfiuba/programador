@@ -2,6 +2,8 @@ Archive member included because of file (symbol)
 
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                              test8253.o (__do_copy_data)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
 
@@ -30,10 +32,12 @@ signature        0x00840000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
-LOAD crc.o
 LOAD int.o
 LOAD main.o
 LOAD usb.o
+LOAD test8253.o
+LOAD spi.o
+LOAD crc.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
@@ -128,7 +132,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x7cc
+.text           0x00000000      0xe40
  *(.vectors)
  .vectors       0x00000000       0x2a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
                 0x00000000                __vectors
@@ -136,8 +140,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
- .progmem.crc   0x0000002a       0x10 crc.o
- .progmem.data  0x0000003a       0x24 usb.o
+ .progmem.data  0x0000002a       0x24 usb.o
+ .progmem.crc   0x0000004e       0x10 crc.o
                 0x0000005e                . = ALIGN (0x2)
                 0x0000005e                __trampolines_start = .
  *(.trampolines)
@@ -168,8 +172,10 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000006a       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x0000006a                __do_clear_bss
+ .init4         0x0000006a       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                0x0000006a                __do_copy_data
+ .init4         0x00000080       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000080                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -180,54 +186,61 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000007a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
+ .init9         0x00000090        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
  *(.init9)
  *(.text)
- .text          0x0000007e        0x2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
-                0x0000007e                __vector_1
-                0x0000007e                __vector_12
-                0x0000007e                __bad_interrupt
-                0x0000007e                __vector_6
-                0x0000007e                __vector_3
-                0x0000007e                __vector_11
-                0x0000007e                __vector_13
-                0x0000007e                __vector_17
-                0x0000007e                __vector_19
-                0x0000007e                __vector_7
-                0x0000007e                __vector_5
-                0x0000007e                __vector_4
-                0x0000007e                __vector_9
-                0x0000007e                __vector_2
-                0x0000007e                __vector_15
-                0x0000007e                __vector_8
-                0x0000007e                __vector_14
-                0x0000007e                __vector_10
-                0x0000007e                __vector_16
-                0x0000007e                __vector_18
-                0x0000007e                __vector_20
- .text          0x00000080       0x42 crc.o
-                0x00000080                crc
- .text          0x000000c2      0x2bc int.o
-                0x000000c2                SIG_INTERRUPT0
- .text          0x0000037e      0x298 main.o
-                0x00000528                usb_in
-                0x00000606                main
-                0x00000552                usb_out
-                0x00000456                usb_setup
- .text          0x00000616      0x1b2 usb.o
-                0x00000626                usb_poll
-                0x00000616                usb_init
- .text          0x000007c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text          0x000007c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000007c8                . = ALIGN (0x2)
+ .text          0x00000094        0x2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
+                0x00000094                __vector_12
+                0x00000094                __bad_interrupt
+                0x00000094                __vector_6
+                0x00000094                __vector_3
+                0x00000094                __vector_11
+                0x00000094                __vector_13
+                0x00000094                __vector_17
+                0x00000094                __vector_19
+                0x00000094                __vector_7
+                0x00000094                __vector_5
+                0x00000094                __vector_4
+                0x00000094                __vector_9
+                0x00000094                __vector_2
+                0x00000094                __vector_15
+                0x00000094                __vector_8
+                0x00000094                __vector_14
+                0x00000094                __vector_10
+                0x00000094                __vector_16
+                0x00000094                __vector_18
+                0x00000094                __vector_20
+ .text          0x00000096      0x2bc int.o
+                0x00000096                __vector_1
+ .text          0x00000352      0x25e main.o
+                0x00000550                usb_in
+                0x0000058e                main
+                0x00000570                usb_out
+                0x00000534                usb_setup
+ .text          0x000005b0      0x204 usb.o
+                0x00000724                usb_poll
+                0x000006f8                usb_init
+ .text          0x000007b4      0x464 test8253.o
+                0x00000b42                ProgramLed
+                0x00000ae6                WaitDateWriteCompletion
+                0x00000996                test8253_normal_write
+                0x00000aaa                CheckChipErase
+ .text          0x00000c18      0x1e2 spi.o
+ .text          0x00000dfa       0x42 crc.o
+                0x00000dfa                crc
+ .text          0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text          0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000e3c                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000007c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text.libgcc   0x000007c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000007c8                . = ALIGN (0x2)
+ .text.libgcc   0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000e3c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000007c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
-                0x000007c8                exit
-                0x000007c8                _exit
+ .fini9         0x00000e3c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x00000e3c                exit
+                0x00000e3c                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -246,58 +259,70 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000007c8        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .fini0         0x00000e3c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x000007cc                _etext = .
+                0x00000e40                _etext = .
 
-.data           0x00800060        0x2 load address 0x000007cc
+.data           0x00800060       0x6c load address 0x00000e40
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
- .data          0x00800060        0x0 crc.o
  .data          0x00800060        0x2 int.o
  .data          0x00800062        0x0 main.o
  .data          0x00800062        0x0 usb.o
- .data          0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .data          0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .data          0x00800062       0x6a test8253.o
+                0x00800072                led_05s_program
+                0x0080009f                led_1s_program
+                0x0080006a                writeByte_Cmm
+                0x00800062                programEnable_Cmm
+                0x00800066                chipErase_Cmm
+                0x0080006e                readByte_Cmm
+ .data          0x008000cc        0x0 spi.o
+ .data          0x008000cc        0x0 crc.o
+ .data          0x008000cc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .data          0x008000cc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .data          0x008000cc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800062                . = ALIGN (0x2)
-                0x00800062                _edata = .
-                0x00800062                PROVIDE (__data_end, .)
+                0x008000cc                . = ALIGN (0x2)
+                0x008000cc                _edata = .
+                0x008000cc                PROVIDE (__data_end, .)
 
-.bss            0x00800062       0x3d
-                0x00800062                PROVIDE (__bss_start, .)
+.bss            0x008000cc       0x5f
+                0x008000cc                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
- .bss           0x00800062        0x0 crc.o
- .bss           0x00800062        0x1 int.o
- .bss           0x00800063       0x11 main.o
- .bss           0x00800074        0x5 usb.o
- .bss           0x00800079        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .bss           0x00800079        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .bss           0x008000cc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn4313.o
+ .bss           0x008000cc        0x1 int.o
+ .bss           0x008000cd       0x11 main.o
+ .bss           0x008000de        0x5 usb.o
+ .bss           0x008000e3       0x11 test8253.o
+ .bss           0x008000f4       0x11 spi.o
+ .bss           0x00800105        0x0 crc.o
+ .bss           0x00800105        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .bss           0x00800105        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .bss           0x00800105        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800079       0x26 usb.o
-                0x00800079                usb_tx_len
-                0x0080007a                usb_tx_buf
-                0x00800085                usb_rx_token
-                0x00800086                usb_rx_len
-                0x00800087                usb_rx_off
-                0x00800088                usb_rx_buf
-                0x0080009e                usb_address
-                0x0080009f                PROVIDE (__bss_end, .)
-                0x000007cc                __data_load_start = LOADADDR (.data)
-                0x000007ce                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800105       0x26 usb.o
+                0x00800105                usb_tx_len
+                0x00800106                usb_tx_buf
+                0x00800111                usb_rx_token
+                0x00800112                usb_rx_len
+                0x00800113                usb_rx_off
+                0x00800114                usb_rx_buf
+                0x0080012a                usb_address
+                0x0080012b                PROVIDE (__bss_end, .)
+                0x00000e40                __data_load_start = LOADADDR (.data)
+                0x00000eac                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080009f        0x0
-                0x0080009f                PROVIDE (__noinit_start, .)
+.noinit         0x0080012b        0x0
+                0x0080012b                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080009f                PROVIDE (__noinit_end, .)
-                0x0080009f                _end = .
-                0x0080009f                PROVIDE (__heap_start, .)
+                0x0080012b                PROVIDE (__noinit_end, .)
+                0x0080012b                _end = .
+                0x0080012b                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -348,69 +373,81 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x80
+.debug_aranges  0x00000000       0xc0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 crc.o
+                0x00000000       0x20 int.o
  .debug_aranges
-                0x00000020       0x20 int.o
+                0x00000020       0x20 main.o
  .debug_aranges
-                0x00000040       0x20 main.o
+                0x00000040       0x20 usb.o
  .debug_aranges
-                0x00000060       0x20 usb.o
+                0x00000060       0x20 test8253.o
+ .debug_aranges
+                0x00000080       0x20 spi.o
+ .debug_aranges
+                0x000000a0       0x20 crc.o
 
 .debug_pubnames
-                0x00000000       0xd8
+                0x00000000      0x1b4
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x40 main.o
  .debug_pubnames
                 0x00000040       0x98 usb.o
+ .debug_pubnames
+                0x000000d8       0xdc test8253.o
 
-.debug_info     0x00000000      0x7f4
+.debug_info     0x00000000      0xc7d
  *(.debug_info)
- .debug_info    0x00000000       0x96 crc.o
- .debug_info    0x00000096       0x96 int.o
- .debug_info    0x0000012c      0x38f main.o
- .debug_info    0x000004bb      0x339 usb.o
+ .debug_info    0x00000000       0x96 int.o
+ .debug_info    0x00000096      0x293 main.o
+ .debug_info    0x00000329      0x2ec usb.o
+ .debug_info    0x00000615      0x3f0 test8253.o
+ .debug_info    0x00000a05      0x1e2 spi.o
+ .debug_info    0x00000be7       0x96 crc.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x389
+.debug_abbrev   0x00000000      0x476
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x14 crc.o
- .debug_abbrev  0x00000014       0x14 int.o
- .debug_abbrev  0x00000028      0x1d8 main.o
- .debug_abbrev  0x00000200      0x189 usb.o
+ .debug_abbrev  0x00000000       0x14 int.o
+ .debug_abbrev  0x00000014      0x11b main.o
+ .debug_abbrev  0x0000012f      0x133 usb.o
+ .debug_abbrev  0x00000262      0x13b test8253.o
+ .debug_abbrev  0x0000039d       0xc5 spi.o
+ .debug_abbrev  0x00000462       0x14 crc.o
 
-.debug_line     0x00000000      0x7b9
+.debug_line     0x00000000      0xae1
  *(.debug_line)
- .debug_line    0x00000000       0x55 crc.o
- .debug_line    0x00000055      0x186 int.o
- .debug_line    0x000001db      0x33e main.o
- .debug_line    0x00000519      0x2a0 usb.o
+ .debug_line    0x00000000      0x186 int.o
+ .debug_line    0x00000186      0x202 main.o
+ .debug_line    0x00000388      0x1fc usb.o
+ .debug_line    0x00000584      0x36d test8253.o
+ .debug_line    0x000008f1      0x19b spi.o
+ .debug_line    0x00000a8c       0x55 crc.o
 
-.debug_frame    0x00000000       0xa0
+.debug_frame    0x00000000      0x1b0
  *(.debug_frame)
- .debug_frame   0x00000000       0x70 main.o
- .debug_frame   0x00000070       0x30 usb.o
+ .debug_frame   0x00000000       0x80 main.o
+ .debug_frame   0x00000080       0x50 usb.o
+ .debug_frame   0x000000d0       0xa0 test8253.o
+ .debug_frame   0x00000170       0x40 spi.o
 
-.debug_str      0x00000000      0x368
+.debug_str      0x00000000      0x355
  *(.debug_str)
- .debug_str     0x00000000      0x230 main.o
-                                0x271 (size before relaxing)
- .debug_str     0x00000230      0x138 usb.o
+ .debug_str     0x00000000      0x120 main.o
+                                0x161 (size before relaxing)
+ .debug_str     0x00000120      0x138 usb.o
                                 0x225 (size before relaxing)
+ .debug_str     0x00000258       0xf4 test8253.o
+                                0x22f (size before relaxing)
+ .debug_str     0x0000034c        0x9 spi.o
+                                0x13d (size before relaxing)
 
-.debug_loc      0x00000000      0x4d7
+.debug_loc
  *(.debug_loc)
- .debug_loc     0x00000000      0x2f7 main.o
- .debug_loc     0x000002f7      0x1e0 usb.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(progUsbtiny.elf elf32-avr)
 LOAD linker stubs
-
-.debug_ranges   0x00000000       0x68
- .debug_ranges  0x00000000       0x18 main.o
- .debug_ranges  0x00000018       0x50 usb.o

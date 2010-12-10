@@ -10,6 +10,8 @@
 #ifndef USB_H
 #define	USB_H
 
+#include "usbtiny.h"
+
 typedef	unsigned char	byte_t;
 typedef	unsigned int	uint_t;
 

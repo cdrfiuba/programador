@@ -7,6 +7,10 @@
 // Public License as published by the Free Software Foundation.
 // ======================================================================
 
+#ifndef USB_TINY_H
+#define	USB_TINY_H
+
+
 // The D+ and D- USB signals should be connected to two pins of the same
 // I/O port. The following macros define the port letter and the input
 // bit numbers:
@@ -75,3 +79,5 @@
 #define	USBTINY_ENDPOINT_ADDRESS	0x81	// IN endpoint #1
 #define	USBTINY_ENDPOINT_TYPE		0x00	// control transfer type
 #define	USBTINY_ENDPOINT_INTERVAL	0	// ignored
+
+#endif

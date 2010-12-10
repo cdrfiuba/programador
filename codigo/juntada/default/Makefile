@@ -15,7 +15,7 @@ COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -std=gnu99 -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+CFLAGS += -Wall    -g            -DF_CPU=12000000UL -O0 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
 ## Assembly specific flags
@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = crc.o int.o main.o usb.o 
+OBJECTS = int.o main.o usb.o test8253.o spi.o crc.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -46,9 +46,6 @@ LINKONLYOBJECTS =
 all: $(TARGET) progUsbtiny.hex progUsbtiny.eep progUsbtiny.lss size
 
 ## Compile
-crc.o: ../crc.S
-	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
-
 int.o: ../int.S
 	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
 
@@ -57,6 +54,15 @@ main.o: ../main.c
 
 usb.o: ../usb.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+test8253.o: ../test8253.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+spi.o: ../spi.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+crc.o: ../crc.S
+	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
 
 ##Link
 $(TARGET): $(OBJECTS)

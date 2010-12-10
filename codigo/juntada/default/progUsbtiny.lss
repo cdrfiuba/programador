@@ -3,73 +3,69 @@ progUsbtiny.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000007cc  00000000  00000000  00000094  2**1
+  0 .text         00000e40  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  000007cc  00000860  2**0
+  1 .data         0000006c  00800060  00000e40  00000ed4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000003d  00800062  00800062  00000862  2**0
+  2 .bss          0000005f  008000cc  008000cc  00000f40  2**0
                   ALLOC
-  3 .debug_aranges 00000080  00000000  00000000  00000868  2**3
+  3 .debug_aranges 000000c0  00000000  00000000  00000f40  2**3
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 000000d8  00000000  00000000  000008e8  2**0
+  4 .debug_pubnames 000001b4  00000000  00000000  00001000  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000007f4  00000000  00000000  000009c0  2**0
+  5 .debug_info   00000c7d  00000000  00000000  000011b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000389  00000000  00000000  000011b4  2**0
+  6 .debug_abbrev 00000476  00000000  00000000  00001e31  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000007b9  00000000  00000000  0000153d  2**0
+  7 .debug_line   00000ae1  00000000  00000000  000022a7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000a0  00000000  00000000  00001cf8  2**2
+  8 .debug_frame  000001b0  00000000  00000000  00002d88  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000368  00000000  00000000  00001d98  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000004d7  00000000  00000000  00002100  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000068  00000000  00000000  000025d7  2**0
+  9 .debug_str    00000355  00000000  00000000  00002f38  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	2e c0       	rjmp	.+92     	; 0x5e <__ctors_end>
-   2:	3d c0       	rjmp	.+122    	; 0x7e <__bad_interrupt>
-   4:	3c c0       	rjmp	.+120    	; 0x7e <__bad_interrupt>
-   6:	3b c0       	rjmp	.+118    	; 0x7e <__bad_interrupt>
-   8:	3a c0       	rjmp	.+116    	; 0x7e <__bad_interrupt>
-   a:	39 c0       	rjmp	.+114    	; 0x7e <__bad_interrupt>
-   c:	38 c0       	rjmp	.+112    	; 0x7e <__bad_interrupt>
-   e:	37 c0       	rjmp	.+110    	; 0x7e <__bad_interrupt>
-  10:	36 c0       	rjmp	.+108    	; 0x7e <__bad_interrupt>
-  12:	35 c0       	rjmp	.+106    	; 0x7e <__bad_interrupt>
-  14:	34 c0       	rjmp	.+104    	; 0x7e <__bad_interrupt>
-  16:	33 c0       	rjmp	.+102    	; 0x7e <__bad_interrupt>
-  18:	32 c0       	rjmp	.+100    	; 0x7e <__bad_interrupt>
-  1a:	31 c0       	rjmp	.+98     	; 0x7e <__bad_interrupt>
-  1c:	30 c0       	rjmp	.+96     	; 0x7e <__bad_interrupt>
-  1e:	2f c0       	rjmp	.+94     	; 0x7e <__bad_interrupt>
-  20:	2e c0       	rjmp	.+92     	; 0x7e <__bad_interrupt>
-  22:	2d c0       	rjmp	.+90     	; 0x7e <__bad_interrupt>
-  24:	2c c0       	rjmp	.+88     	; 0x7e <__bad_interrupt>
-  26:	2b c0       	rjmp	.+86     	; 0x7e <__bad_interrupt>
-  28:	2a c0       	rjmp	.+84     	; 0x7e <__bad_interrupt>
+   2:	49 c0       	rjmp	.+146    	; 0x96 <__vector_1>
+   4:	47 c0       	rjmp	.+142    	; 0x94 <__bad_interrupt>
+   6:	46 c0       	rjmp	.+140    	; 0x94 <__bad_interrupt>
+   8:	45 c0       	rjmp	.+138    	; 0x94 <__bad_interrupt>
+   a:	44 c0       	rjmp	.+136    	; 0x94 <__bad_interrupt>
+   c:	43 c0       	rjmp	.+134    	; 0x94 <__bad_interrupt>
+   e:	42 c0       	rjmp	.+132    	; 0x94 <__bad_interrupt>
+  10:	41 c0       	rjmp	.+130    	; 0x94 <__bad_interrupt>
+  12:	40 c0       	rjmp	.+128    	; 0x94 <__bad_interrupt>
+  14:	3f c0       	rjmp	.+126    	; 0x94 <__bad_interrupt>
+  16:	3e c0       	rjmp	.+124    	; 0x94 <__bad_interrupt>
+  18:	3d c0       	rjmp	.+122    	; 0x94 <__bad_interrupt>
+  1a:	3c c0       	rjmp	.+120    	; 0x94 <__bad_interrupt>
+  1c:	3b c0       	rjmp	.+118    	; 0x94 <__bad_interrupt>
+  1e:	3a c0       	rjmp	.+116    	; 0x94 <__bad_interrupt>
+  20:	39 c0       	rjmp	.+114    	; 0x94 <__bad_interrupt>
+  22:	38 c0       	rjmp	.+112    	; 0x94 <__bad_interrupt>
+  24:	37 c0       	rjmp	.+110    	; 0x94 <__bad_interrupt>
+  26:	36 c0       	rjmp	.+108    	; 0x94 <__bad_interrupt>
+  28:	35 c0       	rjmp	.+106    	; 0x94 <__bad_interrupt>
 
-0000002a <crc4tab>:
-  2a:	00 cd       	rjmp	.-1536   	; 0xfffffa2c <__eeprom_end+0xff7efa2c>
-  2c:	d9 14       	cp	r13, r9
-  2e:	f1 3c       	cpi	r31, 0xC1	; 193
-  30:	28 e5       	ldi	r18, 0x58	; 88
-  32:	a1 6c       	ori	r26, 0xC1	; 193
-  34:	78 b5       	in	r23, 0x28	; 40
-  36:	50 9d       	mul	r21, r0
-  38:	89 44       	sbci	r24, 0x49	; 73
+0000002a <descr_device>:
+  2a:	12 01 01 01 ff 00 00 08 81 17 9f 0c 04 01 00 00     ................
+  3a:	00 01                                               ..
 
-0000003a <descr_device>:
-  3a:	12 01 01 01 ff 00 00 08 81 17 9f 0c 04 01 00 00     ................
-  4a:	00 01                                               ..
-
-0000004c <descr_config>:
-  4c:	09 02 12 00 01 01 00 80 32 09 04 00 00 00 ff 00     ........2.......
+0000003c <descr_config>:
+  3c:	09 02 12 00 01 01 00 80 32 09 04 00 00 00 ff 00     ........2.......
 	...
+
+0000004e <crc4tab>:
+  4e:	00 cd       	rjmp	.-1536   	; 0xfffffa50 <__eeprom_end+0xff7efa50>
+  50:	d9 14       	cp	r13, r9
+  52:	f1 3c       	cpi	r31, 0xC1	; 193
+  54:	28 e5       	ldi	r18, 0x58	; 88
+  56:	a1 6c       	ori	r26, 0xC1	; 193
+  58:	78 b5       	in	r23, 0x28	; 40
+  5a:	50 9d       	mul	r21, r0
+  5c:	89 44       	sbci	r24, 0x49	; 73
 
 0000005e <__ctors_end>:
   5e:	11 24       	eor	r1, r1
@@ -79,2061 +75,3023 @@ Disassembly of section .text:
   66:	de bf       	out	0x3e, r29	; 62
   68:	cd bf       	out	0x3d, r28	; 61
 
-0000006a <__do_clear_bss>:
+0000006a <__do_copy_data>:
   6a:	10 e0       	ldi	r17, 0x00	; 0
-  6c:	a2 e6       	ldi	r26, 0x62	; 98
+  6c:	a0 e6       	ldi	r26, 0x60	; 96
   6e:	b0 e0       	ldi	r27, 0x00	; 0
-  70:	01 c0       	rjmp	.+2      	; 0x74 <.do_clear_bss_start>
+  70:	e0 e4       	ldi	r30, 0x40	; 64
+  72:	fe e0       	ldi	r31, 0x0E	; 14
+  74:	02 c0       	rjmp	.+4      	; 0x7a <.do_copy_data_start>
 
-00000072 <.do_clear_bss_loop>:
-  72:	1d 92       	st	X+, r1
+00000076 <.do_copy_data_loop>:
+  76:	05 90       	lpm	r0, Z+
+  78:	0d 92       	st	X+, r0
 
-00000074 <.do_clear_bss_start>:
-  74:	af 39       	cpi	r26, 0x9F	; 159
-  76:	b1 07       	cpc	r27, r17
-  78:	e1 f7       	brne	.-8      	; 0x72 <.do_clear_bss_loop>
-  7a:	c5 d2       	rcall	.+1418   	; 0x606 <main>
-  7c:	a5 c3       	rjmp	.+1866   	; 0x7c8 <_exit>
+0000007a <.do_copy_data_start>:
+  7a:	ac 3c       	cpi	r26, 0xCC	; 204
+  7c:	b1 07       	cpc	r27, r17
+  7e:	d9 f7       	brne	.-10     	; 0x76 <.do_copy_data_loop>
 
-0000007e <__bad_interrupt>:
-  7e:	c0 cf       	rjmp	.-128    	; 0x0 <__vectors>
+00000080 <__do_clear_bss>:
+  80:	11 e0       	ldi	r17, 0x01	; 1
+  82:	ac ec       	ldi	r26, 0xCC	; 204
+  84:	b0 e0       	ldi	r27, 0x00	; 0
+  86:	01 c0       	rjmp	.+2      	; 0x8a <.do_clear_bss_start>
 
-00000080 <crc>:
-	.text
-	.global	crc
-	.type	crc, @function
-crc:
-	; crc = 0xffff
-	movw	XL, r24
-  80:	dc 01       	movw	r26, r24
-	ldi	crc_h, 0xff
-  82:	9f ef       	ldi	r25, 0xFF	; 255
-	ldi	crc_l, 0xff
-  84:	8f ef       	ldi	r24, 0xFF	; 255
-	lsl	len
-  86:	66 0f       	add	r22, r22
-	breq	done
-  88:	b9 f0       	breq	.+46     	; 0xb8 <done>
-	ldi	zl, lo8(crc4tab)
-  8a:	4a e2       	ldi	r20, 0x2A	; 42
-	ldi	ZH, hi8(crc4tab)
-  8c:	f0 e0       	ldi	r31, 0x00	; 0
+00000088 <.do_clear_bss_loop>:
+  88:	1d 92       	st	X+, r1
 
-0000008e <next_nibble>:
+0000008a <.do_clear_bss_start>:
+  8a:	ab 32       	cpi	r26, 0x2B	; 43
+  8c:	b1 07       	cpc	r27, r17
+  8e:	e1 f7       	brne	.-8      	; 0x88 <.do_clear_bss_loop>
+  90:	7e d2       	rcall	.+1276   	; 0x58e <main>
+  92:	d4 c6       	rjmp	.+3496   	; 0xe3c <_exit>
 
-next_nibble:
-	; b = (len & 1 ? b >> 4 : *data++)
-	swap	b
-  8e:	22 95       	swap	r18
-	sbrs	len, 0
-  90:	60 ff       	sbrs	r22, 0
-	ld	b, X+
-  92:	2d 91       	ld	r18, X+
+00000094 <__bad_interrupt>:
+  94:	b5 cf       	rjmp	.-150    	; 0x0 <__vectors>
 
-	; index = (crc ^ b) & 0x0f
-	mov	ZL, crc_l
-  94:	e8 2f       	mov	r30, r24
-	eor	ZL, b
-  96:	e2 27       	eor	r30, r18
-	andi	ZL, 0x0f
-  98:	ef 70       	andi	r30, 0x0F	; 15
-
-	; crc >>= 4
-	swap	crc_h
-  9a:	92 95       	swap	r25
-	swap	crc_l
-  9c:	82 95       	swap	r24
-	andi	crc_l, 0x0f
-  9e:	8f 70       	andi	r24, 0x0F	; 15
-	mov	tmp, crc_h
-  a0:	39 2f       	mov	r19, r25
-	andi	tmp, 0xf0
-  a2:	30 7f       	andi	r19, 0xF0	; 240
-	or	crc_l, tmp
-  a4:	83 2b       	or	r24, r19
-	andi	crc_h, 0x0f
-  a6:	9f 70       	andi	r25, 0x0F	; 15
-
-	; crc ^= crc4tab[index]
-	add	ZL, zl
-  a8:	e4 0f       	add	r30, r20
-	lpm	tmp, Z+
-  aa:	35 91       	lpm	r19, Z+
-	eor	crc_h, tmp
-  ac:	93 27       	eor	r25, r19
-	andi	tmp, 1
-  ae:	31 70       	andi	r19, 0x01	; 1
-	eor	crc_h, tmp
-  b0:	93 27       	eor	r25, r19
-	eor	crc_l, tmp
-  b2:	83 27       	eor	r24, r19
-
-	; next nibble
-	dec	len
-  b4:	6a 95       	dec	r22
-	brne	next_nibble
-  b6:	59 f7       	brne	.-42     	; 0x8e <next_nibble>
-
-000000b8 <done>:
-
-done:
-	; crc ^= 0xffff
-	com	crc_l
-  b8:	80 95       	com	r24
-	com	crc_h
-  ba:	90 95       	com	r25
-
-	; append crc to buffer
-	st	X+, crc_l
-  bc:	8d 93       	st	X+, r24
-	st	X+, crc_h
-  be:	9d 93       	st	X+, r25
-
-	ret
-  c0:	08 95       	ret
-
-000000c2 <SIG_INTERRUPT0>:
+00000096 <__vector_1>:
 ; This handler must be reached no later than 34 cycles after D+ goes high
 ; for the first time.
 ; ----------------------------------------------------------------------
 USB_INT_VECTOR:
 	; save registers
 	push	count
-  c2:	0f 93       	push	r16
+  96:	0f 93       	push	r16
 	push	usbmask
-  c4:	1f 93       	push	r17
+  98:	1f 93       	push	r17
 	push	odd
-  c6:	2f 93       	push	r18
+  9a:	2f 93       	push	r18
 	push	YH
-  c8:	df 93       	push	r29
+  9c:	df 93       	push	r29
 	push	YL
-  ca:	cf 93       	push	r28
+  9e:	cf 93       	push	r28
 	in	count, SREG
-  cc:	0f b7       	in	r16, 0x3f	; 63
+  a0:	0f b7       	in	r16, 0x3f	; 63
 	push	count
-  ce:	0f 93       	push	r16
+  a2:	0f 93       	push	r16
 
-000000d0 <sync>:
+000000a4 <sync>:
 ; Synchronize to the pattern 10101011 on D+. This code must be reached
 ; no later than 47 cycles after D+ goes high for the first time.
 ; ----------------------------------------------------------------------
 sync:
 	; wait until D+ == 0
 	sbic	USB_IN, USBTINY_DPLUS
-  d0:	82 99       	sbic	0x10, 2	; 16
+  a4:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync			; jump if D+ == 1
-  d2:	fe cf       	rjmp	.-4      	; 0xd0 <sync>
+  a6:	fe cf       	rjmp	.-4      	; 0xa4 <sync>
 
-000000d4 <resync>:
+000000a8 <resync>:
 resync:
 	; sync on 0-->1 transition on D+ with a 2 cycle resolution
 	sbic	USB_IN, USBTINY_DPLUS
-  d4:	82 99       	sbic	0x10, 2	; 16
+  a8:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync6			; jump if D+ == 1
-  d6:	0b c0       	rjmp	.+22     	; 0xee <sync6>
+  aa:	0b c0       	rjmp	.+22     	; 0xc2 <sync6>
 	sbic	USB_IN, USBTINY_DPLUS
-  d8:	82 99       	sbic	0x10, 2	; 16
+  ac:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync6			; jump if D+ == 1
-  da:	09 c0       	rjmp	.+18     	; 0xee <sync6>
+  ae:	09 c0       	rjmp	.+18     	; 0xc2 <sync6>
 	sbic	USB_IN, USBTINY_DPLUS
-  dc:	82 99       	sbic	0x10, 2	; 16
+  b0:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync6			; jump if D+ == 1
-  de:	07 c0       	rjmp	.+14     	; 0xee <sync6>
+  b2:	07 c0       	rjmp	.+14     	; 0xc2 <sync6>
 	sbic	USB_IN, USBTINY_DPLUS
-  e0:	82 99       	sbic	0x10, 2	; 16
+  b4:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync6			; jump if D+ == 1
-  e2:	05 c0       	rjmp	.+10     	; 0xee <sync6>
+  b6:	05 c0       	rjmp	.+10     	; 0xc2 <sync6>
 	sbic	USB_IN, USBTINY_DPLUS
-  e4:	82 99       	sbic	0x10, 2	; 16
+  b8:	82 99       	sbic	0x10, 2	; 16
 	rjmp	sync6			; jump if D+ == 1
-  e6:	03 c0       	rjmp	.+6      	; 0xee <sync6>
+  ba:	03 c0       	rjmp	.+6      	; 0xc2 <sync6>
 	ldi	count, 1<<USB_INT_PENDING_BIT
-  e8:	00 e4       	ldi	r16, 0x40	; 64
+  bc:	00 e4       	ldi	r16, 0x40	; 64
 	out	USB_INT_PENDING, count
-  ea:	0a bf       	out	0x3a, r16	; 58
+  be:	0a bf       	out	0x3a, r16	; 58
 	rjmp	return			; ==> false start, bail out
-  ec:	a8 c0       	rjmp	.+336    	; 0x23e <return>
+  c0:	a8 c0       	rjmp	.+336    	; 0x212 <return>
 
-000000ee <sync6>:
+000000c2 <sync6>:
 
 sync6:
 	; we are now between -1 and +1 cycle from the center of the bit
 	; following the 0-->1 transition
 	lds	YL, usb_rx_off
-  ee:	c0 91 87 00 	lds	r28, 0x0087
+  c2:	c0 91 13 01 	lds	r28, 0x0113
 	clr	YH
-  f2:	dd 27       	eor	r29, r29
+  c6:	dd 27       	eor	r29, r29
 	subi	YL, lo8(-(usb_rx_buf))	; Y = & usb_rx_buf[usb_rx_off]
-  f4:	c8 57       	subi	r28, 0x78	; 120
+  c8:	cc 5e       	subi	r28, 0xEC	; 236
 	sbci	YH, hi8(-(usb_rx_buf))
-  f6:	df 4f       	sbci	r29, 0xFF	; 255
+  ca:	de 4f       	sbci	r29, 0xFE	; 254
 	ldi	count, USB_BUFSIZE	; limit on number of bytes to receive
-  f8:	0b e0       	ldi	r16, 0x0B	; 11
+  cc:	0b e0       	ldi	r16, 0x0B	; 11
 	ldi	usbmask, USB_MASK	; why is there no eori instruction?
-  fa:	1c e0       	ldi	r17, 0x0C	; 12
+  ce:	1c e0       	ldi	r17, 0x0C	; 12
 	ldi	odd, USB_MASK_DPLUS
-  fc:	24 e0       	ldi	r18, 0x04	; 4
+  d0:	24 e0       	ldi	r18, 0x04	; 4
 
-000000fe <sync7>:
+000000d2 <sync7>:
 
 sync7:
 	; the last sync bit should also be 1
 	sbis	USB_IN, USBTINY_DPLUS	; bit 7 of sync byte?
-  fe:	82 9b       	sbis	0x10, 2	; 16
+  d2:	82 9b       	sbis	0x10, 2	; 16
 	rjmp	resync			; no, wait for next transition
- 100:	e9 cf       	rjmp	.-46     	; 0xd4 <resync>
+  d4:	e9 cf       	rjmp	.-46     	; 0xa8 <resync>
 	push	byte
- 102:	3f 93       	push	r19
+  d6:	3f 93       	push	r19
 	push	fixup
- 104:	4f 93       	push	r20
+  d8:	4f 93       	push	r20
 	push	even
- 106:	6f 93       	push	r22
+  da:	6f 93       	push	r22
 
 ; ----------------------------------------------------------------------
 ; receiver loop
 ; ----------------------------------------------------------------------
 	in	even, USB_IN		; sample bit 0
- 108:	60 b3       	in	r22, 0x10	; 16
+  dc:	60 b3       	in	r22, 0x10	; 16
 	ldi	byte, 0x80		; load sync byte for correct unstuffing
- 10a:	30 e8       	ldi	r19, 0x80	; 128
+  de:	30 e8       	ldi	r19, 0x80	; 128
 	rjmp	rxentry			; 2 cycles
- 10c:	03 c0       	rjmp	.+6      	; 0x114 <rxentry>
+  e0:	03 c0       	rjmp	.+6      	; 0xe8 <rxentry>
 
-0000010e <rxloop>:
+000000e2 <rxloop>:
 
 rxloop:
 	in	even, USB_IN		; sample bit 0
- 10e:	60 b3       	in	r22, 0x10	; 16
+  e2:	60 b3       	in	r22, 0x10	; 16
 	or	fixup, byte
- 110:	43 2b       	or	r20, r19
+  e4:	43 2b       	or	r20, r19
 	st	Y+, fixup		; 2 cycles
- 112:	49 93       	st	Y+, r20
+  e6:	49 93       	st	Y+, r20
 
-00000114 <rxentry>:
+000000e8 <rxentry>:
 rxentry:
 	clr	fixup
- 114:	44 27       	eor	r20, r20
+  e8:	44 27       	eor	r20, r20
 	andi	even, USB_MASK
- 116:	6c 70       	andi	r22, 0x0C	; 12
+  ea:	6c 70       	andi	r22, 0x0C	; 12
 	eor	odd, even
- 118:	26 27       	eor	r18, r22
+  ec:	26 27       	eor	r18, r22
 	subi	odd, 1
- 11a:	21 50       	subi	r18, 0x01	; 1
+  ee:	21 50       	subi	r18, 0x01	; 1
 	in	odd, USB_IN		; sample bit 1
- 11c:	20 b3       	in	r18, 0x10	; 16
+  f0:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 11e:	2c 70       	andi	r18, 0x0C	; 12
+  f2:	2c 70       	andi	r18, 0x0C	; 12
 	breq	eop			; ==> EOP detected
- 120:	a9 f1       	breq	.+106    	; 0x18c <eop>
+  f4:	a9 f1       	breq	.+106    	; 0x160 <eop>
 	ror	byte
- 122:	37 95       	ror	r19
+  f6:	37 95       	ror	r19
 	cpi	byte, 0xfc
- 124:	3c 3f       	cpi	r19, 0xFC	; 252
+  f8:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcc	skip0
- 126:	a0 f5       	brcc	.+104    	; 0x190 <skip0>
+  fa:	a0 f5       	brcc	.+104    	; 0x164 <skip0>
 
-00000128 <skipped0>:
+000000fc <skipped0>:
 skipped0:
 	eor	even, odd
- 128:	62 27       	eor	r22, r18
+  fc:	62 27       	eor	r22, r18
 	subi	even, 1
- 12a:	61 50       	subi	r22, 0x01	; 1
+  fe:	61 50       	subi	r22, 0x01	; 1
 	in	even, USB_IN		; sample bit 2
- 12c:	60 b3       	in	r22, 0x10	; 16
+ 100:	60 b3       	in	r22, 0x10	; 16
 	andi	even, USB_MASK
- 12e:	6c 70       	andi	r22, 0x0C	; 12
+ 102:	6c 70       	andi	r22, 0x0C	; 12
 	ror	byte
- 130:	37 95       	ror	r19
+ 104:	37 95       	ror	r19
 	cpi	byte, 0xfc
- 132:	3c 3f       	cpi	r19, 0xFC	; 252
+ 106:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcc	skip1
- 134:	98 f5       	brcc	.+102    	; 0x19c <skip1>
+ 108:	98 f5       	brcc	.+102    	; 0x170 <skip1>
 
-00000136 <skipped1>:
+0000010a <skipped1>:
 skipped1:
 	eor	odd, even
- 136:	26 27       	eor	r18, r22
+ 10a:	26 27       	eor	r18, r22
 	subi	odd, 1
- 138:	21 50       	subi	r18, 0x01	; 1
+ 10c:	21 50       	subi	r18, 0x01	; 1
 	ror	byte
- 13a:	37 95       	ror	r19
+ 10e:	37 95       	ror	r19
 	in	odd, USB_IN		; sample bit 3
- 13c:	20 b3       	in	r18, 0x10	; 16
+ 110:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 13e:	2c 70       	andi	r18, 0x0C	; 12
+ 112:	2c 70       	andi	r18, 0x0C	; 12
 	cpi	byte, 0xfc
- 140:	3c 3f       	cpi	r19, 0xFC	; 252
+ 114:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcc	skip2
- 142:	90 f5       	brcc	.+100    	; 0x1a8 <skip2>
+ 116:	90 f5       	brcc	.+100    	; 0x17c <skip2>
 	eor	even, odd
- 144:	62 27       	eor	r22, r18
+ 118:	62 27       	eor	r22, r18
 	subi	even, 1
- 146:	61 50       	subi	r22, 0x01	; 1
+ 11a:	61 50       	subi	r22, 0x01	; 1
 	ror	byte
- 148:	37 95       	ror	r19
+ 11c:	37 95       	ror	r19
 
-0000014a <skipped2>:
+0000011e <skipped2>:
 skipped2:
 	cpi	byte, 0xfc
- 14a:	3c 3f       	cpi	r19, 0xFC	; 252
+ 11e:	3c 3f       	cpi	r19, 0xFC	; 252
 	in	even, USB_IN		; sample bit 4
- 14c:	60 b3       	in	r22, 0x10	; 16
+ 120:	60 b3       	in	r22, 0x10	; 16
 	andi	even, USB_MASK
- 14e:	6c 70       	andi	r22, 0x0C	; 12
+ 122:	6c 70       	andi	r22, 0x0C	; 12
 	brcc	skip3
- 150:	a0 f5       	brcc	.+104    	; 0x1ba <skip3>
+ 124:	a0 f5       	brcc	.+104    	; 0x18e <skip3>
 	eor	odd, even
- 152:	26 27       	eor	r18, r22
+ 126:	26 27       	eor	r18, r22
 	subi	odd, 1
- 154:	21 50       	subi	r18, 0x01	; 1
+ 128:	21 50       	subi	r18, 0x01	; 1
 	ror	byte
- 156:	37 95       	ror	r19
+ 12a:	37 95       	ror	r19
 
-00000158 <skipped4>:
+0000012c <skipped4>:
 skipped4:
 	cpi	byte, 0xfc
- 158:	3c 3f       	cpi	r19, 0xFC	; 252
+ 12c:	3c 3f       	cpi	r19, 0xFC	; 252
 
-0000015a <skipped3>:
+0000012e <skipped3>:
 skipped3:
 	brcc	skip4
- 15a:	c8 f5       	brcc	.+114    	; 0x1ce <skip4>
+ 12e:	c8 f5       	brcc	.+114    	; 0x1a2 <skip4>
 	in	odd, USB_IN		; sample bit 5
- 15c:	20 b3       	in	r18, 0x10	; 16
+ 130:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 15e:	2c 70       	andi	r18, 0x0C	; 12
+ 132:	2c 70       	andi	r18, 0x0C	; 12
 	eor	even, odd
- 160:	62 27       	eor	r22, r18
+ 134:	62 27       	eor	r22, r18
 	subi	even, 1
- 162:	61 50       	subi	r22, 0x01	; 1
+ 136:	61 50       	subi	r22, 0x01	; 1
 	ror	byte
- 164:	37 95       	ror	r19
+ 138:	37 95       	ror	r19
 
-00000166 <skipped5>:
+0000013a <skipped5>:
 skipped5:
 	cpi	byte, 0xfc
- 166:	3c 3f       	cpi	r19, 0xFC	; 252
+ 13a:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcc	skip5
- 168:	b0 f5       	brcc	.+108    	; 0x1d6 <skip5>
+ 13c:	b0 f5       	brcc	.+108    	; 0x1aa <skip5>
 	dec	count
- 16a:	0a 95       	dec	r16
+ 13e:	0a 95       	dec	r16
 	in	even, USB_IN		; sample bit 6
- 16c:	60 b3       	in	r22, 0x10	; 16
+ 140:	60 b3       	in	r22, 0x10	; 16
 	brmi	overflow		; ==> overflow
- 16e:	7a f0       	brmi	.+30     	; 0x18e <overflow>
+ 142:	7a f0       	brmi	.+30     	; 0x162 <overflow>
 	andi	even, USB_MASK
- 170:	6c 70       	andi	r22, 0x0C	; 12
+ 144:	6c 70       	andi	r22, 0x0C	; 12
 	eor	odd, even
- 172:	26 27       	eor	r18, r22
+ 146:	26 27       	eor	r18, r22
 	subi	odd, 1
- 174:	21 50       	subi	r18, 0x01	; 1
+ 148:	21 50       	subi	r18, 0x01	; 1
 	ror	byte
- 176:	37 95       	ror	r19
+ 14a:	37 95       	ror	r19
 
-00000178 <skipped6>:
+0000014c <skipped6>:
 skipped6:
 	cpi	byte, 0xfc
- 178:	3c 3f       	cpi	r19, 0xFC	; 252
+ 14c:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcc	skip6
- 17a:	88 f5       	brcc	.+98     	; 0x1de <skip6>
+ 14e:	88 f5       	brcc	.+98     	; 0x1b2 <skip6>
 	in	odd, USB_IN		; sample bit 7
- 17c:	20 b3       	in	r18, 0x10	; 16
+ 150:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 17e:	2c 70       	andi	r18, 0x0C	; 12
+ 152:	2c 70       	andi	r18, 0x0C	; 12
 	eor	even, odd
- 180:	62 27       	eor	r22, r18
+ 154:	62 27       	eor	r22, r18
 	subi	even, 1
- 182:	61 50       	subi	r22, 0x01	; 1
+ 156:	61 50       	subi	r22, 0x01	; 1
 	ror	byte
- 184:	37 95       	ror	r19
+ 158:	37 95       	ror	r19
 	cpi	byte, 0xfc
- 186:	3c 3f       	cpi	r19, 0xFC	; 252
+ 15a:	3c 3f       	cpi	r19, 0xFC	; 252
 	brcs	rxloop			; 2 cycles
- 188:	10 f2       	brcs	.-124    	; 0x10e <rxloop>
+ 15c:	10 f2       	brcs	.-124    	; 0xe2 <rxloop>
 	rjmp	skip7
- 18a:	2d c0       	rjmp	.+90     	; 0x1e6 <skip7>
+ 15e:	2d c0       	rjmp	.+90     	; 0x1ba <skip7>
 
-0000018c <eop>:
+00000160 <eop>:
 
 eop:
 	rjmp	eop2
- 18c:	31 c0       	rjmp	.+98     	; 0x1f0 <eop2>
+ 160:	31 c0       	rjmp	.+98     	; 0x1c4 <eop2>
 
-0000018e <overflow>:
+00000162 <overflow>:
 overflow:
 	rjmp	ignore
- 18e:	48 c0       	rjmp	.+144    	; 0x220 <ignore>
+ 162:	48 c0       	rjmp	.+144    	; 0x1f4 <ignore>
 
-00000190 <skip0>:
+00000164 <skip0>:
 
 ; ----------------------------------------------------------------------
 ; out-of-line code to skip stuffing bits
 ; ----------------------------------------------------------------------
 skip0:					; 1+6 cycles
 	eor	even, usbmask
- 190:	61 27       	eor	r22, r17
+ 164:	61 27       	eor	r22, r17
 	in	odd, USB_IN		; resample bit 1
- 192:	20 b3       	in	r18, 0x10	; 16
+ 166:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 194:	2c 70       	andi	r18, 0x0C	; 12
+ 168:	2c 70       	andi	r18, 0x0C	; 12
 	cbr	byte, (1<<7)
- 196:	3f 77       	andi	r19, 0x7F	; 127
+ 16a:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<0)
- 198:	41 60       	ori	r20, 0x01	; 1
+ 16c:	41 60       	ori	r20, 0x01	; 1
 	rjmp	skipped0
- 19a:	c6 cf       	rjmp	.-116    	; 0x128 <skipped0>
+ 16e:	c6 cf       	rjmp	.-116    	; 0xfc <skipped0>
 
-0000019c <skip1>:
+00000170 <skip1>:
 
 skip1:					; 2+5 cycles
 	cbr	byte, (1<<7)
- 19c:	3f 77       	andi	r19, 0x7F	; 127
+ 170:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<1)
- 19e:	42 60       	ori	r20, 0x02	; 2
+ 172:	42 60       	ori	r20, 0x02	; 2
 	in	even, USB_IN		; resample bit 2
- 1a0:	60 b3       	in	r22, 0x10	; 16
+ 174:	60 b3       	in	r22, 0x10	; 16
 	andi	even, USB_MASK
- 1a2:	6c 70       	andi	r22, 0x0C	; 12
+ 176:	6c 70       	andi	r22, 0x0C	; 12
 	eor	odd, usbmask
- 1a4:	21 27       	eor	r18, r17
+ 178:	21 27       	eor	r18, r17
 	rjmp	skipped1
- 1a6:	c7 cf       	rjmp	.-114    	; 0x136 <skipped1>
+ 17a:	c7 cf       	rjmp	.-114    	; 0x10a <skipped1>
 
-000001a8 <skip2>:
+0000017c <skip2>:
 
 skip2:					; 3+7 cycles
 	cbr	byte, (1<<7)
- 1a8:	3f 77       	andi	r19, 0x7F	; 127
+ 17c:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<2)
- 1aa:	44 60       	ori	r20, 0x04	; 4
+ 17e:	44 60       	ori	r20, 0x04	; 4
 	eor	even, usbmask
- 1ac:	61 27       	eor	r22, r17
+ 180:	61 27       	eor	r22, r17
 	in	odd, USB_IN		; resample bit 3
- 1ae:	20 b3       	in	r18, 0x10	; 16
+ 182:	20 b3       	in	r18, 0x10	; 16
 	andi	odd, USB_MASK
- 1b0:	2c 70       	andi	r18, 0x0C	; 12
+ 184:	2c 70       	andi	r18, 0x0C	; 12
 	eor	even, odd
- 1b2:	62 27       	eor	r22, r18
+ 186:	62 27       	eor	r22, r18
 	subi	even, 1
- 1b4:	61 50       	subi	r22, 0x01	; 1
+ 188:	61 50       	subi	r22, 0x01	; 1
 	ror	byte
- 1b6:	37 95       	ror	r19
+ 18a:	37 95       	ror	r19
 	rjmp	skipped2
- 1b8:	c8 cf       	rjmp	.-112    	; 0x14a <skipped2>
+ 18c:	c8 cf       	rjmp	.-112    	; 0x11e <skipped2>
 
-000001ba <skip3>:
+0000018e <skip3>:
 
 skip3:					; 4+7 cycles
 	cbr	byte, (1<<7)
- 1ba:	3f 77       	andi	r19, 0x7F	; 127
+ 18e:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<3)
- 1bc:	48 60       	ori	r20, 0x08	; 8
+ 190:	48 60       	ori	r20, 0x08	; 8
 	eor	odd, usbmask
- 1be:	21 27       	eor	r18, r17
+ 192:	21 27       	eor	r18, r17
 	ori	byte, 1
- 1c0:	31 60       	ori	r19, 0x01	; 1
+ 194:	31 60       	ori	r19, 0x01	; 1
 	in	even, USB_IN		; resample bit 4
- 1c2:	60 b3       	in	r22, 0x10	; 16
+ 196:	60 b3       	in	r22, 0x10	; 16
 	andi	even, USB_MASK
- 1c4:	6c 70       	andi	r22, 0x0C	; 12
+ 198:	6c 70       	andi	r22, 0x0C	; 12
 	eor	odd, even
- 1c6:	26 27       	eor	r18, r22
+ 19a:	26 27       	eor	r18, r22
 	subi	odd, 1
- 1c8:	21 50       	subi	r18, 0x01	; 1
+ 19c:	21 50       	subi	r18, 0x01	; 1
 	ror	byte
- 1ca:	37 95       	ror	r19
+ 19e:	37 95       	ror	r19
 	rjmp	skipped3
- 1cc:	c6 cf       	rjmp	.-116    	; 0x15a <skipped3>
+ 1a0:	c6 cf       	rjmp	.-116    	; 0x12e <skipped3>
 
-000001ce <skip4>:
+000001a2 <skip4>:
 
 skip4:					; 5 cycles
 	cbr	byte, (1<<7)
- 1ce:	3f 77       	andi	r19, 0x7F	; 127
+ 1a2:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<4)
- 1d0:	40 61       	ori	r20, 0x10	; 16
+ 1a4:	40 61       	ori	r20, 0x10	; 16
 	eor	even, usbmask
- 1d2:	61 27       	eor	r22, r17
+ 1a6:	61 27       	eor	r22, r17
 	rjmp	skipped4
- 1d4:	c1 cf       	rjmp	.-126    	; 0x158 <skipped4>
+ 1a8:	c1 cf       	rjmp	.-126    	; 0x12c <skipped4>
 
-000001d6 <skip5>:
+000001aa <skip5>:
 
 skip5:					; 5 cycles
 	cbr	byte, (1<<7)
- 1d6:	3f 77       	andi	r19, 0x7F	; 127
+ 1aa:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<5)
- 1d8:	40 62       	ori	r20, 0x20	; 32
+ 1ac:	40 62       	ori	r20, 0x20	; 32
 	eor	odd, usbmask
- 1da:	21 27       	eor	r18, r17
+ 1ae:	21 27       	eor	r18, r17
 	rjmp	skipped5
- 1dc:	c4 cf       	rjmp	.-120    	; 0x166 <skipped5>
+ 1b0:	c4 cf       	rjmp	.-120    	; 0x13a <skipped5>
 
-000001de <skip6>:
+000001b2 <skip6>:
 
 skip6:					; 5 cycles
 	cbr	byte, (1<<7)
- 1de:	3f 77       	andi	r19, 0x7F	; 127
+ 1b2:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<6)
- 1e0:	40 64       	ori	r20, 0x40	; 64
+ 1b4:	40 64       	ori	r20, 0x40	; 64
 	eor	even, usbmask
- 1e2:	61 27       	eor	r22, r17
+ 1b6:	61 27       	eor	r22, r17
 	rjmp	skipped6
- 1e4:	c9 cf       	rjmp	.-110    	; 0x178 <skipped6>
+ 1b8:	c9 cf       	rjmp	.-110    	; 0x14c <skipped6>
 
-000001e6 <skip7>:
+000001ba <skip7>:
 
 skip7:					; 7 cycles
 	cbr	byte, (1<<7)
- 1e6:	3f 77       	andi	r19, 0x7F	; 127
+ 1ba:	3f 77       	andi	r19, 0x7F	; 127
 	sbr	fixup, (1<<7)
- 1e8:	40 68       	ori	r20, 0x80	; 128
+ 1bc:	40 68       	ori	r20, 0x80	; 128
 	eor	odd, usbmask
- 1ea:	21 27       	eor	r18, r17
+ 1be:	21 27       	eor	r18, r17
 	nop2
- 1ec:	00 c0       	rjmp	.+0      	; 0x1ee <skip7+0x8>
+ 1c0:	00 c0       	rjmp	.+0      	; 0x1c2 <skip7+0x8>
 	rjmp	rxloop
- 1ee:	8f cf       	rjmp	.-226    	; 0x10e <rxloop>
+ 1c2:	8f cf       	rjmp	.-226    	; 0xe2 <rxloop>
 
-000001f0 <eop2>:
+000001c4 <eop2>:
 ; ----------------------------------------------------------------------
 ; end-of-packet detected (worst-case: 3 cycles after end of SE0)
 ; ----------------------------------------------------------------------
 eop2:
 	; clear pending interrupt (SE0+3)
 	ldi	byte, 1<<USB_INT_PENDING_BIT
- 1f0:	30 e4       	ldi	r19, 0x40	; 64
+ 1c4:	30 e4       	ldi	r19, 0x40	; 64
 	out	USB_INT_PENDING, byte	; clear pending bit at end of packet
- 1f2:	3a bf       	out	0x3a, r19	; 58
+ 1c6:	3a bf       	out	0x3a, r19	; 58
 	; ignore packets shorter than 3 bytes
 	subi	count, USB_BUFSIZE
- 1f4:	0b 50       	subi	r16, 0x0B	; 11
+ 1c8:	0b 50       	subi	r16, 0x0B	; 11
 	neg	count			; count = packet length
- 1f6:	01 95       	neg	r16
+ 1ca:	01 95       	neg	r16
 	cpi	count, 3
- 1f8:	03 30       	cpi	r16, 0x03	; 3
+ 1cc:	03 30       	cpi	r16, 0x03	; 3
 	brlo	ignore
- 1fa:	90 f0       	brcs	.+36     	; 0x220 <ignore>
+ 1ce:	90 f0       	brcs	.+36     	; 0x1f4 <ignore>
 	; get PID
 	sub	YL, count
- 1fc:	c0 1b       	sub	r28, r16
+ 1d0:	c0 1b       	sub	r28, r16
 	ld	pid, Y
- 1fe:	28 81       	ld	r18, Y
+ 1d2:	28 81       	ld	r18, Y
 	; check for DATA0/DATA1 first, as this is the critical path (SE0+12)
 	cpi	pid, USB_PID_DATA0
- 200:	23 3c       	cpi	r18, 0xC3	; 195
+ 1d4:	23 3c       	cpi	r18, 0xC3	; 195
 	breq	is_data			; handle DATA0 packet
- 202:	91 f1       	breq	.+100    	; 0x268 <is_data>
+ 1d6:	91 f1       	breq	.+100    	; 0x23c <is_data>
 	cpi	pid, USB_PID_DATA1
- 204:	2b 34       	cpi	r18, 0x4B	; 75
+ 1d8:	2b 34       	cpi	r18, 0x4B	; 75
 	breq	is_data			; handle DATA1 packet
- 206:	81 f1       	breq	.+96     	; 0x268 <is_data>
+ 1da:	81 f1       	breq	.+96     	; 0x23c <is_data>
 	; check ADDR (SE0+16)
 	ldd	addr, Y+1
- 208:	19 81       	ldd	r17, Y+1	; 0x01
+ 1dc:	19 81       	ldd	r17, Y+1	; 0x01
 	andi	addr, 0x7f
- 20a:	1f 77       	andi	r17, 0x7F	; 127
+ 1de:	1f 77       	andi	r17, 0x7F	; 127
 	lds	tmp, usb_address
- 20c:	40 91 9e 00 	lds	r20, 0x009E
+ 1e0:	40 91 2a 01 	lds	r20, 0x012A
 	cp	addr, tmp		; is this packet for me?
- 210:	14 17       	cp	r17, r20
+ 1e4:	14 17       	cp	r17, r20
 	brne	ignore			; no, ignore
- 212:	31 f4       	brne	.+12     	; 0x220 <ignore>
+ 1e6:	31 f4       	brne	.+12     	; 0x1f4 <ignore>
 	; check for other PIDs (SE0+23)
 	cpi	pid, USB_PID_IN
- 214:	29 36       	cpi	r18, 0x69	; 105
+ 1e8:	29 36       	cpi	r18, 0x69	; 105
 	breq	is_in			; handle IN packet
- 216:	d9 f0       	breq	.+54     	; 0x24e <is_in>
+ 1ea:	d9 f0       	breq	.+54     	; 0x222 <is_in>
 	cpi	pid, USB_PID_SETUP
- 218:	2d 32       	cpi	r18, 0x2D	; 45
+ 1ec:	2d 32       	cpi	r18, 0x2D	; 45
 	breq	is_setup_out		; handle SETUP packet
- 21a:	49 f0       	breq	.+18     	; 0x22e <is_setup_out>
+ 1ee:	49 f0       	breq	.+18     	; 0x202 <is_setup_out>
 	cpi	pid, USB_PID_OUT
- 21c:	21 3e       	cpi	r18, 0xE1	; 225
+ 1f0:	21 3e       	cpi	r18, 0xE1	; 225
 	breq	is_setup_out		; handle OUT packet
- 21e:	39 f0       	breq	.+14     	; 0x22e <is_setup_out>
+ 1f2:	39 f0       	breq	.+14     	; 0x202 <is_setup_out>
 
-00000220 <ignore>:
+000001f4 <ignore>:
 
 ; ----------------------------------------------------------------------
 ; exit point for ignored packets
 ; ----------------------------------------------------------------------
 ignore:
 	clr	tmp
- 220:	44 27       	eor	r20, r20
+ 1f4:	44 27       	eor	r20, r20
 	sts	token_pid, tmp
- 222:	40 93 62 00 	sts	0x0062, r20
+ 1f6:	40 93 cc 00 	sts	0x00CC, r20
 	pop	even
- 226:	6f 91       	pop	r22
+ 1fa:	6f 91       	pop	r22
 	pop	fixup
- 228:	4f 91       	pop	r20
+ 1fc:	4f 91       	pop	r20
 	pop	byte
- 22a:	3f 91       	pop	r19
+ 1fe:	3f 91       	pop	r19
 	rjmp	return
- 22c:	08 c0       	rjmp	.+16     	; 0x23e <return>
+ 200:	08 c0       	rjmp	.+16     	; 0x212 <return>
 
-0000022e <is_setup_out>:
+00000202 <is_setup_out>:
 
 ; ----------------------------------------------------------------------
 ; Handle SETUP/OUT (SE0+30)
 ; ----------------------------------------------------------------------
 is_setup_out:
 	sts	token_pid, pid		; save PID of token packet
- 22e:	20 93 62 00 	sts	0x0062, r18
+ 202:	20 93 cc 00 	sts	0x00CC, r18
 	pop	even
- 232:	6f 91       	pop	r22
+ 206:	6f 91       	pop	r22
 	pop	fixup
- 234:	4f 91       	pop	r20
+ 208:	4f 91       	pop	r20
 	pop	byte
- 236:	3f 91       	pop	r19
+ 20a:	3f 91       	pop	r19
 	in	count, USB_INT_PENDING	; next packet already started?
- 238:	0a b7       	in	r16, 0x3a	; 58
+ 20c:	0a b7       	in	r16, 0x3a	; 58
 	sbrc	count, USB_INT_PENDING_BIT
- 23a:	06 fd       	sbrc	r16, 6
+ 20e:	06 fd       	sbrc	r16, 6
 	rjmp	sync			; yes, get it right away (SE0+42)
- 23c:	49 cf       	rjmp	.-366    	; 0xd0 <sync>
+ 210:	49 cf       	rjmp	.-366    	; 0xa4 <sync>
 
-0000023e <return>:
+00000212 <return>:
 
 ; ----------------------------------------------------------------------
 ; restore registers and return from interrupt
 ; ----------------------------------------------------------------------
 return:
 	pop	count
- 23e:	0f 91       	pop	r16
+ 212:	0f 91       	pop	r16
 	out	SREG, count
- 240:	0f bf       	out	0x3f, r16	; 63
+ 214:	0f bf       	out	0x3f, r16	; 63
 	pop	YL
- 242:	cf 91       	pop	r28
+ 216:	cf 91       	pop	r28
 	pop	YH
- 244:	df 91       	pop	r29
+ 218:	df 91       	pop	r29
 	pop	odd
- 246:	2f 91       	pop	r18
+ 21a:	2f 91       	pop	r18
 	pop	usbmask
- 248:	1f 91       	pop	r17
+ 21c:	1f 91       	pop	r17
 	pop	count
- 24a:	0f 91       	pop	r16
+ 21e:	0f 91       	pop	r16
 	reti
- 24c:	18 95       	reti
+ 220:	18 95       	reti
 
-0000024e <is_in>:
+00000222 <is_in>:
 
 ; ----------------------------------------------------------------------
 ; Handle IN (SE0+26)
 ; ----------------------------------------------------------------------
 is_in:
 	lds	count, usb_tx_len
- 24e:	00 91 79 00 	lds	r16, 0x0079
+ 222:	00 91 05 01 	lds	r16, 0x0105
 	tst	count			; data ready?
- 252:	00 23       	and	r16, r16
+ 226:	00 23       	and	r16, r16
 	breq	nak			; no, reply with NAK
- 254:	f1 f0       	breq	.+60     	; 0x292 <nak>
+ 228:	f1 f0       	breq	.+60     	; 0x266 <nak>
 	lds	tmp, usb_rx_len
- 256:	40 91 86 00 	lds	r20, 0x0086
+ 22a:	40 91 12 01 	lds	r20, 0x0112
 	tst	tmp			; unprocessed input packet?
- 25a:	44 23       	and	r20, r20
+ 22e:	44 23       	and	r20, r20
 	brne	nak			; yes, don't send old data for new packet
- 25c:	d1 f4       	brne	.+52     	; 0x292 <nak>
+ 230:	d1 f4       	brne	.+52     	; 0x266 <nak>
 	sts	usb_tx_len, tmp		; buffer is available again (after reti)
- 25e:	40 93 79 00 	sts	0x0079, r20
+ 232:	40 93 05 01 	sts	0x0105, r20
 	ldi	YL, lo8(usb_tx_buf)
- 262:	ca e7       	ldi	r28, 0x7A	; 122
+ 236:	c6 e0       	ldi	r28, 0x06	; 6
 	ldi	YH, hi8(usb_tx_buf)
- 264:	d0 e0       	ldi	r29, 0x00	; 0
+ 238:	d1 e0       	ldi	r29, 0x01	; 1
 	rjmp	send_packet		; SE0+40, SE0 --> SOP <= 51
- 266:	18 c0       	rjmp	.+48     	; 0x298 <send_packet>
+ 23a:	18 c0       	rjmp	.+48     	; 0x26c <send_packet>
 
-00000268 <is_data>:
+0000023c <is_data>:
 
 ; ----------------------------------------------------------------------
 ; Handle DATA0/DATA1 (SE0+17)
 ; ----------------------------------------------------------------------
 is_data:
 	lds	pid, token_pid
- 268:	20 91 62 00 	lds	r18, 0x0062
+ 23c:	20 91 cc 00 	lds	r18, 0x00CC
 	tst	pid			; data following our SETUP/OUT
- 26c:	22 23       	and	r18, r18
+ 240:	22 23       	and	r18, r18
 	breq	ignore			; no, ignore
- 26e:	c1 f2       	breq	.-80     	; 0x220 <ignore>
+ 242:	c1 f2       	breq	.-80     	; 0x1f4 <ignore>
 	lds	tmp, usb_rx_len
- 270:	40 91 86 00 	lds	r20, 0x0086
+ 244:	40 91 12 01 	lds	r20, 0x0112
 	tst	tmp			; buffer free?
- 274:	44 23       	and	r20, r20
+ 248:	44 23       	and	r20, r20
 	brne	nak			; no, reply with NAK
- 276:	69 f4       	brne	.+26     	; 0x292 <nak>
+ 24a:	69 f4       	brne	.+26     	; 0x266 <nak>
 	sts	usb_rx_len, count	; pass buffer length
- 278:	00 93 86 00 	sts	0x0086, r16
+ 24c:	00 93 12 01 	sts	0x0112, r16
 	sts	usb_rx_token, pid	; pass PID of token (SETUP or OUT)
- 27c:	20 93 85 00 	sts	0x0085, r18
+ 250:	20 93 11 01 	sts	0x0111, r18
 	lds	count, usb_rx_off	; switch to other input buffer
- 280:	00 91 87 00 	lds	r16, 0x0087
+ 254:	00 91 13 01 	lds	r16, 0x0113
 	ldi	tmp, USB_BUFSIZE
- 284:	4b e0       	ldi	r20, 0x0B	; 11
+ 258:	4b e0       	ldi	r20, 0x0B	; 11
 	sub	tmp, count
- 286:	40 1b       	sub	r20, r16
+ 25a:	40 1b       	sub	r20, r16
 	sts	usb_rx_off, tmp
- 288:	40 93 87 00 	sts	0x0087, r20
+ 25c:	40 93 13 01 	sts	0x0113, r20
 
-0000028c <ack>:
+00000260 <ack>:
 
 ; ----------------------------------------------------------------------
 ; send ACK packet (SE0+35)
 ; ----------------------------------------------------------------------
 ack:
 	ldi	YL, lo8(tx_ack)
- 28c:	c0 e6       	ldi	r28, 0x60	; 96
+ 260:	c0 e6       	ldi	r28, 0x60	; 96
 	ldi	YH, hi8(tx_ack)
- 28e:	d0 e0       	ldi	r29, 0x00	; 0
+ 262:	d0 e0       	ldi	r29, 0x00	; 0
 	rjmp	send_token
- 290:	02 c0       	rjmp	.+4      	; 0x296 <send_token>
+ 264:	02 c0       	rjmp	.+4      	; 0x26a <send_token>
 
-00000292 <nak>:
+00000266 <nak>:
 
 ; ----------------------------------------------------------------------
 ; send NAK packet (SE0+36)
 ; ----------------------------------------------------------------------
 nak:
 	ldi	YL, lo8(tx_nak)
- 292:	c1 e6       	ldi	r28, 0x61	; 97
+ 266:	c1 e6       	ldi	r28, 0x61	; 97
 	ldi	YH, hi8(tx_nak)
- 294:	d0 e0       	ldi	r29, 0x00	; 0
+ 268:	d0 e0       	ldi	r29, 0x00	; 0
 
-00000296 <send_token>:
+0000026a <send_token>:
 send_token:
 	ldi	count, 1		; SE0+40, SE0 --> SOP <= 51
- 296:	01 e0       	ldi	r16, 0x01	; 1
+ 26a:	01 e0       	ldi	r16, 0x01	; 1
 
-00000298 <send_packet>:
+0000026c <send_packet>:
 
 ; ----------------------------------------------------------------------
 ; acquire the bus and send a packet (11 cycles to SOP)
 ; ----------------------------------------------------------------------
 send_packet:
 	in	output, USB_OUT
- 298:	22 b3       	in	r18, 0x12	; 18
+ 26c:	22 b3       	in	r18, 0x12	; 18
 	cbr	output, USB_MASK
- 29a:	23 7f       	andi	r18, 0xF3	; 243
+ 26e:	23 7f       	andi	r18, 0xF3	; 243
 	ori	output, USB_MASK_DMINUS
- 29c:	28 60       	ori	r18, 0x08	; 8
+ 270:	28 60       	ori	r18, 0x08	; 8
 	in	usbmask, USB_DDR
- 29e:	11 b3       	in	r17, 0x11	; 17
+ 272:	11 b3       	in	r17, 0x11	; 17
 	ori	usbmask, USB_MASK
- 2a0:	1c 60       	ori	r17, 0x0C	; 12
+ 274:	1c 60       	ori	r17, 0x0C	; 12
 	out	USB_OUT, output		; idle state
- 2a2:	22 bb       	out	0x12, r18	; 18
+ 276:	22 bb       	out	0x12, r18	; 18
 	out	USB_DDR, usbmask	; acquire bus
- 2a4:	11 bb       	out	0x11, r17	; 17
+ 278:	11 bb       	out	0x11, r17	; 17
 	ldi	usbmask, USB_MASK
- 2a6:	1c e0       	ldi	r17, 0x0C	; 12
+ 27a:	1c e0       	ldi	r17, 0x0C	; 12
 	ldi	byte, 0x80		; start with sync byte
- 2a8:	30 e8       	ldi	r19, 0x80	; 128
+ 27c:	30 e8       	ldi	r19, 0x80	; 128
 
-000002aa <txloop>:
+0000027e <txloop>:
 
 ; ----------------------------------------------------------------------
 ; transmitter loop
 ; ----------------------------------------------------------------------
 txloop:
 	sbrs	byte, 0
- 2aa:	30 ff       	sbrs	r19, 0
+ 27e:	30 ff       	sbrs	r19, 0
 	eor	output, usbmask
- 2ac:	21 27       	eor	r18, r17
+ 280:	21 27       	eor	r18, r17
 	out	USB_OUT, output		; output bit 0
- 2ae:	22 bb       	out	0x12, r18	; 18
+ 282:	22 bb       	out	0x12, r18	; 18
 	ror	byte
- 2b0:	37 95       	ror	r19
+ 284:	37 95       	ror	r19
 	ror	done
- 2b2:	47 95       	ror	r20
+ 286:	47 95       	ror	r20
 
-000002b4 <stuffed0>:
+00000288 <stuffed0>:
 stuffed0:
 	cpi	done, 0xfc
- 2b4:	4c 3f       	cpi	r20, 0xFC	; 252
+ 288:	4c 3f       	cpi	r20, 0xFC	; 252
 	brcc	stuff0
- 2b6:	c0 f5       	brcc	.+112    	; 0x328 <stuff0>
+ 28a:	c0 f5       	brcc	.+112    	; 0x2fc <stuff0>
 	sbrs	byte, 0
- 2b8:	30 ff       	sbrs	r19, 0
+ 28c:	30 ff       	sbrs	r19, 0
 	eor	output, usbmask
- 2ba:	21 27       	eor	r18, r17
+ 28e:	21 27       	eor	r18, r17
 	ror	byte
- 2bc:	37 95       	ror	r19
+ 290:	37 95       	ror	r19
 
-000002be <stuffed1>:
+00000292 <stuffed1>:
 stuffed1:
 	out	USB_OUT, output		; output bit 1
- 2be:	22 bb       	out	0x12, r18	; 18
+ 292:	22 bb       	out	0x12, r18	; 18
 	ror	done
- 2c0:	47 95       	ror	r20
+ 294:	47 95       	ror	r20
 	cpi	done, 0xfc
- 2c2:	4c 3f       	cpi	r20, 0xFC	; 252
+ 296:	4c 3f       	cpi	r20, 0xFC	; 252
 	brcc	stuff1
- 2c4:	a8 f5       	brcc	.+106    	; 0x330 <stuff1>
+ 298:	a8 f5       	brcc	.+106    	; 0x304 <stuff1>
 	sbrs	byte, 0
- 2c6:	30 ff       	sbrs	r19, 0
+ 29a:	30 ff       	sbrs	r19, 0
 	eor	output, usbmask
- 2c8:	21 27       	eor	r18, r17
+ 29c:	21 27       	eor	r18, r17
 	ror	byte
- 2ca:	37 95       	ror	r19
+ 29e:	37 95       	ror	r19
 	...
 
-000002ce <stuffed2>:
+000002a2 <stuffed2>:
 	nop
 stuffed2:
 	out	USB_OUT, output		; output bit 2
- 2ce:	22 bb       	out	0x12, r18	; 18
+ 2a2:	22 bb       	out	0x12, r18	; 18
 	ror	done
- 2d0:	47 95       	ror	r20
+ 2a4:	47 95       	ror	r20
 	cpi	done, 0xfc
- 2d2:	4c 3f       	cpi	r20, 0xFC	; 252
+ 2a6:	4c 3f       	cpi	r20, 0xFC	; 252
 	brcc	stuff2
- 2d4:	78 f5       	brcc	.+94     	; 0x334 <stuff2>
+ 2a8:	78 f5       	brcc	.+94     	; 0x308 <stuff2>
 	sbrs	byte, 0
- 2d6:	30 ff       	sbrs	r19, 0
+ 2aa:	30 ff       	sbrs	r19, 0
 	eor	output, usbmask
- 2d8:	21 27       	eor	r18, r17
+ 2ac:	21 27       	eor	r18, r17
 	ror	byte
- 2da:	37 95       	ror	r19
+ 2ae:	37 95       	ror	r19
 	...
 
-000002de <stuffed3>:
+000002b2 <stuffed3>:
 	nop
 stuffed3:
 	out	USB_OUT, output		; output bit 3
- 2de:	22 bb       	out	0x12, r18	; 18
+ 2b2:	22 bb       	out	0x12, r18	; 18
 	ror	done
- 2e0:	47 95       	ror	r20
+ 2b4:	47 95       	ror	r20
+	cpi	done, 0xfc
+ 2b6:	4c 3f       	cpi	r20, 0xFC	; 252
+	brcc	stuff3
+ 2b8:	48 f5       	brcc	.+82     	; 0x30c <stuff3>
+	sbrs	byte, 0
+ 2ba:	30 ff       	sbrs	r19, 0
+	eor	output, usbmask
+ 2bc:	21 27       	eor	r18, r17
+	ld	next, Y+		; 2 cycles
+ 2be:	69 91       	ld	r22, Y+
+	out	USB_OUT, output		; output bit 4
+ 2c0:	22 bb       	out	0x12, r18	; 18
+	ror	byte
+ 2c2:	37 95       	ror	r19
+	ror	done
+ 2c4:	47 95       	ror	r20
+
+000002c6 <stuffed4>:
+stuffed4:
+	cpi	done, 0xfc
+ 2c6:	4c 3f       	cpi	r20, 0xFC	; 252
+	brcc	stuff4
+ 2c8:	18 f5       	brcc	.+70     	; 0x310 <stuff4>
+	sbrs	byte, 0
+ 2ca:	30 ff       	sbrs	r19, 0
+	eor	output, usbmask
+ 2cc:	21 27       	eor	r18, r17
+	ror	byte
+ 2ce:	37 95       	ror	r19
+
+000002d0 <stuffed5>:
+stuffed5:
+	out	USB_OUT, output		; output bit 5
+ 2d0:	22 bb       	out	0x12, r18	; 18
+	ror	done
+ 2d2:	47 95       	ror	r20
+	cpi	done, 0xfc
+ 2d4:	4c 3f       	cpi	r20, 0xFC	; 252
+	brcc	stuff5
+ 2d6:	00 f5       	brcc	.+64     	; 0x318 <stuff5>
+	sbrs	byte, 0
+ 2d8:	30 ff       	sbrs	r19, 0
+	eor	output, usbmask
+ 2da:	21 27       	eor	r18, r17
+	ror	byte
+ 2dc:	37 95       	ror	r19
+
+000002de <stuffed6>:
+stuffed6:
+	ror	done
+ 2de:	47 95       	ror	r20
+	out	USB_OUT, output		; output bit 6
+ 2e0:	22 bb       	out	0x12, r18	; 18
 	cpi	done, 0xfc
  2e2:	4c 3f       	cpi	r20, 0xFC	; 252
-	brcc	stuff3
- 2e4:	48 f5       	brcc	.+82     	; 0x338 <stuff3>
+	brcc	stuff6
+ 2e4:	d8 f4       	brcc	.+54     	; 0x31c <stuff6>
 	sbrs	byte, 0
  2e6:	30 ff       	sbrs	r19, 0
 	eor	output, usbmask
  2e8:	21 27       	eor	r18, r17
-	ld	next, Y+		; 2 cycles
- 2ea:	69 91       	ld	r22, Y+
-	out	USB_OUT, output		; output bit 4
- 2ec:	22 bb       	out	0x12, r18	; 18
 	ror	byte
- 2ee:	37 95       	ror	r19
-	ror	done
- 2f0:	47 95       	ror	r20
-
-000002f2 <stuffed4>:
-stuffed4:
-	cpi	done, 0xfc
- 2f2:	4c 3f       	cpi	r20, 0xFC	; 252
-	brcc	stuff4
- 2f4:	18 f5       	brcc	.+70     	; 0x33c <stuff4>
-	sbrs	byte, 0
- 2f6:	30 ff       	sbrs	r19, 0
-	eor	output, usbmask
- 2f8:	21 27       	eor	r18, r17
-	ror	byte
- 2fa:	37 95       	ror	r19
-
-000002fc <stuffed5>:
-stuffed5:
-	out	USB_OUT, output		; output bit 5
- 2fc:	22 bb       	out	0x12, r18	; 18
-	ror	done
- 2fe:	47 95       	ror	r20
-	cpi	done, 0xfc
- 300:	4c 3f       	cpi	r20, 0xFC	; 252
-	brcc	stuff5
- 302:	00 f5       	brcc	.+64     	; 0x344 <stuff5>
-	sbrs	byte, 0
- 304:	30 ff       	sbrs	r19, 0
-	eor	output, usbmask
- 306:	21 27       	eor	r18, r17
-	ror	byte
- 308:	37 95       	ror	r19
-
-0000030a <stuffed6>:
-stuffed6:
-	ror	done
- 30a:	47 95       	ror	r20
-	out	USB_OUT, output		; output bit 6
- 30c:	22 bb       	out	0x12, r18	; 18
-	cpi	done, 0xfc
- 30e:	4c 3f       	cpi	r20, 0xFC	; 252
-	brcc	stuff6
- 310:	d8 f4       	brcc	.+54     	; 0x348 <stuff6>
-	sbrs	byte, 0
- 312:	30 ff       	sbrs	r19, 0
-	eor	output, usbmask
- 314:	21 27       	eor	r18, r17
-	ror	byte
- 316:	37 95       	ror	r19
+ 2ea:	37 95       	ror	r19
 	mov	byte, next
- 318:	36 2f       	mov	r19, r22
+ 2ec:	36 2f       	mov	r19, r22
 
-0000031a <stuffed7>:
+000002ee <stuffed7>:
 stuffed7:
 	ror	done
- 31a:	47 95       	ror	r20
+ 2ee:	47 95       	ror	r20
 	out	USB_OUT, output		; output bit 7
- 31c:	22 bb       	out	0x12, r18	; 18
+ 2f0:	22 bb       	out	0x12, r18	; 18
 	cpi	done, 0xfc
- 31e:	4c 3f       	cpi	r20, 0xFC	; 252
+ 2f2:	4c 3f       	cpi	r20, 0xFC	; 252
 	brcc	stuff7
- 320:	a8 f4       	brcc	.+42     	; 0x34c <stuff7>
+ 2f4:	a8 f4       	brcc	.+42     	; 0x320 <stuff7>
 	dec	count
- 322:	0a 95       	dec	r16
+ 2f6:	0a 95       	dec	r16
 	brpl	txloop			; 2 cycles
- 324:	12 f6       	brpl	.-124    	; 0x2aa <txloop>
+ 2f8:	12 f6       	brpl	.-124    	; 0x27e <txloop>
 
 	rjmp	gen_eop
- 326:	14 c0       	rjmp	.+40     	; 0x350 <gen_eop>
+ 2fa:	14 c0       	rjmp	.+40     	; 0x324 <gen_eop>
 
-00000328 <stuff0>:
+000002fc <stuff0>:
 
 ; ----------------------------------------------------------------------
 ; out-of-line code to insert stuffing bits
 ; ----------------------------------------------------------------------
 stuff0:					; 2+3
 	eor	output, usbmask
- 328:	21 27       	eor	r18, r17
+ 2fc:	21 27       	eor	r18, r17
 	clr	done
- 32a:	44 27       	eor	r20, r20
+ 2fe:	44 27       	eor	r20, r20
 	out	USB_OUT, output
- 32c:	22 bb       	out	0x12, r18	; 18
+ 300:	22 bb       	out	0x12, r18	; 18
 	rjmp	stuffed0
- 32e:	c2 cf       	rjmp	.-124    	; 0x2b4 <stuffed0>
+ 302:	c2 cf       	rjmp	.-124    	; 0x288 <stuffed0>
 
-00000330 <stuff1>:
+00000304 <stuff1>:
 
 stuff1:					; 3
 	eor	output, usbmask
- 330:	21 27       	eor	r18, r17
+ 304:	21 27       	eor	r18, r17
 	rjmp	stuffed1
- 332:	c5 cf       	rjmp	.-118    	; 0x2be <stuffed1>
+ 306:	c5 cf       	rjmp	.-118    	; 0x292 <stuffed1>
 
-00000334 <stuff2>:
+00000308 <stuff2>:
 
 stuff2:					; 3
 	eor	output, usbmask
- 334:	21 27       	eor	r18, r17
+ 308:	21 27       	eor	r18, r17
 	rjmp	stuffed2
- 336:	cb cf       	rjmp	.-106    	; 0x2ce <stuffed2>
+ 30a:	cb cf       	rjmp	.-106    	; 0x2a2 <stuffed2>
 
-00000338 <stuff3>:
+0000030c <stuff3>:
 
 stuff3:					; 3
 	eor	output, usbmask
- 338:	21 27       	eor	r18, r17
+ 30c:	21 27       	eor	r18, r17
 	rjmp	stuffed3
- 33a:	d1 cf       	rjmp	.-94     	; 0x2de <stuffed3>
+ 30e:	d1 cf       	rjmp	.-94     	; 0x2b2 <stuffed3>
 
-0000033c <stuff4>:
+00000310 <stuff4>:
 
 stuff4:					; 2+3
 	eor	output, usbmask
- 33c:	21 27       	eor	r18, r17
+ 310:	21 27       	eor	r18, r17
 	clr	done
- 33e:	44 27       	eor	r20, r20
+ 312:	44 27       	eor	r20, r20
 	out	USB_OUT, output
- 340:	22 bb       	out	0x12, r18	; 18
+ 314:	22 bb       	out	0x12, r18	; 18
 	rjmp	stuffed4
- 342:	d7 cf       	rjmp	.-82     	; 0x2f2 <stuffed4>
+ 316:	d7 cf       	rjmp	.-82     	; 0x2c6 <stuffed4>
 
-00000344 <stuff5>:
+00000318 <stuff5>:
 
 stuff5:					; 3
 	eor	output, usbmask
- 344:	21 27       	eor	r18, r17
+ 318:	21 27       	eor	r18, r17
 	rjmp	stuffed5
- 346:	da cf       	rjmp	.-76     	; 0x2fc <stuffed5>
+ 31a:	da cf       	rjmp	.-76     	; 0x2d0 <stuffed5>
 
-00000348 <stuff6>:
+0000031c <stuff6>:
 
 stuff6:					; 3
 	eor	output, usbmask
- 348:	21 27       	eor	r18, r17
+ 31c:	21 27       	eor	r18, r17
 	rjmp	stuffed6
- 34a:	df cf       	rjmp	.-66     	; 0x30a <stuffed6>
+ 31e:	df cf       	rjmp	.-66     	; 0x2de <stuffed6>
 
-0000034c <stuff7>:
+00000320 <stuff7>:
 
 stuff7:					; 3
 	eor	output, usbmask
- 34c:	21 27       	eor	r18, r17
+ 320:	21 27       	eor	r18, r17
 	rjmp	stuffed7
- 34e:	e5 cf       	rjmp	.-54     	; 0x31a <stuffed7>
+ 322:	e5 cf       	rjmp	.-54     	; 0x2ee <stuffed7>
 
-00000350 <gen_eop>:
+00000324 <gen_eop>:
 
 ; ----------------------------------------------------------------------
 ; generate EOP, release the bus, and return from interrupt
 ; ----------------------------------------------------------------------
 gen_eop:
 	cbr	output, USB_MASK
- 350:	23 7f       	andi	r18, 0xF3	; 243
+ 324:	23 7f       	andi	r18, 0xF3	; 243
 	out	USB_OUT, output		; output SE0 for 2 bit times
- 352:	22 bb       	out	0x12, r18	; 18
+ 326:	22 bb       	out	0x12, r18	; 18
 	pop	even
- 354:	6f 91       	pop	r22
+ 328:	6f 91       	pop	r22
 	pop	fixup
- 356:	4f 91       	pop	r20
+ 32a:	4f 91       	pop	r20
 	pop	byte
- 358:	3f 91       	pop	r19
+ 32c:	3f 91       	pop	r19
 	ldi	count, 1<<USB_INT_PENDING_BIT
- 35a:	00 e4       	ldi	r16, 0x40	; 64
+ 32e:	00 e4       	ldi	r16, 0x40	; 64
 	out	USB_INT_PENDING, count	; interrupt was triggered by transmit
- 35c:	0a bf       	out	0x3a, r16	; 58
+ 330:	0a bf       	out	0x3a, r16	; 58
 	pop	YH			; this is the saved SREG
- 35e:	df 91       	pop	r29
+ 332:	df 91       	pop	r29
 	pop	YL
- 360:	cf 91       	pop	r28
+ 334:	cf 91       	pop	r28
 	in	usbmask, USB_DDR
- 362:	11 b3       	in	r17, 0x11	; 17
+ 336:	11 b3       	in	r17, 0x11	; 17
 	mov	count, output
- 364:	02 2f       	mov	r16, r18
+ 338:	02 2f       	mov	r16, r18
 	ori	output, USB_MASK_DMINUS
- 366:	28 60       	ori	r18, 0x08	; 8
+ 33a:	28 60       	ori	r18, 0x08	; 8
 	out	USB_OUT, output		; output J state for 1 bit time
- 368:	22 bb       	out	0x12, r18	; 18
+ 33c:	22 bb       	out	0x12, r18	; 18
 	cbr	usbmask, USB_MASK
- 36a:	13 7f       	andi	r17, 0xF3	; 243
+ 33e:	13 7f       	andi	r17, 0xF3	; 243
 	out	SREG, YH
- 36c:	df bf       	out	0x3f, r29	; 63
+ 340:	df bf       	out	0x3f, r29	; 63
 	pop	YH
- 36e:	df 91       	pop	r29
+ 342:	df 91       	pop	r29
 	pop	odd			; is the same register as output!
- 370:	2f 91       	pop	r18
+ 344:	2f 91       	pop	r18
 	nop
- 372:	00 00       	nop
+ 346:	00 00       	nop
 	out	USB_DDR, usbmask	; release bus
- 374:	11 bb       	out	0x11, r17	; 17
+ 348:	11 bb       	out	0x11, r17	; 17
 	out	USB_OUT, count		; disable D- pullup
- 376:	02 bb       	out	0x12, r16	; 18
+ 34a:	02 bb       	out	0x12, r16	; 18
 	pop	usbmask
- 378:	1f 91       	pop	r17
+ 34c:	1f 91       	pop	r17
 	pop	count
- 37a:	0f 91       	pop	r16
+ 34e:	0f 91       	pop	r16
 	reti
- 37c:	18 95       	reti
+ 350:	18 95       	reti
 
-0000037e <spi>:
+00000352 <delay>:
+// ----------------------------------------------------------------------
+// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
+// ----------------------------------------------------------------------
+__attribute__((always_inline))
+static	void	delay ( void )
+{
+ 352:	df 93       	push	r29
+ 354:	cf 93       	push	r28
+ 356:	cd b7       	in	r28, 0x3d	; 61
+ 358:	de b7       	in	r29, 0x3e	; 62
+	asm volatile(
+ 35a:	80 91 cd 00 	lds	r24, 0x00CD
+ 35e:	08 2e       	mov	r0, r24
+ 360:	00 c0       	rjmp	.+0      	; 0x362 <delay+0x10>
+ 362:	00 00       	nop
+ 364:	0a 94       	dec	r0
+ 366:	e1 f7       	brne	.-8      	; 0x360 <delay+0xe>
+		"0:	rjmp	1f		\n"
+		"1:	nop			\n"
+		"	dec	__tmp_reg__	\n"
+		"	brne	0b		\n"
+		: : "r" (sck_period) );
+}
+ 368:	cf 91       	pop	r28
+ 36a:	df 91       	pop	r29
+ 36c:	08 95       	ret
+
+0000036e <spi>:
 // ----------------------------------------------------------------------
 // Issue one SPI command.
 // ----------------------------------------------------------------------
 //__attribute__((naked))
 static	void	spi ( byte_t* cmd, byte_t* res, int i )
 {
- 37e:	1f 93       	push	r17
- 380:	fc 01       	movw	r30, r24
- 382:	db 01       	movw	r26, r22
-// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
-// ----------------------------------------------------------------------
-__attribute__((always_inline))
-static	void	delay ( void )
-{
-	asm volatile(
- 384:	70 91 63 00 	lds	r23, 0x0063
- 388:	23 c0       	rjmp	.+70     	; 0x3d0 <spi+0x52>
-	byte_t	mask;
-
-	while (i != 0)
-	{
-	  i--;
-		c = *cmd++;
- 38a:	10 81       	ld	r17, Z
- 38c:	90 e0       	ldi	r25, 0x00	; 0
- 38e:	60 e8       	ldi	r22, 0x80	; 128
- 390:	20 e0       	ldi	r18, 0x00	; 0
- 392:	30 e0       	ldi	r19, 0x00	; 0
-		r = 0;
-		for	( mask = 0x80; mask; mask >>= 1 )
-		{
-			if	( c & mask )
- 394:	86 2f       	mov	r24, r22
- 396:	81 23       	and	r24, r17
- 398:	09 f0       	breq	.+2      	; 0x39c <spi+0x1e>
-			{
-				PORT |= MOSI_MASK;
- 39a:	c5 9a       	sbi	0x18, 5	; 24
-// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
-// ----------------------------------------------------------------------
-__attribute__((always_inline))
-static	void	delay ( void )
-{
-	asm volatile(
- 39c:	07 2e       	mov	r0, r23
- 39e:	00 c0       	rjmp	.+0      	; 0x3a0 <spi+0x22>
- 3a0:	00 00       	nop
- 3a2:	0a 94       	dec	r0
- 3a4:	e1 f7       	brne	.-8      	; 0x39e <spi+0x20>
-				PORT |= MOSI_MASK;
-			}
-//			if (! status & INVERTED_SCK_MASK )
-				delay();
-
-			PORT |= SCK_MASK;
- 3a6:	c7 9a       	sbi	0x18, 7	; 24
-// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
-// ----------------------------------------------------------------------
-__attribute__((always_inline))
-static	void	delay ( void )
-{
-	asm volatile(
- 3a8:	07 2e       	mov	r0, r23
- 3aa:	00 c0       	rjmp	.+0      	; 0x3ac <spi+0x2e>
- 3ac:	00 00       	nop
- 3ae:	0a 94       	dec	r0
- 3b0:	e1 f7       	brne	.-8      	; 0x3aa <spi+0x2c>
-//			if (! status & INVERTED_SCK_MASK )
-				delay();
-
-			PORT |= SCK_MASK;
-			delay();
-			r <<= 1;
- 3b2:	99 0f       	add	r25, r25
-			if	( PIN & MISO_MASK )
- 3b4:	b6 99       	sbic	0x16, 6	; 22
-			{
-				r++;
- 3b6:	9f 5f       	subi	r25, 0xFF	; 255
-			}
-			PORT &= ~ SCK_MASK;
- 3b8:	c7 98       	cbi	0x18, 7	; 24
-//			if ( status & INVERTED_SCK_MASK )
-//				delay();
-			
-			PORT &= ~ MOSI_MASK;
- 3ba:	c5 98       	cbi	0x18, 5	; 24
-	while (i != 0)
-	{
-	  i--;
-		c = *cmd++;
-		r = 0;
-		for	( mask = 0x80; mask; mask >>= 1 )
- 3bc:	66 95       	lsr	r22
- 3be:	2f 5f       	subi	r18, 0xFF	; 255
- 3c0:	3f 4f       	sbci	r19, 0xFF	; 255
- 3c2:	28 30       	cpi	r18, 0x08	; 8
- 3c4:	31 05       	cpc	r19, r1
- 3c6:	31 f7       	brne	.-52     	; 0x394 <spi+0x16>
+ 36e:	df 93       	push	r29
+ 370:	cf 93       	push	r28
+ 372:	cd b7       	in	r28, 0x3d	; 61
+ 374:	de b7       	in	r29, 0x3e	; 62
+ 376:	29 97       	sbiw	r28, 0x09	; 9
+ 378:	0f b6       	in	r0, 0x3f	; 63
+ 37a:	f8 94       	cli
+ 37c:	de bf       	out	0x3e, r29	; 62
+ 37e:	0f be       	out	0x3f, r0	; 63
+ 380:	cd bf       	out	0x3d, r28	; 61
+ 382:	9d 83       	std	Y+5, r25	; 0x05
+ 384:	8c 83       	std	Y+4, r24	; 0x04
+ 386:	7f 83       	std	Y+7, r23	; 0x07
+ 388:	6e 83       	std	Y+6, r22	; 0x06
+ 38a:	59 87       	std	Y+9, r21	; 0x09
+ 38c:	48 87       	std	Y+8, r20	; 0x08
+ 38e:	53 c0       	rjmp	.+166    	; 0x436 <spi+0xc8>
 	byte_t	r;
 	byte_t	mask;
 
 	while (i != 0)
 	{
 	  i--;
- 3c8:	41 50       	subi	r20, 0x01	; 1
- 3ca:	50 40       	sbci	r21, 0x00	; 0
+ 390:	88 85       	ldd	r24, Y+8	; 0x08
+ 392:	99 85       	ldd	r25, Y+9	; 0x09
+ 394:	01 97       	sbiw	r24, 0x01	; 1
+ 396:	99 87       	std	Y+9, r25	; 0x09
+ 398:	88 87       	std	Y+8, r24	; 0x08
 		c = *cmd++;
- 3cc:	31 96       	adiw	r30, 0x01	; 1
+ 39a:	ec 81       	ldd	r30, Y+4	; 0x04
+ 39c:	fd 81       	ldd	r31, Y+5	; 0x05
+ 39e:	80 81       	ld	r24, Z
+ 3a0:	8b 83       	std	Y+3, r24	; 0x03
+ 3a2:	8c 81       	ldd	r24, Y+4	; 0x04
+ 3a4:	9d 81       	ldd	r25, Y+5	; 0x05
+ 3a6:	01 96       	adiw	r24, 0x01	; 1
+ 3a8:	9d 83       	std	Y+5, r25	; 0x05
+ 3aa:	8c 83       	std	Y+4, r24	; 0x04
+		r = 0;
+ 3ac:	1a 82       	std	Y+2, r1	; 0x02
+		for	( mask = 0x80; mask; mask >>= 1 )
+ 3ae:	80 e8       	ldi	r24, 0x80	; 128
+ 3b0:	89 83       	std	Y+1, r24	; 0x01
+ 3b2:	35 c0       	rjmp	.+106    	; 0x41e <spi+0xb0>
+		{
+			if	( c & mask )
+ 3b4:	8b 81       	ldd	r24, Y+3	; 0x03
+ 3b6:	99 81       	ldd	r25, Y+1	; 0x01
+ 3b8:	89 23       	and	r24, r25
+ 3ba:	88 23       	and	r24, r24
+ 3bc:	39 f0       	breq	.+14     	; 0x3cc <spi+0x5e>
+			{
+				PORT |= MOSI_MASK;
+ 3be:	a8 e3       	ldi	r26, 0x38	; 56
+ 3c0:	b0 e0       	ldi	r27, 0x00	; 0
+ 3c2:	e8 e3       	ldi	r30, 0x38	; 56
+ 3c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 3c6:	80 81       	ld	r24, Z
+ 3c8:	80 62       	ori	r24, 0x20	; 32
+ 3ca:	8c 93       	st	X, r24
+			}
+//			if (! status & INVERTED_SCK_MASK )
+				delay();
+ 3cc:	c2 df       	rcall	.-124    	; 0x352 <delay>
+
+			PORT |= SCK_MASK;
+ 3ce:	a8 e3       	ldi	r26, 0x38	; 56
+ 3d0:	b0 e0       	ldi	r27, 0x00	; 0
+ 3d2:	e8 e3       	ldi	r30, 0x38	; 56
+ 3d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 3d6:	80 81       	ld	r24, Z
+ 3d8:	80 68       	ori	r24, 0x80	; 128
+ 3da:	8c 93       	st	X, r24
+			delay();
+ 3dc:	ba df       	rcall	.-140    	; 0x352 <delay>
+			r <<= 1;
+ 3de:	8a 81       	ldd	r24, Y+2	; 0x02
+ 3e0:	88 0f       	add	r24, r24
+ 3e2:	8a 83       	std	Y+2, r24	; 0x02
+			if	( PIN & MISO_MASK )
+ 3e4:	e6 e3       	ldi	r30, 0x36	; 54
+ 3e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 3e8:	80 81       	ld	r24, Z
+ 3ea:	88 2f       	mov	r24, r24
+ 3ec:	90 e0       	ldi	r25, 0x00	; 0
+ 3ee:	80 74       	andi	r24, 0x40	; 64
+ 3f0:	90 70       	andi	r25, 0x00	; 0
+ 3f2:	00 97       	sbiw	r24, 0x00	; 0
+ 3f4:	19 f0       	breq	.+6      	; 0x3fc <spi+0x8e>
+			{
+				r++;
+ 3f6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 3f8:	8f 5f       	subi	r24, 0xFF	; 255
+ 3fa:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			PORT &= ~ SCK_MASK;
+ 3fc:	a8 e3       	ldi	r26, 0x38	; 56
+ 3fe:	b0 e0       	ldi	r27, 0x00	; 0
+ 400:	e8 e3       	ldi	r30, 0x38	; 56
+ 402:	f0 e0       	ldi	r31, 0x00	; 0
+ 404:	80 81       	ld	r24, Z
+ 406:	8f 77       	andi	r24, 0x7F	; 127
+ 408:	8c 93       	st	X, r24
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+			
+			PORT &= ~ MOSI_MASK;
+ 40a:	a8 e3       	ldi	r26, 0x38	; 56
+ 40c:	b0 e0       	ldi	r27, 0x00	; 0
+ 40e:	e8 e3       	ldi	r30, 0x38	; 56
+ 410:	f0 e0       	ldi	r31, 0x00	; 0
+ 412:	80 81       	ld	r24, Z
+ 414:	8f 7d       	andi	r24, 0xDF	; 223
+ 416:	8c 93       	st	X, r24
+	while (i != 0)
+	{
+	  i--;
+		c = *cmd++;
+		r = 0;
+		for	( mask = 0x80; mask; mask >>= 1 )
+ 418:	89 81       	ldd	r24, Y+1	; 0x01
+ 41a:	86 95       	lsr	r24
+ 41c:	89 83       	std	Y+1, r24	; 0x01
+ 41e:	89 81       	ldd	r24, Y+1	; 0x01
+ 420:	88 23       	and	r24, r24
+ 422:	41 f6       	brne	.-112    	; 0x3b4 <spi+0x46>
 //			if ( status & INVERTED_SCK_MASK )
 //				delay();
 			
 			PORT &= ~ MOSI_MASK;
 		}
 		*res++ = r;
- 3ce:	9d 93       	st	X+, r25
+ 424:	ee 81       	ldd	r30, Y+6	; 0x06
+ 426:	ff 81       	ldd	r31, Y+7	; 0x07
+ 428:	8a 81       	ldd	r24, Y+2	; 0x02
+ 42a:	80 83       	st	Z, r24
+ 42c:	8e 81       	ldd	r24, Y+6	; 0x06
+ 42e:	9f 81       	ldd	r25, Y+7	; 0x07
+ 430:	01 96       	adiw	r24, 0x01	; 1
+ 432:	9f 83       	std	Y+7, r25	; 0x07
+ 434:	8e 83       	std	Y+6, r24	; 0x06
 {
 	byte_t	c;
 	byte_t	r;
 	byte_t	mask;
 
 	while (i != 0)
- 3d0:	41 15       	cp	r20, r1
- 3d2:	51 05       	cpc	r21, r1
- 3d4:	d1 f6       	brne	.-76     	; 0x38a <spi+0xc>
+ 436:	88 85       	ldd	r24, Y+8	; 0x08
+ 438:	99 85       	ldd	r25, Y+9	; 0x09
+ 43a:	00 97       	sbiw	r24, 0x00	; 0
+ 43c:	09 f0       	breq	.+2      	; 0x440 <spi+0xd2>
+ 43e:	a8 cf       	rjmp	.-176    	; 0x390 <spi+0x22>
 			
 			PORT &= ~ MOSI_MASK;
 		}
 		*res++ = r;
 	}
 }
- 3d6:	1f 91       	pop	r17
- 3d8:	08 95       	ret
+ 440:	29 96       	adiw	r28, 0x09	; 9
+ 442:	0f b6       	in	r0, 0x3f	; 63
+ 444:	f8 94       	cli
+ 446:	de bf       	out	0x3e, r29	; 62
+ 448:	0f be       	out	0x3f, r0	; 63
+ 44a:	cd bf       	out	0x3d, r28	; 61
+ 44c:	cf 91       	pop	r28
+ 44e:	df 91       	pop	r29
+ 450:	08 95       	ret
 
-000003da <spi_rw>:
+00000452 <spi_rw>:
+
+// ----------------------------------------------------------------------
+// Create and issue a read or write SPI command.
 // ----------------------------------------------------------------------
 static	void	spi_rw ( void )
 {
+ 452:	df 93       	push	r29
+ 454:	cf 93       	push	r28
+ 456:	00 d0       	rcall	.+0      	; 0x458 <spi_rw+0x6>
+ 458:	00 d0       	rcall	.+0      	; 0x45a <spi_rw+0x8>
+ 45a:	0f 92       	push	r0
+ 45c:	cd b7       	in	r28, 0x3d	; 61
+ 45e:	de b7       	in	r29, 0x3e	; 62
 	unsigned char offset = 0;
+ 460:	1d 82       	std	Y+5, r1	; 0x05
 	uint_t	a;
 	uint_t	tam = (status & TAMANIO_MASK);	
- 3da:	40 91 73 00 	lds	r20, 0x0073
+ 462:	80 91 dd 00 	lds	r24, 0x00DD
+ 466:	88 2f       	mov	r24, r24
+ 468:	90 e0       	ldi	r25, 0x00	; 0
+ 46a:	87 70       	andi	r24, 0x07	; 7
+ 46c:	90 70       	andi	r25, 0x00	; 0
+ 46e:	9a 83       	std	Y+2, r25	; 0x02
+ 470:	89 83       	std	Y+1, r24	; 0x01
 
 	a = address++;
- 3de:	20 91 66 00 	lds	r18, 0x0066
- 3e2:	30 91 67 00 	lds	r19, 0x0067
- 3e6:	2f 5f       	subi	r18, 0xFF	; 255
- 3e8:	3f 4f       	sbci	r19, 0xFF	; 255
- 3ea:	30 93 67 00 	sts	0x0067, r19
- 3ee:	20 93 66 00 	sts	0x0066, r18
- 3f2:	21 50       	subi	r18, 0x01	; 1
- 3f4:	30 40       	sbci	r19, 0x00	; 0
+ 472:	80 91 d0 00 	lds	r24, 0x00D0
+ 476:	90 91 d1 00 	lds	r25, 0x00D1
+ 47a:	9c 83       	std	Y+4, r25	; 0x04
+ 47c:	8b 83       	std	Y+3, r24	; 0x03
+ 47e:	01 96       	adiw	r24, 0x01	; 1
+ 480:	90 93 d1 00 	sts	0x00D1, r25
+ 484:	80 93 d0 00 	sts	0x00D0, r24
 	cmd[0] = cmd0;
- 3f6:	90 91 6a 00 	lds	r25, 0x006A
- 3fa:	90 93 6b 00 	sts	0x006B, r25
+ 488:	80 91 d4 00 	lds	r24, 0x00D4
+ 48c:	80 93 d5 00 	sts	0x00D5, r24
 	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
- 3fe:	64 2f       	mov	r22, r20
- 400:	70 e0       	ldi	r23, 0x00	; 0
- 402:	68 73       	andi	r22, 0x38	; 56
- 404:	70 70       	andi	r23, 0x00	; 0
- 406:	61 15       	cp	r22, r1
- 408:	71 05       	cpc	r23, r1
- 40a:	51 f4       	brne	.+20     	; 0x420 <spi_rw+0x46>
- 40c:	97 fd       	sbrc	r25, 7
- 40e:	08 c0       	rjmp	.+16     	; 0x420 <spi_rw+0x46>
+ 490:	80 91 dd 00 	lds	r24, 0x00DD
+ 494:	88 2f       	mov	r24, r24
+ 496:	90 e0       	ldi	r25, 0x00	; 0
+ 498:	88 73       	andi	r24, 0x38	; 56
+ 49a:	90 70       	andi	r25, 0x00	; 0
+ 49c:	00 97       	sbiw	r24, 0x00	; 0
+ 49e:	a9 f4       	brne	.+42     	; 0x4ca <spi_rw+0x78>
+ 4a0:	80 91 d4 00 	lds	r24, 0x00D4
+ 4a4:	88 23       	and	r24, r24
+ 4a6:	8c f0       	brlt	.+34     	; 0x4ca <spi_rw+0x78>
 	{	//Es AVR 							// NOT eeprom
 		if ( a & 1 )
- 410:	20 ff       	sbrs	r18, 0
- 412:	04 c0       	rjmp	.+8      	; 0x41c <spi_rw+0x42>
+ 4a8:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4aa:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4ac:	81 70       	andi	r24, 0x01	; 1
+ 4ae:	90 70       	andi	r25, 0x00	; 0
+ 4b0:	88 23       	and	r24, r24
+ 4b2:	29 f0       	breq	.+10     	; 0x4be <spi_rw+0x6c>
 		{
 			cmd[0] |= 0x08;	//La H
- 414:	89 2f       	mov	r24, r25
- 416:	88 60       	ori	r24, 0x08	; 8
- 418:	80 93 6b 00 	sts	0x006B, r24
+ 4b4:	80 91 d5 00 	lds	r24, 0x00D5
+ 4b8:	88 60       	ori	r24, 0x08	; 8
+ 4ba:	80 93 d5 00 	sts	0x00D5, r24
 		}
 		a >>= 1;	//Corro la direccion
- 41c:	36 95       	lsr	r19
- 41e:	27 95       	ror	r18
+ 4be:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4c0:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4c2:	96 95       	lsr	r25
+ 4c4:	87 95       	ror	r24
+ 4c6:	9c 83       	std	Y+4, r25	; 0x04
+ 4c8:	8b 83       	std	Y+3, r24	; 0x03
 	} 
 	cmd[1] = a >> 8;
- 420:	83 2f       	mov	r24, r19
- 422:	30 93 6c 00 	sts	0x006C, r19
+ 4ca:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4cc:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4ce:	89 2f       	mov	r24, r25
+ 4d0:	99 27       	eor	r25, r25
+ 4d2:	80 93 d6 00 	sts	0x00D6, r24
 	cmd[2] = a;
- 426:	20 93 6d 00 	sts	0x006D, r18
+ 4d6:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4d8:	80 93 d7 00 	sts	0x00D7, r24
 	
 	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
- 42a:	60 31       	cpi	r22, 0x10	; 16
- 42c:	71 05       	cpc	r23, r1
- 42e:	11 f0       	breq	.+4      	; 0x434 <spi_rw+0x5a>
- 430:	80 e0       	ldi	r24, 0x00	; 0
- 432:	07 c0       	rjmp	.+14     	; 0x442 <spi_rw+0x68>
+ 4dc:	80 91 dd 00 	lds	r24, 0x00DD
+ 4e0:	88 2f       	mov	r24, r24
+ 4e2:	90 e0       	ldi	r25, 0x00	; 0
+ 4e4:	88 73       	andi	r24, 0x38	; 56
+ 4e6:	90 70       	andi	r25, 0x00	; 0
+ 4e8:	80 31       	cpi	r24, 0x10	; 16
+ 4ea:	91 05       	cpc	r25, r1
+ 4ec:	81 f4       	brne	.+32     	; 0x50e <spi_rw+0xbc>
 	{
 		cmd[1] <<= 3;
- 434:	88 0f       	add	r24, r24
- 436:	88 0f       	add	r24, r24
- 438:	88 0f       	add	r24, r24
+ 4ee:	80 91 d6 00 	lds	r24, 0x00D6
+ 4f2:	88 0f       	add	r24, r24
+ 4f4:	88 0f       	add	r24, r24
+ 4f6:	88 0f       	add	r24, r24
+ 4f8:	80 93 d6 00 	sts	0x00D6, r24
 		cmd[1] |= cmd0;
- 43a:	89 2b       	or	r24, r25
- 43c:	80 93 6c 00 	sts	0x006C, r24
- 440:	81 e0       	ldi	r24, 0x01	; 1
+ 4fc:	90 91 d6 00 	lds	r25, 0x00D6
+ 500:	80 91 d4 00 	lds	r24, 0x00D4
+ 504:	89 2b       	or	r24, r25
+ 506:	80 93 d6 00 	sts	0x00D6, r24
 		offset = 1;
+ 50a:	81 e0       	ldi	r24, 0x01	; 1
+ 50c:	8d 83       	std	Y+5, r24	; 0x05
 	}
 	spi( cmd + offset, res, tam );
- 442:	90 e0       	ldi	r25, 0x00	; 0
- 444:	50 e0       	ldi	r21, 0x00	; 0
- 446:	47 70       	andi	r20, 0x07	; 7
- 448:	50 70       	andi	r21, 0x00	; 0
- 44a:	85 59       	subi	r24, 0x95	; 149
- 44c:	9f 4f       	sbci	r25, 0xFF	; 255
- 44e:	6f e6       	ldi	r22, 0x6F	; 111
- 450:	70 e0       	ldi	r23, 0x00	; 0
- 452:	95 df       	rcall	.-214    	; 0x37e <spi>
+ 50e:	8d 81       	ldd	r24, Y+5	; 0x05
+ 510:	88 2f       	mov	r24, r24
+ 512:	90 e0       	ldi	r25, 0x00	; 0
+ 514:	8b 52       	subi	r24, 0x2B	; 43
+ 516:	9f 4f       	sbci	r25, 0xFF	; 255
+ 518:	49 81       	ldd	r20, Y+1	; 0x01
+ 51a:	5a 81       	ldd	r21, Y+2	; 0x02
+ 51c:	29 ed       	ldi	r18, 0xD9	; 217
+ 51e:	30 e0       	ldi	r19, 0x00	; 0
+ 520:	b9 01       	movw	r22, r18
+ 522:	25 df       	rcall	.-438    	; 0x36e <spi>
 }
- 454:	08 95       	ret
+ 524:	0f 90       	pop	r0
+ 526:	0f 90       	pop	r0
+ 528:	0f 90       	pop	r0
+ 52a:	0f 90       	pop	r0
+ 52c:	0f 90       	pop	r0
+ 52e:	cf 91       	pop	r28
+ 530:	df 91       	pop	r29
+ 532:	08 95       	ret
 
-00000456 <usb_setup>:
+00000534 <usb_setup>:
 
 // ----------------------------------------------------------------------
 // Handle a non-standard SETUP packet.
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
- 456:	fc 01       	movw	r30, r24
-	byte_t	req;
-	byte_t	ans = 0;
-	byte_t	cmd0_temp;
-
-	// Generic requests
-	req = data[1];
- 458:	21 81       	ldd	r18, Z+1	; 0x01
-
-	// Programming requests
-	if	( req == USBTINY_POWERUP )
- 45a:	25 30       	cpi	r18, 0x05	; 5
- 45c:	89 f4       	brne	.+34     	; 0x480 <usb_setup+0x2a>
-	{
-		sck_period = data[2];
- 45e:	82 81       	ldd	r24, Z+2	; 0x02
- 460:	80 93 63 00 	sts	0x0063, r24
-		mask = POWER_MASK;
-		if	( data[4] )
- 464:	84 81       	ldd	r24, Z+4	; 0x04
- 466:	88 23       	and	r24, r24
- 468:	11 f0       	breq	.+4      	; 0x46e <usb_setup+0x18>
- 46a:	91 e1       	ldi	r25, 0x11	; 17
- 46c:	01 c0       	rjmp	.+2      	; 0x470 <usb_setup+0x1a>
- 46e:	91 e0       	ldi	r25, 0x01	; 1
-		{
-			mask |= RESET_MASK;
-		}
-		// Use AVR por default
-		status = AVR_SCK | MICRO_AVR | TAMANIO_AVR;
- 470:	84 e0       	ldi	r24, 0x04	; 4
- 472:	80 93 73 00 	sts	0x0073, r24
-		
-		PORTD &= ~_BV(4);
- 476:	94 98       	cbi	0x12, 4	; 18
-		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
- 478:	81 eb       	ldi	r24, 0xB1	; 177
- 47a:	87 bb       	out	0x17, r24	; 23
-		PORT = mask;
- 47c:	98 bb       	out	0x18, r25	; 24
- 47e:	05 c0       	rjmp	.+10     	; 0x48a <usb_setup+0x34>
-		// return 0;
-	}
-	else if	( req == USBTINY_POWERDOWN )
- 480:	26 30       	cpi	r18, 0x06	; 6
- 482:	29 f4       	brne	.+10     	; 0x48e <usb_setup+0x38>
-	{
-	  //PORT |= RESET_MASK;
-		DDR  = 0x00;
- 484:	17 ba       	out	0x17, r1	; 23
-		PORT = 0x00;
- 486:	18 ba       	out	0x18, r1	; 24
-		PORTD |= _BV(4);
- 488:	94 9a       	sbi	0x12, 4	; 18
- 48a:	90 e0       	ldi	r25, 0x00	; 0
- 48c:	4b c0       	rjmp	.+150    	; 0x524 <usb_setup+0xce>
-		// return 0;
-	}
-	else if ( req == USBTINY_CONFIGURE )
- 48e:	2f 30       	cpi	r18, 0x0F	; 15
- 490:	39 f4       	brne	.+14     	; 0x4a0 <usb_setup+0x4a>
-	{
-		status = data[2];
- 492:	82 81       	ldd	r24, Z+2	; 0x02
- 494:	80 93 73 00 	sts	0x0073, r24
-		cmd0 = data[4];
- 498:	84 81       	ldd	r24, Z+4	; 0x04
- 49a:	80 93 6a 00 	sts	0x006A, r24
- 49e:	f5 cf       	rjmp	.-22     	; 0x48a <usb_setup+0x34>
-	}
-	/*else if	( ! PORT )
-	{
-		//return 0;
-	}*/
-	else if	( req == USBTINY_SPI )
- 4a0:	27 30       	cpi	r18, 0x07	; 7
- 4a2:	39 f4       	brne	.+14     	; 0x4b2 <usb_setup+0x5c>
-	{
-	  spi( data + 2, data + 0, 4 );
- 4a4:	02 96       	adiw	r24, 0x02	; 2
- 4a6:	bf 01       	movw	r22, r30
- 4a8:	44 e0       	ldi	r20, 0x04	; 4
- 4aa:	50 e0       	ldi	r21, 0x00	; 0
- 4ac:	68 df       	rcall	.-304    	; 0x37e <spi>
- 4ae:	94 e0       	ldi	r25, 0x04	; 4
- 4b0:	39 c0       	rjmp	.+114    	; 0x524 <usb_setup+0xce>
-		ans = 4;
-		//return 4;
-	}
-	else if	( req == USBTINY_SPI1 )
- 4b2:	2e 30       	cpi	r18, 0x0E	; 14
- 4b4:	39 f4       	brne	.+14     	; 0x4c4 <usb_setup+0x6e>
-	{
-	  spi( data + 2, data + 0, 1 );
- 4b6:	02 96       	adiw	r24, 0x02	; 2
- 4b8:	bf 01       	movw	r22, r30
- 4ba:	41 e0       	ldi	r20, 0x01	; 1
- 4bc:	50 e0       	ldi	r21, 0x00	; 0
- 4be:	5f df       	rcall	.-322    	; 0x37e <spi>
- 4c0:	91 e0       	ldi	r25, 0x01	; 1
- 4c2:	30 c0       	rjmp	.+96     	; 0x524 <usb_setup+0xce>
-		ans = 1;
-		//return 1;
-	}
-	else if	( req == USBTINY_POLL_BYTES )
- 4c4:	28 30       	cpi	r18, 0x08	; 8
- 4c6:	39 f4       	brne	.+14     	; 0x4d6 <usb_setup+0x80>
-	{
-		poll1 = data[2];
- 4c8:	82 81       	ldd	r24, Z+2	; 0x02
- 4ca:	80 93 64 00 	sts	0x0064, r24
-		poll2 = data[3];
- 4ce:	83 81       	ldd	r24, Z+3	; 0x03
- 4d0:	80 93 65 00 	sts	0x0065, r24
- 4d4:	da cf       	rjmp	.-76     	; 0x48a <usb_setup+0x34>
-		//return 0;
-	}
-	else 
-	{
-		address = * (uint_t*) & data[4];
- 4d6:	84 81       	ldd	r24, Z+4	; 0x04
- 4d8:	95 81       	ldd	r25, Z+5	; 0x05
- 4da:	90 93 67 00 	sts	0x0067, r25
- 4de:	80 93 66 00 	sts	0x0066, r24
-		if	( req == USBTINY_FLASH_READ )
- 4e2:	29 30       	cpi	r18, 0x09	; 9
- 4e4:	19 f4       	brne	.+6      	; 0x4ec <usb_setup+0x96>
- 4e6:	9f ef       	ldi	r25, 0xFF	; 255
- 4e8:	20 e2       	ldi	r18, 0x20	; 32
- 4ea:	16 c0       	rjmp	.+44     	; 0x518 <usb_setup+0xc2>
-		{
-			cmd0_temp = 0x20;
-			ans = 0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else if	( req == USBTINY_EEPROM_READ )
- 4ec:	2b 30       	cpi	r18, 0x0B	; 11
- 4ee:	19 f4       	brne	.+6      	; 0x4f6 <usb_setup+0xa0>
- 4f0:	9f ef       	ldi	r25, 0xFF	; 255
- 4f2:	20 ea       	ldi	r18, 0xA0	; 160
- 4f4:	11 c0       	rjmp	.+34     	; 0x518 <usb_setup+0xc2>
-			cmd0_temp = 0xa0;
-			ans =  0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else {
-			timeout = * (uint_t*) & data[2];
- 4f6:	82 81       	ldd	r24, Z+2	; 0x02
- 4f8:	93 81       	ldd	r25, Z+3	; 0x03
- 4fa:	90 93 69 00 	sts	0x0069, r25
- 4fe:	80 93 68 00 	sts	0x0068, r24
-			if	( req == USBTINY_FLASH_WRITE )
- 502:	2a 30       	cpi	r18, 0x0A	; 10
- 504:	19 f4       	brne	.+6      	; 0x50c <usb_setup+0xb6>
- 506:	90 e0       	ldi	r25, 0x00	; 0
- 508:	20 e4       	ldi	r18, 0x40	; 64
- 50a:	06 c0       	rjmp	.+12     	; 0x518 <usb_setup+0xc2>
-			{
-				cmd0_temp = 0x40;
-				//return 0;	// data will be received by usb_out()
-			}
-			else if	( req == USBTINY_EEPROM_WRITE )
- 50c:	2c 30       	cpi	r18, 0x0C	; 12
- 50e:	19 f4       	brne	.+6      	; 0x516 <usb_setup+0xc0>
- 510:	90 e0       	ldi	r25, 0x00	; 0
- 512:	20 ec       	ldi	r18, 0xC0	; 192
- 514:	01 c0       	rjmp	.+2      	; 0x518 <usb_setup+0xc2>
- 516:	90 e0       	ldi	r25, 0x00	; 0
-			{
-				cmd0_temp = 0xc0;
-				//return 0;	// data will be received by usb_out()
-			}
-		}	
-		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato temp en cmd0 si estoy grabando un AVR	
- 518:	80 91 73 00 	lds	r24, 0x0073
- 51c:	88 73       	andi	r24, 0x38	; 56
- 51e:	11 f4       	brne	.+4      	; 0x524 <usb_setup+0xce>
+ 534:	df 93       	push	r29
+ 536:	cf 93       	push	r28
+ 538:	00 d0       	rcall	.+0      	; 0x53a <usb_setup+0x6>
+ 53a:	0f 92       	push	r0
+ 53c:	cd b7       	in	r28, 0x3d	; 61
+ 53e:	de b7       	in	r29, 0x3e	; 62
+ 540:	9a 83       	std	Y+2, r25	; 0x02
+ 542:	89 83       	std	Y+1, r24	; 0x01
 		{						//Si estoy programando un S51, tengo que pasarlo en la trama CONFIGURE
 			cmd0 = cmd0_temp;
- 520:	20 93 6a 00 	sts	0x006A, r18
 		}
 	}
-	return ans;
+	return ans;*/
 }
- 524:	89 2f       	mov	r24, r25
- 526:	08 95       	ret
+ 544:	0f 90       	pop	r0
+ 546:	0f 90       	pop	r0
+ 548:	0f 90       	pop	r0
+ 54a:	cf 91       	pop	r28
+ 54c:	df 91       	pop	r29
+ 54e:	08 95       	ret
 
-00000528 <usb_in>:
+00000550 <usb_in>:
 
 // ----------------------------------------------------------------------
 // Handle an IN packet.
 // ----------------------------------------------------------------------
 extern	byte_t	usb_in ( byte_t* data, byte_t len )
 {
- 528:	0f 93       	push	r16
- 52a:	1f 93       	push	r17
- 52c:	cf 93       	push	r28
- 52e:	df 93       	push	r29
- 530:	06 2f       	mov	r16, r22
- 532:	ec 01       	movw	r28, r24
- 534:	10 e0       	ldi	r17, 0x00	; 0
- 536:	05 c0       	rjmp	.+10     	; 0x542 <usb_in+0x1a>
-	byte_t	i;
-
-	for	( i = 0; i < len; i++ )
-	{
-		spi_rw();
- 538:	50 df       	rcall	.-352    	; 0x3da <spi_rw>
-		data[i] = res[3];
- 53a:	80 91 72 00 	lds	r24, 0x0072
- 53e:	89 93       	st	Y+, r24
-// ----------------------------------------------------------------------
-extern	byte_t	usb_in ( byte_t* data, byte_t len )
-{
-	byte_t	i;
-
-	for	( i = 0; i < len; i++ )
- 540:	1f 5f       	subi	r17, 0xFF	; 255
- 542:	10 17       	cp	r17, r16
- 544:	c8 f3       	brcs	.-14     	; 0x538 <usb_in+0x10>
+ 550:	df 93       	push	r29
+ 552:	cf 93       	push	r28
+ 554:	00 d0       	rcall	.+0      	; 0x556 <usb_in+0x6>
+ 556:	00 d0       	rcall	.+0      	; 0x558 <usb_in+0x8>
+ 558:	cd b7       	in	r28, 0x3d	; 61
+ 55a:	de b7       	in	r29, 0x3e	; 62
+ 55c:	9a 83       	std	Y+2, r25	; 0x02
+ 55e:	89 83       	std	Y+1, r24	; 0x01
+ 560:	6b 83       	std	Y+3, r22	; 0x03
 	{
 		spi_rw();
 		data[i] = res[3];
 	}
-	return len;
+	return len;*/
 }
- 546:	80 2f       	mov	r24, r16
- 548:	df 91       	pop	r29
- 54a:	cf 91       	pop	r28
- 54c:	1f 91       	pop	r17
- 54e:	0f 91       	pop	r16
- 550:	08 95       	ret
+ 562:	0f 90       	pop	r0
+ 564:	0f 90       	pop	r0
+ 566:	0f 90       	pop	r0
+ 568:	0f 90       	pop	r0
+ 56a:	cf 91       	pop	r28
+ 56c:	df 91       	pop	r29
+ 56e:	08 95       	ret
 
-00000552 <usb_out>:
+00000570 <usb_out>:
 
 // ----------------------------------------------------------------------
 // Handle an OUT packet.
 // ----------------------------------------------------------------------
 extern	void	usb_out ( byte_t* data, byte_t len )
 {
- 552:	7f 92       	push	r7
- 554:	8f 92       	push	r8
- 556:	9f 92       	push	r9
- 558:	af 92       	push	r10
- 55a:	bf 92       	push	r11
- 55c:	cf 92       	push	r12
- 55e:	df 92       	push	r13
- 560:	ef 92       	push	r14
- 562:	ff 92       	push	r15
- 564:	0f 93       	push	r16
- 566:	1f 93       	push	r17
- 568:	cf 93       	push	r28
- 56a:	df 93       	push	r29
- 56c:	86 2e       	mov	r8, r22
-	for	( i = 0; i < len; i++ )
-	{
-		cmd[3] = data[i];
-		spi_rw();
-		cmd[0] ^= 0x60;	// turn write into read
-		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
- 56e:	a0 90 68 00 	lds	r10, 0x0068
- 572:	b0 90 69 00 	lds	r11, 0x0069
-		{	// when timeout > 0, poll until byte is written
-		  spi( cmd, res, 4 );
-			r = res[3];
-			if	( r == cmd[3] && r != poll1 && r != poll2 )
- 576:	90 90 64 00 	lds	r9, 0x0064
- 57a:	c0 90 65 00 	lds	r12, 0x0065
-	for	( i = 0; i < len; i++ )
-	{
-		cmd[3] = data[i];
-		spi_rw();
-		cmd[0] ^= 0x60;	// turn write into read
-		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
- 57e:	20 91 63 00 	lds	r18, 0x0063
- 582:	e2 2e       	mov	r14, r18
- 584:	ff 24       	eor	r15, r15
- 586:	25 e0       	ldi	r18, 0x05	; 5
- 588:	ee 0c       	add	r14, r14
- 58a:	ff 1c       	adc	r15, r15
- 58c:	2a 95       	dec	r18
- 58e:	e1 f7       	brne	.-8      	; 0x588 <usb_out+0x36>
- 590:	8c 01       	movw	r16, r24
- 592:	dd 24       	eor	r13, r13
-
-	for	( i = 0; i < len; i++ )
-	{
-		cmd[3] = data[i];
-		spi_rw();
-		cmd[0] ^= 0x60;	// turn write into read
- 594:	90 e6       	ldi	r25, 0x60	; 96
- 596:	79 2e       	mov	r7, r25
- 598:	26 c0       	rjmp	.+76     	; 0x5e6 <usb_out+0x94>
-	uint_t	usec;
-	byte_t	r;
-
-	for	( i = 0; i < len; i++ )
-	{
-		cmd[3] = data[i];
- 59a:	f8 01       	movw	r30, r16
- 59c:	80 81       	ld	r24, Z
- 59e:	80 93 6e 00 	sts	0x006E, r24
-		spi_rw();
- 5a2:	1b df       	rcall	.-458    	; 0x3da <spi_rw>
-		cmd[0] ^= 0x60;	// turn write into read
- 5a4:	80 91 6b 00 	lds	r24, 0x006B
- 5a8:	87 25       	eor	r24, r7
- 5aa:	80 93 6b 00 	sts	0x006B, r24
- 5ae:	c0 e0       	ldi	r28, 0x00	; 0
- 5b0:	d0 e0       	ldi	r29, 0x00	; 0
- 5b2:	13 c0       	rjmp	.+38     	; 0x5da <usb_out+0x88>
-		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
-		{	// when timeout > 0, poll until byte is written
-		  spi( cmd, res, 4 );
- 5b4:	8b e6       	ldi	r24, 0x6B	; 107
- 5b6:	90 e0       	ldi	r25, 0x00	; 0
- 5b8:	6f e6       	ldi	r22, 0x6F	; 111
- 5ba:	70 e0       	ldi	r23, 0x00	; 0
- 5bc:	44 e0       	ldi	r20, 0x04	; 4
- 5be:	50 e0       	ldi	r21, 0x00	; 0
- 5c0:	de de       	rcall	.-580    	; 0x37e <spi>
-			r = res[3];
- 5c2:	90 91 72 00 	lds	r25, 0x0072
-			if	( r == cmd[3] && r != poll1 && r != poll2 )
- 5c6:	80 91 6e 00 	lds	r24, 0x006E
- 5ca:	98 17       	cp	r25, r24
- 5cc:	21 f4       	brne	.+8      	; 0x5d6 <usb_out+0x84>
- 5ce:	99 15       	cp	r25, r9
- 5d0:	11 f0       	breq	.+4      	; 0x5d6 <usb_out+0x84>
- 5d2:	9c 15       	cp	r25, r12
- 5d4:	29 f4       	brne	.+10     	; 0x5e0 <usb_out+0x8e>
-	for	( i = 0; i < len; i++ )
-	{
-		cmd[3] = data[i];
-		spi_rw();
-		cmd[0] ^= 0x60;	// turn write into read
-		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
- 5d6:	ce 0d       	add	r28, r14
- 5d8:	df 1d       	adc	r29, r15
- 5da:	ca 15       	cp	r28, r10
- 5dc:	db 05       	cpc	r29, r11
- 5de:	50 f3       	brcs	.-44     	; 0x5b4 <usb_out+0x62>
-{
-	byte_t	i;
-	uint_t	usec;
-	byte_t	r;
-
-	for	( i = 0; i < len; i++ )
- 5e0:	d3 94       	inc	r13
- 5e2:	0f 5f       	subi	r16, 0xFF	; 255
- 5e4:	1f 4f       	sbci	r17, 0xFF	; 255
- 5e6:	d8 14       	cp	r13, r8
- 5e8:	c0 f2       	brcs	.-80     	; 0x59a <usb_out+0x48>
+ 570:	df 93       	push	r29
+ 572:	cf 93       	push	r28
+ 574:	00 d0       	rcall	.+0      	; 0x576 <usb_out+0x6>
+ 576:	0f 92       	push	r0
+ 578:	cd b7       	in	r28, 0x3d	; 61
+ 57a:	de b7       	in	r29, 0x3e	; 62
+ 57c:	9a 83       	std	Y+2, r25	; 0x02
+ 57e:	89 83       	std	Y+1, r24	; 0x01
+ 580:	6b 83       	std	Y+3, r22	; 0x03
 			{
 				break;
 			}
 		}
-	}
+	}*/
 }	 
- 5ea:	df 91       	pop	r29
- 5ec:	cf 91       	pop	r28
- 5ee:	1f 91       	pop	r17
- 5f0:	0f 91       	pop	r16
- 5f2:	ff 90       	pop	r15
- 5f4:	ef 90       	pop	r14
- 5f6:	df 90       	pop	r13
- 5f8:	cf 90       	pop	r12
- 5fa:	bf 90       	pop	r11
- 5fc:	af 90       	pop	r10
- 5fe:	9f 90       	pop	r9
- 600:	8f 90       	pop	r8
- 602:	7f 90       	pop	r7
- 604:	08 95       	ret
+ 582:	0f 90       	pop	r0
+ 584:	0f 90       	pop	r0
+ 586:	0f 90       	pop	r0
+ 588:	cf 91       	pop	r28
+ 58a:	df 91       	pop	r29
+ 58c:	08 95       	ret
 
-00000606 <main>:
+0000058e <main>:
 // Main
 // ----------------------------------------------------------------------
 __attribute__((naked))		// suppress redundant SP initialization
-extern	int	main ( void )
+int	main ( void )
 {
   PORTD |= _BV(4);
- 606:	94 9a       	sbi	0x12, 4	; 18
+ 58e:	a2 e3       	ldi	r26, 0x32	; 50
+ 590:	b0 e0       	ldi	r27, 0x00	; 0
+ 592:	e2 e3       	ldi	r30, 0x32	; 50
+ 594:	f0 e0       	ldi	r31, 0x00	; 0
+ 596:	80 81       	ld	r24, Z
+ 598:	80 61       	ori	r24, 0x10	; 16
+ 59a:	8c 93       	st	X, r24
   DDRD = _BV(6) | _BV(5) | _BV(4); // setup USB pullup, LED pin and buffer select pins to output
- 608:	80 e7       	ldi	r24, 0x70	; 112
- 60a:	81 bb       	out	0x11, r24	; 17
-  usb_init();
- 60c:	04 d0       	rcall	.+8      	; 0x616 <usb_init>
+ 59c:	e1 e3       	ldi	r30, 0x31	; 49
+ 59e:	f0 e0       	ldi	r31, 0x00	; 0
+ 5a0:	80 e7       	ldi	r24, 0x70	; 112
+ 5a2:	80 83       	st	Z, r24
+  //usb_init();
   PORTD = _BV(6) | _BV(4); // pull pull-up and buffer disable high
- 60e:	80 e5       	ldi	r24, 0x50	; 80
- 610:	82 bb       	out	0x12, r24	; 18
+ 5a4:	e2 e3       	ldi	r30, 0x32	; 50
+ 5a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 5a8:	80 e5       	ldi	r24, 0x50	; 80
+ 5aa:	80 83       	st	Z, r24
+    ProgramLed();
+ 5ac:	ca d2       	rcall	.+1428   	; 0xb42 <ProgramLed>
+ 5ae:	ff cf       	rjmp	.-2      	; 0x5ae <main+0x20>
 
-  for	( ;; )
-    {
-      usb_poll();
- 612:	09 d0       	rcall	.+18     	; 0x626 <usb_poll>
- 614:	fe cf       	rjmp	.-4      	; 0x612 <main+0xc>
+000005b0 <usb_receive>:
 
-00000616 <usb_init>:
 // ----------------------------------------------------------------------
-// Initialize the low-level USB driver.
+// Inspect an incoming packet.
 // ----------------------------------------------------------------------
-extern	void	usb_init ( void )
+static	void	usb_receive ( byte_t* data, byte_t rx_len )
 {
-	USB_INT_CONFIG |= USB_INT_CONFIG_SET;
- 616:	85 b7       	in	r24, 0x35	; 53
- 618:	83 60       	ori	r24, 0x03	; 3
- 61a:	85 bf       	out	0x35, r24	; 53
-	USB_INT_ENABLE |= (1 << USB_INT_ENABLE_BIT);
- 61c:	8b b7       	in	r24, 0x3b	; 59
- 61e:	80 64       	ori	r24, 0x40	; 64
- 620:	8b bf       	out	0x3b, r24	; 59
-	sei();
- 622:	78 94       	sei
-}
- 624:	08 95       	ret
-
-00000626 <usb_poll>:
-// - check for incoming USB packets
-// - refill an empty transmit buffer
-// - check for USB bus reset
-// ----------------------------------------------------------------------
-extern	void	usb_poll ( void )
-{
- 626:	1f 93       	push	r17
- 628:	cf 93       	push	r28
- 62a:	df 93       	push	r29
-	byte_t	i;
-
-	// check for incoming USB packets
-	if	( usb_rx_len != 0 )
- 62c:	60 91 86 00 	lds	r22, 0x0086
- 630:	66 23       	and	r22, r22
- 632:	09 f4       	brne	.+2      	; 0x636 <usb_poll+0x10>
- 634:	61 c0       	rjmp	.+194    	; 0x6f8 <usb_poll+0xd2>
-	{
-		usb_receive( usb_rx_buf + USB_BUFSIZE - usb_rx_off + 1, usb_rx_len - 3 );
- 636:	80 91 87 00 	lds	r24, 0x0087
- 63a:	cc e0       	ldi	r28, 0x0C	; 12
- 63c:	d0 e0       	ldi	r29, 0x00	; 0
- 63e:	c8 1b       	sub	r28, r24
- 640:	d1 09       	sbc	r29, r1
- 642:	c8 57       	subi	r28, 0x78	; 120
- 644:	df 4f       	sbci	r29, 0xFF	; 255
-{
-	byte_t	len;
-	byte_t	type;
-	byte_t	limit;
-
-	usb_tx_state = TX_STATE_RAM;
- 646:	81 e0       	ldi	r24, 0x01	; 1
- 648:	80 93 74 00 	sts	0x0074, r24
-	len = 0;
-	if	( usb_rx_token == USB_PID_SETUP )
- 64c:	80 91 85 00 	lds	r24, 0x0085
- 650:	8d 32       	cpi	r24, 0x2D	; 45
- 652:	09 f0       	breq	.+2      	; 0x656 <usb_poll+0x30>
- 654:	43 c0       	rjmp	.+134    	; 0x6dc <usb_poll+0xb6>
-	{
-		limit = data[6];
- 656:	1e 81       	ldd	r17, Y+6	; 0x06
-		if	( data[7] )
- 658:	8f 81       	ldd	r24, Y+7	; 0x07
- 65a:	81 11       	cpse	r24, r1
- 65c:	1f ef       	ldi	r17, 0xFF	; 255
-		{
-			limit = 255;
-		}
-		type = data[0] & 0x60;
-		if	( type == 0x00 )
- 65e:	88 81       	ld	r24, Y
- 660:	80 76       	andi	r24, 0x60	; 96
- 662:	61 f5       	brne	.+88     	; 0x6bc <usb_poll+0x96>
-		{	// Standard request
-			if	( data[1] == 0 )	// GET_STATUS
- 664:	89 81       	ldd	r24, Y+1	; 0x01
- 666:	88 23       	and	r24, r24
- 668:	21 f4       	brne	.+8      	; 0x672 <usb_poll+0x4c>
-			{
-				len = 2;
-#if	USBTINY_MAX_POWER == 0
-				data[0] = (data[0] == 0x80);
-#else
-				data[0] = 0;
- 66a:	18 82       	st	Y, r1
-#endif
-				data[1] = 0;
- 66c:	19 82       	std	Y+1, r1	; 0x01
- 66e:	92 e0       	ldi	r25, 0x02	; 2
- 670:	2d c0       	rjmp	.+90     	; 0x6cc <usb_poll+0xa6>
-			}
-			else if	( data[1] == 5 )	// SET_ADDRESS
- 672:	85 30       	cpi	r24, 0x05	; 5
- 674:	21 f4       	brne	.+8      	; 0x67e <usb_poll+0x58>
-			{
-				new_address = data[2];
- 676:	8a 81       	ldd	r24, Y+2	; 0x02
- 678:	80 93 78 00 	sts	0x0078, r24
- 67c:	9f c0       	rjmp	.+318    	; 0x7bc <usb_poll+0x196>
-			}
-			else if	( data[1] == 6 )	// GET_DESCRIPTOR
- 67e:	86 30       	cpi	r24, 0x06	; 6
- 680:	91 f4       	brne	.+36     	; 0x6a6 <usb_poll+0x80>
-			{
-				usb_tx_state = TX_STATE_ROM;
- 682:	82 e0       	ldi	r24, 0x02	; 2
- 684:	80 93 74 00 	sts	0x0074, r24
-				if	( data[3] == 1 )
- 688:	8b 81       	ldd	r24, Y+3	; 0x03
- 68a:	81 30       	cpi	r24, 0x01	; 1
- 68c:	21 f4       	brne	.+8      	; 0x696 <usb_poll+0x70>
- 68e:	92 e1       	ldi	r25, 0x12	; 18
- 690:	ca e3       	ldi	r28, 0x3A	; 58
- 692:	d0 e0       	ldi	r29, 0x00	; 0
- 694:	1b c0       	rjmp	.+54     	; 0x6cc <usb_poll+0xa6>
-				{	// DEVICE
-					data = (byte_t*) &descr_device;
-					len = sizeof(descr_device);
-				}
-				else if	( data[3] == 2 )
- 696:	82 30       	cpi	r24, 0x02	; 2
- 698:	09 f0       	breq	.+2      	; 0x69c <usb_poll+0x76>
- 69a:	90 c0       	rjmp	.+288    	; 0x7bc <usb_poll+0x196>
-				{	// CONFIGURATION
-					data = (byte_t*) &descr_config;
-					len = sizeof(descr_config);
-					// If we got this far, there's a good chance everything is OK with enumeration so turn on the OK led
-					PORTD |= _BV(5);
- 69c:	95 9a       	sbi	0x12, 5	; 18
- 69e:	92 e1       	ldi	r25, 0x12	; 18
- 6a0:	cc e4       	ldi	r28, 0x4C	; 76
- 6a2:	d0 e0       	ldi	r29, 0x00	; 0
- 6a4:	13 c0       	rjmp	.+38     	; 0x6cc <usb_poll+0xa6>
-					}
-#endif
-				}
-#endif
-			}
-			else if	( data[1] == 8 )	// GET_CONFIGURATION
- 6a6:	88 30       	cpi	r24, 0x08	; 8
- 6a8:	19 f4       	brne	.+6      	; 0x6b0 <usb_poll+0x8a>
-			{
-				data[0] = 1;		// return bConfigurationValue
- 6aa:	81 e0       	ldi	r24, 0x01	; 1
- 6ac:	88 83       	st	Y, r24
- 6ae:	04 c0       	rjmp	.+8      	; 0x6b8 <usb_poll+0x92>
-				len = 1;
-			}
-			else if	( data[1] == 10 )	// GET_INTERFACE
- 6b0:	8a 30       	cpi	r24, 0x0A	; 10
- 6b2:	09 f0       	breq	.+2      	; 0x6b6 <usb_poll+0x90>
- 6b4:	83 c0       	rjmp	.+262    	; 0x7bc <usb_poll+0x196>
-			{
-				data[0] = 0;
- 6b6:	18 82       	st	Y, r1
- 6b8:	91 e0       	ldi	r25, 0x01	; 1
- 6ba:	08 c0       	rjmp	.+16     	; 0x6cc <usb_poll+0xa6>
-				len = 1;
-			}
-		}
-		else
-		{	// Class or Vendor request
-			len = usb_setup( data );
- 6bc:	ce 01       	movw	r24, r28
- 6be:	cb de       	rcall	.-618    	; 0x456 <usb_setup>
- 6c0:	98 2f       	mov	r25, r24
-#if	USBTINY_CALLBACK_IN
-			if	( len == 0xff )
- 6c2:	8f 3f       	cpi	r24, 0xFF	; 255
- 6c4:	19 f4       	brne	.+6      	; 0x6cc <usb_poll+0xa6>
-			{
-				usb_tx_state = TX_STATE_CALLBACK;
- 6c6:	83 e0       	ldi	r24, 0x03	; 3
- 6c8:	80 93 74 00 	sts	0x0074, r24
-			}
-#endif
-		}
-		if	( len > limit )
- 6cc:	19 17       	cp	r17, r25
- 6ce:	08 f0       	brcs	.+2      	; 0x6d2 <usb_poll+0xac>
- 6d0:	19 2f       	mov	r17, r25
-		{
-			len = limit;
-		}
-		usb_tx_data = data;
- 6d2:	d0 93 77 00 	sts	0x0077, r29
- 6d6:	c0 93 76 00 	sts	0x0076, r28
- 6da:	05 c0       	rjmp	.+10     	; 0x6e6 <usb_poll+0xc0>
-	byte_t	i;
-
-	// check for incoming USB packets
-	if	( usb_rx_len != 0 )
-	{
-		usb_receive( usb_rx_buf + USB_BUFSIZE - usb_rx_off + 1, usb_rx_len - 3 );
- 6dc:	63 50       	subi	r22, 0x03	; 3
-			len = limit;
-		}
-		usb_tx_data = data;
-	}
-#if	USBTINY_CALLBACK_OUT
-	else if	( rx_len > 0 )
- 6de:	11 f0       	breq	.+4      	; 0x6e4 <usb_poll+0xbe>
-	{	// usb_rx_token == USB_PID_OUT
+ 5b0:	df 93       	push	r29
+ 5b2:	cf 93       	push	r28
+ 5b4:	00 d0       	rcall	.+0      	; 0x5b6 <usb_receive+0x6>
+ 5b6:	00 d0       	rcall	.+0      	; 0x5b8 <usb_receive+0x8>
+ 5b8:	00 d0       	rcall	.+0      	; 0x5ba <usb_receive+0xa>
+ 5ba:	cd b7       	in	r28, 0x3d	; 61
+ 5bc:	de b7       	in	r29, 0x3e	; 62
+ 5be:	9d 83       	std	Y+5, r25	; 0x05
+ 5c0:	8c 83       	std	Y+4, r24	; 0x04
+ 5c2:	6e 83       	std	Y+6, r22	; 0x06
 		usb_out( data, rx_len );
- 6e0:	ce 01       	movw	r24, r28
- 6e2:	37 df       	rcall	.-402    	; 0x552 <usb_out>
- 6e4:	10 e0       	ldi	r17, 0x00	; 0
 	}
 #endif
 	usb_tx_total  = len;
- 6e6:	10 93 75 00 	sts	0x0075, r17
 	usb_tx_buf[0] = USB_PID_DATA0;	// next data packet will be DATA1
- 6ea:	83 ec       	ldi	r24, 0xC3	; 195
- 6ec:	80 93 7a 00 	sts	0x007A, r24
+*/}
+ 5c4:	26 96       	adiw	r28, 0x06	; 6
+ 5c6:	0f b6       	in	r0, 0x3f	; 63
+ 5c8:	f8 94       	cli
+ 5ca:	de bf       	out	0x3e, r29	; 62
+ 5cc:	0f be       	out	0x3f, r0	; 63
+ 5ce:	cd bf       	out	0x3d, r28	; 61
+ 5d0:	cf 91       	pop	r28
+ 5d2:	df 91       	pop	r29
+ 5d4:	08 95       	ret
 
-	// check for incoming USB packets
-	if	( usb_rx_len != 0 )
-	{
-		usb_receive( usb_rx_buf + USB_BUFSIZE - usb_rx_off + 1, usb_rx_len - 3 );
-		usb_tx_len = 0;	// abort pending transmission
- 6f0:	10 92 79 00 	sts	0x0079, r1
-		usb_rx_len = 0;	// accept next packet
- 6f4:	10 92 86 00 	sts	0x0086, r1
-	}
-	// refill an empty transmit buffer, when the transmitter is active
-	if	( usb_tx_len == 0 )
- 6f8:	80 91 79 00 	lds	r24, 0x0079
- 6fc:	88 23       	and	r24, r24
- 6fe:	09 f0       	breq	.+2      	; 0x702 <usb_poll+0xdc>
- 700:	53 c0       	rjmp	.+166    	; 0x7a8 <usb_poll+0x182>
-	{
-		if	( usb_tx_state != TX_STATE_IDLE )
- 702:	20 91 74 00 	lds	r18, 0x0074
- 706:	22 23       	and	r18, r18
- 708:	09 f4       	brne	.+2      	; 0x70c <usb_poll+0xe6>
- 70a:	4a c0       	rjmp	.+148    	; 0x7a0 <usb_poll+0x17a>
+000005d6 <usb_transmit>:
+
+// ----------------------------------------------------------------------
+// Load the transmit buffer with the next packet.
+// ----------------------------------------------------------------------
+static	void	usb_transmit ( void )
+{
+ 5d6:	df 93       	push	r29
+ 5d8:	cf 93       	push	r28
+ 5da:	cd b7       	in	r28, 0x3d	; 61
+ 5dc:	de b7       	in	r29, 0x3e	; 62
+ 5de:	2a 97       	sbiw	r28, 0x0a	; 10
+ 5e0:	0f b6       	in	r0, 0x3f	; 63
+ 5e2:	f8 94       	cli
+ 5e4:	de bf       	out	0x3e, r29	; 62
+ 5e6:	0f be       	out	0x3f, r0	; 63
+ 5e8:	cd bf       	out	0x3d, r28	; 61
 	byte_t*	src;
 	byte_t*	dst;
 	byte_t	i;
 	byte_t	b;
 
 	usb_tx_buf[0] ^= (USB_PID_DATA0 ^ USB_PID_DATA1);
- 70c:	80 91 7a 00 	lds	r24, 0x007A
- 710:	98 e8       	ldi	r25, 0x88	; 136
- 712:	89 27       	eor	r24, r25
- 714:	80 93 7a 00 	sts	0x007A, r24
+ 5ea:	90 91 06 01 	lds	r25, 0x0106
+ 5ee:	88 e8       	ldi	r24, 0x88	; 136
+ 5f0:	89 27       	eor	r24, r25
+ 5f2:	80 93 06 01 	sts	0x0106, r24
 	len = usb_tx_total;
- 718:	10 91 75 00 	lds	r17, 0x0075
+ 5f6:	80 91 df 00 	lds	r24, 0x00DF
+ 5fa:	8a 87       	std	Y+10, r24	; 0x0a
 	if	( len > 8 )
- 71c:	19 30       	cpi	r17, 0x09	; 9
- 71e:	10 f0       	brcs	.+4      	; 0x724 <usb_poll+0xfe>
- 720:	18 e0       	ldi	r17, 0x08	; 8
- 722:	02 c0       	rjmp	.+4      	; 0x728 <usb_poll+0x102>
+ 5fc:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 5fe:	89 30       	cpi	r24, 0x09	; 9
+ 600:	10 f0       	brcs	.+4      	; 0x606 <usb_transmit+0x30>
 	{
 		len = 8;
+ 602:	88 e0       	ldi	r24, 0x08	; 8
+ 604:	8a 87       	std	Y+10, r24	; 0x0a
 	}
 	dst = usb_tx_buf + 1;
+ 606:	87 e0       	ldi	r24, 0x07	; 7
+ 608:	91 e0       	ldi	r25, 0x01	; 1
+ 60a:	9f 83       	std	Y+7, r25	; 0x07
+ 60c:	8e 83       	std	Y+6, r24	; 0x06
 	if	( len > 0 )
- 724:	11 23       	and	r17, r17
- 726:	79 f1       	breq	.+94     	; 0x786 <usb_poll+0x160>
+ 60e:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 610:	88 23       	and	r24, r24
+ 612:	09 f4       	brne	.+2      	; 0x616 <usb_transmit+0x40>
+ 614:	5b c0       	rjmp	.+182    	; 0x6cc <usb_transmit+0xf6>
 	{
 #if	USBTINY_CALLBACK_IN
 		if	( usb_tx_state == TX_STATE_CALLBACK )
- 728:	23 30       	cpi	r18, 0x03	; 3
- 72a:	31 f4       	brne	.+12     	; 0x738 <usb_poll+0x112>
+ 616:	80 91 de 00 	lds	r24, 0x00DE
+ 61a:	83 30       	cpi	r24, 0x03	; 3
+ 61c:	31 f4       	brne	.+12     	; 0x62a <usb_transmit+0x54>
 		{
 			len = usb_in( dst, len );
- 72c:	8b e7       	ldi	r24, 0x7B	; 123
- 72e:	90 e0       	ldi	r25, 0x00	; 0
- 730:	61 2f       	mov	r22, r17
- 732:	fa de       	rcall	.-524    	; 0x528 <usb_in>
- 734:	18 2f       	mov	r17, r24
- 736:	22 c0       	rjmp	.+68     	; 0x77c <usb_poll+0x156>
+ 61e:	8e 81       	ldd	r24, Y+6	; 0x06
+ 620:	9f 81       	ldd	r25, Y+7	; 0x07
+ 622:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 624:	95 df       	rcall	.-214    	; 0x550 <usb_in>
+ 626:	8a 87       	std	Y+10, r24	; 0x0a
+ 628:	4b c0       	rjmp	.+150    	; 0x6c0 <usb_transmit+0xea>
 		}
 		else
 #endif
 		{
 			src = usb_tx_data;
- 738:	30 91 76 00 	lds	r19, 0x0076
- 73c:	40 91 77 00 	lds	r20, 0x0077
+ 62a:	80 91 e0 00 	lds	r24, 0x00E0
+ 62e:	90 91 e1 00 	lds	r25, 0x00E1
+ 632:	99 87       	std	Y+9, r25	; 0x09
+ 634:	88 87       	std	Y+8, r24	; 0x08
 			if	( usb_tx_state == TX_STATE_RAM )
- 740:	21 30       	cpi	r18, 0x01	; 1
- 742:	61 f4       	brne	.+24     	; 0x75c <usb_poll+0x136>
- 744:	83 2f       	mov	r24, r19
- 746:	94 2f       	mov	r25, r20
- 748:	fc 01       	movw	r30, r24
- 74a:	ab e7       	ldi	r26, 0x7B	; 123
- 74c:	b0 e0       	ldi	r27, 0x00	; 0
+ 636:	80 91 de 00 	lds	r24, 0x00DE
+ 63a:	81 30       	cpi	r24, 0x01	; 1
+ 63c:	d1 f4       	brne	.+52     	; 0x672 <usb_transmit+0x9c>
 			{
 				for	( i = 0; i < len; i++ )
+ 63e:	1d 82       	std	Y+5, r1	; 0x05
+ 640:	13 c0       	rjmp	.+38     	; 0x668 <usb_transmit+0x92>
 				{
 					*dst++ = *src++;
- 74e:	81 91       	ld	r24, Z+
- 750:	8d 93       	st	X+, r24
+ 642:	e8 85       	ldd	r30, Y+8	; 0x08
+ 644:	f9 85       	ldd	r31, Y+9	; 0x09
+ 646:	80 81       	ld	r24, Z
+ 648:	ee 81       	ldd	r30, Y+6	; 0x06
+ 64a:	ff 81       	ldd	r31, Y+7	; 0x07
+ 64c:	80 83       	st	Z, r24
+ 64e:	8e 81       	ldd	r24, Y+6	; 0x06
+ 650:	9f 81       	ldd	r25, Y+7	; 0x07
+ 652:	01 96       	adiw	r24, 0x01	; 1
+ 654:	9f 83       	std	Y+7, r25	; 0x07
+ 656:	8e 83       	std	Y+6, r24	; 0x06
+ 658:	88 85       	ldd	r24, Y+8	; 0x08
+ 65a:	99 85       	ldd	r25, Y+9	; 0x09
+ 65c:	01 96       	adiw	r24, 0x01	; 1
+ 65e:	99 87       	std	Y+9, r25	; 0x09
+ 660:	88 87       	std	Y+8, r24	; 0x08
 #endif
 		{
 			src = usb_tx_data;
 			if	( usb_tx_state == TX_STATE_RAM )
 			{
 				for	( i = 0; i < len; i++ )
- 752:	8e 2f       	mov	r24, r30
- 754:	83 1b       	sub	r24, r19
- 756:	81 17       	cp	r24, r17
- 758:	d0 f3       	brcs	.-12     	; 0x74e <usb_poll+0x128>
- 75a:	0c c0       	rjmp	.+24     	; 0x774 <usb_poll+0x14e>
- 75c:	83 2f       	mov	r24, r19
- 75e:	94 2f       	mov	r25, r20
- 760:	fc 01       	movw	r30, r24
- 762:	ab e7       	ldi	r26, 0x7B	; 123
- 764:	b0 e0       	ldi	r27, 0x00	; 0
-			}
-			else	// usb_tx_state == TX_STATE_ROM
-			{
-				for	( i = 0; i < len; i++ )
-				{
-					b = pgm_read_byte( src );
- 766:	84 91       	lpm	r24, Z+
-					src++;
- 768:	31 96       	adiw	r30, 0x01	; 1
-					*dst++ = b;
- 76a:	8d 93       	st	X+, r24
+ 662:	8d 81       	ldd	r24, Y+5	; 0x05
+ 664:	8f 5f       	subi	r24, 0xFF	; 255
+ 666:	8d 83       	std	Y+5, r24	; 0x05
+ 668:	9d 81       	ldd	r25, Y+5	; 0x05
+ 66a:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 66c:	98 17       	cp	r25, r24
+ 66e:	48 f3       	brcs	.-46     	; 0x642 <usb_transmit+0x6c>
+ 670:	21 c0       	rjmp	.+66     	; 0x6b4 <usb_transmit+0xde>
 					*dst++ = *src++;
 				}
 			}
 			else	// usb_tx_state == TX_STATE_ROM
 			{
 				for	( i = 0; i < len; i++ )
- 76c:	8e 2f       	mov	r24, r30
- 76e:	83 1b       	sub	r24, r19
- 770:	81 17       	cp	r24, r17
- 772:	c8 f3       	brcs	.-14     	; 0x766 <usb_poll+0x140>
+ 672:	1d 82       	std	Y+5, r1	; 0x05
+ 674:	1b c0       	rjmp	.+54     	; 0x6ac <usb_transmit+0xd6>
+				{
+					b = pgm_read_byte( src );
+ 676:	88 85       	ldd	r24, Y+8	; 0x08
+ 678:	99 85       	ldd	r25, Y+9	; 0x09
+ 67a:	9b 83       	std	Y+3, r25	; 0x03
+ 67c:	8a 83       	std	Y+2, r24	; 0x02
+ 67e:	ea 81       	ldd	r30, Y+2	; 0x02
+ 680:	fb 81       	ldd	r31, Y+3	; 0x03
+ 682:	84 91       	lpm	r24, Z+
+ 684:	89 83       	std	Y+1, r24	; 0x01
+ 686:	89 81       	ldd	r24, Y+1	; 0x01
+ 688:	8c 83       	std	Y+4, r24	; 0x04
+					src++;
+ 68a:	88 85       	ldd	r24, Y+8	; 0x08
+ 68c:	99 85       	ldd	r25, Y+9	; 0x09
+ 68e:	01 96       	adiw	r24, 0x01	; 1
+ 690:	99 87       	std	Y+9, r25	; 0x09
+ 692:	88 87       	std	Y+8, r24	; 0x08
+					*dst++ = b;
+ 694:	ee 81       	ldd	r30, Y+6	; 0x06
+ 696:	ff 81       	ldd	r31, Y+7	; 0x07
+ 698:	8c 81       	ldd	r24, Y+4	; 0x04
+ 69a:	80 83       	st	Z, r24
+ 69c:	8e 81       	ldd	r24, Y+6	; 0x06
+ 69e:	9f 81       	ldd	r25, Y+7	; 0x07
+ 6a0:	01 96       	adiw	r24, 0x01	; 1
+ 6a2:	9f 83       	std	Y+7, r25	; 0x07
+ 6a4:	8e 83       	std	Y+6, r24	; 0x06
+					*dst++ = *src++;
+				}
+			}
+			else	// usb_tx_state == TX_STATE_ROM
+			{
+				for	( i = 0; i < len; i++ )
+ 6a6:	8d 81       	ldd	r24, Y+5	; 0x05
+ 6a8:	8f 5f       	subi	r24, 0xFF	; 255
+ 6aa:	8d 83       	std	Y+5, r24	; 0x05
+ 6ac:	9d 81       	ldd	r25, Y+5	; 0x05
+ 6ae:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 6b0:	98 17       	cp	r25, r24
+ 6b2:	08 f3       	brcs	.-62     	; 0x676 <usb_transmit+0xa0>
 					b = pgm_read_byte( src );
 					src++;
 					*dst++ = b;
 				}
 			}
 			usb_tx_data = src;
- 774:	f0 93 77 00 	sts	0x0077, r31
- 778:	e0 93 76 00 	sts	0x0076, r30
+ 6b4:	88 85       	ldd	r24, Y+8	; 0x08
+ 6b6:	99 85       	ldd	r25, Y+9	; 0x09
+ 6b8:	90 93 e1 00 	sts	0x00E1, r25
+ 6bc:	80 93 e0 00 	sts	0x00E0, r24
 		}
 		usb_tx_total -= len;
- 77c:	80 91 75 00 	lds	r24, 0x0075
- 780:	81 1b       	sub	r24, r17
- 782:	80 93 75 00 	sts	0x0075, r24
+ 6c0:	80 91 df 00 	lds	r24, 0x00DF
+ 6c4:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 6c6:	89 1b       	sub	r24, r25
+ 6c8:	80 93 df 00 	sts	0x00DF, r24
 	}
 	crc( usb_tx_buf + 1, len );
- 786:	8b e7       	ldi	r24, 0x7B	; 123
- 788:	90 e0       	ldi	r25, 0x00	; 0
- 78a:	61 2f       	mov	r22, r17
- 78c:	79 dc       	rcall	.-1806   	; 0x80 <crc>
+ 6cc:	87 e0       	ldi	r24, 0x07	; 7
+ 6ce:	91 e0       	ldi	r25, 0x01	; 1
+ 6d0:	6a 85       	ldd	r22, Y+10	; 0x0a
+ 6d2:	93 d3       	rcall	.+1830   	; 0xdfa <crc>
 	usb_tx_len = len + 3;
- 78e:	1d 5f       	subi	r17, 0xFD	; 253
- 790:	10 93 79 00 	sts	0x0079, r17
- 794:	13 50       	subi	r17, 0x03	; 3
+ 6d4:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 6d6:	8d 5f       	subi	r24, 0xFD	; 253
+ 6d8:	80 93 05 01 	sts	0x0105, r24
 	if	( len < 8 )
- 796:	18 30       	cpi	r17, 0x08	; 8
- 798:	38 f4       	brcc	.+14     	; 0x7a8 <usb_poll+0x182>
+ 6dc:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 6de:	88 30       	cpi	r24, 0x08	; 8
+ 6e0:	10 f4       	brcc	.+4      	; 0x6e6 <usb_transmit+0x110>
 	{	// this is the last packet
 		usb_tx_state = TX_STATE_IDLE;
- 79a:	10 92 74 00 	sts	0x0074, r1
- 79e:	04 c0       	rjmp	.+8      	; 0x7a8 <usb_poll+0x182>
+ 6e2:	10 92 de 00 	sts	0x00DE, r1
+	}
+}
+ 6e6:	2a 96       	adiw	r28, 0x0a	; 10
+ 6e8:	0f b6       	in	r0, 0x3f	; 63
+ 6ea:	f8 94       	cli
+ 6ec:	de bf       	out	0x3e, r29	; 62
+ 6ee:	0f be       	out	0x3f, r0	; 63
+ 6f0:	cd bf       	out	0x3d, r28	; 61
+ 6f2:	cf 91       	pop	r28
+ 6f4:	df 91       	pop	r29
+ 6f6:	08 95       	ret
+
+000006f8 <usb_init>:
+
+// ----------------------------------------------------------------------
+// Initialize the low-level USB driver.
+// ----------------------------------------------------------------------
+extern	void	usb_init ( void )
+{
+ 6f8:	df 93       	push	r29
+ 6fa:	cf 93       	push	r28
+ 6fc:	cd b7       	in	r28, 0x3d	; 61
+ 6fe:	de b7       	in	r29, 0x3e	; 62
+	USB_INT_CONFIG |= USB_INT_CONFIG_SET;
+ 700:	a5 e5       	ldi	r26, 0x55	; 85
+ 702:	b0 e0       	ldi	r27, 0x00	; 0
+ 704:	e5 e5       	ldi	r30, 0x55	; 85
+ 706:	f0 e0       	ldi	r31, 0x00	; 0
+ 708:	80 81       	ld	r24, Z
+ 70a:	83 60       	ori	r24, 0x03	; 3
+ 70c:	8c 93       	st	X, r24
+	USB_INT_ENABLE |= (1 << USB_INT_ENABLE_BIT);
+ 70e:	ab e5       	ldi	r26, 0x5B	; 91
+ 710:	b0 e0       	ldi	r27, 0x00	; 0
+ 712:	eb e5       	ldi	r30, 0x5B	; 91
+ 714:	f0 e0       	ldi	r31, 0x00	; 0
+ 716:	80 81       	ld	r24, Z
+ 718:	80 64       	ori	r24, 0x40	; 64
+ 71a:	8c 93       	st	X, r24
+	sei();
+ 71c:	78 94       	sei
+}
+ 71e:	cf 91       	pop	r28
+ 720:	df 91       	pop	r29
+ 722:	08 95       	ret
+
+00000724 <usb_poll>:
+// - check for incoming USB packets
+// - refill an empty transmit buffer
+// - check for USB bus reset
+// ----------------------------------------------------------------------
+extern	void	usb_poll ( void )
+{
+ 724:	df 93       	push	r29
+ 726:	cf 93       	push	r28
+ 728:	0f 92       	push	r0
+ 72a:	cd b7       	in	r28, 0x3d	; 61
+ 72c:	de b7       	in	r29, 0x3e	; 62
+	byte_t	i;
+
+	// check for incoming USB packets
+	if	( usb_rx_len != 0 )
+ 72e:	80 91 12 01 	lds	r24, 0x0112
+ 732:	88 23       	and	r24, r24
+ 734:	b1 f0       	breq	.+44     	; 0x762 <usb_poll+0x3e>
+	{
+		usb_receive( usb_rx_buf + USB_BUFSIZE - usb_rx_off + 1, usb_rx_len - 3 );
+ 736:	80 91 13 01 	lds	r24, 0x0113
+ 73a:	28 2f       	mov	r18, r24
+ 73c:	30 e0       	ldi	r19, 0x00	; 0
+ 73e:	8c e0       	ldi	r24, 0x0C	; 12
+ 740:	90 e0       	ldi	r25, 0x00	; 0
+ 742:	82 1b       	sub	r24, r18
+ 744:	93 0b       	sbc	r25, r19
+ 746:	9c 01       	movw	r18, r24
+ 748:	2c 5e       	subi	r18, 0xEC	; 236
+ 74a:	3e 4f       	sbci	r19, 0xFE	; 254
+ 74c:	80 91 12 01 	lds	r24, 0x0112
+ 750:	48 2f       	mov	r20, r24
+ 752:	43 50       	subi	r20, 0x03	; 3
+ 754:	c9 01       	movw	r24, r18
+ 756:	64 2f       	mov	r22, r20
+ 758:	2b df       	rcall	.-426    	; 0x5b0 <usb_receive>
+		usb_tx_len = 0;	// abort pending transmission
+ 75a:	10 92 05 01 	sts	0x0105, r1
+		usb_rx_len = 0;	// accept next packet
+ 75e:	10 92 12 01 	sts	0x0112, r1
+	}
+	// refill an empty transmit buffer, when the transmitter is active
+	if	( usb_tx_len == 0 )
+ 762:	80 91 05 01 	lds	r24, 0x0105
+ 766:	88 23       	and	r24, r24
+ 768:	51 f4       	brne	.+20     	; 0x77e <usb_poll+0x5a>
+	{
+		if	( usb_tx_state != TX_STATE_IDLE )
+ 76a:	80 91 de 00 	lds	r24, 0x00DE
+ 76e:	88 23       	and	r24, r24
+ 770:	11 f0       	breq	.+4      	; 0x776 <usb_poll+0x52>
 		{
 			usb_transmit();
+ 772:	31 df       	rcall	.-414    	; 0x5d6 <usb_transmit>
+ 774:	04 c0       	rjmp	.+8      	; 0x77e <usb_poll+0x5a>
 		}
 		else
 		{	// change the USB address at the end of a transfer
 			usb_address = new_address;
- 7a0:	80 91 78 00 	lds	r24, 0x0078
- 7a4:	80 93 9e 00 	sts	0x009E, r24
- 7a8:	8a e0       	ldi	r24, 0x0A	; 10
- 7aa:	02 c0       	rjmp	.+4      	; 0x7b0 <usb_poll+0x18a>
+ 776:	80 91 e2 00 	lds	r24, 0x00E2
+ 77a:	80 93 2a 01 	sts	0x012A, r24
 		}
 	}
 	// check for USB bus reset
 	for	( i = 10; i > 0 && ! (USB_IN & USB_MASK_DMINUS); i-- )
- 7ac:	81 50       	subi	r24, 0x01	; 1
- 7ae:	19 f0       	breq	.+6      	; 0x7b6 <usb_poll+0x190>
- 7b0:	83 9b       	sbis	0x10, 3	; 16
- 7b2:	fc cf       	rjmp	.-8      	; 0x7ac <usb_poll+0x186>
- 7b4:	05 c0       	rjmp	.+10     	; 0x7c0 <usb_poll+0x19a>
+ 77e:	8a e0       	ldi	r24, 0x0A	; 10
+ 780:	89 83       	std	Y+1, r24	; 0x01
+ 782:	03 c0       	rjmp	.+6      	; 0x78a <usb_poll+0x66>
+ 784:	89 81       	ldd	r24, Y+1	; 0x01
+ 786:	81 50       	subi	r24, 0x01	; 1
+ 788:	89 83       	std	Y+1, r24	; 0x01
+ 78a:	89 81       	ldd	r24, Y+1	; 0x01
+ 78c:	88 23       	and	r24, r24
+ 78e:	49 f0       	breq	.+18     	; 0x7a2 <usb_poll+0x7e>
+ 790:	e0 e3       	ldi	r30, 0x30	; 48
+ 792:	f0 e0       	ldi	r31, 0x00	; 0
+ 794:	80 81       	ld	r24, Z
+ 796:	88 2f       	mov	r24, r24
+ 798:	90 e0       	ldi	r25, 0x00	; 0
+ 79a:	88 70       	andi	r24, 0x08	; 8
+ 79c:	90 70       	andi	r25, 0x00	; 0
+ 79e:	00 97       	sbiw	r24, 0x00	; 0
+ 7a0:	89 f3       	breq	.-30     	; 0x784 <usb_poll+0x60>
 	{
 	}
 	if	( i == 0 )
+ 7a2:	89 81       	ldd	r24, Y+1	; 0x01
+ 7a4:	88 23       	and	r24, r24
+ 7a6:	11 f4       	brne	.+4      	; 0x7ac <usb_poll+0x88>
 	{	// SE0 for more than 2.5uS is a reset
 		new_address = 0;
- 7b6:	10 92 78 00 	sts	0x0078, r1
- 7ba:	02 c0       	rjmp	.+4      	; 0x7c0 <usb_poll+0x19a>
+ 7a8:	10 92 e2 00 	sts	0x00E2, r1
 	}
 }
- 7bc:	90 e0       	ldi	r25, 0x00	; 0
- 7be:	88 cf       	rjmp	.-240    	; 0x6d0 <usb_poll+0xaa>
- 7c0:	df 91       	pop	r29
- 7c2:	cf 91       	pop	r28
- 7c4:	1f 91       	pop	r17
- 7c6:	08 95       	ret
+ 7ac:	0f 90       	pop	r0
+ 7ae:	cf 91       	pop	r28
+ 7b0:	df 91       	pop	r29
+ 7b2:	08 95       	ret
 
-000007c8 <_exit>:
- 7c8:	f8 94       	cli
+000007b4 <delay>:
+// ----------------------------------------------------------------------
+// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
+// ----------------------------------------------------------------------
+__attribute__((always_inline))
+static	void	delay ( void )
+{
+ 7b4:	df 93       	push	r29
+ 7b6:	cf 93       	push	r28
+ 7b8:	cd b7       	in	r28, 0x3d	; 61
+ 7ba:	de b7       	in	r29, 0x3e	; 62
+	asm volatile(
+ 7bc:	80 91 e3 00 	lds	r24, 0x00E3
+ 7c0:	08 2e       	mov	r0, r24
+ 7c2:	00 c0       	rjmp	.+0      	; 0x7c4 <delay+0x10>
+ 7c4:	00 00       	nop
+ 7c6:	0a 94       	dec	r0
+ 7c8:	e1 f7       	brne	.-8      	; 0x7c2 <delay+0xe>
+		"0:	rjmp	1f		\n"
+		"1:	nop			\n"
+		"	dec	__tmp_reg__	\n"
+		"	brne	0b		\n"
+		: : "r" (sck_period) );
+}
+ 7ca:	cf 91       	pop	r28
+ 7cc:	df 91       	pop	r29
+ 7ce:	08 95       	ret
 
-000007ca <__stop_program>:
- 7ca:	ff cf       	rjmp	.-2      	; 0x7ca <__stop_program>
+000007d0 <spi>:
+// ----------------------------------------------------------------------
+// Issue one SPI command.
+// ----------------------------------------------------------------------
+//__attribute__((naked))
+static	void	spi ( byte_t* cmd, byte_t* res, int i )
+{
+ 7d0:	df 93       	push	r29
+ 7d2:	cf 93       	push	r28
+ 7d4:	cd b7       	in	r28, 0x3d	; 61
+ 7d6:	de b7       	in	r29, 0x3e	; 62
+ 7d8:	29 97       	sbiw	r28, 0x09	; 9
+ 7da:	0f b6       	in	r0, 0x3f	; 63
+ 7dc:	f8 94       	cli
+ 7de:	de bf       	out	0x3e, r29	; 62
+ 7e0:	0f be       	out	0x3f, r0	; 63
+ 7e2:	cd bf       	out	0x3d, r28	; 61
+ 7e4:	9d 83       	std	Y+5, r25	; 0x05
+ 7e6:	8c 83       	std	Y+4, r24	; 0x04
+ 7e8:	7f 83       	std	Y+7, r23	; 0x07
+ 7ea:	6e 83       	std	Y+6, r22	; 0x06
+ 7ec:	59 87       	std	Y+9, r21	; 0x09
+ 7ee:	48 87       	std	Y+8, r20	; 0x08
+ 7f0:	53 c0       	rjmp	.+166    	; 0x898 <spi+0xc8>
+	byte_t	r;
+	byte_t	mask;
+
+	while (i != 0)
+	{
+	  i--;
+ 7f2:	88 85       	ldd	r24, Y+8	; 0x08
+ 7f4:	99 85       	ldd	r25, Y+9	; 0x09
+ 7f6:	01 97       	sbiw	r24, 0x01	; 1
+ 7f8:	99 87       	std	Y+9, r25	; 0x09
+ 7fa:	88 87       	std	Y+8, r24	; 0x08
+		c = *cmd++;
+ 7fc:	ec 81       	ldd	r30, Y+4	; 0x04
+ 7fe:	fd 81       	ldd	r31, Y+5	; 0x05
+ 800:	80 81       	ld	r24, Z
+ 802:	8b 83       	std	Y+3, r24	; 0x03
+ 804:	8c 81       	ldd	r24, Y+4	; 0x04
+ 806:	9d 81       	ldd	r25, Y+5	; 0x05
+ 808:	01 96       	adiw	r24, 0x01	; 1
+ 80a:	9d 83       	std	Y+5, r25	; 0x05
+ 80c:	8c 83       	std	Y+4, r24	; 0x04
+		r = 0;
+ 80e:	1a 82       	std	Y+2, r1	; 0x02
+		for	( mask = 0x80; mask; mask >>= 1 )
+ 810:	80 e8       	ldi	r24, 0x80	; 128
+ 812:	89 83       	std	Y+1, r24	; 0x01
+ 814:	35 c0       	rjmp	.+106    	; 0x880 <spi+0xb0>
+		{
+			if	( c & mask )
+ 816:	8b 81       	ldd	r24, Y+3	; 0x03
+ 818:	99 81       	ldd	r25, Y+1	; 0x01
+ 81a:	89 23       	and	r24, r25
+ 81c:	88 23       	and	r24, r24
+ 81e:	39 f0       	breq	.+14     	; 0x82e <spi+0x5e>
+			{
+				PORT |= MOSI_MASK;
+ 820:	a8 e3       	ldi	r26, 0x38	; 56
+ 822:	b0 e0       	ldi	r27, 0x00	; 0
+ 824:	e8 e3       	ldi	r30, 0x38	; 56
+ 826:	f0 e0       	ldi	r31, 0x00	; 0
+ 828:	80 81       	ld	r24, Z
+ 82a:	80 62       	ori	r24, 0x20	; 32
+ 82c:	8c 93       	st	X, r24
+			}
+//			if (! status & INVERTED_SCK_MASK )
+				delay();
+ 82e:	c2 df       	rcall	.-124    	; 0x7b4 <delay>
+
+			PORT |= SCK_MASK;
+ 830:	a8 e3       	ldi	r26, 0x38	; 56
+ 832:	b0 e0       	ldi	r27, 0x00	; 0
+ 834:	e8 e3       	ldi	r30, 0x38	; 56
+ 836:	f0 e0       	ldi	r31, 0x00	; 0
+ 838:	80 81       	ld	r24, Z
+ 83a:	80 68       	ori	r24, 0x80	; 128
+ 83c:	8c 93       	st	X, r24
+			delay();
+ 83e:	ba df       	rcall	.-140    	; 0x7b4 <delay>
+			r <<= 1;
+ 840:	8a 81       	ldd	r24, Y+2	; 0x02
+ 842:	88 0f       	add	r24, r24
+ 844:	8a 83       	std	Y+2, r24	; 0x02
+			if	( PIN & MISO_MASK )
+ 846:	e6 e3       	ldi	r30, 0x36	; 54
+ 848:	f0 e0       	ldi	r31, 0x00	; 0
+ 84a:	80 81       	ld	r24, Z
+ 84c:	88 2f       	mov	r24, r24
+ 84e:	90 e0       	ldi	r25, 0x00	; 0
+ 850:	80 74       	andi	r24, 0x40	; 64
+ 852:	90 70       	andi	r25, 0x00	; 0
+ 854:	00 97       	sbiw	r24, 0x00	; 0
+ 856:	19 f0       	breq	.+6      	; 0x85e <spi+0x8e>
+			{
+				r++;
+ 858:	8a 81       	ldd	r24, Y+2	; 0x02
+ 85a:	8f 5f       	subi	r24, 0xFF	; 255
+ 85c:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			PORT &= ~ SCK_MASK;
+ 85e:	a8 e3       	ldi	r26, 0x38	; 56
+ 860:	b0 e0       	ldi	r27, 0x00	; 0
+ 862:	e8 e3       	ldi	r30, 0x38	; 56
+ 864:	f0 e0       	ldi	r31, 0x00	; 0
+ 866:	80 81       	ld	r24, Z
+ 868:	8f 77       	andi	r24, 0x7F	; 127
+ 86a:	8c 93       	st	X, r24
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+			
+			PORT &= ~ MOSI_MASK;
+ 86c:	a8 e3       	ldi	r26, 0x38	; 56
+ 86e:	b0 e0       	ldi	r27, 0x00	; 0
+ 870:	e8 e3       	ldi	r30, 0x38	; 56
+ 872:	f0 e0       	ldi	r31, 0x00	; 0
+ 874:	80 81       	ld	r24, Z
+ 876:	8f 7d       	andi	r24, 0xDF	; 223
+ 878:	8c 93       	st	X, r24
+	while (i != 0)
+	{
+	  i--;
+		c = *cmd++;
+		r = 0;
+		for	( mask = 0x80; mask; mask >>= 1 )
+ 87a:	89 81       	ldd	r24, Y+1	; 0x01
+ 87c:	86 95       	lsr	r24
+ 87e:	89 83       	std	Y+1, r24	; 0x01
+ 880:	89 81       	ldd	r24, Y+1	; 0x01
+ 882:	88 23       	and	r24, r24
+ 884:	41 f6       	brne	.-112    	; 0x816 <spi+0x46>
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+			
+			PORT &= ~ MOSI_MASK;
+		}
+		*res++ = r;
+ 886:	ee 81       	ldd	r30, Y+6	; 0x06
+ 888:	ff 81       	ldd	r31, Y+7	; 0x07
+ 88a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 88c:	80 83       	st	Z, r24
+ 88e:	8e 81       	ldd	r24, Y+6	; 0x06
+ 890:	9f 81       	ldd	r25, Y+7	; 0x07
+ 892:	01 96       	adiw	r24, 0x01	; 1
+ 894:	9f 83       	std	Y+7, r25	; 0x07
+ 896:	8e 83       	std	Y+6, r24	; 0x06
+{
+	byte_t	c;
+	byte_t	r;
+	byte_t	mask;
+
+	while (i != 0)
+ 898:	88 85       	ldd	r24, Y+8	; 0x08
+ 89a:	99 85       	ldd	r25, Y+9	; 0x09
+ 89c:	00 97       	sbiw	r24, 0x00	; 0
+ 89e:	09 f0       	breq	.+2      	; 0x8a2 <spi+0xd2>
+ 8a0:	a8 cf       	rjmp	.-176    	; 0x7f2 <spi+0x22>
+			
+			PORT &= ~ MOSI_MASK;
+		}
+		*res++ = r;
+	}
+}
+ 8a2:	29 96       	adiw	r28, 0x09	; 9
+ 8a4:	0f b6       	in	r0, 0x3f	; 63
+ 8a6:	f8 94       	cli
+ 8a8:	de bf       	out	0x3e, r29	; 62
+ 8aa:	0f be       	out	0x3f, r0	; 63
+ 8ac:	cd bf       	out	0x3d, r28	; 61
+ 8ae:	cf 91       	pop	r28
+ 8b0:	df 91       	pop	r29
+ 8b2:	08 95       	ret
+
+000008b4 <spi_rw>:
+
+// ----------------------------------------------------------------------
+// Create and issue a read or write SPI command.
+// ----------------------------------------------------------------------
+static	void	spi_rw ( void )
+{
+ 8b4:	df 93       	push	r29
+ 8b6:	cf 93       	push	r28
+ 8b8:	00 d0       	rcall	.+0      	; 0x8ba <spi_rw+0x6>
+ 8ba:	00 d0       	rcall	.+0      	; 0x8bc <spi_rw+0x8>
+ 8bc:	0f 92       	push	r0
+ 8be:	cd b7       	in	r28, 0x3d	; 61
+ 8c0:	de b7       	in	r29, 0x3e	; 62
+	unsigned char offset = 0;
+ 8c2:	1d 82       	std	Y+5, r1	; 0x05
+	uint_t	a;
+	uint_t	tam = (status & TAMANIO_MASK);	
+ 8c4:	80 91 f3 00 	lds	r24, 0x00F3
+ 8c8:	88 2f       	mov	r24, r24
+ 8ca:	90 e0       	ldi	r25, 0x00	; 0
+ 8cc:	87 70       	andi	r24, 0x07	; 7
+ 8ce:	90 70       	andi	r25, 0x00	; 0
+ 8d0:	9a 83       	std	Y+2, r25	; 0x02
+ 8d2:	89 83       	std	Y+1, r24	; 0x01
+
+	a = address++;
+ 8d4:	80 91 e6 00 	lds	r24, 0x00E6
+ 8d8:	90 91 e7 00 	lds	r25, 0x00E7
+ 8dc:	9c 83       	std	Y+4, r25	; 0x04
+ 8de:	8b 83       	std	Y+3, r24	; 0x03
+ 8e0:	01 96       	adiw	r24, 0x01	; 1
+ 8e2:	90 93 e7 00 	sts	0x00E7, r25
+ 8e6:	80 93 e6 00 	sts	0x00E6, r24
+	cmd[0] = cmd0;
+ 8ea:	80 91 ea 00 	lds	r24, 0x00EA
+ 8ee:	80 93 eb 00 	sts	0x00EB, r24
+	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
+ 8f2:	80 91 f3 00 	lds	r24, 0x00F3
+ 8f6:	88 2f       	mov	r24, r24
+ 8f8:	90 e0       	ldi	r25, 0x00	; 0
+ 8fa:	88 73       	andi	r24, 0x38	; 56
+ 8fc:	90 70       	andi	r25, 0x00	; 0
+ 8fe:	00 97       	sbiw	r24, 0x00	; 0
+ 900:	a9 f4       	brne	.+42     	; 0x92c <spi_rw+0x78>
+ 902:	80 91 ea 00 	lds	r24, 0x00EA
+ 906:	88 23       	and	r24, r24
+ 908:	8c f0       	brlt	.+34     	; 0x92c <spi_rw+0x78>
+	{	//Es AVR 							// NOT eeprom
+		if ( a & 1 )
+ 90a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 90c:	9c 81       	ldd	r25, Y+4	; 0x04
+ 90e:	81 70       	andi	r24, 0x01	; 1
+ 910:	90 70       	andi	r25, 0x00	; 0
+ 912:	88 23       	and	r24, r24
+ 914:	29 f0       	breq	.+10     	; 0x920 <spi_rw+0x6c>
+		{
+			cmd[0] |= 0x08;	//La H
+ 916:	80 91 eb 00 	lds	r24, 0x00EB
+ 91a:	88 60       	ori	r24, 0x08	; 8
+ 91c:	80 93 eb 00 	sts	0x00EB, r24
+		}
+		a >>= 1;	//Corro la direccion
+ 920:	8b 81       	ldd	r24, Y+3	; 0x03
+ 922:	9c 81       	ldd	r25, Y+4	; 0x04
+ 924:	96 95       	lsr	r25
+ 926:	87 95       	ror	r24
+ 928:	9c 83       	std	Y+4, r25	; 0x04
+ 92a:	8b 83       	std	Y+3, r24	; 0x03
+	} 
+	cmd[1] = a >> 8;
+ 92c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 92e:	9c 81       	ldd	r25, Y+4	; 0x04
+ 930:	89 2f       	mov	r24, r25
+ 932:	99 27       	eor	r25, r25
+ 934:	80 93 ec 00 	sts	0x00EC, r24
+	cmd[2] = a;
+ 938:	8b 81       	ldd	r24, Y+3	; 0x03
+ 93a:	80 93 ed 00 	sts	0x00ED, r24
+	
+	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
+ 93e:	80 91 f3 00 	lds	r24, 0x00F3
+ 942:	88 2f       	mov	r24, r24
+ 944:	90 e0       	ldi	r25, 0x00	; 0
+ 946:	88 73       	andi	r24, 0x38	; 56
+ 948:	90 70       	andi	r25, 0x00	; 0
+ 94a:	80 31       	cpi	r24, 0x10	; 16
+ 94c:	91 05       	cpc	r25, r1
+ 94e:	81 f4       	brne	.+32     	; 0x970 <spi_rw+0xbc>
+	{
+		cmd[1] <<= 3;
+ 950:	80 91 ec 00 	lds	r24, 0x00EC
+ 954:	88 0f       	add	r24, r24
+ 956:	88 0f       	add	r24, r24
+ 958:	88 0f       	add	r24, r24
+ 95a:	80 93 ec 00 	sts	0x00EC, r24
+		cmd[1] |= cmd0;
+ 95e:	90 91 ec 00 	lds	r25, 0x00EC
+ 962:	80 91 ea 00 	lds	r24, 0x00EA
+ 966:	89 2b       	or	r24, r25
+ 968:	80 93 ec 00 	sts	0x00EC, r24
+		offset = 1;
+ 96c:	81 e0       	ldi	r24, 0x01	; 1
+ 96e:	8d 83       	std	Y+5, r24	; 0x05
+	}
+	spi( cmd + offset, res, tam );
+ 970:	8d 81       	ldd	r24, Y+5	; 0x05
+ 972:	88 2f       	mov	r24, r24
+ 974:	90 e0       	ldi	r25, 0x00	; 0
+ 976:	85 51       	subi	r24, 0x15	; 21
+ 978:	9f 4f       	sbci	r25, 0xFF	; 255
+ 97a:	49 81       	ldd	r20, Y+1	; 0x01
+ 97c:	5a 81       	ldd	r21, Y+2	; 0x02
+ 97e:	2f ee       	ldi	r18, 0xEF	; 239
+ 980:	30 e0       	ldi	r19, 0x00	; 0
+ 982:	b9 01       	movw	r22, r18
+ 984:	25 df       	rcall	.-438    	; 0x7d0 <spi>
+}
+ 986:	0f 90       	pop	r0
+ 988:	0f 90       	pop	r0
+ 98a:	0f 90       	pop	r0
+ 98c:	0f 90       	pop	r0
+ 98e:	0f 90       	pop	r0
+ 990:	cf 91       	pop	r28
+ 992:	df 91       	pop	r29
+ 994:	08 95       	ret
+
+00000996 <test8253_normal_write>:
+0x22,
+};
+
+
+void test8253_normal_write()
+{
+ 996:	df 93       	push	r29
+ 998:	cf 93       	push	r28
+ 99a:	cd b7       	in	r28, 0x3d	; 61
+ 99c:	de b7       	in	r29, 0x3e	; 62
+
+
+}
+ 99e:	cf 91       	pop	r28
+ 9a0:	df 91       	pop	r29
+ 9a2:	08 95       	ret
+
+000009a4 <spiOneByte>:
+/* Sends one byte over SPI.
+   Returns the data in.
+*/
+
+static byte_t spiOneByte(byte_t dataOut)
+{
+ 9a4:	df 93       	push	r29
+ 9a6:	cf 93       	push	r28
+ 9a8:	00 d0       	rcall	.+0      	; 0x9aa <spiOneByte+0x6>
+ 9aa:	0f 92       	push	r0
+ 9ac:	cd b7       	in	r28, 0x3d	; 61
+ 9ae:	de b7       	in	r29, 0x3e	; 62
+ 9b0:	8b 83       	std	Y+3, r24	; 0x03
+	byte_t	mask;
+	byte_t  dataIn = 0;
+ 9b2:	19 82       	std	Y+1, r1	; 0x01
+
+	for	( mask = 0x80; mask; mask >>= 1 )
+ 9b4:	80 e8       	ldi	r24, 0x80	; 128
+ 9b6:	8a 83       	std	Y+2, r24	; 0x02
+ 9b8:	35 c0       	rjmp	.+106    	; 0xa24 <spiOneByte+0x80>
+	{
+
+		SET_SCK;
+ 9ba:	a8 e3       	ldi	r26, 0x38	; 56
+ 9bc:	b0 e0       	ldi	r27, 0x00	; 0
+ 9be:	e8 e3       	ldi	r30, 0x38	; 56
+ 9c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 9c2:	80 81       	ld	r24, Z
+ 9c4:	80 68       	ori	r24, 0x80	; 128
+ 9c6:	8c 93       	st	X, r24
+		if	( dataOut & mask )
+ 9c8:	9b 81       	ldd	r25, Y+3	; 0x03
+ 9ca:	8a 81       	ldd	r24, Y+2	; 0x02
+ 9cc:	89 23       	and	r24, r25
+ 9ce:	88 23       	and	r24, r24
+ 9d0:	39 f0       	breq	.+14     	; 0x9e0 <spiOneByte+0x3c>
+		{
+			SET_MOSI;            
+ 9d2:	a8 e3       	ldi	r26, 0x38	; 56
+ 9d4:	b0 e0       	ldi	r27, 0x00	; 0
+ 9d6:	e8 e3       	ldi	r30, 0x38	; 56
+ 9d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 9da:	80 81       	ld	r24, Z
+ 9dc:	80 62       	ori	r24, 0x20	; 32
+ 9de:	8c 93       	st	X, r24
+		}
+//			if (! status & INVERTED_SCK_MASK )
+		delay();
+ 9e0:	e9 de       	rcall	.-558    	; 0x7b4 <delay>
+
+		dataIn <<= 1;
+ 9e2:	89 81       	ldd	r24, Y+1	; 0x01
+ 9e4:	88 0f       	add	r24, r24
+ 9e6:	89 83       	std	Y+1, r24	; 0x01
+		if	( PIN & MISO_MASK )
+ 9e8:	e6 e3       	ldi	r30, 0x36	; 54
+ 9ea:	f0 e0       	ldi	r31, 0x00	; 0
+ 9ec:	80 81       	ld	r24, Z
+ 9ee:	88 2f       	mov	r24, r24
+ 9f0:	90 e0       	ldi	r25, 0x00	; 0
+ 9f2:	80 74       	andi	r24, 0x40	; 64
+ 9f4:	90 70       	andi	r25, 0x00	; 0
+ 9f6:	00 97       	sbiw	r24, 0x00	; 0
+ 9f8:	19 f0       	breq	.+6      	; 0xa00 <spiOneByte+0x5c>
+		{
+			dataIn++;
+ 9fa:	89 81       	ldd	r24, Y+1	; 0x01
+ 9fc:	8f 5f       	subi	r24, 0xFF	; 255
+ 9fe:	89 83       	std	Y+1, r24	; 0x01
+		}
+		CLR_SCK;
+ a00:	a8 e3       	ldi	r26, 0x38	; 56
+ a02:	b0 e0       	ldi	r27, 0x00	; 0
+ a04:	e8 e3       	ldi	r30, 0x38	; 56
+ a06:	f0 e0       	ldi	r31, 0x00	; 0
+ a08:	80 81       	ld	r24, Z
+ a0a:	8f 77       	andi	r24, 0x7F	; 127
+ a0c:	8c 93       	st	X, r24
+        delay();
+ a0e:	d2 de       	rcall	.-604    	; 0x7b4 <delay>
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+		CLR_MOSI;		
+ a10:	a8 e3       	ldi	r26, 0x38	; 56
+ a12:	b0 e0       	ldi	r27, 0x00	; 0
+ a14:	e8 e3       	ldi	r30, 0x38	; 56
+ a16:	f0 e0       	ldi	r31, 0x00	; 0
+ a18:	80 81       	ld	r24, Z
+ a1a:	8f 7d       	andi	r24, 0xDF	; 223
+ a1c:	8c 93       	st	X, r24
+static byte_t spiOneByte(byte_t dataOut)
+{
+	byte_t	mask;
+	byte_t  dataIn = 0;
+
+	for	( mask = 0x80; mask; mask >>= 1 )
+ a1e:	8a 81       	ldd	r24, Y+2	; 0x02
+ a20:	86 95       	lsr	r24
+ a22:	8a 83       	std	Y+2, r24	; 0x02
+ a24:	8a 81       	ldd	r24, Y+2	; 0x02
+ a26:	88 23       	and	r24, r24
+ a28:	41 f6       	brne	.-112    	; 0x9ba <spiOneByte+0x16>
+        delay();
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+		CLR_MOSI;		
+	}
+	return dataIn;
+ a2a:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ a2c:	0f 90       	pop	r0
+ a2e:	0f 90       	pop	r0
+ a30:	0f 90       	pop	r0
+ a32:	cf 91       	pop	r28
+ a34:	df 91       	pop	r29
+ a36:	08 95       	ret
+
+00000a38 <spiOneCommand>:
+	// ----------------------------------------------------------------------
+// Issue one SPI command.
+// ----------------------------------------------------------------------
+//__attribute__((naked))
+static	void	spiOneCommand ( byte_t* cmd, byte_t* res, int i )
+{
+ a38:	df 93       	push	r29
+ a3a:	cf 93       	push	r28
+ a3c:	cd b7       	in	r28, 0x3d	; 61
+ a3e:	de b7       	in	r29, 0x3e	; 62
+ a40:	29 97       	sbiw	r28, 0x09	; 9
+ a42:	0f b6       	in	r0, 0x3f	; 63
+ a44:	f8 94       	cli
+ a46:	de bf       	out	0x3e, r29	; 62
+ a48:	0f be       	out	0x3f, r0	; 63
+ a4a:	cd bf       	out	0x3d, r28	; 61
+ a4c:	9d 83       	std	Y+5, r25	; 0x05
+ a4e:	8c 83       	std	Y+4, r24	; 0x04
+ a50:	7f 83       	std	Y+7, r23	; 0x07
+ a52:	6e 83       	std	Y+6, r22	; 0x06
+ a54:	59 87       	std	Y+9, r21	; 0x09
+ a56:	48 87       	std	Y+8, r20	; 0x08
+ a58:	1b c0       	rjmp	.+54     	; 0xa90 <spiOneCommand+0x58>
+	byte_t	r;
+    byte_t  mask;	
+
+	while (i != 0)
+	{
+	  	i--;
+ a5a:	88 85       	ldd	r24, Y+8	; 0x08
+ a5c:	99 85       	ldd	r25, Y+9	; 0x09
+ a5e:	01 97       	sbiw	r24, 0x01	; 1
+ a60:	99 87       	std	Y+9, r25	; 0x09
+ a62:	88 87       	std	Y+8, r24	; 0x08
+		c = *cmd++;
+ a64:	ec 81       	ldd	r30, Y+4	; 0x04
+ a66:	fd 81       	ldd	r31, Y+5	; 0x05
+ a68:	80 81       	ld	r24, Z
+ a6a:	8b 83       	std	Y+3, r24	; 0x03
+ a6c:	8c 81       	ldd	r24, Y+4	; 0x04
+ a6e:	9d 81       	ldd	r25, Y+5	; 0x05
+ a70:	01 96       	adiw	r24, 0x01	; 1
+ a72:	9d 83       	std	Y+5, r25	; 0x05
+ a74:	8c 83       	std	Y+4, r24	; 0x04
+		r = 0;
+ a76:	1a 82       	std	Y+2, r1	; 0x02
+		r = spiOneByte(c);
+ a78:	8b 81       	ldd	r24, Y+3	; 0x03
+ a7a:	94 df       	rcall	.-216    	; 0x9a4 <spiOneByte>
+ a7c:	8a 83       	std	Y+2, r24	; 0x02
+		*res++ = r;
+ a7e:	ee 81       	ldd	r30, Y+6	; 0x06
+ a80:	ff 81       	ldd	r31, Y+7	; 0x07
+ a82:	8a 81       	ldd	r24, Y+2	; 0x02
+ a84:	80 83       	st	Z, r24
+ a86:	8e 81       	ldd	r24, Y+6	; 0x06
+ a88:	9f 81       	ldd	r25, Y+7	; 0x07
+ a8a:	01 96       	adiw	r24, 0x01	; 1
+ a8c:	9f 83       	std	Y+7, r25	; 0x07
+ a8e:	8e 83       	std	Y+6, r24	; 0x06
+{
+	byte_t	c;
+	byte_t	r;
+    byte_t  mask;	
+
+	while (i != 0)
+ a90:	88 85       	ldd	r24, Y+8	; 0x08
+ a92:	99 85       	ldd	r25, Y+9	; 0x09
+ a94:	00 97       	sbiw	r24, 0x00	; 0
+ a96:	09 f7       	brne	.-62     	; 0xa5a <spiOneCommand+0x22>
+		c = *cmd++;
+		r = 0;
+		r = spiOneByte(c);
+		*res++ = r;
+	}
+}
+ a98:	29 96       	adiw	r28, 0x09	; 9
+ a9a:	0f b6       	in	r0, 0x3f	; 63
+ a9c:	f8 94       	cli
+ a9e:	de bf       	out	0x3e, r29	; 62
+ aa0:	0f be       	out	0x3f, r0	; 63
+ aa2:	cd bf       	out	0x3d, r28	; 61
+ aa4:	cf 91       	pop	r28
+ aa6:	df 91       	pop	r29
+ aa8:	08 95       	ret
+
+00000aaa <CheckChipErase>:
+
+void CheckChipErase()
+{
+ aaa:	df 93       	push	r29
+ aac:	cf 93       	push	r28
+ aae:	00 d0       	rcall	.+0      	; 0xab0 <CheckChipErase+0x6>
+ ab0:	00 d0       	rcall	.+0      	; 0xab2 <CheckChipErase+0x8>
+ ab2:	cd b7       	in	r28, 0x3d	; 61
+ ab4:	de b7       	in	r29, 0x3e	; 62
+    byte_t result[4] = {0x00,0x00,0x00,0x00} ;
+ ab6:	19 82       	std	Y+1, r1	; 0x01
+ ab8:	1a 82       	std	Y+2, r1	; 0x02
+ aba:	1b 82       	std	Y+3, r1	; 0x03
+ abc:	1c 82       	std	Y+4, r1	; 0x04
+ abe:	09 c0       	rjmp	.+18     	; 0xad2 <CheckChipErase+0x28>
+    while(result[3] != 0xFF)
+    {
+        spiOneCommand(readByte_Cmm,result,4);//Leo la direccion 0x00
+ ac0:	8e e6       	ldi	r24, 0x6E	; 110
+ ac2:	90 e0       	ldi	r25, 0x00	; 0
+ ac4:	9e 01       	movw	r18, r28
+ ac6:	2f 5f       	subi	r18, 0xFF	; 255
+ ac8:	3f 4f       	sbci	r19, 0xFF	; 255
+ aca:	b9 01       	movw	r22, r18
+ acc:	44 e0       	ldi	r20, 0x04	; 4
+ ace:	50 e0       	ldi	r21, 0x00	; 0
+ ad0:	b3 df       	rcall	.-154    	; 0xa38 <spiOneCommand>
+}
+
+void CheckChipErase()
+{
+    byte_t result[4] = {0x00,0x00,0x00,0x00} ;
+    while(result[3] != 0xFF)
+ ad2:	8c 81       	ldd	r24, Y+4	; 0x04
+ ad4:	8f 3f       	cpi	r24, 0xFF	; 255
+ ad6:	a1 f7       	brne	.-24     	; 0xac0 <CheckChipErase+0x16>
+    {
+        spiOneCommand(readByte_Cmm,result,4);//Leo la direccion 0x00
+    }
+}
+ ad8:	0f 90       	pop	r0
+ ada:	0f 90       	pop	r0
+ adc:	0f 90       	pop	r0
+ ade:	0f 90       	pop	r0
+ ae0:	cf 91       	pop	r28
+ ae2:	df 91       	pop	r29
+ ae4:	08 95       	ret
+
+00000ae6 <WaitDateWriteCompletion>:
+
+void WaitDateWriteCompletion(byte_t writeByte, byte_t address, byte_t size)
+{
+ ae6:	df 93       	push	r29
+ ae8:	cf 93       	push	r28
+ aea:	cd b7       	in	r28, 0x3d	; 61
+ aec:	de b7       	in	r29, 0x3e	; 62
+ aee:	27 97       	sbiw	r28, 0x07	; 7
+ af0:	0f b6       	in	r0, 0x3f	; 63
+ af2:	f8 94       	cli
+ af4:	de bf       	out	0x3e, r29	; 62
+ af6:	0f be       	out	0x3f, r0	; 63
+ af8:	cd bf       	out	0x3d, r28	; 61
+ afa:	8d 83       	std	Y+5, r24	; 0x05
+ afc:	6e 83       	std	Y+6, r22	; 0x06
+ afe:	4f 83       	std	Y+7, r20	; 0x07
+    byte_t result[4] = {0x00,0x00,0x00,(~writeByte) };
+ b00:	8d 81       	ldd	r24, Y+5	; 0x05
+ b02:	80 95       	com	r24
+ b04:	19 82       	std	Y+1, r1	; 0x01
+ b06:	1a 82       	std	Y+2, r1	; 0x02
+ b08:	1b 82       	std	Y+3, r1	; 0x03
+ b0a:	8c 83       	std	Y+4, r24	; 0x04
+    readByte_Cmm [2] = address;
+ b0c:	8e 81       	ldd	r24, Y+6	; 0x06
+ b0e:	80 93 70 00 	sts	0x0070, r24
+ b12:	0a c0       	rjmp	.+20     	; 0xb28 <WaitDateWriteCompletion+0x42>
+    while (result[3] != writeByte)
+    {
+        spiOneCommand(readByte_Cmm,result,size);
+ b14:	8f 81       	ldd	r24, Y+7	; 0x07
+ b16:	48 2f       	mov	r20, r24
+ b18:	50 e0       	ldi	r21, 0x00	; 0
+ b1a:	8e e6       	ldi	r24, 0x6E	; 110
+ b1c:	90 e0       	ldi	r25, 0x00	; 0
+ b1e:	9e 01       	movw	r18, r28
+ b20:	2f 5f       	subi	r18, 0xFF	; 255
+ b22:	3f 4f       	sbci	r19, 0xFF	; 255
+ b24:	b9 01       	movw	r22, r18
+ b26:	88 df       	rcall	.-240    	; 0xa38 <spiOneCommand>
+
+void WaitDateWriteCompletion(byte_t writeByte, byte_t address, byte_t size)
+{
+    byte_t result[4] = {0x00,0x00,0x00,(~writeByte) };
+    readByte_Cmm [2] = address;
+    while (result[3] != writeByte)
+ b28:	9c 81       	ldd	r25, Y+4	; 0x04
+ b2a:	8d 81       	ldd	r24, Y+5	; 0x05
+ b2c:	98 17       	cp	r25, r24
+ b2e:	91 f7       	brne	.-28     	; 0xb14 <WaitDateWriteCompletion+0x2e>
+    {
+        spiOneCommand(readByte_Cmm,result,size);
+    }
+}
+ b30:	27 96       	adiw	r28, 0x07	; 7
+ b32:	0f b6       	in	r0, 0x3f	; 63
+ b34:	f8 94       	cli
+ b36:	de bf       	out	0x3e, r29	; 62
+ b38:	0f be       	out	0x3f, r0	; 63
+ b3a:	cd bf       	out	0x3d, r28	; 61
+ b3c:	cf 91       	pop	r28
+ b3e:	df 91       	pop	r29
+ b40:	08 95       	ret
+
+00000b42 <ProgramLed>:
+
+
+void ProgramLed()
+{
+ b42:	df 93       	push	r29
+ b44:	cf 93       	push	r28
+ b46:	cd b7       	in	r28, 0x3d	; 61
+ b48:	de b7       	in	r29, 0x3e	; 62
+ b4a:	28 97       	sbiw	r28, 0x08	; 8
+ b4c:	0f b6       	in	r0, 0x3f	; 63
+ b4e:	f8 94       	cli
+ b50:	de bf       	out	0x3e, r29	; 62
+ b52:	0f be       	out	0x3f, r0	; 63
+ b54:	cd bf       	out	0x3d, r28	; 61
+    byte_t address = 0 ,i ;
+ b56:	1c 82       	std	Y+4, r1	; 0x04
+    byte_t addressTotal = 45;
+ b58:	8d e2       	ldi	r24, 0x2D	; 45
+ b5a:	8a 83       	std	Y+2, r24	; 0x02
+    byte_t result[4];
+    byte_t mask;
+
+        PORTD &= ~_BV(4);   //Enable Buffer
+ b5c:	a2 e3       	ldi	r26, 0x32	; 50
+ b5e:	b0 e0       	ldi	r27, 0x00	; 0
+ b60:	e2 e3       	ldi	r30, 0x32	; 50
+ b62:	f0 e0       	ldi	r31, 0x00	; 0
+ b64:	80 81       	ld	r24, Z
+ b66:	8f 7e       	andi	r24, 0xEF	; 239
+ b68:	8c 93       	st	X, r24
+		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+ b6a:	e7 e3       	ldi	r30, 0x37	; 55
+ b6c:	f0 e0       	ldi	r31, 0x00	; 0
+ b6e:	81 eb       	ldi	r24, 0xB1	; 177
+ b70:	80 83       	st	Z, r24
+		PORT = mask;
+ b72:	e8 e3       	ldi	r30, 0x38	; 56
+ b74:	f0 e0       	ldi	r31, 0x00	; 0
+ b76:	89 81       	ldd	r24, Y+1	; 0x01
+ b78:	80 83       	st	Z, r24
+
+
+    spiOneCommand(programEnable_Cmm,result,4);
+ b7a:	82 e6       	ldi	r24, 0x62	; 98
+ b7c:	90 e0       	ldi	r25, 0x00	; 0
+ b7e:	9e 01       	movw	r18, r28
+ b80:	2b 5f       	subi	r18, 0xFB	; 251
+ b82:	3f 4f       	sbci	r19, 0xFF	; 255
+ b84:	b9 01       	movw	r22, r18
+ b86:	44 e0       	ldi	r20, 0x04	; 4
+ b88:	50 e0       	ldi	r21, 0x00	; 0
+ b8a:	56 df       	rcall	.-340    	; 0xa38 <spiOneCommand>
+    
+    spiOneCommand(chipErase_Cmm,result,4);
+ b8c:	86 e6       	ldi	r24, 0x66	; 102
+ b8e:	90 e0       	ldi	r25, 0x00	; 0
+ b90:	9e 01       	movw	r18, r28
+ b92:	2b 5f       	subi	r18, 0xFB	; 251
+ b94:	3f 4f       	sbci	r19, 0xFF	; 255
+ b96:	b9 01       	movw	r22, r18
+ b98:	44 e0       	ldi	r20, 0x04	; 4
+ b9a:	50 e0       	ldi	r21, 0x00	; 0
+ b9c:	4d df       	rcall	.-358    	; 0xa38 <spiOneCommand>
+    CheckChipErase();    
+ b9e:	85 df       	rcall	.-246    	; 0xaaa <CheckChipErase>
+
+    for (i = 0; i < addressTotal; i++,address++)
+ ba0:	1b 82       	std	Y+3, r1	; 0x03
+ ba2:	20 c0       	rjmp	.+64     	; 0xbe4 <ProgramLed+0xa2>
+    {
+        writeByte_Cmm[2] = address;
+ ba4:	8c 81       	ldd	r24, Y+4	; 0x04
+ ba6:	80 93 6c 00 	sts	0x006C, r24
+        writeByte_Cmm[3] = led_1s_program[i];        
+ baa:	8b 81       	ldd	r24, Y+3	; 0x03
+ bac:	88 2f       	mov	r24, r24
+ bae:	90 e0       	ldi	r25, 0x00	; 0
+ bb0:	fc 01       	movw	r30, r24
+ bb2:	e1 56       	subi	r30, 0x61	; 97
+ bb4:	ff 4f       	sbci	r31, 0xFF	; 255
+ bb6:	80 81       	ld	r24, Z
+ bb8:	80 93 6d 00 	sts	0x006D, r24
+        spiOneCommand(writeByte_Cmm,result,4);
+ bbc:	8a e6       	ldi	r24, 0x6A	; 106
+ bbe:	90 e0       	ldi	r25, 0x00	; 0
+ bc0:	9e 01       	movw	r18, r28
+ bc2:	2b 5f       	subi	r18, 0xFB	; 251
+ bc4:	3f 4f       	sbci	r19, 0xFF	; 255
+ bc6:	b9 01       	movw	r22, r18
+ bc8:	44 e0       	ldi	r20, 0x04	; 4
+ bca:	50 e0       	ldi	r21, 0x00	; 0
+ bcc:	35 df       	rcall	.-406    	; 0xa38 <spiOneCommand>
+        WaitDateWriteCompletion(writeByte_Cmm[3], address, 4);
+ bce:	80 91 6d 00 	lds	r24, 0x006D
+ bd2:	6c 81       	ldd	r22, Y+4	; 0x04
+ bd4:	44 e0       	ldi	r20, 0x04	; 4
+ bd6:	87 df       	rcall	.-242    	; 0xae6 <WaitDateWriteCompletion>
+    spiOneCommand(programEnable_Cmm,result,4);
+    
+    spiOneCommand(chipErase_Cmm,result,4);
+    CheckChipErase();    
+
+    for (i = 0; i < addressTotal; i++,address++)
+ bd8:	8b 81       	ldd	r24, Y+3	; 0x03
+ bda:	8f 5f       	subi	r24, 0xFF	; 255
+ bdc:	8b 83       	std	Y+3, r24	; 0x03
+ bde:	8c 81       	ldd	r24, Y+4	; 0x04
+ be0:	8f 5f       	subi	r24, 0xFF	; 255
+ be2:	8c 83       	std	Y+4, r24	; 0x04
+ be4:	9b 81       	ldd	r25, Y+3	; 0x03
+ be6:	8a 81       	ldd	r24, Y+2	; 0x02
+ be8:	98 17       	cp	r25, r24
+ bea:	e0 f2       	brcs	.-72     	; 0xba4 <ProgramLed+0x62>
+        writeByte_Cmm[3] = led_1s_program[i];        
+        spiOneCommand(writeByte_Cmm,result,4);
+        WaitDateWriteCompletion(writeByte_Cmm[3], address, 4);
+    }
+    //Fin, bajo el reset y pongo todo como entrada.
+        DDR  = 0x00;
+ bec:	e7 e3       	ldi	r30, 0x37	; 55
+ bee:	f0 e0       	ldi	r31, 0x00	; 0
+ bf0:	10 82       	st	Z, r1
+		PORT = 0x00;
+ bf2:	e8 e3       	ldi	r30, 0x38	; 56
+ bf4:	f0 e0       	ldi	r31, 0x00	; 0
+ bf6:	10 82       	st	Z, r1
+		PORTD |= _BV(4);
+ bf8:	a2 e3       	ldi	r26, 0x32	; 50
+ bfa:	b0 e0       	ldi	r27, 0x00	; 0
+ bfc:	e2 e3       	ldi	r30, 0x32	; 50
+ bfe:	f0 e0       	ldi	r31, 0x00	; 0
+ c00:	80 81       	ld	r24, Z
+ c02:	80 61       	ori	r24, 0x10	; 16
+ c04:	8c 93       	st	X, r24
+}
+ c06:	28 96       	adiw	r28, 0x08	; 8
+ c08:	0f b6       	in	r0, 0x3f	; 63
+ c0a:	f8 94       	cli
+ c0c:	de bf       	out	0x3e, r29	; 62
+ c0e:	0f be       	out	0x3f, r0	; 63
+ c10:	cd bf       	out	0x3d, r28	; 61
+ c12:	cf 91       	pop	r28
+ c14:	df 91       	pop	r29
+ c16:	08 95       	ret
+
+00000c18 <delay>:
+// ----------------------------------------------------------------------
+// Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
+// ----------------------------------------------------------------------
+__attribute__((always_inline))
+static	void	delay ( void )
+{
+ c18:	df 93       	push	r29
+ c1a:	cf 93       	push	r28
+ c1c:	cd b7       	in	r28, 0x3d	; 61
+ c1e:	de b7       	in	r29, 0x3e	; 62
+	asm volatile(
+ c20:	80 91 f4 00 	lds	r24, 0x00F4
+ c24:	08 2e       	mov	r0, r24
+ c26:	00 c0       	rjmp	.+0      	; 0xc28 <delay+0x10>
+ c28:	00 00       	nop
+ c2a:	0a 94       	dec	r0
+ c2c:	e1 f7       	brne	.-8      	; 0xc26 <delay+0xe>
+		"0:	rjmp	1f		\n"
+		"1:	nop			\n"
+		"	dec	__tmp_reg__	\n"
+		"	brne	0b		\n"
+		: : "r" (sck_period) );
+}
+ c2e:	cf 91       	pop	r28
+ c30:	df 91       	pop	r29
+ c32:	08 95       	ret
+
+00000c34 <spi>:
+// ----------------------------------------------------------------------
+// Issue one SPI command.
+// ----------------------------------------------------------------------
+//__attribute__((naked))
+static	void	spi ( byte_t* cmd, byte_t* res, int i )
+{
+ c34:	df 93       	push	r29
+ c36:	cf 93       	push	r28
+ c38:	cd b7       	in	r28, 0x3d	; 61
+ c3a:	de b7       	in	r29, 0x3e	; 62
+ c3c:	29 97       	sbiw	r28, 0x09	; 9
+ c3e:	0f b6       	in	r0, 0x3f	; 63
+ c40:	f8 94       	cli
+ c42:	de bf       	out	0x3e, r29	; 62
+ c44:	0f be       	out	0x3f, r0	; 63
+ c46:	cd bf       	out	0x3d, r28	; 61
+ c48:	9d 83       	std	Y+5, r25	; 0x05
+ c4a:	8c 83       	std	Y+4, r24	; 0x04
+ c4c:	7f 83       	std	Y+7, r23	; 0x07
+ c4e:	6e 83       	std	Y+6, r22	; 0x06
+ c50:	59 87       	std	Y+9, r21	; 0x09
+ c52:	48 87       	std	Y+8, r20	; 0x08
+ c54:	53 c0       	rjmp	.+166    	; 0xcfc <spi+0xc8>
+	byte_t	r;
+	byte_t	mask;
+
+	while (i != 0)
+	{
+	  i--;
+ c56:	88 85       	ldd	r24, Y+8	; 0x08
+ c58:	99 85       	ldd	r25, Y+9	; 0x09
+ c5a:	01 97       	sbiw	r24, 0x01	; 1
+ c5c:	99 87       	std	Y+9, r25	; 0x09
+ c5e:	88 87       	std	Y+8, r24	; 0x08
+		c = *cmd++;
+ c60:	ec 81       	ldd	r30, Y+4	; 0x04
+ c62:	fd 81       	ldd	r31, Y+5	; 0x05
+ c64:	80 81       	ld	r24, Z
+ c66:	8b 83       	std	Y+3, r24	; 0x03
+ c68:	8c 81       	ldd	r24, Y+4	; 0x04
+ c6a:	9d 81       	ldd	r25, Y+5	; 0x05
+ c6c:	01 96       	adiw	r24, 0x01	; 1
+ c6e:	9d 83       	std	Y+5, r25	; 0x05
+ c70:	8c 83       	std	Y+4, r24	; 0x04
+		r = 0;
+ c72:	1a 82       	std	Y+2, r1	; 0x02
+		for	( mask = 0x80; mask; mask >>= 1 )
+ c74:	80 e8       	ldi	r24, 0x80	; 128
+ c76:	89 83       	std	Y+1, r24	; 0x01
+ c78:	35 c0       	rjmp	.+106    	; 0xce4 <spi+0xb0>
+		{
+			if	( c & mask )
+ c7a:	8b 81       	ldd	r24, Y+3	; 0x03
+ c7c:	99 81       	ldd	r25, Y+1	; 0x01
+ c7e:	89 23       	and	r24, r25
+ c80:	88 23       	and	r24, r24
+ c82:	39 f0       	breq	.+14     	; 0xc92 <spi+0x5e>
+			{
+				PORT |= MOSI_MASK;
+ c84:	a8 e3       	ldi	r26, 0x38	; 56
+ c86:	b0 e0       	ldi	r27, 0x00	; 0
+ c88:	e8 e3       	ldi	r30, 0x38	; 56
+ c8a:	f0 e0       	ldi	r31, 0x00	; 0
+ c8c:	80 81       	ld	r24, Z
+ c8e:	80 62       	ori	r24, 0x20	; 32
+ c90:	8c 93       	st	X, r24
+			}
+//			if (! status & INVERTED_SCK_MASK )
+				delay();
+ c92:	c2 df       	rcall	.-124    	; 0xc18 <delay>
+
+			PORT |= SCK_MASK;
+ c94:	a8 e3       	ldi	r26, 0x38	; 56
+ c96:	b0 e0       	ldi	r27, 0x00	; 0
+ c98:	e8 e3       	ldi	r30, 0x38	; 56
+ c9a:	f0 e0       	ldi	r31, 0x00	; 0
+ c9c:	80 81       	ld	r24, Z
+ c9e:	80 68       	ori	r24, 0x80	; 128
+ ca0:	8c 93       	st	X, r24
+			delay();
+ ca2:	ba df       	rcall	.-140    	; 0xc18 <delay>
+			r <<= 1;
+ ca4:	8a 81       	ldd	r24, Y+2	; 0x02
+ ca6:	88 0f       	add	r24, r24
+ ca8:	8a 83       	std	Y+2, r24	; 0x02
+			if	( PIN & MISO_MASK )
+ caa:	e6 e3       	ldi	r30, 0x36	; 54
+ cac:	f0 e0       	ldi	r31, 0x00	; 0
+ cae:	80 81       	ld	r24, Z
+ cb0:	88 2f       	mov	r24, r24
+ cb2:	90 e0       	ldi	r25, 0x00	; 0
+ cb4:	80 74       	andi	r24, 0x40	; 64
+ cb6:	90 70       	andi	r25, 0x00	; 0
+ cb8:	00 97       	sbiw	r24, 0x00	; 0
+ cba:	19 f0       	breq	.+6      	; 0xcc2 <spi+0x8e>
+			{
+				r++;
+ cbc:	8a 81       	ldd	r24, Y+2	; 0x02
+ cbe:	8f 5f       	subi	r24, 0xFF	; 255
+ cc0:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			PORT &= ~ SCK_MASK;
+ cc2:	a8 e3       	ldi	r26, 0x38	; 56
+ cc4:	b0 e0       	ldi	r27, 0x00	; 0
+ cc6:	e8 e3       	ldi	r30, 0x38	; 56
+ cc8:	f0 e0       	ldi	r31, 0x00	; 0
+ cca:	80 81       	ld	r24, Z
+ ccc:	8f 77       	andi	r24, 0x7F	; 127
+ cce:	8c 93       	st	X, r24
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+			
+			PORT &= ~ MOSI_MASK;
+ cd0:	a8 e3       	ldi	r26, 0x38	; 56
+ cd2:	b0 e0       	ldi	r27, 0x00	; 0
+ cd4:	e8 e3       	ldi	r30, 0x38	; 56
+ cd6:	f0 e0       	ldi	r31, 0x00	; 0
+ cd8:	80 81       	ld	r24, Z
+ cda:	8f 7d       	andi	r24, 0xDF	; 223
+ cdc:	8c 93       	st	X, r24
+	while (i != 0)
+	{
+	  i--;
+		c = *cmd++;
+		r = 0;
+		for	( mask = 0x80; mask; mask >>= 1 )
+ cde:	89 81       	ldd	r24, Y+1	; 0x01
+ ce0:	86 95       	lsr	r24
+ ce2:	89 83       	std	Y+1, r24	; 0x01
+ ce4:	89 81       	ldd	r24, Y+1	; 0x01
+ ce6:	88 23       	and	r24, r24
+ ce8:	41 f6       	brne	.-112    	; 0xc7a <spi+0x46>
+//			if ( status & INVERTED_SCK_MASK )
+//				delay();
+			
+			PORT &= ~ MOSI_MASK;
+		}
+		*res++ = r;
+ cea:	ee 81       	ldd	r30, Y+6	; 0x06
+ cec:	ff 81       	ldd	r31, Y+7	; 0x07
+ cee:	8a 81       	ldd	r24, Y+2	; 0x02
+ cf0:	80 83       	st	Z, r24
+ cf2:	8e 81       	ldd	r24, Y+6	; 0x06
+ cf4:	9f 81       	ldd	r25, Y+7	; 0x07
+ cf6:	01 96       	adiw	r24, 0x01	; 1
+ cf8:	9f 83       	std	Y+7, r25	; 0x07
+ cfa:	8e 83       	std	Y+6, r24	; 0x06
+{
+	byte_t	c;
+	byte_t	r;
+	byte_t	mask;
+
+	while (i != 0)
+ cfc:	88 85       	ldd	r24, Y+8	; 0x08
+ cfe:	99 85       	ldd	r25, Y+9	; 0x09
+ d00:	00 97       	sbiw	r24, 0x00	; 0
+ d02:	09 f0       	breq	.+2      	; 0xd06 <spi+0xd2>
+ d04:	a8 cf       	rjmp	.-176    	; 0xc56 <spi+0x22>
+			
+			PORT &= ~ MOSI_MASK;
+		}
+		*res++ = r;
+	}
+}
+ d06:	29 96       	adiw	r28, 0x09	; 9
+ d08:	0f b6       	in	r0, 0x3f	; 63
+ d0a:	f8 94       	cli
+ d0c:	de bf       	out	0x3e, r29	; 62
+ d0e:	0f be       	out	0x3f, r0	; 63
+ d10:	cd bf       	out	0x3d, r28	; 61
+ d12:	cf 91       	pop	r28
+ d14:	df 91       	pop	r29
+ d16:	08 95       	ret
+
+00000d18 <spi_rw>:
+
+// ----------------------------------------------------------------------
+// Create and issue a read or write SPI command.
+// ----------------------------------------------------------------------
+static	void	spi_rw ( void )
+{
+ d18:	df 93       	push	r29
+ d1a:	cf 93       	push	r28
+ d1c:	00 d0       	rcall	.+0      	; 0xd1e <spi_rw+0x6>
+ d1e:	00 d0       	rcall	.+0      	; 0xd20 <spi_rw+0x8>
+ d20:	0f 92       	push	r0
+ d22:	cd b7       	in	r28, 0x3d	; 61
+ d24:	de b7       	in	r29, 0x3e	; 62
+	unsigned char offset = 0;
+ d26:	1d 82       	std	Y+5, r1	; 0x05
+	uint_t	a;
+	uint_t	tam = (status & TAMANIO_MASK);	
+ d28:	80 91 04 01 	lds	r24, 0x0104
+ d2c:	88 2f       	mov	r24, r24
+ d2e:	90 e0       	ldi	r25, 0x00	; 0
+ d30:	87 70       	andi	r24, 0x07	; 7
+ d32:	90 70       	andi	r25, 0x00	; 0
+ d34:	9a 83       	std	Y+2, r25	; 0x02
+ d36:	89 83       	std	Y+1, r24	; 0x01
+
+	a = address++;
+ d38:	80 91 f7 00 	lds	r24, 0x00F7
+ d3c:	90 91 f8 00 	lds	r25, 0x00F8
+ d40:	9c 83       	std	Y+4, r25	; 0x04
+ d42:	8b 83       	std	Y+3, r24	; 0x03
+ d44:	01 96       	adiw	r24, 0x01	; 1
+ d46:	90 93 f8 00 	sts	0x00F8, r25
+ d4a:	80 93 f7 00 	sts	0x00F7, r24
+	cmd[0] = cmd0;
+ d4e:	80 91 fb 00 	lds	r24, 0x00FB
+ d52:	80 93 fc 00 	sts	0x00FC, r24
+	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
+ d56:	80 91 04 01 	lds	r24, 0x0104
+ d5a:	88 2f       	mov	r24, r24
+ d5c:	90 e0       	ldi	r25, 0x00	; 0
+ d5e:	88 73       	andi	r24, 0x38	; 56
+ d60:	90 70       	andi	r25, 0x00	; 0
+ d62:	00 97       	sbiw	r24, 0x00	; 0
+ d64:	a9 f4       	brne	.+42     	; 0xd90 <spi_rw+0x78>
+ d66:	80 91 fb 00 	lds	r24, 0x00FB
+ d6a:	88 23       	and	r24, r24
+ d6c:	8c f0       	brlt	.+34     	; 0xd90 <spi_rw+0x78>
+	{	//Es AVR 							// NOT eeprom
+		if ( a & 1 )
+ d6e:	8b 81       	ldd	r24, Y+3	; 0x03
+ d70:	9c 81       	ldd	r25, Y+4	; 0x04
+ d72:	81 70       	andi	r24, 0x01	; 1
+ d74:	90 70       	andi	r25, 0x00	; 0
+ d76:	88 23       	and	r24, r24
+ d78:	29 f0       	breq	.+10     	; 0xd84 <spi_rw+0x6c>
+		{
+			cmd[0] |= 0x08;	//La H
+ d7a:	80 91 fc 00 	lds	r24, 0x00FC
+ d7e:	88 60       	ori	r24, 0x08	; 8
+ d80:	80 93 fc 00 	sts	0x00FC, r24
+		}
+		a >>= 1;	//Corro la direccion
+ d84:	8b 81       	ldd	r24, Y+3	; 0x03
+ d86:	9c 81       	ldd	r25, Y+4	; 0x04
+ d88:	96 95       	lsr	r25
+ d8a:	87 95       	ror	r24
+ d8c:	9c 83       	std	Y+4, r25	; 0x04
+ d8e:	8b 83       	std	Y+3, r24	; 0x03
+	} 
+	cmd[1] = a >> 8;
+ d90:	8b 81       	ldd	r24, Y+3	; 0x03
+ d92:	9c 81       	ldd	r25, Y+4	; 0x04
+ d94:	89 2f       	mov	r24, r25
+ d96:	99 27       	eor	r25, r25
+ d98:	80 93 fd 00 	sts	0x00FD, r24
+	cmd[2] = a;
+ d9c:	8b 81       	ldd	r24, Y+3	; 0x03
+ d9e:	80 93 fe 00 	sts	0x00FE, r24
+	
+	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
+ da2:	80 91 04 01 	lds	r24, 0x0104
+ da6:	88 2f       	mov	r24, r24
+ da8:	90 e0       	ldi	r25, 0x00	; 0
+ daa:	88 73       	andi	r24, 0x38	; 56
+ dac:	90 70       	andi	r25, 0x00	; 0
+ dae:	80 31       	cpi	r24, 0x10	; 16
+ db0:	91 05       	cpc	r25, r1
+ db2:	81 f4       	brne	.+32     	; 0xdd4 <spi_rw+0xbc>
+	{
+		cmd[1] <<= 3;
+ db4:	80 91 fd 00 	lds	r24, 0x00FD
+ db8:	88 0f       	add	r24, r24
+ dba:	88 0f       	add	r24, r24
+ dbc:	88 0f       	add	r24, r24
+ dbe:	80 93 fd 00 	sts	0x00FD, r24
+		cmd[1] |= cmd0;
+ dc2:	90 91 fd 00 	lds	r25, 0x00FD
+ dc6:	80 91 fb 00 	lds	r24, 0x00FB
+ dca:	89 2b       	or	r24, r25
+ dcc:	80 93 fd 00 	sts	0x00FD, r24
+		offset = 1;
+ dd0:	81 e0       	ldi	r24, 0x01	; 1
+ dd2:	8d 83       	std	Y+5, r24	; 0x05
+	}
+	spi( cmd + offset, res, tam );
+ dd4:	8d 81       	ldd	r24, Y+5	; 0x05
+ dd6:	88 2f       	mov	r24, r24
+ dd8:	90 e0       	ldi	r25, 0x00	; 0
+ dda:	84 50       	subi	r24, 0x04	; 4
+ ddc:	9f 4f       	sbci	r25, 0xFF	; 255
+ dde:	49 81       	ldd	r20, Y+1	; 0x01
+ de0:	5a 81       	ldd	r21, Y+2	; 0x02
+ de2:	20 e0       	ldi	r18, 0x00	; 0
+ de4:	31 e0       	ldi	r19, 0x01	; 1
+ de6:	b9 01       	movw	r22, r18
+ de8:	25 df       	rcall	.-438    	; 0xc34 <spi>
+}
+ dea:	0f 90       	pop	r0
+ dec:	0f 90       	pop	r0
+ dee:	0f 90       	pop	r0
+ df0:	0f 90       	pop	r0
+ df2:	0f 90       	pop	r0
+ df4:	cf 91       	pop	r28
+ df6:	df 91       	pop	r29
+ df8:	08 95       	ret
+
+00000dfa <crc>:
+	.text
+	.global	crc
+	.type	crc, @function
+crc:
+	; crc = 0xffff
+	movw	XL, r24
+ dfa:	dc 01       	movw	r26, r24
+	ldi	crc_h, 0xff
+ dfc:	9f ef       	ldi	r25, 0xFF	; 255
+	ldi	crc_l, 0xff
+ dfe:	8f ef       	ldi	r24, 0xFF	; 255
+	lsl	len
+ e00:	66 0f       	add	r22, r22
+	breq	done
+ e02:	b9 f0       	breq	.+46     	; 0xe32 <done>
+	ldi	zl, lo8(crc4tab)
+ e04:	4e e4       	ldi	r20, 0x4E	; 78
+	ldi	ZH, hi8(crc4tab)
+ e06:	f0 e0       	ldi	r31, 0x00	; 0
+
+00000e08 <next_nibble>:
+
+next_nibble:
+	; b = (len & 1 ? b >> 4 : *data++)
+	swap	b
+ e08:	22 95       	swap	r18
+	sbrs	len, 0
+ e0a:	60 ff       	sbrs	r22, 0
+	ld	b, X+
+ e0c:	2d 91       	ld	r18, X+
+
+	; index = (crc ^ b) & 0x0f
+	mov	ZL, crc_l
+ e0e:	e8 2f       	mov	r30, r24
+	eor	ZL, b
+ e10:	e2 27       	eor	r30, r18
+	andi	ZL, 0x0f
+ e12:	ef 70       	andi	r30, 0x0F	; 15
+
+	; crc >>= 4
+	swap	crc_h
+ e14:	92 95       	swap	r25
+	swap	crc_l
+ e16:	82 95       	swap	r24
+	andi	crc_l, 0x0f
+ e18:	8f 70       	andi	r24, 0x0F	; 15
+	mov	tmp, crc_h
+ e1a:	39 2f       	mov	r19, r25
+	andi	tmp, 0xf0
+ e1c:	30 7f       	andi	r19, 0xF0	; 240
+	or	crc_l, tmp
+ e1e:	83 2b       	or	r24, r19
+	andi	crc_h, 0x0f
+ e20:	9f 70       	andi	r25, 0x0F	; 15
+
+	; crc ^= crc4tab[index]
+	add	ZL, zl
+ e22:	e4 0f       	add	r30, r20
+	lpm	tmp, Z+
+ e24:	35 91       	lpm	r19, Z+
+	eor	crc_h, tmp
+ e26:	93 27       	eor	r25, r19
+	andi	tmp, 1
+ e28:	31 70       	andi	r19, 0x01	; 1
+	eor	crc_h, tmp
+ e2a:	93 27       	eor	r25, r19
+	eor	crc_l, tmp
+ e2c:	83 27       	eor	r24, r19
+
+	; next nibble
+	dec	len
+ e2e:	6a 95       	dec	r22
+	brne	next_nibble
+ e30:	59 f7       	brne	.-42     	; 0xe08 <next_nibble>
+
+00000e32 <done>:
+
+done:
+	; crc ^= 0xffff
+	com	crc_l
+ e32:	80 95       	com	r24
+	com	crc_h
+ e34:	90 95       	com	r25
+
+	; append crc to buffer
+	st	X+, crc_l
+ e36:	8d 93       	st	X+, r24
+	st	X+, crc_h
+ e38:	9d 93       	st	X+, r25
+
+	ret
+ e3a:	08 95       	ret
+
+00000e3c <_exit>:
+ e3c:	f8 94       	cli
+
+00000e3e <__stop_program>:
+ e3e:	ff cf       	rjmp	.-2      	; 0xe3e <__stop_program>

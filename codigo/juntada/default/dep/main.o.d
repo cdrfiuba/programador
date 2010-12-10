@@ -7,7 +7,11 @@ main.o: ../main.c c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/common.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/version.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h \
-  c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h ../usb.h
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h ../usb.h \
+  ../usbtiny.h ../usbtinyMod.h ../macros.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h \
+  c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h \
+  c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h ../spi.h
 
 c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h:
 
@@ -30,3 +34,17 @@ c:/winavr-20100110/lib/gcc/../../avr/include/avr/fuse.h:
 c:/winavr-20100110/lib/gcc/../../avr/include/avr/lock.h:
 
 ../usb.h:
+
+../usbtiny.h:
+
+../usbtinyMod.h:
+
+../macros.h:
+
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h:
+
+c:\winavr-20100110\bin\../lib/gcc/avr/4.3.3/include/stddef.h:
+
+c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h:
+
+../spi.h:

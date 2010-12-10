@@ -199,7 +199,7 @@ static	void	usb_receive ( byte_t* data, byte_t rx_len )
 	byte_t	type;
 	byte_t	limit;
 
-	usb_tx_state = TX_STATE_RAM;
+/*	usb_tx_state = TX_STATE_RAM;
 	len = 0;
 	if	( usb_rx_token == USB_PID_SETUP )
 	{
@@ -308,7 +308,7 @@ static	void	usb_receive ( byte_t* data, byte_t rx_len )
 #endif
 	usb_tx_total  = len;
 	usb_tx_buf[0] = USB_PID_DATA0;	// next data packet will be DATA1
-}
+*/}
 
 // ----------------------------------------------------------------------
 // Load the transmit buffer with the next packet.

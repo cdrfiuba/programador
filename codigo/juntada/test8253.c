@@ -11,6 +11,8 @@ byte_t programEnable_Cmm[] = {0xAC,0x53,0x00,0x00};
 byte_t chipErase_Cmm[]     = {0xAC,0x80,0x00,0x00};
 byte_t writeByte_Cmm[]     = {0x40,0x00,0x00,0x00};
 byte_t readByte_Cmm[]      = {0x20,0x00,0x00,0x00};
+byte_t writePage_Cmm[]     = {0x50,0x00,0x00,0x00};
+byte_t readPage_Cmm[]      = {0x03,0x00,0x00,0x00};
 
 byte_t led_05s_program[] = {
 0xB2,
@@ -189,23 +191,11 @@ void WaitDateWriteCompletion(byte_t writeByte, byte_t address, byte_t size)
     }
 }
 
-
-void ProgramLed()
+void WriteProgramByByte()
 {
     byte_t address = 0 ,i ;
     byte_t addressTotal = 45;
     byte_t result[4];
-    byte_t mask;
-
-        PORTD &= ~_BV(4);   //Enable Buffer
-		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
-		PORT = mask;
-
-
-    spiOneCommand(programEnable_Cmm,result,4);
-    
-    spiOneCommand(chipErase_Cmm,result,4);
-    CheckChipErase();    
 
     for (i = 0; i < addressTotal; i++,address++)
     {
@@ -214,9 +204,66 @@ void ProgramLed()
         spiOneCommand(writeByte_Cmm,result,4);
         WaitDateWriteCompletion(writeByte_Cmm[3], address, 4);
     }
-    //Fin, bajo el reset y pongo todo como entrada.
-        DDR  = 0x00;
-		PORT = 0x00;
-		PORTD |= _BV(4);
+}
+
+void WriteProgramByPage()
+{
+    byte_t address = 0 ,i ;
+    byte_t addressTotal = 45;
+    byte_t result[4];
+
+    spiOneByte(writePage_Cmm[0]);
+    spiOneByte(writePage_Cmm[1]);
+    spiOneByte(writePage_Cmm[2]);
+    for (i = 0; i < addressTotal; i++,address++)
+    {
+        spiOneByte(led_05s_program[i]);        
+    }
+    
+    //Completo la pagina con 0x00
+    for (; address < 64 ; address++)
+    {   
+        spiOneByte(0x00);
+    }
+
+    WaitDateWriteCompletion(led_05s_program[0], 0x00, 4);    //Chequeeo la primer posicion
+
+}
+
+//Inicio, activo el buffer, subo el reset, prendo el LED y configuro el MOSI como salida.
+void PreparePrograming()
+{
+    byte_t mask;
+    PORTD &= ~_BV(4);   //Enable Buffer
+	DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+	PORT = POWER_MASK | RESET_MASK;
+}
+
+//Fin, bajo el reset, pongo el buffer en alta impedancia, apago el LED y pongo el MOSI como entrada.
+void ClosePrograming()
+{
+    
+    DDR  = 0x00;
+	PORT = 0x00;
+	PORTD |= _BV(4);
+}
+
+void ProgramLed()
+{
+    byte_t result[4];
+
+
+    PreparePrograming();
+
+
+    spiOneCommand(programEnable_Cmm,result,4);
+    
+    spiOneCommand(chipErase_Cmm,result,4);
+    CheckChipErase();    
+
+    //WriteProgramByByte();
+    WriteProgramByPage();
+    
+    ClosePrograming();
 }
 

@@ -3,25 +3,25 @@ progUsbtiny.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000e40  00000000  00000000  00000094  2**1
+  0 .text         00000f02  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000006c  00800060  00000e40  00000ed4  2**0
+  1 .data         00000074  00800060  00000f02  00000f96  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000005f  008000cc  008000cc  00000f40  2**0
+  2 .bss          0000005f  008000d4  008000d4  0000100a  2**0
                   ALLOC
-  3 .debug_aranges 000000c0  00000000  00000000  00000f40  2**3
+  3 .debug_aranges 000000c0  00000000  00000000  00001010  2**3
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 000001b4  00000000  00000000  00001000  2**0
+  4 .debug_pubnames 0000022f  00000000  00000000  000010d0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000c7d  00000000  00000000  000011b4  2**0
+  5 .debug_info   00000d40  00000000  00000000  000012ff  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000476  00000000  00000000  00001e31  2**0
+  6 .debug_abbrev 00000476  00000000  00000000  0000203f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000ae1  00000000  00000000  000022a7  2**0
+  7 .debug_line   00000b91  00000000  00000000  000024b5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000001b0  00000000  00000000  00002d88  2**2
+  8 .debug_frame  000001f0  00000000  00000000  00003048  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000355  00000000  00000000  00002f38  2**0
+  9 .debug_str    000003b8  00000000  00000000  00003238  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -79,8 +79,8 @@ Disassembly of section .text:
   6a:	10 e0       	ldi	r17, 0x00	; 0
   6c:	a0 e6       	ldi	r26, 0x60	; 96
   6e:	b0 e0       	ldi	r27, 0x00	; 0
-  70:	e0 e4       	ldi	r30, 0x40	; 64
-  72:	fe e0       	ldi	r31, 0x0E	; 14
+  70:	e2 e0       	ldi	r30, 0x02	; 2
+  72:	ff e0       	ldi	r31, 0x0F	; 15
   74:	02 c0       	rjmp	.+4      	; 0x7a <.do_copy_data_start>
 
 00000076 <.do_copy_data_loop>:
@@ -88,13 +88,13 @@ Disassembly of section .text:
   78:	0d 92       	st	X+, r0
 
 0000007a <.do_copy_data_start>:
-  7a:	ac 3c       	cpi	r26, 0xCC	; 204
+  7a:	a4 3d       	cpi	r26, 0xD4	; 212
   7c:	b1 07       	cpc	r27, r17
   7e:	d9 f7       	brne	.-10     	; 0x76 <.do_copy_data_loop>
 
 00000080 <__do_clear_bss>:
   80:	11 e0       	ldi	r17, 0x01	; 1
-  82:	ac ec       	ldi	r26, 0xCC	; 204
+  82:	a4 ed       	ldi	r26, 0xD4	; 212
   84:	b0 e0       	ldi	r27, 0x00	; 0
   86:	01 c0       	rjmp	.+2      	; 0x8a <.do_clear_bss_start>
 
@@ -102,11 +102,11 @@ Disassembly of section .text:
   88:	1d 92       	st	X+, r1
 
 0000008a <.do_clear_bss_start>:
-  8a:	ab 32       	cpi	r26, 0x2B	; 43
+  8a:	a3 33       	cpi	r26, 0x33	; 51
   8c:	b1 07       	cpc	r27, r17
   8e:	e1 f7       	brne	.-8      	; 0x88 <.do_clear_bss_loop>
   90:	7e d2       	rcall	.+1276   	; 0x58e <main>
-  92:	d4 c6       	rjmp	.+3496   	; 0xe3c <_exit>
+  92:	35 c7       	rjmp	.+3690   	; 0xefe <_exit>
 
 00000094 <__bad_interrupt>:
   94:	b5 cf       	rjmp	.-150    	; 0x0 <__vectors>
@@ -179,11 +179,11 @@ sync6:
 	; we are now between -1 and +1 cycle from the center of the bit
 	; following the 0-->1 transition
 	lds	YL, usb_rx_off
-  c2:	c0 91 13 01 	lds	r28, 0x0113
+  c2:	c0 91 1b 01 	lds	r28, 0x011B
 	clr	YH
   c6:	dd 27       	eor	r29, r29
 	subi	YL, lo8(-(usb_rx_buf))	; Y = & usb_rx_buf[usb_rx_off]
-  c8:	cc 5e       	subi	r28, 0xEC	; 236
+  c8:	c4 5e       	subi	r28, 0xE4	; 228
 	sbci	YH, hi8(-(usb_rx_buf))
   ca:	de 4f       	sbci	r29, 0xFE	; 254
 	ldi	count, USB_BUFSIZE	; limit on number of bytes to receive
@@ -553,7 +553,7 @@ eop2:
 	andi	addr, 0x7f
  1de:	1f 77       	andi	r17, 0x7F	; 127
 	lds	tmp, usb_address
- 1e0:	40 91 2a 01 	lds	r20, 0x012A
+ 1e0:	40 91 32 01 	lds	r20, 0x0132
 	cp	addr, tmp		; is this packet for me?
  1e4:	14 17       	cp	r17, r20
 	brne	ignore			; no, ignore
@@ -581,7 +581,7 @@ ignore:
 	clr	tmp
  1f4:	44 27       	eor	r20, r20
 	sts	token_pid, tmp
- 1f6:	40 93 cc 00 	sts	0x00CC, r20
+ 1f6:	40 93 d4 00 	sts	0x00D4, r20
 	pop	even
  1fa:	6f 91       	pop	r22
 	pop	fixup
@@ -598,7 +598,7 @@ ignore:
 ; ----------------------------------------------------------------------
 is_setup_out:
 	sts	token_pid, pid		; save PID of token packet
- 202:	20 93 cc 00 	sts	0x00CC, r18
+ 202:	20 93 d4 00 	sts	0x00D4, r18
 	pop	even
  206:	6f 91       	pop	r22
 	pop	fixup
@@ -642,21 +642,21 @@ return:
 ; ----------------------------------------------------------------------
 is_in:
 	lds	count, usb_tx_len
- 222:	00 91 05 01 	lds	r16, 0x0105
+ 222:	00 91 0d 01 	lds	r16, 0x010D
 	tst	count			; data ready?
  226:	00 23       	and	r16, r16
 	breq	nak			; no, reply with NAK
  228:	f1 f0       	breq	.+60     	; 0x266 <nak>
 	lds	tmp, usb_rx_len
- 22a:	40 91 12 01 	lds	r20, 0x0112
+ 22a:	40 91 1a 01 	lds	r20, 0x011A
 	tst	tmp			; unprocessed input packet?
  22e:	44 23       	and	r20, r20
 	brne	nak			; yes, don't send old data for new packet
  230:	d1 f4       	brne	.+52     	; 0x266 <nak>
 	sts	usb_tx_len, tmp		; buffer is available again (after reti)
- 232:	40 93 05 01 	sts	0x0105, r20
+ 232:	40 93 0d 01 	sts	0x010D, r20
 	ldi	YL, lo8(usb_tx_buf)
- 236:	c6 e0       	ldi	r28, 0x06	; 6
+ 236:	ce e0       	ldi	r28, 0x0E	; 14
 	ldi	YH, hi8(usb_tx_buf)
  238:	d1 e0       	ldi	r29, 0x01	; 1
 	rjmp	send_packet		; SE0+40, SE0 --> SOP <= 51
@@ -669,29 +669,29 @@ is_in:
 ; ----------------------------------------------------------------------
 is_data:
 	lds	pid, token_pid
- 23c:	20 91 cc 00 	lds	r18, 0x00CC
+ 23c:	20 91 d4 00 	lds	r18, 0x00D4
 	tst	pid			; data following our SETUP/OUT
  240:	22 23       	and	r18, r18
 	breq	ignore			; no, ignore
  242:	c1 f2       	breq	.-80     	; 0x1f4 <ignore>
 	lds	tmp, usb_rx_len
- 244:	40 91 12 01 	lds	r20, 0x0112
+ 244:	40 91 1a 01 	lds	r20, 0x011A
 	tst	tmp			; buffer free?
  248:	44 23       	and	r20, r20
 	brne	nak			; no, reply with NAK
  24a:	69 f4       	brne	.+26     	; 0x266 <nak>
 	sts	usb_rx_len, count	; pass buffer length
- 24c:	00 93 12 01 	sts	0x0112, r16
+ 24c:	00 93 1a 01 	sts	0x011A, r16
 	sts	usb_rx_token, pid	; pass PID of token (SETUP or OUT)
- 250:	20 93 11 01 	sts	0x0111, r18
+ 250:	20 93 19 01 	sts	0x0119, r18
 	lds	count, usb_rx_off	; switch to other input buffer
- 254:	00 91 13 01 	lds	r16, 0x0113
+ 254:	00 91 1b 01 	lds	r16, 0x011B
 	ldi	tmp, USB_BUFSIZE
  258:	4b e0       	ldi	r20, 0x0B	; 11
 	sub	tmp, count
  25a:	40 1b       	sub	r20, r16
 	sts	usb_rx_off, tmp
- 25c:	40 93 13 01 	sts	0x0113, r20
+ 25c:	40 93 1b 01 	sts	0x011B, r20
 
 00000260 <ack>:
 
@@ -1045,7 +1045,7 @@ static	void	delay ( void )
  356:	cd b7       	in	r28, 0x3d	; 61
  358:	de b7       	in	r29, 0x3e	; 62
 	asm volatile(
- 35a:	80 91 cd 00 	lds	r24, 0x00CD
+ 35a:	80 91 d5 00 	lds	r24, 0x00D5
  35e:	08 2e       	mov	r0, r24
  360:	00 c0       	rjmp	.+0      	; 0x362 <delay+0x10>
  362:	00 00       	nop
@@ -1254,7 +1254,7 @@ static	void	spi_rw ( void )
  460:	1d 82       	std	Y+5, r1	; 0x05
 	uint_t	a;
 	uint_t	tam = (status & TAMANIO_MASK);	
- 462:	80 91 dd 00 	lds	r24, 0x00DD
+ 462:	80 91 e5 00 	lds	r24, 0x00E5
  466:	88 2f       	mov	r24, r24
  468:	90 e0       	ldi	r25, 0x00	; 0
  46a:	87 70       	andi	r24, 0x07	; 7
@@ -1263,25 +1263,25 @@ static	void	spi_rw ( void )
  470:	89 83       	std	Y+1, r24	; 0x01
 
 	a = address++;
- 472:	80 91 d0 00 	lds	r24, 0x00D0
- 476:	90 91 d1 00 	lds	r25, 0x00D1
+ 472:	80 91 d8 00 	lds	r24, 0x00D8
+ 476:	90 91 d9 00 	lds	r25, 0x00D9
  47a:	9c 83       	std	Y+4, r25	; 0x04
  47c:	8b 83       	std	Y+3, r24	; 0x03
  47e:	01 96       	adiw	r24, 0x01	; 1
- 480:	90 93 d1 00 	sts	0x00D1, r25
- 484:	80 93 d0 00 	sts	0x00D0, r24
+ 480:	90 93 d9 00 	sts	0x00D9, r25
+ 484:	80 93 d8 00 	sts	0x00D8, r24
 	cmd[0] = cmd0;
- 488:	80 91 d4 00 	lds	r24, 0x00D4
- 48c:	80 93 d5 00 	sts	0x00D5, r24
+ 488:	80 91 dc 00 	lds	r24, 0x00DC
+ 48c:	80 93 dd 00 	sts	0x00DD, r24
 	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
- 490:	80 91 dd 00 	lds	r24, 0x00DD
+ 490:	80 91 e5 00 	lds	r24, 0x00E5
  494:	88 2f       	mov	r24, r24
  496:	90 e0       	ldi	r25, 0x00	; 0
  498:	88 73       	andi	r24, 0x38	; 56
  49a:	90 70       	andi	r25, 0x00	; 0
  49c:	00 97       	sbiw	r24, 0x00	; 0
  49e:	a9 f4       	brne	.+42     	; 0x4ca <spi_rw+0x78>
- 4a0:	80 91 d4 00 	lds	r24, 0x00D4
+ 4a0:	80 91 dc 00 	lds	r24, 0x00DC
  4a4:	88 23       	and	r24, r24
  4a6:	8c f0       	brlt	.+34     	; 0x4ca <spi_rw+0x78>
 	{	//Es AVR 							// NOT eeprom
@@ -1294,9 +1294,9 @@ static	void	spi_rw ( void )
  4b2:	29 f0       	breq	.+10     	; 0x4be <spi_rw+0x6c>
 		{
 			cmd[0] |= 0x08;	//La H
- 4b4:	80 91 d5 00 	lds	r24, 0x00D5
+ 4b4:	80 91 dd 00 	lds	r24, 0x00DD
  4b8:	88 60       	ori	r24, 0x08	; 8
- 4ba:	80 93 d5 00 	sts	0x00D5, r24
+ 4ba:	80 93 dd 00 	sts	0x00DD, r24
 		}
 		a >>= 1;	//Corro la direccion
  4be:	8b 81       	ldd	r24, Y+3	; 0x03
@@ -1311,13 +1311,13 @@ static	void	spi_rw ( void )
  4cc:	9c 81       	ldd	r25, Y+4	; 0x04
  4ce:	89 2f       	mov	r24, r25
  4d0:	99 27       	eor	r25, r25
- 4d2:	80 93 d6 00 	sts	0x00D6, r24
+ 4d2:	80 93 de 00 	sts	0x00DE, r24
 	cmd[2] = a;
  4d6:	8b 81       	ldd	r24, Y+3	; 0x03
- 4d8:	80 93 d7 00 	sts	0x00D7, r24
+ 4d8:	80 93 df 00 	sts	0x00DF, r24
 	
 	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
- 4dc:	80 91 dd 00 	lds	r24, 0x00DD
+ 4dc:	80 91 e5 00 	lds	r24, 0x00E5
  4e0:	88 2f       	mov	r24, r24
  4e2:	90 e0       	ldi	r25, 0x00	; 0
  4e4:	88 73       	andi	r24, 0x38	; 56
@@ -1327,16 +1327,16 @@ static	void	spi_rw ( void )
  4ec:	81 f4       	brne	.+32     	; 0x50e <spi_rw+0xbc>
 	{
 		cmd[1] <<= 3;
- 4ee:	80 91 d6 00 	lds	r24, 0x00D6
+ 4ee:	80 91 de 00 	lds	r24, 0x00DE
  4f2:	88 0f       	add	r24, r24
  4f4:	88 0f       	add	r24, r24
  4f6:	88 0f       	add	r24, r24
- 4f8:	80 93 d6 00 	sts	0x00D6, r24
+ 4f8:	80 93 de 00 	sts	0x00DE, r24
 		cmd[1] |= cmd0;
- 4fc:	90 91 d6 00 	lds	r25, 0x00D6
- 500:	80 91 d4 00 	lds	r24, 0x00D4
+ 4fc:	90 91 de 00 	lds	r25, 0x00DE
+ 500:	80 91 dc 00 	lds	r24, 0x00DC
  504:	89 2b       	or	r24, r25
- 506:	80 93 d6 00 	sts	0x00D6, r24
+ 506:	80 93 de 00 	sts	0x00DE, r24
 		offset = 1;
  50a:	81 e0       	ldi	r24, 0x01	; 1
  50c:	8d 83       	std	Y+5, r24	; 0x05
@@ -1345,11 +1345,11 @@ static	void	spi_rw ( void )
  50e:	8d 81       	ldd	r24, Y+5	; 0x05
  510:	88 2f       	mov	r24, r24
  512:	90 e0       	ldi	r25, 0x00	; 0
- 514:	8b 52       	subi	r24, 0x2B	; 43
+ 514:	83 52       	subi	r24, 0x23	; 35
  516:	9f 4f       	sbci	r25, 0xFF	; 255
  518:	49 81       	ldd	r20, Y+1	; 0x01
  51a:	5a 81       	ldd	r21, Y+2	; 0x02
- 51c:	29 ed       	ldi	r18, 0xD9	; 217
+ 51c:	21 ee       	ldi	r18, 0xE1	; 225
  51e:	30 e0       	ldi	r19, 0x00	; 0
  520:	b9 01       	movw	r22, r18
  522:	25 df       	rcall	.-438    	; 0x36e <spi>
@@ -1476,7 +1476,7 @@ int	main ( void )
  5a8:	80 e5       	ldi	r24, 0x50	; 80
  5aa:	80 83       	st	Z, r24
     ProgramLed();
- 5ac:	ca d2       	rcall	.+1428   	; 0xb42 <ProgramLed>
+ 5ac:	73 d3       	rcall	.+1766   	; 0xc94 <ProgramLed>
  5ae:	ff cf       	rjmp	.-2      	; 0x5ae <main+0x20>
 
 000005b0 <usb_receive>:
@@ -1535,12 +1535,12 @@ static	void	usb_transmit ( void )
 	byte_t	b;
 
 	usb_tx_buf[0] ^= (USB_PID_DATA0 ^ USB_PID_DATA1);
- 5ea:	90 91 06 01 	lds	r25, 0x0106
+ 5ea:	90 91 0e 01 	lds	r25, 0x010E
  5ee:	88 e8       	ldi	r24, 0x88	; 136
  5f0:	89 27       	eor	r24, r25
- 5f2:	80 93 06 01 	sts	0x0106, r24
+ 5f2:	80 93 0e 01 	sts	0x010E, r24
 	len = usb_tx_total;
- 5f6:	80 91 df 00 	lds	r24, 0x00DF
+ 5f6:	80 91 e7 00 	lds	r24, 0x00E7
  5fa:	8a 87       	std	Y+10, r24	; 0x0a
 	if	( len > 8 )
  5fc:	8a 85       	ldd	r24, Y+10	; 0x0a
@@ -1552,7 +1552,7 @@ static	void	usb_transmit ( void )
  604:	8a 87       	std	Y+10, r24	; 0x0a
 	}
 	dst = usb_tx_buf + 1;
- 606:	87 e0       	ldi	r24, 0x07	; 7
+ 606:	8f e0       	ldi	r24, 0x0F	; 15
  608:	91 e0       	ldi	r25, 0x01	; 1
  60a:	9f 83       	std	Y+7, r25	; 0x07
  60c:	8e 83       	std	Y+6, r24	; 0x06
@@ -1564,7 +1564,7 @@ static	void	usb_transmit ( void )
 	{
 #if	USBTINY_CALLBACK_IN
 		if	( usb_tx_state == TX_STATE_CALLBACK )
- 616:	80 91 de 00 	lds	r24, 0x00DE
+ 616:	80 91 e6 00 	lds	r24, 0x00E6
  61a:	83 30       	cpi	r24, 0x03	; 3
  61c:	31 f4       	brne	.+12     	; 0x62a <usb_transmit+0x54>
 		{
@@ -1580,12 +1580,12 @@ static	void	usb_transmit ( void )
 #endif
 		{
 			src = usb_tx_data;
- 62a:	80 91 e0 00 	lds	r24, 0x00E0
- 62e:	90 91 e1 00 	lds	r25, 0x00E1
+ 62a:	80 91 e8 00 	lds	r24, 0x00E8
+ 62e:	90 91 e9 00 	lds	r25, 0x00E9
  632:	99 87       	std	Y+9, r25	; 0x09
  634:	88 87       	std	Y+8, r24	; 0x08
 			if	( usb_tx_state == TX_STATE_RAM )
- 636:	80 91 de 00 	lds	r24, 0x00DE
+ 636:	80 91 e6 00 	lds	r24, 0x00E6
  63a:	81 30       	cpi	r24, 0x01	; 1
  63c:	d1 f4       	brne	.+52     	; 0x672 <usb_transmit+0x9c>
 			{
@@ -1681,31 +1681,31 @@ static	void	usb_transmit ( void )
 			usb_tx_data = src;
  6b4:	88 85       	ldd	r24, Y+8	; 0x08
  6b6:	99 85       	ldd	r25, Y+9	; 0x09
- 6b8:	90 93 e1 00 	sts	0x00E1, r25
- 6bc:	80 93 e0 00 	sts	0x00E0, r24
+ 6b8:	90 93 e9 00 	sts	0x00E9, r25
+ 6bc:	80 93 e8 00 	sts	0x00E8, r24
 		}
 		usb_tx_total -= len;
- 6c0:	80 91 df 00 	lds	r24, 0x00DF
+ 6c0:	80 91 e7 00 	lds	r24, 0x00E7
  6c4:	9a 85       	ldd	r25, Y+10	; 0x0a
  6c6:	89 1b       	sub	r24, r25
- 6c8:	80 93 df 00 	sts	0x00DF, r24
+ 6c8:	80 93 e7 00 	sts	0x00E7, r24
 	}
 	crc( usb_tx_buf + 1, len );
- 6cc:	87 e0       	ldi	r24, 0x07	; 7
+ 6cc:	8f e0       	ldi	r24, 0x0F	; 15
  6ce:	91 e0       	ldi	r25, 0x01	; 1
  6d0:	6a 85       	ldd	r22, Y+10	; 0x0a
- 6d2:	93 d3       	rcall	.+1830   	; 0xdfa <crc>
+ 6d2:	f4 d3       	rcall	.+2024   	; 0xebc <crc>
 	usb_tx_len = len + 3;
  6d4:	8a 85       	ldd	r24, Y+10	; 0x0a
  6d6:	8d 5f       	subi	r24, 0xFD	; 253
- 6d8:	80 93 05 01 	sts	0x0105, r24
+ 6d8:	80 93 0d 01 	sts	0x010D, r24
 	if	( len < 8 )
  6dc:	8a 85       	ldd	r24, Y+10	; 0x0a
  6de:	88 30       	cpi	r24, 0x08	; 8
  6e0:	10 f4       	brcc	.+4      	; 0x6e6 <usb_transmit+0x110>
 	{	// this is the last packet
 		usb_tx_state = TX_STATE_IDLE;
- 6e2:	10 92 de 00 	sts	0x00DE, r1
+ 6e2:	10 92 e6 00 	sts	0x00E6, r1
 	}
 }
  6e6:	2a 96       	adiw	r28, 0x0a	; 10
@@ -1768,12 +1768,12 @@ extern	void	usb_poll ( void )
 
 	// check for incoming USB packets
 	if	( usb_rx_len != 0 )
- 72e:	80 91 12 01 	lds	r24, 0x0112
+ 72e:	80 91 1a 01 	lds	r24, 0x011A
  732:	88 23       	and	r24, r24
  734:	b1 f0       	breq	.+44     	; 0x762 <usb_poll+0x3e>
 	{
 		usb_receive( usb_rx_buf + USB_BUFSIZE - usb_rx_off + 1, usb_rx_len - 3 );
- 736:	80 91 13 01 	lds	r24, 0x0113
+ 736:	80 91 1b 01 	lds	r24, 0x011B
  73a:	28 2f       	mov	r18, r24
  73c:	30 e0       	ldi	r19, 0x00	; 0
  73e:	8c e0       	ldi	r24, 0x0C	; 12
@@ -1781,27 +1781,27 @@ extern	void	usb_poll ( void )
  742:	82 1b       	sub	r24, r18
  744:	93 0b       	sbc	r25, r19
  746:	9c 01       	movw	r18, r24
- 748:	2c 5e       	subi	r18, 0xEC	; 236
+ 748:	24 5e       	subi	r18, 0xE4	; 228
  74a:	3e 4f       	sbci	r19, 0xFE	; 254
- 74c:	80 91 12 01 	lds	r24, 0x0112
+ 74c:	80 91 1a 01 	lds	r24, 0x011A
  750:	48 2f       	mov	r20, r24
  752:	43 50       	subi	r20, 0x03	; 3
  754:	c9 01       	movw	r24, r18
  756:	64 2f       	mov	r22, r20
  758:	2b df       	rcall	.-426    	; 0x5b0 <usb_receive>
 		usb_tx_len = 0;	// abort pending transmission
- 75a:	10 92 05 01 	sts	0x0105, r1
+ 75a:	10 92 0d 01 	sts	0x010D, r1
 		usb_rx_len = 0;	// accept next packet
- 75e:	10 92 12 01 	sts	0x0112, r1
+ 75e:	10 92 1a 01 	sts	0x011A, r1
 	}
 	// refill an empty transmit buffer, when the transmitter is active
 	if	( usb_tx_len == 0 )
- 762:	80 91 05 01 	lds	r24, 0x0105
+ 762:	80 91 0d 01 	lds	r24, 0x010D
  766:	88 23       	and	r24, r24
  768:	51 f4       	brne	.+20     	; 0x77e <usb_poll+0x5a>
 	{
 		if	( usb_tx_state != TX_STATE_IDLE )
- 76a:	80 91 de 00 	lds	r24, 0x00DE
+ 76a:	80 91 e6 00 	lds	r24, 0x00E6
  76e:	88 23       	and	r24, r24
  770:	11 f0       	breq	.+4      	; 0x776 <usb_poll+0x52>
 		{
@@ -1812,8 +1812,8 @@ extern	void	usb_poll ( void )
 		else
 		{	// change the USB address at the end of a transfer
 			usb_address = new_address;
- 776:	80 91 e2 00 	lds	r24, 0x00E2
- 77a:	80 93 2a 01 	sts	0x012A, r24
+ 776:	80 91 ea 00 	lds	r24, 0x00EA
+ 77a:	80 93 32 01 	sts	0x0132, r24
 		}
 	}
 	// check for USB bus reset
@@ -1844,7 +1844,7 @@ extern	void	usb_poll ( void )
  7a6:	11 f4       	brne	.+4      	; 0x7ac <usb_poll+0x88>
 	{	// SE0 for more than 2.5uS is a reset
 		new_address = 0;
- 7a8:	10 92 e2 00 	sts	0x00E2, r1
+ 7a8:	10 92 ea 00 	sts	0x00EA, r1
 	}
 }
  7ac:	0f 90       	pop	r0
@@ -1864,7 +1864,7 @@ static	void	delay ( void )
  7b8:	cd b7       	in	r28, 0x3d	; 61
  7ba:	de b7       	in	r29, 0x3e	; 62
 	asm volatile(
- 7bc:	80 91 e3 00 	lds	r24, 0x00E3
+ 7bc:	80 91 eb 00 	lds	r24, 0x00EB
  7c0:	08 2e       	mov	r0, r24
  7c2:	00 c0       	rjmp	.+0      	; 0x7c4 <delay+0x10>
  7c4:	00 00       	nop
@@ -2073,7 +2073,7 @@ static	void	spi_rw ( void )
  8c2:	1d 82       	std	Y+5, r1	; 0x05
 	uint_t	a;
 	uint_t	tam = (status & TAMANIO_MASK);	
- 8c4:	80 91 f3 00 	lds	r24, 0x00F3
+ 8c4:	80 91 fb 00 	lds	r24, 0x00FB
  8c8:	88 2f       	mov	r24, r24
  8ca:	90 e0       	ldi	r25, 0x00	; 0
  8cc:	87 70       	andi	r24, 0x07	; 7
@@ -2082,25 +2082,25 @@ static	void	spi_rw ( void )
  8d2:	89 83       	std	Y+1, r24	; 0x01
 
 	a = address++;
- 8d4:	80 91 e6 00 	lds	r24, 0x00E6
- 8d8:	90 91 e7 00 	lds	r25, 0x00E7
+ 8d4:	80 91 ee 00 	lds	r24, 0x00EE
+ 8d8:	90 91 ef 00 	lds	r25, 0x00EF
  8dc:	9c 83       	std	Y+4, r25	; 0x04
  8de:	8b 83       	std	Y+3, r24	; 0x03
  8e0:	01 96       	adiw	r24, 0x01	; 1
- 8e2:	90 93 e7 00 	sts	0x00E7, r25
- 8e6:	80 93 e6 00 	sts	0x00E6, r24
+ 8e2:	90 93 ef 00 	sts	0x00EF, r25
+ 8e6:	80 93 ee 00 	sts	0x00EE, r24
 	cmd[0] = cmd0;
- 8ea:	80 91 ea 00 	lds	r24, 0x00EA
- 8ee:	80 93 eb 00 	sts	0x00EB, r24
+ 8ea:	80 91 f2 00 	lds	r24, 0x00F2
+ 8ee:	80 93 f3 00 	sts	0x00F3, r24
 	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
- 8f2:	80 91 f3 00 	lds	r24, 0x00F3
+ 8f2:	80 91 fb 00 	lds	r24, 0x00FB
  8f6:	88 2f       	mov	r24, r24
  8f8:	90 e0       	ldi	r25, 0x00	; 0
  8fa:	88 73       	andi	r24, 0x38	; 56
  8fc:	90 70       	andi	r25, 0x00	; 0
  8fe:	00 97       	sbiw	r24, 0x00	; 0
  900:	a9 f4       	brne	.+42     	; 0x92c <spi_rw+0x78>
- 902:	80 91 ea 00 	lds	r24, 0x00EA
+ 902:	80 91 f2 00 	lds	r24, 0x00F2
  906:	88 23       	and	r24, r24
  908:	8c f0       	brlt	.+34     	; 0x92c <spi_rw+0x78>
 	{	//Es AVR 							// NOT eeprom
@@ -2113,9 +2113,9 @@ static	void	spi_rw ( void )
  914:	29 f0       	breq	.+10     	; 0x920 <spi_rw+0x6c>
 		{
 			cmd[0] |= 0x08;	//La H
- 916:	80 91 eb 00 	lds	r24, 0x00EB
+ 916:	80 91 f3 00 	lds	r24, 0x00F3
  91a:	88 60       	ori	r24, 0x08	; 8
- 91c:	80 93 eb 00 	sts	0x00EB, r24
+ 91c:	80 93 f3 00 	sts	0x00F3, r24
 		}
 		a >>= 1;	//Corro la direccion
  920:	8b 81       	ldd	r24, Y+3	; 0x03
@@ -2130,13 +2130,13 @@ static	void	spi_rw ( void )
  92e:	9c 81       	ldd	r25, Y+4	; 0x04
  930:	89 2f       	mov	r24, r25
  932:	99 27       	eor	r25, r25
- 934:	80 93 ec 00 	sts	0x00EC, r24
+ 934:	80 93 f4 00 	sts	0x00F4, r24
 	cmd[2] = a;
  938:	8b 81       	ldd	r24, Y+3	; 0x03
- 93a:	80 93 ed 00 	sts	0x00ED, r24
+ 93a:	80 93 f5 00 	sts	0x00F5, r24
 	
 	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
- 93e:	80 91 f3 00 	lds	r24, 0x00F3
+ 93e:	80 91 fb 00 	lds	r24, 0x00FB
  942:	88 2f       	mov	r24, r24
  944:	90 e0       	ldi	r25, 0x00	; 0
  946:	88 73       	andi	r24, 0x38	; 56
@@ -2146,16 +2146,16 @@ static	void	spi_rw ( void )
  94e:	81 f4       	brne	.+32     	; 0x970 <spi_rw+0xbc>
 	{
 		cmd[1] <<= 3;
- 950:	80 91 ec 00 	lds	r24, 0x00EC
+ 950:	80 91 f4 00 	lds	r24, 0x00F4
  954:	88 0f       	add	r24, r24
  956:	88 0f       	add	r24, r24
  958:	88 0f       	add	r24, r24
- 95a:	80 93 ec 00 	sts	0x00EC, r24
+ 95a:	80 93 f4 00 	sts	0x00F4, r24
 		cmd[1] |= cmd0;
- 95e:	90 91 ec 00 	lds	r25, 0x00EC
- 962:	80 91 ea 00 	lds	r24, 0x00EA
+ 95e:	90 91 f4 00 	lds	r25, 0x00F4
+ 962:	80 91 f2 00 	lds	r24, 0x00F2
  966:	89 2b       	or	r24, r25
- 968:	80 93 ec 00 	sts	0x00EC, r24
+ 968:	80 93 f4 00 	sts	0x00F4, r24
 		offset = 1;
  96c:	81 e0       	ldi	r24, 0x01	; 1
  96e:	8d 83       	std	Y+5, r24	; 0x05
@@ -2164,11 +2164,11 @@ static	void	spi_rw ( void )
  970:	8d 81       	ldd	r24, Y+5	; 0x05
  972:	88 2f       	mov	r24, r24
  974:	90 e0       	ldi	r25, 0x00	; 0
- 976:	85 51       	subi	r24, 0x15	; 21
+ 976:	8d 50       	subi	r24, 0x0D	; 13
  978:	9f 4f       	sbci	r25, 0xFF	; 255
  97a:	49 81       	ldd	r20, Y+1	; 0x01
  97c:	5a 81       	ldd	r21, Y+2	; 0x02
- 97e:	2f ee       	ldi	r18, 0xEF	; 239
+ 97e:	27 ef       	ldi	r18, 0xF7	; 247
  980:	30 e0       	ldi	r19, 0x00	; 0
  982:	b9 01       	movw	r22, r18
  984:	25 df       	rcall	.-438    	; 0x7d0 <spi>
@@ -2520,578 +2520,739 @@ void WaitDateWriteCompletion(byte_t writeByte, byte_t address, byte_t size)
  b3e:	df 91       	pop	r29
  b40:	08 95       	ret
 
-00000b42 <ProgramLed>:
+00000b42 <WriteProgramByByte>:
 
-
-void ProgramLed()
+void WriteProgramByByte()
 {
  b42:	df 93       	push	r29
  b44:	cf 93       	push	r28
  b46:	cd b7       	in	r28, 0x3d	; 61
  b48:	de b7       	in	r29, 0x3e	; 62
- b4a:	28 97       	sbiw	r28, 0x08	; 8
+ b4a:	27 97       	sbiw	r28, 0x07	; 7
  b4c:	0f b6       	in	r0, 0x3f	; 63
  b4e:	f8 94       	cli
  b50:	de bf       	out	0x3e, r29	; 62
  b52:	0f be       	out	0x3f, r0	; 63
  b54:	cd bf       	out	0x3d, r28	; 61
     byte_t address = 0 ,i ;
- b56:	1c 82       	std	Y+4, r1	; 0x04
+ b56:	1b 82       	std	Y+3, r1	; 0x03
     byte_t addressTotal = 45;
  b58:	8d e2       	ldi	r24, 0x2D	; 45
- b5a:	8a 83       	std	Y+2, r24	; 0x02
+ b5a:	89 83       	std	Y+1, r24	; 0x01
     byte_t result[4];
-    byte_t mask;
-
-        PORTD &= ~_BV(4);   //Enable Buffer
- b5c:	a2 e3       	ldi	r26, 0x32	; 50
- b5e:	b0 e0       	ldi	r27, 0x00	; 0
- b60:	e2 e3       	ldi	r30, 0x32	; 50
- b62:	f0 e0       	ldi	r31, 0x00	; 0
- b64:	80 81       	ld	r24, Z
- b66:	8f 7e       	andi	r24, 0xEF	; 239
- b68:	8c 93       	st	X, r24
-		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
- b6a:	e7 e3       	ldi	r30, 0x37	; 55
- b6c:	f0 e0       	ldi	r31, 0x00	; 0
- b6e:	81 eb       	ldi	r24, 0xB1	; 177
- b70:	80 83       	st	Z, r24
-		PORT = mask;
- b72:	e8 e3       	ldi	r30, 0x38	; 56
- b74:	f0 e0       	ldi	r31, 0x00	; 0
- b76:	89 81       	ldd	r24, Y+1	; 0x01
- b78:	80 83       	st	Z, r24
-
-
-    spiOneCommand(programEnable_Cmm,result,4);
- b7a:	82 e6       	ldi	r24, 0x62	; 98
- b7c:	90 e0       	ldi	r25, 0x00	; 0
- b7e:	9e 01       	movw	r18, r28
- b80:	2b 5f       	subi	r18, 0xFB	; 251
- b82:	3f 4f       	sbci	r19, 0xFF	; 255
- b84:	b9 01       	movw	r22, r18
- b86:	44 e0       	ldi	r20, 0x04	; 4
- b88:	50 e0       	ldi	r21, 0x00	; 0
- b8a:	56 df       	rcall	.-340    	; 0xa38 <spiOneCommand>
-    
-    spiOneCommand(chipErase_Cmm,result,4);
- b8c:	86 e6       	ldi	r24, 0x66	; 102
- b8e:	90 e0       	ldi	r25, 0x00	; 0
- b90:	9e 01       	movw	r18, r28
- b92:	2b 5f       	subi	r18, 0xFB	; 251
- b94:	3f 4f       	sbci	r19, 0xFF	; 255
- b96:	b9 01       	movw	r22, r18
- b98:	44 e0       	ldi	r20, 0x04	; 4
- b9a:	50 e0       	ldi	r21, 0x00	; 0
- b9c:	4d df       	rcall	.-358    	; 0xa38 <spiOneCommand>
-    CheckChipErase();    
- b9e:	85 df       	rcall	.-246    	; 0xaaa <CheckChipErase>
 
     for (i = 0; i < addressTotal; i++,address++)
- ba0:	1b 82       	std	Y+3, r1	; 0x03
- ba2:	20 c0       	rjmp	.+64     	; 0xbe4 <ProgramLed+0xa2>
+ b5c:	1a 82       	std	Y+2, r1	; 0x02
+ b5e:	20 c0       	rjmp	.+64     	; 0xba0 <WriteProgramByByte+0x5e>
     {
         writeByte_Cmm[2] = address;
- ba4:	8c 81       	ldd	r24, Y+4	; 0x04
- ba6:	80 93 6c 00 	sts	0x006C, r24
+ b60:	8b 81       	ldd	r24, Y+3	; 0x03
+ b62:	80 93 6c 00 	sts	0x006C, r24
         writeByte_Cmm[3] = led_1s_program[i];        
- baa:	8b 81       	ldd	r24, Y+3	; 0x03
- bac:	88 2f       	mov	r24, r24
- bae:	90 e0       	ldi	r25, 0x00	; 0
- bb0:	fc 01       	movw	r30, r24
- bb2:	e1 56       	subi	r30, 0x61	; 97
- bb4:	ff 4f       	sbci	r31, 0xFF	; 255
- bb6:	80 81       	ld	r24, Z
- bb8:	80 93 6d 00 	sts	0x006D, r24
+ b66:	8a 81       	ldd	r24, Y+2	; 0x02
+ b68:	88 2f       	mov	r24, r24
+ b6a:	90 e0       	ldi	r25, 0x00	; 0
+ b6c:	fc 01       	movw	r30, r24
+ b6e:	e9 55       	subi	r30, 0x59	; 89
+ b70:	ff 4f       	sbci	r31, 0xFF	; 255
+ b72:	80 81       	ld	r24, Z
+ b74:	80 93 6d 00 	sts	0x006D, r24
         spiOneCommand(writeByte_Cmm,result,4);
- bbc:	8a e6       	ldi	r24, 0x6A	; 106
- bbe:	90 e0       	ldi	r25, 0x00	; 0
- bc0:	9e 01       	movw	r18, r28
- bc2:	2b 5f       	subi	r18, 0xFB	; 251
- bc4:	3f 4f       	sbci	r19, 0xFF	; 255
- bc6:	b9 01       	movw	r22, r18
- bc8:	44 e0       	ldi	r20, 0x04	; 4
- bca:	50 e0       	ldi	r21, 0x00	; 0
- bcc:	35 df       	rcall	.-406    	; 0xa38 <spiOneCommand>
+ b78:	8a e6       	ldi	r24, 0x6A	; 106
+ b7a:	90 e0       	ldi	r25, 0x00	; 0
+ b7c:	9e 01       	movw	r18, r28
+ b7e:	2c 5f       	subi	r18, 0xFC	; 252
+ b80:	3f 4f       	sbci	r19, 0xFF	; 255
+ b82:	b9 01       	movw	r22, r18
+ b84:	44 e0       	ldi	r20, 0x04	; 4
+ b86:	50 e0       	ldi	r21, 0x00	; 0
+ b88:	57 df       	rcall	.-338    	; 0xa38 <spiOneCommand>
         WaitDateWriteCompletion(writeByte_Cmm[3], address, 4);
- bce:	80 91 6d 00 	lds	r24, 0x006D
- bd2:	6c 81       	ldd	r22, Y+4	; 0x04
- bd4:	44 e0       	ldi	r20, 0x04	; 4
- bd6:	87 df       	rcall	.-242    	; 0xae6 <WaitDateWriteCompletion>
-    spiOneCommand(programEnable_Cmm,result,4);
-    
-    spiOneCommand(chipErase_Cmm,result,4);
-    CheckChipErase();    
+ b8a:	80 91 6d 00 	lds	r24, 0x006D
+ b8e:	6b 81       	ldd	r22, Y+3	; 0x03
+ b90:	44 e0       	ldi	r20, 0x04	; 4
+ b92:	a9 df       	rcall	.-174    	; 0xae6 <WaitDateWriteCompletion>
+{
+    byte_t address = 0 ,i ;
+    byte_t addressTotal = 45;
+    byte_t result[4];
 
     for (i = 0; i < addressTotal; i++,address++)
- bd8:	8b 81       	ldd	r24, Y+3	; 0x03
- bda:	8f 5f       	subi	r24, 0xFF	; 255
- bdc:	8b 83       	std	Y+3, r24	; 0x03
- bde:	8c 81       	ldd	r24, Y+4	; 0x04
- be0:	8f 5f       	subi	r24, 0xFF	; 255
- be2:	8c 83       	std	Y+4, r24	; 0x04
- be4:	9b 81       	ldd	r25, Y+3	; 0x03
- be6:	8a 81       	ldd	r24, Y+2	; 0x02
- be8:	98 17       	cp	r25, r24
- bea:	e0 f2       	brcs	.-72     	; 0xba4 <ProgramLed+0x62>
+ b94:	8a 81       	ldd	r24, Y+2	; 0x02
+ b96:	8f 5f       	subi	r24, 0xFF	; 255
+ b98:	8a 83       	std	Y+2, r24	; 0x02
+ b9a:	8b 81       	ldd	r24, Y+3	; 0x03
+ b9c:	8f 5f       	subi	r24, 0xFF	; 255
+ b9e:	8b 83       	std	Y+3, r24	; 0x03
+ ba0:	9a 81       	ldd	r25, Y+2	; 0x02
+ ba2:	89 81       	ldd	r24, Y+1	; 0x01
+ ba4:	98 17       	cp	r25, r24
+ ba6:	e0 f2       	brcs	.-72     	; 0xb60 <WriteProgramByByte+0x1e>
+        writeByte_Cmm[2] = address;
         writeByte_Cmm[3] = led_1s_program[i];        
         spiOneCommand(writeByte_Cmm,result,4);
         WaitDateWriteCompletion(writeByte_Cmm[3], address, 4);
     }
-    //Fin, bajo el reset y pongo todo como entrada.
-        DDR  = 0x00;
- bec:	e7 e3       	ldi	r30, 0x37	; 55
- bee:	f0 e0       	ldi	r31, 0x00	; 0
- bf0:	10 82       	st	Z, r1
-		PORT = 0x00;
- bf2:	e8 e3       	ldi	r30, 0x38	; 56
- bf4:	f0 e0       	ldi	r31, 0x00	; 0
- bf6:	10 82       	st	Z, r1
-		PORTD |= _BV(4);
- bf8:	a2 e3       	ldi	r26, 0x32	; 50
- bfa:	b0 e0       	ldi	r27, 0x00	; 0
- bfc:	e2 e3       	ldi	r30, 0x32	; 50
- bfe:	f0 e0       	ldi	r31, 0x00	; 0
- c00:	80 81       	ld	r24, Z
- c02:	80 61       	ori	r24, 0x10	; 16
- c04:	8c 93       	st	X, r24
 }
- c06:	28 96       	adiw	r28, 0x08	; 8
- c08:	0f b6       	in	r0, 0x3f	; 63
- c0a:	f8 94       	cli
- c0c:	de bf       	out	0x3e, r29	; 62
- c0e:	0f be       	out	0x3f, r0	; 63
- c10:	cd bf       	out	0x3d, r28	; 61
- c12:	cf 91       	pop	r28
- c14:	df 91       	pop	r29
- c16:	08 95       	ret
+ ba8:	27 96       	adiw	r28, 0x07	; 7
+ baa:	0f b6       	in	r0, 0x3f	; 63
+ bac:	f8 94       	cli
+ bae:	de bf       	out	0x3e, r29	; 62
+ bb0:	0f be       	out	0x3f, r0	; 63
+ bb2:	cd bf       	out	0x3d, r28	; 61
+ bb4:	cf 91       	pop	r28
+ bb6:	df 91       	pop	r29
+ bb8:	08 95       	ret
 
-00000c18 <delay>:
+00000bba <WriteProgramByPage>:
+
+void WriteProgramByPage()
+{
+ bba:	df 93       	push	r29
+ bbc:	cf 93       	push	r28
+ bbe:	cd b7       	in	r28, 0x3d	; 61
+ bc0:	de b7       	in	r29, 0x3e	; 62
+ bc2:	27 97       	sbiw	r28, 0x07	; 7
+ bc4:	0f b6       	in	r0, 0x3f	; 63
+ bc6:	f8 94       	cli
+ bc8:	de bf       	out	0x3e, r29	; 62
+ bca:	0f be       	out	0x3f, r0	; 63
+ bcc:	cd bf       	out	0x3d, r28	; 61
+    byte_t address = 0 ,i ;
+ bce:	1b 82       	std	Y+3, r1	; 0x03
+    byte_t addressTotal = 45;
+ bd0:	8d e2       	ldi	r24, 0x2D	; 45
+ bd2:	89 83       	std	Y+1, r24	; 0x01
+    byte_t result[4];
+
+    spiOneByte(writePage_Cmm[0]);
+ bd4:	80 91 72 00 	lds	r24, 0x0072
+ bd8:	e5 de       	rcall	.-566    	; 0x9a4 <spiOneByte>
+    spiOneByte(writePage_Cmm[1]);
+ bda:	80 91 73 00 	lds	r24, 0x0073
+ bde:	e2 de       	rcall	.-572    	; 0x9a4 <spiOneByte>
+    spiOneByte(writePage_Cmm[2]);
+ be0:	80 91 74 00 	lds	r24, 0x0074
+ be4:	df de       	rcall	.-578    	; 0x9a4 <spiOneByte>
+    for (i = 0; i < addressTotal; i++,address++)
+ be6:	1a 82       	std	Y+2, r1	; 0x02
+ be8:	0e c0       	rjmp	.+28     	; 0xc06 <WriteProgramByPage+0x4c>
+    {
+        spiOneByte(led_05s_program[i]);        
+ bea:	8a 81       	ldd	r24, Y+2	; 0x02
+ bec:	88 2f       	mov	r24, r24
+ bee:	90 e0       	ldi	r25, 0x00	; 0
+ bf0:	fc 01       	movw	r30, r24
+ bf2:	e6 58       	subi	r30, 0x86	; 134
+ bf4:	ff 4f       	sbci	r31, 0xFF	; 255
+ bf6:	80 81       	ld	r24, Z
+ bf8:	d5 de       	rcall	.-598    	; 0x9a4 <spiOneByte>
+    byte_t result[4];
+
+    spiOneByte(writePage_Cmm[0]);
+    spiOneByte(writePage_Cmm[1]);
+    spiOneByte(writePage_Cmm[2]);
+    for (i = 0; i < addressTotal; i++,address++)
+ bfa:	8a 81       	ldd	r24, Y+2	; 0x02
+ bfc:	8f 5f       	subi	r24, 0xFF	; 255
+ bfe:	8a 83       	std	Y+2, r24	; 0x02
+ c00:	8b 81       	ldd	r24, Y+3	; 0x03
+ c02:	8f 5f       	subi	r24, 0xFF	; 255
+ c04:	8b 83       	std	Y+3, r24	; 0x03
+ c06:	9a 81       	ldd	r25, Y+2	; 0x02
+ c08:	89 81       	ldd	r24, Y+1	; 0x01
+ c0a:	98 17       	cp	r25, r24
+ c0c:	70 f3       	brcs	.-36     	; 0xbea <WriteProgramByPage+0x30>
+ c0e:	05 c0       	rjmp	.+10     	; 0xc1a <WriteProgramByPage+0x60>
+    }
+    
+    //Completo la pagina con 0x00
+    for (; address < 64 ; address++)
+    {   
+        spiOneByte(0x00);
+ c10:	80 e0       	ldi	r24, 0x00	; 0
+ c12:	c8 de       	rcall	.-624    	; 0x9a4 <spiOneByte>
+    {
+        spiOneByte(led_05s_program[i]);        
+    }
+    
+    //Completo la pagina con 0x00
+    for (; address < 64 ; address++)
+ c14:	8b 81       	ldd	r24, Y+3	; 0x03
+ c16:	8f 5f       	subi	r24, 0xFF	; 255
+ c18:	8b 83       	std	Y+3, r24	; 0x03
+ c1a:	8b 81       	ldd	r24, Y+3	; 0x03
+ c1c:	80 34       	cpi	r24, 0x40	; 64
+ c1e:	c0 f3       	brcs	.-16     	; 0xc10 <WriteProgramByPage+0x56>
+    {   
+        spiOneByte(0x00);
+    }
+
+    WaitDateWriteCompletion(led_05s_program[0], 0x00, 4);    //Chequeeo la primer posicion
+ c20:	80 91 7a 00 	lds	r24, 0x007A
+ c24:	60 e0       	ldi	r22, 0x00	; 0
+ c26:	44 e0       	ldi	r20, 0x04	; 4
+ c28:	5e df       	rcall	.-324    	; 0xae6 <WaitDateWriteCompletion>
+
+}
+ c2a:	27 96       	adiw	r28, 0x07	; 7
+ c2c:	0f b6       	in	r0, 0x3f	; 63
+ c2e:	f8 94       	cli
+ c30:	de bf       	out	0x3e, r29	; 62
+ c32:	0f be       	out	0x3f, r0	; 63
+ c34:	cd bf       	out	0x3d, r28	; 61
+ c36:	cf 91       	pop	r28
+ c38:	df 91       	pop	r29
+ c3a:	08 95       	ret
+
+00000c3c <PreparePrograming>:
+
+//Inicio, activo el buffer, subo el reset, prendo el LED y configuro el MOSI como salida.
+void PreparePrograming()
+{
+ c3c:	df 93       	push	r29
+ c3e:	cf 93       	push	r28
+ c40:	0f 92       	push	r0
+ c42:	cd b7       	in	r28, 0x3d	; 61
+ c44:	de b7       	in	r29, 0x3e	; 62
+    byte_t mask;
+    PORTD &= ~_BV(4);   //Enable Buffer
+ c46:	a2 e3       	ldi	r26, 0x32	; 50
+ c48:	b0 e0       	ldi	r27, 0x00	; 0
+ c4a:	e2 e3       	ldi	r30, 0x32	; 50
+ c4c:	f0 e0       	ldi	r31, 0x00	; 0
+ c4e:	80 81       	ld	r24, Z
+ c50:	8f 7e       	andi	r24, 0xEF	; 239
+ c52:	8c 93       	st	X, r24
+	DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+ c54:	e7 e3       	ldi	r30, 0x37	; 55
+ c56:	f0 e0       	ldi	r31, 0x00	; 0
+ c58:	81 eb       	ldi	r24, 0xB1	; 177
+ c5a:	80 83       	st	Z, r24
+	PORT = POWER_MASK | RESET_MASK;
+ c5c:	e8 e3       	ldi	r30, 0x38	; 56
+ c5e:	f0 e0       	ldi	r31, 0x00	; 0
+ c60:	81 e1       	ldi	r24, 0x11	; 17
+ c62:	80 83       	st	Z, r24
+}
+ c64:	0f 90       	pop	r0
+ c66:	cf 91       	pop	r28
+ c68:	df 91       	pop	r29
+ c6a:	08 95       	ret
+
+00000c6c <ClosePrograming>:
+
+//Fin, bajo el reset, pongo el buffer en alta impedancia, apago el LED y pongo el MOSI como entrada.
+void ClosePrograming()
+{
+ c6c:	df 93       	push	r29
+ c6e:	cf 93       	push	r28
+ c70:	cd b7       	in	r28, 0x3d	; 61
+ c72:	de b7       	in	r29, 0x3e	; 62
+    
+    DDR  = 0x00;
+ c74:	e7 e3       	ldi	r30, 0x37	; 55
+ c76:	f0 e0       	ldi	r31, 0x00	; 0
+ c78:	10 82       	st	Z, r1
+	PORT = 0x00;
+ c7a:	e8 e3       	ldi	r30, 0x38	; 56
+ c7c:	f0 e0       	ldi	r31, 0x00	; 0
+ c7e:	10 82       	st	Z, r1
+	PORTD |= _BV(4);
+ c80:	a2 e3       	ldi	r26, 0x32	; 50
+ c82:	b0 e0       	ldi	r27, 0x00	; 0
+ c84:	e2 e3       	ldi	r30, 0x32	; 50
+ c86:	f0 e0       	ldi	r31, 0x00	; 0
+ c88:	80 81       	ld	r24, Z
+ c8a:	80 61       	ori	r24, 0x10	; 16
+ c8c:	8c 93       	st	X, r24
+}
+ c8e:	cf 91       	pop	r28
+ c90:	df 91       	pop	r29
+ c92:	08 95       	ret
+
+00000c94 <ProgramLed>:
+
+void ProgramLed()
+{
+ c94:	df 93       	push	r29
+ c96:	cf 93       	push	r28
+ c98:	00 d0       	rcall	.+0      	; 0xc9a <ProgramLed+0x6>
+ c9a:	00 d0       	rcall	.+0      	; 0xc9c <ProgramLed+0x8>
+ c9c:	cd b7       	in	r28, 0x3d	; 61
+ c9e:	de b7       	in	r29, 0x3e	; 62
+    byte_t result[4];
+
+
+    PreparePrograming();
+ ca0:	cd df       	rcall	.-102    	; 0xc3c <PreparePrograming>
+
+
+    spiOneCommand(programEnable_Cmm,result,4);
+ ca2:	82 e6       	ldi	r24, 0x62	; 98
+ ca4:	90 e0       	ldi	r25, 0x00	; 0
+ ca6:	9e 01       	movw	r18, r28
+ ca8:	2f 5f       	subi	r18, 0xFF	; 255
+ caa:	3f 4f       	sbci	r19, 0xFF	; 255
+ cac:	b9 01       	movw	r22, r18
+ cae:	44 e0       	ldi	r20, 0x04	; 4
+ cb0:	50 e0       	ldi	r21, 0x00	; 0
+ cb2:	c2 de       	rcall	.-636    	; 0xa38 <spiOneCommand>
+    
+    spiOneCommand(chipErase_Cmm,result,4);
+ cb4:	86 e6       	ldi	r24, 0x66	; 102
+ cb6:	90 e0       	ldi	r25, 0x00	; 0
+ cb8:	9e 01       	movw	r18, r28
+ cba:	2f 5f       	subi	r18, 0xFF	; 255
+ cbc:	3f 4f       	sbci	r19, 0xFF	; 255
+ cbe:	b9 01       	movw	r22, r18
+ cc0:	44 e0       	ldi	r20, 0x04	; 4
+ cc2:	50 e0       	ldi	r21, 0x00	; 0
+ cc4:	b9 de       	rcall	.-654    	; 0xa38 <spiOneCommand>
+    CheckChipErase();    
+ cc6:	f1 de       	rcall	.-542    	; 0xaaa <CheckChipErase>
+
+    //WriteProgramByByte();
+    WriteProgramByPage();
+ cc8:	78 df       	rcall	.-272    	; 0xbba <WriteProgramByPage>
+    
+    ClosePrograming();
+ cca:	d0 df       	rcall	.-96     	; 0xc6c <ClosePrograming>
+}
+ ccc:	0f 90       	pop	r0
+ cce:	0f 90       	pop	r0
+ cd0:	0f 90       	pop	r0
+ cd2:	0f 90       	pop	r0
+ cd4:	cf 91       	pop	r28
+ cd6:	df 91       	pop	r29
+ cd8:	08 95       	ret
+
+00000cda <delay>:
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
 // ----------------------------------------------------------------------
 __attribute__((always_inline))
 static	void	delay ( void )
 {
- c18:	df 93       	push	r29
- c1a:	cf 93       	push	r28
- c1c:	cd b7       	in	r28, 0x3d	; 61
- c1e:	de b7       	in	r29, 0x3e	; 62
+ cda:	df 93       	push	r29
+ cdc:	cf 93       	push	r28
+ cde:	cd b7       	in	r28, 0x3d	; 61
+ ce0:	de b7       	in	r29, 0x3e	; 62
 	asm volatile(
- c20:	80 91 f4 00 	lds	r24, 0x00F4
- c24:	08 2e       	mov	r0, r24
- c26:	00 c0       	rjmp	.+0      	; 0xc28 <delay+0x10>
- c28:	00 00       	nop
- c2a:	0a 94       	dec	r0
- c2c:	e1 f7       	brne	.-8      	; 0xc26 <delay+0xe>
+ ce2:	80 91 fc 00 	lds	r24, 0x00FC
+ ce6:	08 2e       	mov	r0, r24
+ ce8:	00 c0       	rjmp	.+0      	; 0xcea <delay+0x10>
+ cea:	00 00       	nop
+ cec:	0a 94       	dec	r0
+ cee:	e1 f7       	brne	.-8      	; 0xce8 <delay+0xe>
 		"0:	rjmp	1f		\n"
 		"1:	nop			\n"
 		"	dec	__tmp_reg__	\n"
 		"	brne	0b		\n"
 		: : "r" (sck_period) );
 }
- c2e:	cf 91       	pop	r28
- c30:	df 91       	pop	r29
- c32:	08 95       	ret
+ cf0:	cf 91       	pop	r28
+ cf2:	df 91       	pop	r29
+ cf4:	08 95       	ret
 
-00000c34 <spi>:
+00000cf6 <spi>:
 // ----------------------------------------------------------------------
 // Issue one SPI command.
 // ----------------------------------------------------------------------
 //__attribute__((naked))
 static	void	spi ( byte_t* cmd, byte_t* res, int i )
 {
- c34:	df 93       	push	r29
- c36:	cf 93       	push	r28
- c38:	cd b7       	in	r28, 0x3d	; 61
- c3a:	de b7       	in	r29, 0x3e	; 62
- c3c:	29 97       	sbiw	r28, 0x09	; 9
- c3e:	0f b6       	in	r0, 0x3f	; 63
- c40:	f8 94       	cli
- c42:	de bf       	out	0x3e, r29	; 62
- c44:	0f be       	out	0x3f, r0	; 63
- c46:	cd bf       	out	0x3d, r28	; 61
- c48:	9d 83       	std	Y+5, r25	; 0x05
- c4a:	8c 83       	std	Y+4, r24	; 0x04
- c4c:	7f 83       	std	Y+7, r23	; 0x07
- c4e:	6e 83       	std	Y+6, r22	; 0x06
- c50:	59 87       	std	Y+9, r21	; 0x09
- c52:	48 87       	std	Y+8, r20	; 0x08
- c54:	53 c0       	rjmp	.+166    	; 0xcfc <spi+0xc8>
+ cf6:	df 93       	push	r29
+ cf8:	cf 93       	push	r28
+ cfa:	cd b7       	in	r28, 0x3d	; 61
+ cfc:	de b7       	in	r29, 0x3e	; 62
+ cfe:	29 97       	sbiw	r28, 0x09	; 9
+ d00:	0f b6       	in	r0, 0x3f	; 63
+ d02:	f8 94       	cli
+ d04:	de bf       	out	0x3e, r29	; 62
+ d06:	0f be       	out	0x3f, r0	; 63
+ d08:	cd bf       	out	0x3d, r28	; 61
+ d0a:	9d 83       	std	Y+5, r25	; 0x05
+ d0c:	8c 83       	std	Y+4, r24	; 0x04
+ d0e:	7f 83       	std	Y+7, r23	; 0x07
+ d10:	6e 83       	std	Y+6, r22	; 0x06
+ d12:	59 87       	std	Y+9, r21	; 0x09
+ d14:	48 87       	std	Y+8, r20	; 0x08
+ d16:	53 c0       	rjmp	.+166    	; 0xdbe <spi+0xc8>
 	byte_t	r;
 	byte_t	mask;
 
 	while (i != 0)
 	{
 	  i--;
- c56:	88 85       	ldd	r24, Y+8	; 0x08
- c58:	99 85       	ldd	r25, Y+9	; 0x09
- c5a:	01 97       	sbiw	r24, 0x01	; 1
- c5c:	99 87       	std	Y+9, r25	; 0x09
- c5e:	88 87       	std	Y+8, r24	; 0x08
+ d18:	88 85       	ldd	r24, Y+8	; 0x08
+ d1a:	99 85       	ldd	r25, Y+9	; 0x09
+ d1c:	01 97       	sbiw	r24, 0x01	; 1
+ d1e:	99 87       	std	Y+9, r25	; 0x09
+ d20:	88 87       	std	Y+8, r24	; 0x08
 		c = *cmd++;
- c60:	ec 81       	ldd	r30, Y+4	; 0x04
- c62:	fd 81       	ldd	r31, Y+5	; 0x05
- c64:	80 81       	ld	r24, Z
- c66:	8b 83       	std	Y+3, r24	; 0x03
- c68:	8c 81       	ldd	r24, Y+4	; 0x04
- c6a:	9d 81       	ldd	r25, Y+5	; 0x05
- c6c:	01 96       	adiw	r24, 0x01	; 1
- c6e:	9d 83       	std	Y+5, r25	; 0x05
- c70:	8c 83       	std	Y+4, r24	; 0x04
+ d22:	ec 81       	ldd	r30, Y+4	; 0x04
+ d24:	fd 81       	ldd	r31, Y+5	; 0x05
+ d26:	80 81       	ld	r24, Z
+ d28:	8b 83       	std	Y+3, r24	; 0x03
+ d2a:	8c 81       	ldd	r24, Y+4	; 0x04
+ d2c:	9d 81       	ldd	r25, Y+5	; 0x05
+ d2e:	01 96       	adiw	r24, 0x01	; 1
+ d30:	9d 83       	std	Y+5, r25	; 0x05
+ d32:	8c 83       	std	Y+4, r24	; 0x04
 		r = 0;
- c72:	1a 82       	std	Y+2, r1	; 0x02
+ d34:	1a 82       	std	Y+2, r1	; 0x02
 		for	( mask = 0x80; mask; mask >>= 1 )
- c74:	80 e8       	ldi	r24, 0x80	; 128
- c76:	89 83       	std	Y+1, r24	; 0x01
- c78:	35 c0       	rjmp	.+106    	; 0xce4 <spi+0xb0>
+ d36:	80 e8       	ldi	r24, 0x80	; 128
+ d38:	89 83       	std	Y+1, r24	; 0x01
+ d3a:	35 c0       	rjmp	.+106    	; 0xda6 <spi+0xb0>
 		{
 			if	( c & mask )
- c7a:	8b 81       	ldd	r24, Y+3	; 0x03
- c7c:	99 81       	ldd	r25, Y+1	; 0x01
- c7e:	89 23       	and	r24, r25
- c80:	88 23       	and	r24, r24
- c82:	39 f0       	breq	.+14     	; 0xc92 <spi+0x5e>
+ d3c:	8b 81       	ldd	r24, Y+3	; 0x03
+ d3e:	99 81       	ldd	r25, Y+1	; 0x01
+ d40:	89 23       	and	r24, r25
+ d42:	88 23       	and	r24, r24
+ d44:	39 f0       	breq	.+14     	; 0xd54 <spi+0x5e>
 			{
 				PORT |= MOSI_MASK;
- c84:	a8 e3       	ldi	r26, 0x38	; 56
- c86:	b0 e0       	ldi	r27, 0x00	; 0
- c88:	e8 e3       	ldi	r30, 0x38	; 56
- c8a:	f0 e0       	ldi	r31, 0x00	; 0
- c8c:	80 81       	ld	r24, Z
- c8e:	80 62       	ori	r24, 0x20	; 32
- c90:	8c 93       	st	X, r24
+ d46:	a8 e3       	ldi	r26, 0x38	; 56
+ d48:	b0 e0       	ldi	r27, 0x00	; 0
+ d4a:	e8 e3       	ldi	r30, 0x38	; 56
+ d4c:	f0 e0       	ldi	r31, 0x00	; 0
+ d4e:	80 81       	ld	r24, Z
+ d50:	80 62       	ori	r24, 0x20	; 32
+ d52:	8c 93       	st	X, r24
 			}
 //			if (! status & INVERTED_SCK_MASK )
 				delay();
- c92:	c2 df       	rcall	.-124    	; 0xc18 <delay>
+ d54:	c2 df       	rcall	.-124    	; 0xcda <delay>
 
 			PORT |= SCK_MASK;
- c94:	a8 e3       	ldi	r26, 0x38	; 56
- c96:	b0 e0       	ldi	r27, 0x00	; 0
- c98:	e8 e3       	ldi	r30, 0x38	; 56
- c9a:	f0 e0       	ldi	r31, 0x00	; 0
- c9c:	80 81       	ld	r24, Z
- c9e:	80 68       	ori	r24, 0x80	; 128
- ca0:	8c 93       	st	X, r24
+ d56:	a8 e3       	ldi	r26, 0x38	; 56
+ d58:	b0 e0       	ldi	r27, 0x00	; 0
+ d5a:	e8 e3       	ldi	r30, 0x38	; 56
+ d5c:	f0 e0       	ldi	r31, 0x00	; 0
+ d5e:	80 81       	ld	r24, Z
+ d60:	80 68       	ori	r24, 0x80	; 128
+ d62:	8c 93       	st	X, r24
 			delay();
- ca2:	ba df       	rcall	.-140    	; 0xc18 <delay>
+ d64:	ba df       	rcall	.-140    	; 0xcda <delay>
 			r <<= 1;
- ca4:	8a 81       	ldd	r24, Y+2	; 0x02
- ca6:	88 0f       	add	r24, r24
- ca8:	8a 83       	std	Y+2, r24	; 0x02
+ d66:	8a 81       	ldd	r24, Y+2	; 0x02
+ d68:	88 0f       	add	r24, r24
+ d6a:	8a 83       	std	Y+2, r24	; 0x02
 			if	( PIN & MISO_MASK )
- caa:	e6 e3       	ldi	r30, 0x36	; 54
- cac:	f0 e0       	ldi	r31, 0x00	; 0
- cae:	80 81       	ld	r24, Z
- cb0:	88 2f       	mov	r24, r24
- cb2:	90 e0       	ldi	r25, 0x00	; 0
- cb4:	80 74       	andi	r24, 0x40	; 64
- cb6:	90 70       	andi	r25, 0x00	; 0
- cb8:	00 97       	sbiw	r24, 0x00	; 0
- cba:	19 f0       	breq	.+6      	; 0xcc2 <spi+0x8e>
+ d6c:	e6 e3       	ldi	r30, 0x36	; 54
+ d6e:	f0 e0       	ldi	r31, 0x00	; 0
+ d70:	80 81       	ld	r24, Z
+ d72:	88 2f       	mov	r24, r24
+ d74:	90 e0       	ldi	r25, 0x00	; 0
+ d76:	80 74       	andi	r24, 0x40	; 64
+ d78:	90 70       	andi	r25, 0x00	; 0
+ d7a:	00 97       	sbiw	r24, 0x00	; 0
+ d7c:	19 f0       	breq	.+6      	; 0xd84 <spi+0x8e>
 			{
 				r++;
- cbc:	8a 81       	ldd	r24, Y+2	; 0x02
- cbe:	8f 5f       	subi	r24, 0xFF	; 255
- cc0:	8a 83       	std	Y+2, r24	; 0x02
+ d7e:	8a 81       	ldd	r24, Y+2	; 0x02
+ d80:	8f 5f       	subi	r24, 0xFF	; 255
+ d82:	8a 83       	std	Y+2, r24	; 0x02
 			}
 			PORT &= ~ SCK_MASK;
- cc2:	a8 e3       	ldi	r26, 0x38	; 56
- cc4:	b0 e0       	ldi	r27, 0x00	; 0
- cc6:	e8 e3       	ldi	r30, 0x38	; 56
- cc8:	f0 e0       	ldi	r31, 0x00	; 0
- cca:	80 81       	ld	r24, Z
- ccc:	8f 77       	andi	r24, 0x7F	; 127
- cce:	8c 93       	st	X, r24
+ d84:	a8 e3       	ldi	r26, 0x38	; 56
+ d86:	b0 e0       	ldi	r27, 0x00	; 0
+ d88:	e8 e3       	ldi	r30, 0x38	; 56
+ d8a:	f0 e0       	ldi	r31, 0x00	; 0
+ d8c:	80 81       	ld	r24, Z
+ d8e:	8f 77       	andi	r24, 0x7F	; 127
+ d90:	8c 93       	st	X, r24
 //			if ( status & INVERTED_SCK_MASK )
 //				delay();
 			
 			PORT &= ~ MOSI_MASK;
- cd0:	a8 e3       	ldi	r26, 0x38	; 56
- cd2:	b0 e0       	ldi	r27, 0x00	; 0
- cd4:	e8 e3       	ldi	r30, 0x38	; 56
- cd6:	f0 e0       	ldi	r31, 0x00	; 0
- cd8:	80 81       	ld	r24, Z
- cda:	8f 7d       	andi	r24, 0xDF	; 223
- cdc:	8c 93       	st	X, r24
+ d92:	a8 e3       	ldi	r26, 0x38	; 56
+ d94:	b0 e0       	ldi	r27, 0x00	; 0
+ d96:	e8 e3       	ldi	r30, 0x38	; 56
+ d98:	f0 e0       	ldi	r31, 0x00	; 0
+ d9a:	80 81       	ld	r24, Z
+ d9c:	8f 7d       	andi	r24, 0xDF	; 223
+ d9e:	8c 93       	st	X, r24
 	while (i != 0)
 	{
 	  i--;
 		c = *cmd++;
 		r = 0;
 		for	( mask = 0x80; mask; mask >>= 1 )
- cde:	89 81       	ldd	r24, Y+1	; 0x01
- ce0:	86 95       	lsr	r24
- ce2:	89 83       	std	Y+1, r24	; 0x01
- ce4:	89 81       	ldd	r24, Y+1	; 0x01
- ce6:	88 23       	and	r24, r24
- ce8:	41 f6       	brne	.-112    	; 0xc7a <spi+0x46>
+ da0:	89 81       	ldd	r24, Y+1	; 0x01
+ da2:	86 95       	lsr	r24
+ da4:	89 83       	std	Y+1, r24	; 0x01
+ da6:	89 81       	ldd	r24, Y+1	; 0x01
+ da8:	88 23       	and	r24, r24
+ daa:	41 f6       	brne	.-112    	; 0xd3c <spi+0x46>
 //			if ( status & INVERTED_SCK_MASK )
 //				delay();
 			
 			PORT &= ~ MOSI_MASK;
 		}
 		*res++ = r;
- cea:	ee 81       	ldd	r30, Y+6	; 0x06
- cec:	ff 81       	ldd	r31, Y+7	; 0x07
- cee:	8a 81       	ldd	r24, Y+2	; 0x02
- cf0:	80 83       	st	Z, r24
- cf2:	8e 81       	ldd	r24, Y+6	; 0x06
- cf4:	9f 81       	ldd	r25, Y+7	; 0x07
- cf6:	01 96       	adiw	r24, 0x01	; 1
- cf8:	9f 83       	std	Y+7, r25	; 0x07
- cfa:	8e 83       	std	Y+6, r24	; 0x06
+ dac:	ee 81       	ldd	r30, Y+6	; 0x06
+ dae:	ff 81       	ldd	r31, Y+7	; 0x07
+ db0:	8a 81       	ldd	r24, Y+2	; 0x02
+ db2:	80 83       	st	Z, r24
+ db4:	8e 81       	ldd	r24, Y+6	; 0x06
+ db6:	9f 81       	ldd	r25, Y+7	; 0x07
+ db8:	01 96       	adiw	r24, 0x01	; 1
+ dba:	9f 83       	std	Y+7, r25	; 0x07
+ dbc:	8e 83       	std	Y+6, r24	; 0x06
 {
 	byte_t	c;
 	byte_t	r;
 	byte_t	mask;
 
 	while (i != 0)
- cfc:	88 85       	ldd	r24, Y+8	; 0x08
- cfe:	99 85       	ldd	r25, Y+9	; 0x09
- d00:	00 97       	sbiw	r24, 0x00	; 0
- d02:	09 f0       	breq	.+2      	; 0xd06 <spi+0xd2>
- d04:	a8 cf       	rjmp	.-176    	; 0xc56 <spi+0x22>
+ dbe:	88 85       	ldd	r24, Y+8	; 0x08
+ dc0:	99 85       	ldd	r25, Y+9	; 0x09
+ dc2:	00 97       	sbiw	r24, 0x00	; 0
+ dc4:	09 f0       	breq	.+2      	; 0xdc8 <spi+0xd2>
+ dc6:	a8 cf       	rjmp	.-176    	; 0xd18 <spi+0x22>
 			
 			PORT &= ~ MOSI_MASK;
 		}
 		*res++ = r;
 	}
 }
- d06:	29 96       	adiw	r28, 0x09	; 9
- d08:	0f b6       	in	r0, 0x3f	; 63
- d0a:	f8 94       	cli
- d0c:	de bf       	out	0x3e, r29	; 62
- d0e:	0f be       	out	0x3f, r0	; 63
- d10:	cd bf       	out	0x3d, r28	; 61
- d12:	cf 91       	pop	r28
- d14:	df 91       	pop	r29
- d16:	08 95       	ret
+ dc8:	29 96       	adiw	r28, 0x09	; 9
+ dca:	0f b6       	in	r0, 0x3f	; 63
+ dcc:	f8 94       	cli
+ dce:	de bf       	out	0x3e, r29	; 62
+ dd0:	0f be       	out	0x3f, r0	; 63
+ dd2:	cd bf       	out	0x3d, r28	; 61
+ dd4:	cf 91       	pop	r28
+ dd6:	df 91       	pop	r29
+ dd8:	08 95       	ret
 
-00000d18 <spi_rw>:
+00000dda <spi_rw>:
 
 // ----------------------------------------------------------------------
 // Create and issue a read or write SPI command.
 // ----------------------------------------------------------------------
 static	void	spi_rw ( void )
 {
- d18:	df 93       	push	r29
- d1a:	cf 93       	push	r28
- d1c:	00 d0       	rcall	.+0      	; 0xd1e <spi_rw+0x6>
- d1e:	00 d0       	rcall	.+0      	; 0xd20 <spi_rw+0x8>
- d20:	0f 92       	push	r0
- d22:	cd b7       	in	r28, 0x3d	; 61
- d24:	de b7       	in	r29, 0x3e	; 62
+ dda:	df 93       	push	r29
+ ddc:	cf 93       	push	r28
+ dde:	00 d0       	rcall	.+0      	; 0xde0 <spi_rw+0x6>
+ de0:	00 d0       	rcall	.+0      	; 0xde2 <spi_rw+0x8>
+ de2:	0f 92       	push	r0
+ de4:	cd b7       	in	r28, 0x3d	; 61
+ de6:	de b7       	in	r29, 0x3e	; 62
 	unsigned char offset = 0;
- d26:	1d 82       	std	Y+5, r1	; 0x05
+ de8:	1d 82       	std	Y+5, r1	; 0x05
 	uint_t	a;
 	uint_t	tam = (status & TAMANIO_MASK);	
- d28:	80 91 04 01 	lds	r24, 0x0104
- d2c:	88 2f       	mov	r24, r24
- d2e:	90 e0       	ldi	r25, 0x00	; 0
- d30:	87 70       	andi	r24, 0x07	; 7
- d32:	90 70       	andi	r25, 0x00	; 0
- d34:	9a 83       	std	Y+2, r25	; 0x02
- d36:	89 83       	std	Y+1, r24	; 0x01
+ dea:	80 91 0c 01 	lds	r24, 0x010C
+ dee:	88 2f       	mov	r24, r24
+ df0:	90 e0       	ldi	r25, 0x00	; 0
+ df2:	87 70       	andi	r24, 0x07	; 7
+ df4:	90 70       	andi	r25, 0x00	; 0
+ df6:	9a 83       	std	Y+2, r25	; 0x02
+ df8:	89 83       	std	Y+1, r24	; 0x01
 
 	a = address++;
- d38:	80 91 f7 00 	lds	r24, 0x00F7
- d3c:	90 91 f8 00 	lds	r25, 0x00F8
- d40:	9c 83       	std	Y+4, r25	; 0x04
- d42:	8b 83       	std	Y+3, r24	; 0x03
- d44:	01 96       	adiw	r24, 0x01	; 1
- d46:	90 93 f8 00 	sts	0x00F8, r25
- d4a:	80 93 f7 00 	sts	0x00F7, r24
+ dfa:	80 91 ff 00 	lds	r24, 0x00FF
+ dfe:	90 91 00 01 	lds	r25, 0x0100
+ e02:	9c 83       	std	Y+4, r25	; 0x04
+ e04:	8b 83       	std	Y+3, r24	; 0x03
+ e06:	01 96       	adiw	r24, 0x01	; 1
+ e08:	90 93 00 01 	sts	0x0100, r25
+ e0c:	80 93 ff 00 	sts	0x00FF, r24
 	cmd[0] = cmd0;
- d4e:	80 91 fb 00 	lds	r24, 0x00FB
- d52:	80 93 fc 00 	sts	0x00FC, r24
+ e10:	80 91 03 01 	lds	r24, 0x0103
+ e14:	80 93 04 01 	sts	0x0104, r24
 	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
- d56:	80 91 04 01 	lds	r24, 0x0104
- d5a:	88 2f       	mov	r24, r24
- d5c:	90 e0       	ldi	r25, 0x00	; 0
- d5e:	88 73       	andi	r24, 0x38	; 56
- d60:	90 70       	andi	r25, 0x00	; 0
- d62:	00 97       	sbiw	r24, 0x00	; 0
- d64:	a9 f4       	brne	.+42     	; 0xd90 <spi_rw+0x78>
- d66:	80 91 fb 00 	lds	r24, 0x00FB
- d6a:	88 23       	and	r24, r24
- d6c:	8c f0       	brlt	.+34     	; 0xd90 <spi_rw+0x78>
+ e18:	80 91 0c 01 	lds	r24, 0x010C
+ e1c:	88 2f       	mov	r24, r24
+ e1e:	90 e0       	ldi	r25, 0x00	; 0
+ e20:	88 73       	andi	r24, 0x38	; 56
+ e22:	90 70       	andi	r25, 0x00	; 0
+ e24:	00 97       	sbiw	r24, 0x00	; 0
+ e26:	a9 f4       	brne	.+42     	; 0xe52 <spi_rw+0x78>
+ e28:	80 91 03 01 	lds	r24, 0x0103
+ e2c:	88 23       	and	r24, r24
+ e2e:	8c f0       	brlt	.+34     	; 0xe52 <spi_rw+0x78>
 	{	//Es AVR 							// NOT eeprom
 		if ( a & 1 )
- d6e:	8b 81       	ldd	r24, Y+3	; 0x03
- d70:	9c 81       	ldd	r25, Y+4	; 0x04
- d72:	81 70       	andi	r24, 0x01	; 1
- d74:	90 70       	andi	r25, 0x00	; 0
- d76:	88 23       	and	r24, r24
- d78:	29 f0       	breq	.+10     	; 0xd84 <spi_rw+0x6c>
+ e30:	8b 81       	ldd	r24, Y+3	; 0x03
+ e32:	9c 81       	ldd	r25, Y+4	; 0x04
+ e34:	81 70       	andi	r24, 0x01	; 1
+ e36:	90 70       	andi	r25, 0x00	; 0
+ e38:	88 23       	and	r24, r24
+ e3a:	29 f0       	breq	.+10     	; 0xe46 <spi_rw+0x6c>
 		{
 			cmd[0] |= 0x08;	//La H
- d7a:	80 91 fc 00 	lds	r24, 0x00FC
- d7e:	88 60       	ori	r24, 0x08	; 8
- d80:	80 93 fc 00 	sts	0x00FC, r24
+ e3c:	80 91 04 01 	lds	r24, 0x0104
+ e40:	88 60       	ori	r24, 0x08	; 8
+ e42:	80 93 04 01 	sts	0x0104, r24
 		}
 		a >>= 1;	//Corro la direccion
- d84:	8b 81       	ldd	r24, Y+3	; 0x03
- d86:	9c 81       	ldd	r25, Y+4	; 0x04
- d88:	96 95       	lsr	r25
- d8a:	87 95       	ror	r24
- d8c:	9c 83       	std	Y+4, r25	; 0x04
- d8e:	8b 83       	std	Y+3, r24	; 0x03
+ e46:	8b 81       	ldd	r24, Y+3	; 0x03
+ e48:	9c 81       	ldd	r25, Y+4	; 0x04
+ e4a:	96 95       	lsr	r25
+ e4c:	87 95       	ror	r24
+ e4e:	9c 83       	std	Y+4, r25	; 0x04
+ e50:	8b 83       	std	Y+3, r24	; 0x03
 	} 
 	cmd[1] = a >> 8;
- d90:	8b 81       	ldd	r24, Y+3	; 0x03
- d92:	9c 81       	ldd	r25, Y+4	; 0x04
- d94:	89 2f       	mov	r24, r25
- d96:	99 27       	eor	r25, r25
- d98:	80 93 fd 00 	sts	0x00FD, r24
+ e52:	8b 81       	ldd	r24, Y+3	; 0x03
+ e54:	9c 81       	ldd	r25, Y+4	; 0x04
+ e56:	89 2f       	mov	r24, r25
+ e58:	99 27       	eor	r25, r25
+ e5a:	80 93 05 01 	sts	0x0105, r24
 	cmd[2] = a;
- d9c:	8b 81       	ldd	r24, Y+3	; 0x03
- d9e:	80 93 fe 00 	sts	0x00FE, r24
+ e5e:	8b 81       	ldd	r24, Y+3	; 0x03
+ e60:	80 93 06 01 	sts	0x0106, r24
 	
 	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
- da2:	80 91 04 01 	lds	r24, 0x0104
- da6:	88 2f       	mov	r24, r24
- da8:	90 e0       	ldi	r25, 0x00	; 0
- daa:	88 73       	andi	r24, 0x38	; 56
- dac:	90 70       	andi	r25, 0x00	; 0
- dae:	80 31       	cpi	r24, 0x10	; 16
- db0:	91 05       	cpc	r25, r1
- db2:	81 f4       	brne	.+32     	; 0xdd4 <spi_rw+0xbc>
+ e64:	80 91 0c 01 	lds	r24, 0x010C
+ e68:	88 2f       	mov	r24, r24
+ e6a:	90 e0       	ldi	r25, 0x00	; 0
+ e6c:	88 73       	andi	r24, 0x38	; 56
+ e6e:	90 70       	andi	r25, 0x00	; 0
+ e70:	80 31       	cpi	r24, 0x10	; 16
+ e72:	91 05       	cpc	r25, r1
+ e74:	81 f4       	brne	.+32     	; 0xe96 <spi_rw+0xbc>
 	{
 		cmd[1] <<= 3;
- db4:	80 91 fd 00 	lds	r24, 0x00FD
- db8:	88 0f       	add	r24, r24
- dba:	88 0f       	add	r24, r24
- dbc:	88 0f       	add	r24, r24
- dbe:	80 93 fd 00 	sts	0x00FD, r24
+ e76:	80 91 05 01 	lds	r24, 0x0105
+ e7a:	88 0f       	add	r24, r24
+ e7c:	88 0f       	add	r24, r24
+ e7e:	88 0f       	add	r24, r24
+ e80:	80 93 05 01 	sts	0x0105, r24
 		cmd[1] |= cmd0;
- dc2:	90 91 fd 00 	lds	r25, 0x00FD
- dc6:	80 91 fb 00 	lds	r24, 0x00FB
- dca:	89 2b       	or	r24, r25
- dcc:	80 93 fd 00 	sts	0x00FD, r24
+ e84:	90 91 05 01 	lds	r25, 0x0105
+ e88:	80 91 03 01 	lds	r24, 0x0103
+ e8c:	89 2b       	or	r24, r25
+ e8e:	80 93 05 01 	sts	0x0105, r24
 		offset = 1;
- dd0:	81 e0       	ldi	r24, 0x01	; 1
- dd2:	8d 83       	std	Y+5, r24	; 0x05
+ e92:	81 e0       	ldi	r24, 0x01	; 1
+ e94:	8d 83       	std	Y+5, r24	; 0x05
 	}
 	spi( cmd + offset, res, tam );
- dd4:	8d 81       	ldd	r24, Y+5	; 0x05
- dd6:	88 2f       	mov	r24, r24
- dd8:	90 e0       	ldi	r25, 0x00	; 0
- dda:	84 50       	subi	r24, 0x04	; 4
- ddc:	9f 4f       	sbci	r25, 0xFF	; 255
- dde:	49 81       	ldd	r20, Y+1	; 0x01
- de0:	5a 81       	ldd	r21, Y+2	; 0x02
- de2:	20 e0       	ldi	r18, 0x00	; 0
- de4:	31 e0       	ldi	r19, 0x01	; 1
- de6:	b9 01       	movw	r22, r18
- de8:	25 df       	rcall	.-438    	; 0xc34 <spi>
+ e96:	8d 81       	ldd	r24, Y+5	; 0x05
+ e98:	88 2f       	mov	r24, r24
+ e9a:	90 e0       	ldi	r25, 0x00	; 0
+ e9c:	8c 5f       	subi	r24, 0xFC	; 252
+ e9e:	9e 4f       	sbci	r25, 0xFE	; 254
+ ea0:	49 81       	ldd	r20, Y+1	; 0x01
+ ea2:	5a 81       	ldd	r21, Y+2	; 0x02
+ ea4:	28 e0       	ldi	r18, 0x08	; 8
+ ea6:	31 e0       	ldi	r19, 0x01	; 1
+ ea8:	b9 01       	movw	r22, r18
+ eaa:	25 df       	rcall	.-438    	; 0xcf6 <spi>
 }
- dea:	0f 90       	pop	r0
- dec:	0f 90       	pop	r0
- dee:	0f 90       	pop	r0
- df0:	0f 90       	pop	r0
- df2:	0f 90       	pop	r0
- df4:	cf 91       	pop	r28
- df6:	df 91       	pop	r29
- df8:	08 95       	ret
+ eac:	0f 90       	pop	r0
+ eae:	0f 90       	pop	r0
+ eb0:	0f 90       	pop	r0
+ eb2:	0f 90       	pop	r0
+ eb4:	0f 90       	pop	r0
+ eb6:	cf 91       	pop	r28
+ eb8:	df 91       	pop	r29
+ eba:	08 95       	ret
 
-00000dfa <crc>:
+00000ebc <crc>:
 	.text
 	.global	crc
 	.type	crc, @function
 crc:
 	; crc = 0xffff
 	movw	XL, r24
- dfa:	dc 01       	movw	r26, r24
+ ebc:	dc 01       	movw	r26, r24
 	ldi	crc_h, 0xff
- dfc:	9f ef       	ldi	r25, 0xFF	; 255
+ ebe:	9f ef       	ldi	r25, 0xFF	; 255
 	ldi	crc_l, 0xff
- dfe:	8f ef       	ldi	r24, 0xFF	; 255
+ ec0:	8f ef       	ldi	r24, 0xFF	; 255
 	lsl	len
- e00:	66 0f       	add	r22, r22
+ ec2:	66 0f       	add	r22, r22
 	breq	done
- e02:	b9 f0       	breq	.+46     	; 0xe32 <done>
+ ec4:	b9 f0       	breq	.+46     	; 0xef4 <done>
 	ldi	zl, lo8(crc4tab)
- e04:	4e e4       	ldi	r20, 0x4E	; 78
+ ec6:	4e e4       	ldi	r20, 0x4E	; 78
 	ldi	ZH, hi8(crc4tab)
- e06:	f0 e0       	ldi	r31, 0x00	; 0
+ ec8:	f0 e0       	ldi	r31, 0x00	; 0
 
-00000e08 <next_nibble>:
+00000eca <next_nibble>:
 
 next_nibble:
 	; b = (len & 1 ? b >> 4 : *data++)
 	swap	b
- e08:	22 95       	swap	r18
+ eca:	22 95       	swap	r18
 	sbrs	len, 0
- e0a:	60 ff       	sbrs	r22, 0
+ ecc:	60 ff       	sbrs	r22, 0
 	ld	b, X+
- e0c:	2d 91       	ld	r18, X+
+ ece:	2d 91       	ld	r18, X+
 
 	; index = (crc ^ b) & 0x0f
 	mov	ZL, crc_l
- e0e:	e8 2f       	mov	r30, r24
+ ed0:	e8 2f       	mov	r30, r24
 	eor	ZL, b
- e10:	e2 27       	eor	r30, r18
+ ed2:	e2 27       	eor	r30, r18
 	andi	ZL, 0x0f
- e12:	ef 70       	andi	r30, 0x0F	; 15
+ ed4:	ef 70       	andi	r30, 0x0F	; 15
 
 	; crc >>= 4
 	swap	crc_h
- e14:	92 95       	swap	r25
+ ed6:	92 95       	swap	r25
 	swap	crc_l
- e16:	82 95       	swap	r24
+ ed8:	82 95       	swap	r24
 	andi	crc_l, 0x0f
- e18:	8f 70       	andi	r24, 0x0F	; 15
+ eda:	8f 70       	andi	r24, 0x0F	; 15
 	mov	tmp, crc_h
- e1a:	39 2f       	mov	r19, r25
+ edc:	39 2f       	mov	r19, r25
 	andi	tmp, 0xf0
- e1c:	30 7f       	andi	r19, 0xF0	; 240
+ ede:	30 7f       	andi	r19, 0xF0	; 240
 	or	crc_l, tmp
- e1e:	83 2b       	or	r24, r19
+ ee0:	83 2b       	or	r24, r19
 	andi	crc_h, 0x0f
- e20:	9f 70       	andi	r25, 0x0F	; 15
+ ee2:	9f 70       	andi	r25, 0x0F	; 15
 
 	; crc ^= crc4tab[index]
 	add	ZL, zl
- e22:	e4 0f       	add	r30, r20
+ ee4:	e4 0f       	add	r30, r20
 	lpm	tmp, Z+
- e24:	35 91       	lpm	r19, Z+
+ ee6:	35 91       	lpm	r19, Z+
 	eor	crc_h, tmp
- e26:	93 27       	eor	r25, r19
+ ee8:	93 27       	eor	r25, r19
 	andi	tmp, 1
- e28:	31 70       	andi	r19, 0x01	; 1
+ eea:	31 70       	andi	r19, 0x01	; 1
 	eor	crc_h, tmp
- e2a:	93 27       	eor	r25, r19
+ eec:	93 27       	eor	r25, r19
 	eor	crc_l, tmp
- e2c:	83 27       	eor	r24, r19
+ eee:	83 27       	eor	r24, r19
 
 	; next nibble
 	dec	len
- e2e:	6a 95       	dec	r22
+ ef0:	6a 95       	dec	r22
 	brne	next_nibble
- e30:	59 f7       	brne	.-42     	; 0xe08 <next_nibble>
+ ef2:	59 f7       	brne	.-42     	; 0xeca <next_nibble>
 
-00000e32 <done>:
+00000ef4 <done>:
 
 done:
 	; crc ^= 0xffff
 	com	crc_l
- e32:	80 95       	com	r24
+ ef4:	80 95       	com	r24
 	com	crc_h
- e34:	90 95       	com	r25
+ ef6:	90 95       	com	r25
 
 	; append crc to buffer
 	st	X+, crc_l
- e36:	8d 93       	st	X+, r24
+ ef8:	8d 93       	st	X+, r24
 	st	X+, crc_h
- e38:	9d 93       	st	X+, r25
+ efa:	9d 93       	st	X+, r25
 
 	ret
- e3a:	08 95       	ret
+ efc:	08 95       	ret
 
-00000e3c <_exit>:
- e3c:	f8 94       	cli
+00000efe <_exit>:
+ efe:	f8 94       	cli
 
-00000e3e <__stop_program>:
- e3e:	ff cf       	rjmp	.-2      	; 0xe3e <__stop_program>
+00000f00 <__stop_program>:
+ f00:	ff cf       	rjmp	.-2      	; 0xf00 <__stop_program>

@@ -1,0 +1,120 @@
+El 8253:
+
+Secuencia:
+
+SCK y MOSI arrancan en 0.
+
+LOOP lectura:
+Subo el SCK
+Pongo el dato en el MOSI
+Espero.
+Leo el dato en MISO
+Bajo el SCK
+Espero.
+Inicio el loop nuevamente
+
+El micro saca SIEMPRE el valor del byte anterior que entro en memoria. EXCEPTO en el primer comando:
+MOSI:
+AC 53 00 00
+MISO:
+FF FF 53 00
+Es decir, pierde el AC inicial!
+
+Al escribir de a bytes, si se lee el mismo byte recien escrito, si la escritura no termino, se invierte el MSB del dato. Si la escritura termino, se lee lo mismo que se escribio.
+En la practica con un clock de 264uS, nunca tuve que hacer una relectura.
+
+Al hacer el CHIP RESET, si la operacion no se completo, cualquier posicion de memoria que se lea, se obtendra un 0x00. Si el reseteo finalizo, se leera 0xFF.
+
+Todos los comandos son de 4 Bytes, el primero SIEMPRE es COMANDO, el segundo y tercero son ADDRESS, el cuarto es DATO.
+
+
+EL AT89s52
+
+Sniffing con AEC:
+
+Funcionamiento:
+
+Sube Reset
+Espera 60ms
+Baja reset
+Espera 60ms
+Sube reset
+Espera 320ms
+
+Manda trama de Enable: AC 53 00 69   (notar el 69 al final, aunque la hoja de datos dice XX)
+
+Si no recibe un 0x69 en el ultimo byte:
+Baja el reset, espera X tiempo. Intenta otra vez.
+
+Si recibe un 0x69 en el ultimo byte:
+Espera 300ms (no toca ninguna linea)
+Manda otra la trama de Enable AC 53 00 69 (otra vez)
+Manda la trama de Reset AC 80 00 00
+Espera 260ms (no toca ninguna linea)
+Baja reset
+Espera 60ms
+Sube reset
+Espera 65ms
+Baja reset
+Espera 60ms
+Sube reset
+Espera 326ms
+
+Manda la trama de Enable AC 53 00 69
+Espera 320ms
+Manda la trama de Enable AC 53 00 69
+(A partir de aca el loop de escritura)
+Manda la trama de Leer el byte 0000 de Flash 20 00 00 00.
+El micro manda en el ultimo byte de la trama de lectura FF indicando que el borrado fue correcto.
+Manda la trama para escribir la memoria en la posicion 0000 de Flash 40 00 00 B2 (se escribe el dato B2)
+Manda la trama para leer la posicion 0000 de Flash 20 00 00 00.
+El micro manda en el ultimo byte de la trama de lectura B2, validando el dato.
+
+Manda la trama de Leer el byte 0001 de Flash 20 00 01 00.
+El micro manda en el ultimo byte de la trama de lectura FF.
+Manda la trama para escribir la memoria en la posicion 0001 de Flash 40 00 01 80 (se escribe el dato 80)
+Manda la trama para leer la posicion 0001 de Flash 20 00 01 00.
+El micro manda en el ultimo byte de la trama de lectura 80, validando el dato.
+
+El loop sigue con todas las posiciones... 
+Al llegar a la posicion 0x1FFF, que es la ultima posicion de Flash del micro:
+
+Manda la trama de Leer el byte 1FFE de Flash 20 1F FE 00.
+El micro manda en el ultimo byte de la trama de lectura FF.
+Como el dato a escribir es 0xFF NO hace nada!
+Manda la trama de Leer el byte 1FFF de Flash 20 1F FF 00.
+El micro manda en el ultimo byte de la trama de lectura FF.
+
+Fin de la escritura, hay que empezar el proceso de verificacion:
+
+Baja el reset
+Espera 60ms
+Sube el reset
+Espera 60ms
+Baja el reset
+Espera 60ms
+Sube el reset
+Espera 327ms
+Manda la trama de Enable AC 53 00 69
+Espera 320ms
+Manda la trama de Enable AC 53 00 69 
+OJO: A esta segunda trama de Enable no le contesta con 0x69 en el ultimo byte, debe ser porque esta ya en modo.
+Manda la trama de Leer el byte 0000 de Flash 20 00 00 00.
+El micro manda en el ultimo dato de la trama de lectura el contenido de la posicion 0000.
+Manda la trama de Leer el byte 0001 de Flash 20 00 01 00.
+El micro manda en el ultimo dato de la trama de lectura el contenido de la posicion 0001.
+Idem con todos los bytes
+El AEC deja el reset en alto, se puede desactivar desde el programa.
+
+
+De forma generica: 
+Lee la direccion XX que debe estar en FF inicialmente
+Escribe en la direccion XX el dato.
+Lee otra vez la direccion XX para asegurarse que el dato esta bien escrito
+Repite en la direccion XX+1
+COMENTARIO: Si el byte a escribir es 0xFF solo hace la primer verificacion y luego NO lo escribe.
+
+Verificacion:
+Lee la posicion XX y comprueba si esta el dato exacto.
+
+Comentario: Excepto en la trama de Enable y cuando debe sacar datos, el s52 saca por MISO el ultimo dato mandado llegado por el MOSI.

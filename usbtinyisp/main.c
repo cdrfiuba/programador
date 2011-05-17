@@ -1,13 +1,18 @@
 // ======================================================================
-// Control a parallel port AVR programmer (avrdude type "bsd") via USB.
+// USB AVR programmer and SPI interface
 //
-// Copyright (C) 2006 Dick Streefland
+// http://www.ladyada.net/make/usbtinyisp/
+//
+// This code works for both v1.0 and v2.0 devices.
+//
+// Copyright 2006-2010 Dick Streefland
 //
 // This is free software, licensed under the terms of the GNU General
 // Public License as published by the Free Software Foundation.
 // ======================================================================
 
 #include <avr/io.h>
+#include "def.h"
 #include "usb.h"
 
 enum
@@ -27,41 +32,30 @@ enum
 	USBTINY_FLASH_WRITE,	// write flash (wIndex:address, wValue:timeout)
 	USBTINY_EEPROM_READ,	// read eeprom (wIndex:address)
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
-	USBTINY_DDRWRITE,        // set port direction
-	USBTINY_SPI1,            // a single SPI command
-	USBTINY_CONFIGURE	 // if command sent, use the inverted sck for 8253. (wValue = status, wIndex = comando)
+	USBTINY_DDRWRITE,	// set port direction
+	USBTINY_SPI1		// a single SPI command
 };
 
 // ----------------------------------------------------------------------
-// Programmer output pins:
-//	LED	PB0	(D0)
-#define LED PB0
-//	VCC	PB1	(D1)
-//	VCC	PB2	(D2)
-//	VCC	PB3	(D3)
-//	RESET	PB5	(D4)
-#define RESET PB4
-//	MOSI	PB5	(D5)
-#define MOSI  PB5
-//	SCK	PB7	(D7)
-#define SCK   PB7
-
+// I/O pins:
 // ----------------------------------------------------------------------
 #define	PORT		PORTB
 #define	DDR		DDRB
-#define	POWER_MASK	_BV(LED)
-#define	RESET_MASK	_BV(RESET)
-#define	SCK_MASK	_BV(SCK)
-#define	MOSI_MASK	_BV(MOSI)
-#define LED_MASK        _BV(LED)
-
-// ----------------------------------------------------------------------
-// Programmer input pins:
-//	MISO	PB6
-#define MISO       6
-// ----------------------------------------------------------------------
 #define	PIN		PINB
+
+#define	LED		PB0		// output
+#define	RESET		PB4		// output
+#define	MOSI		PB5		// output
+#define	MISO		PB6		// input
+#define	SCK		PB7		// output
+
+#define	LED_MASK	_BV(LED)
+#define	RESET_MASK	_BV(RESET)
+#define	MOSI_MASK	_BV(MOSI)
 #define	MISO_MASK	_BV(MISO)
+#define	SCK_MASK	_BV(SCK)
+
+#define	BUFFEN		(D,4)		// output, active low
 
 // ----------------------------------------------------------------------
 // Local data
@@ -74,23 +68,6 @@ static	uint_t		timeout;	// write timeout in usec
 static	byte_t		cmd0;		// current read/write command byte
 static	byte_t		cmd[4];		// SPI command buffer
 static	byte_t		res[4];		// SPI result buffer
-static	byte_t		status;		
-
-
-//ximmmTTT
-
-#define TAMANIO_MASK		0x07
-#define TAMANIO_AVR		0x04
-#define TAMANIO_8253		0x04
-#define TAMANIO_8252		0x03
-
-#define MICRO_S51_MASK		0x38
-#define MICRO_AVR		0x00
-#define MICRO_8253		0x08
-#define	MICRO_8252		0x10
-
-#define INVERTED_SCK_MASK	0x40	
-#define AVR_SCK			0x00
 
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
@@ -110,16 +87,15 @@ static	void	delay ( void )
 // ----------------------------------------------------------------------
 // Issue one SPI command.
 // ----------------------------------------------------------------------
-//__attribute__((naked))
-static	void	spi ( byte_t* cmd, byte_t* res, int i )
+static	void	spi ( byte_t* cmd, byte_t* res, byte_t n )
 {
 	byte_t	c;
 	byte_t	r;
 	byte_t	mask;
 
-	while (i != 0)
+	while	( n != 0 )
 	{
-	  i--;
+		n--;
 		c = *cmd++;
 		r = 0;
 		for	( mask = 0x80; mask; mask >>= 1 )
@@ -128,9 +104,7 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				PORT |= MOSI_MASK;
 			}
-//			if (! status & INVERTED_SCK_MASK )
-				delay();
-
+			delay();
 			PORT |= SCK_MASK;
 			delay();
 			r <<= 1;
@@ -138,11 +112,8 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 			{
 				r++;
 			}
-			PORT &= ~ SCK_MASK;
-//			if ( status & INVERTED_SCK_MASK )
-//				delay();
-			
 			PORT &= ~ MOSI_MASK;
+			PORT &= ~ SCK_MASK;
 		}
 		*res++ = r;
 	}
@@ -153,30 +124,21 @@ static	void	spi ( byte_t* cmd, byte_t* res, int i )
 // ----------------------------------------------------------------------
 static	void	spi_rw ( void )
 {
-	unsigned char offset = 0;
 	uint_t	a;
-	uint_t	tam = (status & TAMANIO_MASK);	
 
 	a = address++;
-	cmd[0] = cmd0;
-	if ( ( !(status & MICRO_S51_MASK) ) &&  ( ! (cmd0 & 0x80) ) )
-	{	//Es AVR 							// NOT eeprom
-		if ( a & 1 )
-		{
-			cmd[0] |= 0x08;	//La H
-		}
-		a >>= 1;	//Corro la direccion
-	} 
-	cmd[1] = a >> 8;
-	cmd[2] = a;
-	
-	if ( (status & MICRO_S51_MASK ) == MICRO_8252 )
-	{
-		cmd[1] <<= 3;
-		cmd[1] |= cmd0;
-		offset = 1;
+	if	( cmd0 & 0x80 )
+	{	// eeprom
+		a <<= 1;
 	}
-	spi( cmd + offset, res, tam );
+	cmd[0] = cmd0;
+	if	( a & 1 )
+	{
+		cmd[0] |= 0x08;
+	}
+	cmd[1] = a >> 9;
+	cmd[2] = a >> 1;
+	spi( cmd, res, 4 );
 }
 
 // ----------------------------------------------------------------------
@@ -184,100 +146,107 @@ static	void	spi_rw ( void )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
+	byte_t	bit;
 	byte_t	mask;
 	byte_t	req;
-	byte_t	ans = 0;
-	byte_t	cmd0_temp;
 
 	// Generic requests
 	req = data[1];
+	if	( req == USBTINY_ECHO )
+	{
+		return 8;
+	}
+	if	( req == USBTINY_READ )
+	{
+		data[0] = PIN;
+		return 1;
+	}
+	if	( req == USBTINY_WRITE )
+	{
+		PORT = data[2];
+		return 0;
+	}
+	bit = data[2] & 7;
+	mask = 1 << bit;
+	if	( req == USBTINY_CLR )
+	{
+		PORT &= ~ mask;
+		return 0;
+	}
+	if	( req == USBTINY_SET )
+	{
+		PORT |= mask;
+		return 0;
+	}
+	if	( req == USBTINY_DDRWRITE )
+	{
+		DDR = data[2];
+	}
 
 	// Programming requests
 	if	( req == USBTINY_POWERUP )
 	{
 		sck_period = data[2];
-		mask = POWER_MASK;
+		mask = LED_MASK;
 		if	( data[4] )
 		{
 			mask |= RESET_MASK;
 		}
-		// Use AVR por default
-		status = AVR_SCK | MICRO_AVR | TAMANIO_AVR;
-		
-		PORTD &= ~_BV(4);
-		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
+		CLR(BUFFEN);
+		DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
 		PORT = mask;
-		// return 0;
+		return 0;
 	}
-	else if	( req == USBTINY_POWERDOWN )
+	if	( req == USBTINY_POWERDOWN )
 	{
-	  //PORT |= RESET_MASK;
 		DDR  = 0x00;
 		PORT = 0x00;
-		PORTD |= _BV(4);
-		// return 0;
+		SET(BUFFEN);
+		return 0;
 	}
-	else if ( req == USBTINY_CONFIGURE )
+	if	( ! PORT )
 	{
-		status = data[2];
-		cmd0 = data[4];
+		return 0;
 	}
-	/*else if	( ! PORT )
+	if	( req == USBTINY_SPI )
 	{
-		//return 0;
-	}*/
-	else if	( req == USBTINY_SPI )
-	{
-	  spi( data + 2, data + 0, 4 );
-		ans = 4;
-		//return 4;
+		spi( data + 2, data + 0, 4 );
+		return 4;
 	}
-	else if	( req == USBTINY_SPI1 )
+	if	( req == USBTINY_SPI1 )
 	{
-	  spi( data + 2, data + 0, 1 );
-		ans = 1;
-		//return 1;
+		spi( data + 2, data + 0, 1 );
+		return 1;
 	}
-	else if	( req == USBTINY_POLL_BYTES )
+	if	( req == USBTINY_POLL_BYTES )
 	{
 		poll1 = data[2];
 		poll2 = data[3];
-		//return 0;
+		return 0;
 	}
-	else 
+	address = * (uint_t*) & data[4];
+	if	( req == USBTINY_FLASH_READ )
 	{
-		address = * (uint_t*) & data[4];
-		if	( req == USBTINY_FLASH_READ )
-		{
-			cmd0_temp = 0x20;
-			ans = 0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else if	( req == USBTINY_EEPROM_READ )
-		{
-			cmd0_temp = 0xa0;
-			ans =  0xff;
-			//return 0xff;	// usb_in() will be called to get the data
-		}
-		else {
-			timeout = * (uint_t*) & data[2];
-			if	( req == USBTINY_FLASH_WRITE )
-			{
-				cmd0_temp = 0x40;
-				//return 0;	// data will be received by usb_out()
-			}
-			else if	( req == USBTINY_EEPROM_WRITE )
-			{
-				cmd0_temp = 0xc0;
-				//return 0;	// data will be received by usb_out()
-			}
-		}	
-		if ( ! (status & MICRO_S51_MASK) )		//Solo grabo el dato temp en cmd0 si estoy grabando un AVR	
-		{						//Si estoy programando un S51, tengo que pasarlo en la trama CONFIGURE
-			cmd0 = cmd0_temp;
-		}
+		cmd0 = 0x20;
+		return 0xff;	// usb_in() will be called to get the data
 	}
-	return ans;
+	if	( req == USBTINY_EEPROM_READ )
+	{
+		cmd0 = 0xa0;
+		return 0xff;	// usb_in() will be called to get the data
+	}
+	timeout = * (uint_t*) & data[2];
+	if	( req == USBTINY_FLASH_WRITE )
+	{
+		cmd0 = 0x40;
+		return 0;	// data will be received by usb_out()
+	}
+	if	( req == USBTINY_EEPROM_WRITE )
+	{
+		cmd0 = 0xc0;
+		return 0;	// data will be received by usb_out()
+	}
+	return 0;
 }
 
 // ----------------------------------------------------------------------
@@ -311,7 +280,7 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 		cmd[0] ^= 0x60;	// turn write into read
 		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
 		{	// when timeout > 0, poll until byte is written
-		  spi( cmd, res, 4 );
+			spi( cmd, res, 4 );
 			r = res[3];
 			if	( r == cmd[3] && r != poll1 && r != poll2 )
 			{
@@ -319,23 +288,18 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 			}
 		}
 	}
-}	 
-	 
+}
 
 // ----------------------------------------------------------------------
 // Main
 // ----------------------------------------------------------------------
-__attribute__((naked))		// suppress redundant SP initialization
 extern	int	main ( void )
 {
-  PORTD |= _BV(4);
-  DDRD = _BV(6) | _BV(5) | _BV(4); // setup USB pullup, LED pin and buffer select pins to output
-  usb_init();
-  PORTD = _BV(6) | _BV(4); // pull pull-up and buffer disable high
-
-  for	( ;; )
-    {
-      usb_poll();
-    }
-  return 0;
+	SET(BUFFEN);
+	OUTPUT(BUFFEN);
+	usb_init();
+	for	( ;; )
+	{
+		usb_poll();
+	}
 }

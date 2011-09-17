@@ -69,6 +69,8 @@ static	byte_t		cmd0;		// current read/write command byte
 static	byte_t		cmd[4];		// SPI command buffer
 static	byte_t		res[4];		// SPI result buffer
 
+static void (*pSpi_rw)();
+
 // ----------------------------------------------------------------------
 // Delay exactly <sck_period> times 0.5 microseconds (6 cycles).
 // ----------------------------------------------------------------------
@@ -119,6 +121,7 @@ static	void	spi ( byte_t* cmd, byte_t* res, byte_t n )
 	}
 }
 
+
 // ----------------------------------------------------------------------
 // Create and issue a read or write SPI command.
 // ----------------------------------------------------------------------
@@ -140,6 +143,28 @@ static	void	spi_rw ( void )
 	cmd[2] = a >> 1;
 	spi( cmd, res, 4 );
 }
+
+void Puntero1(byte_t* a, byte_t* b, byte_t c)
+{
+		spi(a,b,c);
+}
+
+
+void SetPointers()
+{
+	byte_t data1[2],data2[2];
+	byte_t chara = 'a';
+	void (*pFunc)(byte_t*, byte_t*, byte_t);
+	pFunc =  &Puntero1;
+	(*pFunc)(data1,data2,chara);
+	
+}
+
+void ConfigurePointersDefaultValue()
+{
+		pSpi_rw = &spi_rw;
+}
+
 
 // ----------------------------------------------------------------------
 // Handle a non-standard SETUP packet.
@@ -195,6 +220,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		CLR(BUFFEN);
 		DDR  = LED_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;
 		PORT = mask;
+		ConfigurePointersDefaultValue();
 		return 0;
 	}
 	if	( req == USBTINY_POWERDOWN )
@@ -245,7 +271,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	{
 		cmd0 = 0xc0;
 		return 0;	// data will be received by usb_out()
-	}
+	}	
 	return 0;
 }
 
@@ -258,7 +284,8 @@ extern	byte_t	usb_in ( byte_t* data, byte_t len )
 
 	for	( i = 0; i < len; i++ )
 	{
-		spi_rw();
+		//spi_rw();
+		(*pSpi_rw)();
 		data[i] = res[3];
 	}
 	return len;
@@ -276,7 +303,8 @@ extern	void	usb_out ( byte_t* data, byte_t len )
 	for	( i = 0; i < len; i++ )
 	{
 		cmd[3] = data[i];
-		spi_rw();
+		//spi_rw();
+		(*pSpi_rw)();
 		cmd[0] ^= 0x60;	// turn write into read
 		for	( usec = 0; usec < timeout; usec += 32 * sck_period )
 		{	// when timeout > 0, poll until byte is written

@@ -40,11 +40,12 @@ SCHEM		=
 
 check	= $(shell $(CC) $1 -c -xc /dev/null -o/dev/null 2>/dev/null && echo $1)
 
+#CC	= "C:/Program Files (x86)/Atmel/AVR Studio 5.0/AVR ToolChain/bin/avr-gcc"
 CC	= avr-gcc
 OPTIM	= -Os -ffunction-sections $(call check,-fno-split-wide-types)
 CFLAGS	= -g -Wall -I. -I$(USBTINY) $(OPTIM)
 LDFLAGS	= -g -Wl,--relax,--gc-sections
-MODULES = crc.o int.o usb.o $(OBJECTS)
+MODULES = crc.o int.o usb.o common.o avr_spi.o $(OBJECTS)
 UTIL	= $(USBTINY)/../util
 
 main.hex:
@@ -52,7 +53,7 @@ main.hex:
 all:		main.hex $(SCHEM)
 
 clean:
-	rm -f main.elf *.o tags *.sch~ gschem.log
+	rm -f main.elf *.o tags gschem.log
 
 clobber:	clean
 	rm -f main.hex $(SCHEM)
@@ -74,14 +75,17 @@ flash:		main.hex
 fuses:
 	$(FUSES_CMD)
 
-crc.o:		$(USBTINY)/crc.S $(USBTINY)/def.h usbtiny.h
+crc.o:		$(USBTINY)/crc.S $(USBTINY)/def.h $(USBTINY)usbtiny.h
 	$(COMPILE.c) $(USBTINY)/crc.S
-int.o:		$(USBTINY)/int.S $(USBTINY)/def.h usbtiny.h
+int.o:		$(USBTINY)/int.S $(USBTINY)/def.h $(USBTINY)usbtiny.h
 	$(COMPILE.c) $(USBTINY)/int.S
-usb.o:		$(USBTINY)/usb.c $(USBTINY)/def.h $(USBTINY)/usb.h usbtiny.h
+usb.o:		$(USBTINY)/usb.c $(USBTINY)/def.h $(USBTINY)/usb.h $(USBTINY)usbtiny.h
 	$(COMPILE.c) $(USBTINY)/usb.c
-
-main.o:		$(USBTINY)/usb.h
+common.o: 	$(USBTINY)/common.h $(USBTINY)/macros.h
+	$(COMPILE.c) $(USBTINY)/common.c
+avr_spi.o:	$(USBTINY)/AVR_spi.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
+	$(COMPILE.c) $(USBTINY)/AVR_spi.c
+main.o:		$(USBTINY)/usb.h $(USBTINY)/AVR_spi.h
 
 %.ps:		%.sch $(UTIL)/sch2ps
 	$(UTIL)/sch2ps $<

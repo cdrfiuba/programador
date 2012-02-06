@@ -10,4 +10,5 @@
 DIR	= spi ir util
 
 all clean clobber:
-	@for i in $(DIR); do $(MAKE) $(MFLAGS) -C $$i $@; done
+	@for i in $(DIR); do \
+	( cd $$i ; $(MAKE) $(MFLAGS) -C $$i $@;) done

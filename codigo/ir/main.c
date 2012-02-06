@@ -159,7 +159,7 @@ static	struct			// IgorPlug-USB compatible data layout
 // ----------------------------------------------------------------------
 // Handler for timer1 input capture interrupt: edge on IR input
 // ----------------------------------------------------------------------
-__attribute__((signal,naked))			// interrupts are DISABLED
+//__attribute__((signal,naked))			// interrupts are DISABLED
 extern	void	SIG_TIMER1_CAPT ( void )
 {
 	static	uint_t	prev;
@@ -232,7 +232,7 @@ extern	void	SIG_TIMER1_CAPT ( void )
 // ----------------------------------------------------------------------
 // Handler for timer1 output compare A interrupt: IR transmission timeout
 // ----------------------------------------------------------------------
-__attribute__((signal))				// interrupts are DISABLED
+//__attribute__((signal))				// interrupts are DISABLED
 extern	void	SIG_TIMER1_COMPA ( void )
 {
 	TIMSK = 0;				// disable both IR interrupts

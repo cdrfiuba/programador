@@ -81,7 +81,7 @@ static	byte_t*	usb_tx_data;		// pointer to data to transmit
 struct
 {
 	byte_t	length;
-	byte_t	type;
+	byte_t	typeRequest;
 	int	string[sizeof(USBTINY_VENDOR_NAME)-1];
 }	string_vendor PROGMEM =
 {
@@ -98,7 +98,7 @@ struct
 struct
 {
 	byte_t	length;
-	byte_t	type;
+	byte_t	typeRequest;
 	int	string[sizeof(USBTINY_DEVICE_NAME)-1];
 }	string_device PROGMEM =
 {
@@ -115,7 +115,7 @@ struct
 struct
 {
 	byte_t	length;
-	byte_t	type;
+	byte_t	typeRequest;
 	int	string[sizeof(USBTINY_SERIAL)-1];
 }	string_serial PROGMEM =
 {

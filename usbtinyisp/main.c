@@ -18,6 +18,7 @@
 #include "usb.h"
 #include "messages.h"
 #include "AVR_spi.h"
+#include "s8253.h"
 
 
 
@@ -30,18 +31,18 @@ static void (*pSpi)(byte_t* cmd, byte_t* res, int i);
 
 void ConfigurePointersDefaultValue()
 {
-		pUsb_in  = &AVR_usb_in;
+/*		pUsb_in  = &AVR_usb_in;
 		pUsb_out = &AVR_usb_out;
-		pUsb_setup = &AVR_usb_setup;
+		pUsb_setup = &AVR_usb_setup;*/
 }
 
 void DefinePointers(byte_t protocol)
 {
 	if (protocol == 1)
 	{
-		//pUsb_in  = &AVR_usb_in;
-		//pUsb_out = &AVR_usb_out;
-		//pUsb_setup = &AVR_usb_setup;
+		pUsb_in  = &s8253_usb_in;
+		pUsb_out = &s8253_usb_out;
+		pUsb_setup = &s8253_usb_setup;
 	}
 	else
 	{
@@ -54,7 +55,6 @@ void DefinePointers(byte_t protocol)
 // ----------------------------------------------------------------------
 extern	byte_t	usb_setup ( byte_t data[8] )
 {
-	byte_t	bit;
 	byte_t	mask;
 	byte_t	req;
 	byte_t	ans = 0;
@@ -82,7 +82,8 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;		
 		PORT = mask;
 		
-		ConfigurePointersDefaultValue();
+		/* ConfigurePointersDefaultValue(); */ //DEBUG
+        DefinePointers(1);
 		//return 0;
 	}
 	else if	( req == USBTINY_POWERDOWN )
@@ -98,7 +99,8 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	} 
 	else 
 	{
-		ans = (*pUsb_setup)(data);	
+		/*ans = (*pUsb_setup)(data);*/
+        s8253_usb_setup(data);
 	}
 	
 	return ans;		
@@ -110,8 +112,10 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 // Handle an IN packet.
 // ----------------------------------------------------------------------
 extern	byte_t	usb_in ( byte_t* data, byte_t len )
-{
-	(*pUsb_in)(data, len);
+{   
+	/*return (*pUsb_in)(data, len);*/
+    return s8253_usb_in(data,len);
+    
 }
 
 // ----------------------------------------------------------------------
@@ -119,13 +123,14 @@ extern	byte_t	usb_in ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 extern	void	usb_out ( byte_t* data, byte_t len )
 {
-	(*pUsb_out)(data, len);
+	/*(*pUsb_out)(data, len);*/
+    s8253_usb_out(data,len);
 }
 
 
 void Puntero1(byte_t* a, byte_t* b, byte_t c)
 {
-		AVR_spi(a,b,c);
+	/*AVR_spi(a,b,c);*/
 }
 
 

@@ -1,7 +1,13 @@
 #include "s8253.h"
 
+
+static  byte_t  s8253_spiOneByte(byte_t dataOut);
+static	void	s8253_spi ( byte_t* cmd, byte_t* res, int i );
+static  void    WaitDataWriteCompletion(byte_t writeByte, byte_t add, byte_t size);
+
+
 // ----------------------------------------------------------------------
-// Issue one SPI command.
+// Issue one SPI byte.
 // ----------------------------------------------------------------------
 static byte_t s8253_spiOneByte(byte_t dataOut)
 {
@@ -41,71 +47,106 @@ static	void	s8253_spi ( byte_t* cmd, byte_t* res, int i )
 {
 	byte_t	c;
 	byte_t	r;
-    byte_t  mask;	
 
 	while (i != 0)
 	{
 	  	i--;
 		c = *cmd++;
 		r = 0;
-		r = spiOneByte(c);
+		r = s8253_spiOneByte(c);
 		*res++ = r;
 	}
 }
 
-
 // ----------------------------------------------------------------------
-// Create and issue a read or write SPI command.
+// Check data is written in memory or exit by timeout
 // ----------------------------------------------------------------------
-/*static	void	s8253_spi_rw ( void )
-{
-	uint_t	a;
-	
-	a = address++;
-	
-	cmd[0] = cmd0;
-	cmd[1] = a >> 8;
-	cmd[2] = a;	
-	spi( cmd, res, tam );
-}*/
-
-extern	byte_t	s8253_usb_in ( byte_t* data, byte_t len )
-{
-	byte_t	i;
-
-	for	( i = 0; i < len; i++ )
-	{
-		s8253_spi_rw();
-		data[i] = res[3];
-	}
-	return len;
-}
-
-/*cmd[0] ya debe estar cargada para lectura o escritura
-* address ya debe estar cargada 
-*/
-extern	void	s8253_usb_out ( byte_t* data, byte_t len )
-{
-	byte_t	i;
-	uint_t	usec;
-	byte_t	r;
-
-	for	( i = 0; i < len; i++ )
-	{	
-		cmd[3] = data[i];
-		spi_rw();
-		WaitDateWriteCompletion(data[i],address-1,4);			
-	}		
-}
-
-
-void WaitDateWriteCompletion(byte_t writeByte, byte_t add, byte_t size)
+static void WaitDataWriteCompletion(byte_t writeByte, byte_t add, byte_t size)
 {
     byte_t result[4] = {0x00,0x00,0x00,(~writeByte) };
+    uint16_t usec = 0;
     cmd[1] = add >> 8;
 	cmd[2] = add;
-    while (result[3] != writeByte)
+    while ( (result[3] != writeByte) && (usec < timeout) ) 
     {
-        spiOneCommand(cmd,result,size);
+        s8253_spi(cmd,result,size);
+        usec += (32 * sck_period); /* TODO: ver de donde sale el 32 */
     }
+}
+
+// ----------------------------------------------------------------------
+// cmd[0] ya debe estar cargada para lectura o escritura address ya debe estar cargada
+// ----------------------------------------------------------------------
+byte_t	s8253_usb_in ( byte_t* data, byte_t len )
+{
+    byte_t	i;
+
+    for	( i = 0; i < len; i++,address++ )
+    {           
+        cmd[1] = address >> 8;
+        cmd[2] = address;     
+        s8253_spi(cmd,res,4);
+        data[i] = res[3];
+    }
+    return len;
+}
+
+// ----------------------------------------------------------------------
+// cmd[0] ya debe estar cargada para lectura o escritura address ya debe estar cargada
+// ----------------------------------------------------------------------
+__attribute__((noinline))
+void	s8253_usb_out ( byte_t* data, byte_t len )
+{
+    byte_t	i;
+
+    for	( i = 0; i < len; i++,address++ )
+    {
+        cmd[1] = address >> 8;
+        cmd[2] = address;
+        cmd[3] = data[i];
+        s8253_spi(cmd,res,4);
+        WaitDataWriteCompletion(data[i],address,4);
+    }
+}
+
+// ----------------------------------------------------------------------
+// Handle a non-standard SETUP packet.
+// ----------------------------------------------------------------------
+byte_t	s8253_usb_setup ( byte_t data[8] )
+{
+	byte_t	req;
+	byte_t	ans = 0;
+
+	// Generic requests
+	req = data[1];
+
+	// Programming requests
+	if ( req == USBTINY_CONFIGURE )
+	{
+		status = data[2];
+		cmd0 = data[4];
+	}
+	else if	( req == USBTINY_SPI )
+	{
+	    s8253_spi( data + 2, data + 0, 4 );
+	    ans = 4;
+	}
+	else if	( req == USBTINY_SPI1 )
+	{
+	    s8253_spi( data + 2, data + 0, 1 );
+		ans = 1;
+	}
+	else 
+	{
+		address = * (uint_t*) & data[4];
+        if	( (req == USBTINY_FLASH_READ) || (req == USBTINY_EEPROM_READ))
+        {
+            ans = 0xFF;       
+        }
+        else
+        {
+            timeout = * (uint_t*) & data[2];    
+        }        
+	}
+	return ans;
 }

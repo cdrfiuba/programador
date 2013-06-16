@@ -14,7 +14,6 @@ extern uint_t		timeout;	// write timeout in usec
 extern byte_t		cmd0;		// current read/write command byte
 extern byte_t		cmd[4];		// SPI command buffer
 extern byte_t		res[4];		// SPI result buffer
-
 extern byte_t		status;
 
 

@@ -10,11 +10,11 @@
 USBTINY		= ./
 TARGET_ARCH	= -mmcu=attiny2313
 OBJECTS		= main.o
-FLASH_CMD	= avrdude -c usbtiny -pt4313 -U flash:w:main.hex
+FLASH_CMD	= avrdude -c usbtiny -pt4313 -U flash:w:usbtiny.hex
 FUSES_CMD	= avrdude -c usbtiny -pt4313 -U hfuse:w:0xdf:m -U lfuse:w:0xef:m
 STACK		= 32
-FLASH		= 2048
-SRAM		= 128
+FLASH		= 4096
+SRAM		= 256
 SCHEM		= 
 
 # ======================================================================
@@ -25,7 +25,7 @@ SCHEM		=
 # USBTINY	- the location of this directory
 # TARGET_ARCH	- gcc -mmcu= option with AVR device type
 # OBJECTS	- the objects in addition to the USBtiny objects
-# FLASH_CMD	- command to upload main.hex to flash
+# FLASH_CMD	- command to upload usbtiny.hex to flash
 # FUSES_CMD	- command to program the fuse bytes
 # STACK		- maximum stack size (optional)
 # FLASH		- flash size (optional)
@@ -45,31 +45,31 @@ CC	= avr-gcc
 OPTIM	= -Os -ffunction-sections $(call check,-fno-split-wide-types)
 CFLAGS	= -g -Wall -I. -I$(USBTINY) $(OPTIM)
 LDFLAGS	= -g -Wl,--relax,--gc-sections
-MODULES = crc.o int.o usb.o common.o avr_spi.o $(OBJECTS)
+MODULES = crc.o int.o usb.o common.o avr_spi.o s8253.o $(OBJECTS)
 UTIL	= $(USBTINY)/../util
 
-main.hex:
+usbtiny.hex:
 
-all:		main.hex $(SCHEM)
+all:		usbtiny.hex $(SCHEM)
 
 clean:
-	rm -f main.elf *.o tags gschem.log
+	rm -f usbtiny.elf *.o tags gschem.log
 
 clobber:	clean
-	rm -f main.hex $(SCHEM)
+	rm -f usbtiny.hex $(SCHEM)
 
-main.elf:	$(MODULES)
+usbtiny.elf:	$(MODULES)
 	$(LINK.o) -o $@ $(MODULES)
 
-main.hex:	main.elf
-	avr-objcopy -j .text -j .data -O ihex main.elf main.hex
+usbtiny.hex:	usbtiny.elf
+	avr-objcopy -j .text -j .data -O ihex usbtiny.elf usbtiny.hex
 	# We should have a better script to analize the size
-	avr-size main.hex
+	avr-size usbtiny.hex
 
-disasm:		main.elf
-	avr-objdump -S main.elf
+disasm:		usbtiny.elf
+	avr-objdump -S usbtiny.elf
 
-flash:		main.hex
+flash:		usbtiny.hex
 	$(FLASH_CMD)
 
 fuses:
@@ -85,7 +85,9 @@ common.o: 	$(USBTINY)/common.h $(USBTINY)/macros.h
 	$(COMPILE.c) $(USBTINY)/common.c
 avr_spi.o:	$(USBTINY)/AVR_spi.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
 	$(COMPILE.c) $(USBTINY)/AVR_spi.c
-main.o:		$(USBTINY)/usb.h $(USBTINY)/AVR_spi.h
+s8253.o:	$(USBTINY)/s8253.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
+	$(COMPILE.c) $(USBTINY)/s8253.c	
+main.o:		$(USBTINY)/usb.h $(USBTINY)/AVR_spi.h $(USBTINY)/s8253.h
 
 %.ps:		%.sch $(UTIL)/sch2ps
 	$(UTIL)/sch2ps $<

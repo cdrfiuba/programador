@@ -1,6 +1,10 @@
 #include "AVR_spi.h"
 
-void	AVR_spi ( byte_t* cmd, byte_t* res, byte_t n )
+static void	AVR_spi ( byte_t* cmd, byte_t* res, byte_t n );
+static void	AVR_spi_rw ( void );
+
+
+static void	AVR_spi ( byte_t* cmd, byte_t* res, byte_t n )
 {
 	byte_t	c;
 	byte_t	r;
@@ -36,7 +40,7 @@ void	AVR_spi ( byte_t* cmd, byte_t* res, byte_t n )
 // ----------------------------------------------------------------------
 // Create and issue a read or write SPI command.
 // ----------------------------------------------------------------------
-void	AVR_spi_rw ( void )
+static void	AVR_spi_rw ( void )
 {
 	uint_t	a;
 

@@ -8,7 +8,7 @@
 # ======================================================================
 
 USBTINY		= ./
-TARGET_ARCH	= -mmcu=attiny2313
+TARGET_ARCH	= -mmcu=attiny4313
 OBJECTS		= main.o
 FLASH_CMD	= avrdude -c usbtiny -pt4313 -U flash:w:usbtiny.hex
 FUSES_CMD	= avrdude -c usbtiny -pt4313 -U hfuse:w:0xdf:m -U lfuse:w:0xef:m

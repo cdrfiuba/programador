@@ -100,7 +100,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	else 
 	{
 		/*ans = (*pUsb_setup)(data);*/
-        s8253_usb_setup(data);
+        ans = s8253_usb_setup(data);
 	}
 	
 	return ans;		

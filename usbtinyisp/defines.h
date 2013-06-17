@@ -20,9 +20,10 @@ enum
 	USBTINY_EEPROM_WRITE,	// write eeprom (wIndex:address, wValue:timeout)
 	USBTINY_DDRWRITE,	// set port direction
 	USBTINY_SPI1,		// a single SPI command
-	
+
+	USBTINY_CONFIGURE,	//The meaning of this frame will be different for each protocol.	
 	USBTINY_PROTOCOL,	//The protocol it will use. Defines where the pointer will point.
-	USBTINY_CONFIGURE	//The meaning of this frame will be different for each protocol.
+
 };
 
 // ----------------------------------------------------------------------

@@ -3,7 +3,7 @@
 
 static  byte_t  s8253_spiOneByte(byte_t dataOut);
 static	void	s8253_spi ( byte_t* cmd, byte_t* res, int i );
-static  void    WaitDataWriteCompletion(byte_t writeByte, byte_t add, byte_t size);
+static  void    WaitDataWriteCompletion(byte_t writeByte, uint16_t add, byte_t size);
 
 
 // ----------------------------------------------------------------------
@@ -61,7 +61,7 @@ static	void	s8253_spi ( byte_t* cmd, byte_t* res, int i )
 // ----------------------------------------------------------------------
 // Check data is written in memory or exit by timeout
 // ----------------------------------------------------------------------
-static void WaitDataWriteCompletion(byte_t writeByte, byte_t add, byte_t size)
+static void WaitDataWriteCompletion(byte_t writeByte, uint16_t add, byte_t size)
 {
     byte_t result[4] = {0x00,0x00,0x00,(~writeByte) };
     uint16_t usec = 0;
@@ -94,11 +94,20 @@ byte_t	s8253_usb_in ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 // cmd[0] ya debe estar cargada para lectura o escritura address ya debe estar cargada
 // ----------------------------------------------------------------------
+
+static uint16_t pass = 0;
 __attribute__((noinline))
 void	s8253_usb_out ( byte_t* data, byte_t len )
 {
     byte_t	i;
 
+    if ( pass == 32)
+    {
+        cmd[0] = cmd0;
+        pass = 0;
+    }    
+    else
+        pass++;
     for	( i = 0; i < len; i++,address++ )
     {
         cmd[1] = address >> 8;
@@ -139,6 +148,7 @@ byte_t	s8253_usb_setup ( byte_t data[8] )
 	else 
 	{
 		address = * (uint_t*) & data[4];
+        cmd[0] = cmd0;
         if	( (req == USBTINY_FLASH_READ) || (req == USBTINY_EEPROM_READ))
         {
             ans = 0xFF;       

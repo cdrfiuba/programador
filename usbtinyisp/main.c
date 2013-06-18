@@ -26,19 +26,17 @@
 static void (*pUsb_out)(byte_t* data, byte_t len);
 static byte_t (*pUsb_in)(byte_t* data, byte_t len);
 static byte_t (*pUsb_setup)(byte_t* data);
-static void (*pSpi)(byte_t* cmd, byte_t* res, int i);
-
 
 void ConfigurePointersDefaultValue()
 {
-/*		pUsb_in  = &AVR_usb_in;
+		pUsb_in  = &AVR_usb_in;
 		pUsb_out = &AVR_usb_out;
-		pUsb_setup = &AVR_usb_setup;*/
+		pUsb_setup = &AVR_usb_setup;
 }
 
-void DefinePointers(byte_t protocol)
+void DefinePointers(uint16_t protocol)
 {
-	if (protocol == 1)
+	if (protocol == PROTOCOL_SPI_S8253)
 	{
 		pUsb_in  = &s8253_usb_in;
 		pUsb_out = &s8253_usb_out;
@@ -46,7 +44,7 @@ void DefinePointers(byte_t protocol)
 	}
 	else
 	{
-		
+		ConfigurePointersDefaultValue();
 	}	
 }
 
@@ -82,8 +80,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 		DDR  = POWER_MASK | RESET_MASK | SCK_MASK | MOSI_MASK;		
 		PORT = mask;
 		
-		/* ConfigurePointersDefaultValue(); */ //DEBUG
-        DefinePointers(1);
+		ConfigurePointersDefaultValue();
 		//return 0;
 	}
 	else if	( req == USBTINY_POWERDOWN )
@@ -99,8 +96,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 	} 
 	else 
 	{
-		/*ans = (*pUsb_setup)(data);*/
-        ans = s8253_usb_setup(data);
+		ans = (*pUsb_setup)(data);
 	}
 	
 	return ans;		
@@ -113,9 +109,7 @@ extern	byte_t	usb_setup ( byte_t data[8] )
 // ----------------------------------------------------------------------
 extern	byte_t	usb_in ( byte_t* data, byte_t len )
 {   
-	/*return (*pUsb_in)(data, len);*/
-    return s8253_usb_in(data,len);
-    
+	return (*pUsb_in)(data, len);  
 }
 
 // ----------------------------------------------------------------------
@@ -123,28 +117,8 @@ extern	byte_t	usb_in ( byte_t* data, byte_t len )
 // ----------------------------------------------------------------------
 extern	void	usb_out ( byte_t* data, byte_t len )
 {
-	/*(*pUsb_out)(data, len);*/
-    s8253_usb_out(data,len);
+	(*pUsb_out)(data, len);
 }
-
-
-void Puntero1(byte_t* a, byte_t* b, byte_t c)
-{
-	/*AVR_spi(a,b,c);*/
-}
-
-
-void SetPointers()
-{
-	byte_t data1[2],data2[2];
-	byte_t chara = 'a';
-	void (*pFunc)(byte_t*, byte_t*, byte_t);
-	pFunc =  &Puntero1;
-	(*pFunc)(data1,data2,chara);
-	
-}
-
-
 
 
 // ----------------------------------------------------------------------

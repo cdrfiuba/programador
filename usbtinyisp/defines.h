@@ -21,9 +21,15 @@ enum
 	USBTINY_DDRWRITE,	// set port direction
 	USBTINY_SPI1,		// a single SPI command
 
-	USBTINY_CONFIGURE,	//The meaning of this frame will be different for each protocol.	
-	USBTINY_PROTOCOL,	//The protocol it will use. Defines where the pointer will point.
+	USBTINY_CONFIGURE,	//The meaning of this frame will be different for each protocol.		
+    USBTINY_PROTOCOL,	//The protocol it will use. Defines where the pointer will point (wValue = el enum del protocolo. wIndex no se usa)
 
+};
+
+enum
+{
+    PROTOCOL_SPI_AVR,
+    PROTOCOL_SPI_S8253,    
 };
 
 // ----------------------------------------------------------------------

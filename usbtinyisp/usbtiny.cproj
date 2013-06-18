@@ -124,6 +124,8 @@
     <BuildTarget>all</BuildTarget>
     <CleanTarget>clean</CleanTarget>
     <ExternalMakeFilePath>C:\Gabi\proyectos\ProgramadorUSB\usbtinyProjectAndRepo\repoReal_integration\usbtinyisp\Makefile</ExternalMakeFilePath>
+    <OutputFileName>main</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AVR_spi.c">

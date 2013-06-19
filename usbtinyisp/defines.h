@@ -1,6 +1,8 @@
 #ifndef _DEFINES_H_
 #define _DEFINES_H_
 
+#define			VERSION_STRING	"0.4.0.0"
+
 enum
 {
 	// Generic requests

@@ -1,16 +1,11 @@
-update=vie 29 abr 2011 21:55:16 ART
-last_client=pcbnew
+update=Sat 20 Jul 2013 14:50:23 ART
+last_client=cvpcb
 [general]
 version=1
 RootSch=placa_usb.sch
 BoardNm=placa_usb.brd
 [common]
 NetDir=
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [eeschema]
 version=1
 LibDir=
@@ -95,14 +90,18 @@ TxtLar=120
 MSegLar=150
 LastNetListRead=placa_usb.net
 [pcbnew/libraries]
+LibName1=connect
+LibName2=discret
+LibName3=pin_array
+LibName4=divers
+LibName5=libcms
+LibName6=display
+LibName7=valves
+LibName8=dip_sockets
+LibName9=CONN_USB
 LibDir=
-LibName1=supports
-LibName2=connect
-LibName3=discret
-LibName4=pin_array
-LibName5=divers
-LibName6=libcms
-LibName7=display
-LibName8=valves
-LibName9=dip_sockets
-LibName10=CONN_USB
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

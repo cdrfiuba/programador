@@ -1,4 +1,4 @@
-Cmp-Mod V01 Genere par PcbNew le Thu 02 Dec 2010 07:53:15 ART
+Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Mon 22 Jul 2013 15:22:08 ART
 
 BeginCmp
 TimeStamp = /48667F87;
@@ -52,14 +52,14 @@ EndCmp
 BeginCmp
 TimeStamp = /48697559;
 Reference = D3;
-ValeurCmp = LED;
+ValeurCmp = LED_VERDE;
 IdModule  = LEDV;
 EndCmp
 
 BeginCmp
 TimeStamp = /4869756B;
 Reference = D4;
-ValeurCmp = LED;
+ValeurCmp = LED_ROJO;
 IdModule  = LEDV;
 EndCmp
 
@@ -71,10 +71,10 @@ IdModule  = SIL-2;
 EndCmp
 
 BeginCmp
-TimeStamp = /4CF1A8BC;
+TimeStamp = /4CF77A46;
 Reference = P5;
 ValeurCmp = USB_A;
-IdModule  = USB_A_CUSTOM;
+IdModule  = USB_A_custom;
 EndCmp
 
 BeginCmp
@@ -95,63 +95,49 @@ BeginCmp
 TimeStamp = /48667A2A;
 Reference = R1;
 ValeurCmp = 1.5K;
-IdModule  = R1;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
-TimeStamp = /48697506;
+TimeStamp = /48667A75;
 Reference = R2;
-ValeurCmp = 1.5K;
-IdModule  = R1;
+ValeurCmp = 27;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
-TimeStamp = /48697513;
+TimeStamp = /48667A7D;
 Reference = R3;
-ValeurCmp = 1.5K;
-IdModule  = R1;
+ValeurCmp = 27;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
 TimeStamp = /4869760C;
 Reference = R4;
 ValeurCmp = 1.5K;
-IdModule  = R1;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697611;
 Reference = R5;
 ValeurCmp = 1.5K;
-IdModule  = R1;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697D78;
 Reference = R6;
 ValeurCmp = 10K;
-IdModule  = R1;
-EndCmp
-
-BeginCmp
-TimeStamp = /48667A75;
-Reference = R7;
-ValeurCmp = 27;
-IdModule  = R1;
-EndCmp
-
-BeginCmp
-TimeStamp = /48667A7D;
-Reference = R8;
-ValeurCmp = 27;
-IdModule  = R1;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp
 TimeStamp = /4C8ED529;
-Reference = R9;
+Reference = R7;
 ValeurCmp = 470k;
-IdModule  = R1;
+IdModule  = R3-LARGE_PADS;
 EndCmp
 
 BeginCmp

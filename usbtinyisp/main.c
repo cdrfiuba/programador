@@ -17,7 +17,7 @@
 #include "def.h"
 #include "usb.h"
 #include "messages.h"
-#include "AVR_spi.h"
+#include "avr_spi.h"
 #include "s8253.h"
 
 

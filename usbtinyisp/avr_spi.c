@@ -1,4 +1,4 @@
-#include "AVR_spi.h"
+#include "avr_spi.h"
 
 static void	AVR_spi ( byte_t* cmd, byte_t* res, byte_t n );
 static void	AVR_spi_rw ( void );

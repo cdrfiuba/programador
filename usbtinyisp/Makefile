@@ -83,11 +83,11 @@ usb.o:		$(USBTINY)/usb.c $(USBTINY)/def.h $(USBTINY)/usb.h $(USBTINY)usbtiny.h
 	$(COMPILE.c) $(USBTINY)/usb.c
 common.o: 	$(USBTINY)/common.h $(USBTINY)/macros.h
 	$(COMPILE.c) $(USBTINY)/common.c
-avr_spi.o:	$(USBTINY)/AVR_spi.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
-	$(COMPILE.c) $(USBTINY)/AVR_spi.c
+avr_spi.o:	$(USBTINY)/avr_spi.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
+	$(COMPILE.c) $(USBTINY)/avr_spi.c
 s8253.o:	$(USBTINY)/s8253.h $(USBTINY)/macros.h $(USBTINY)/messages.h $(USBTINY)/common.h
 	$(COMPILE.c) $(USBTINY)/s8253.c	
-main.o:		$(USBTINY)/usb.h $(USBTINY)/AVR_spi.h $(USBTINY)/s8253.h
+main.o:		$(USBTINY)/usb.h $(USBTINY)/avr_spi.h $(USBTINY)/s8253.h
 
 %.ps:		%.sch $(UTIL)/sch2ps
 	$(UTIL)/sch2ps $<

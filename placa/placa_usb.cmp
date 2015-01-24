@@ -1,164 +1,157 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Mon 22 Jul 2013 15:22:08 ART
+Cmp-Mod V01 Created by Cvpcb 0.201501172016+5377~20~ubuntu14.04.1-product   date = sáb 24 ene 2015 02:44:05 ART
 
 BeginCmp
-TimeStamp = /48667F87;
+TimeStamp = /486678E1;
 Reference = C1;
-ValeurCmp = 100n;
-IdModule  = C1;
+ValeurCmp = 22p;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /48667A9F;
+TimeStamp = /54BC484B;
 Reference = C2;
-ValeurCmp = 100u;
-IdModule  = C1V5;
+ValeurCmp = 1u;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /486678DC;
 Reference = C3;
 ValeurCmp = 22p;
-IdModule  = C1;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /486678E1;
+TimeStamp = /48667F87;
 Reference = C4;
-ValeurCmp = 22p;
-IdModule  = C1;
+ValeurCmp = 100n;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4CC08D1D;
 Reference = C5;
 ValeurCmp = 100n;
-IdModule  = C1;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /486975F0;
-Reference = D1;
-ValeurCmp = 3.6V;
-IdModule  = D3;
+TimeStamp = /54BC6EE8;
+Reference = C6;
+ValeurCmp = 100n;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /486975FC;
-Reference = D2;
-ValeurCmp = 3.6V;
-IdModule  = D3;
-EndCmp
-
-BeginCmp
-TimeStamp = /48697559;
-Reference = D3;
-ValeurCmp = LED_VERDE;
-IdModule  = LEDV;
+TimeStamp = /48667A9F;
+Reference = C7;
+ValeurCmp = 33u;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4869756B;
-Reference = D4;
+Reference = D1;
 ValeurCmp = LED_ROJO;
-IdModule  = LEDV;
+IdModule  = LEDs:LED-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4C8CE694;
+TimeStamp = /48697559;
+Reference = D2;
+ValeurCmp = LED_VERDE;
+IdModule  = LEDs:LED-0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BC3286;
+Reference = IC1;
+ValeurCmp = ATMEGA16U2;
+IdModule  = SMD_Packages:TQFP-32;
+EndCmp
+
+BeginCmp
+TimeStamp = /54BC533F;
 Reference = JP1;
-ValeurCmp = VCC;
-IdModule  = SIL-2;
+ValeurCmp = JUMPER3;
+IdModule  = Socket_Strips:Socket_Strip_Straight_1x03;
 EndCmp
 
 BeginCmp
 TimeStamp = /4CF77A46;
-Reference = P5;
+Reference = P1;
 ValeurCmp = USB_A;
-IdModule  = USB_A_custom;
+IdModule  = Popurri_CDR:USB_A_custom;
 EndCmp
 
 BeginCmp
-TimeStamp = /4C8EE14E;
-Reference = P6;
-ValeurCmp = ISP;
-IdModule  = pin_array_3x2;
+TimeStamp = /547E13E4;
+Reference = P2;
+ValeurCmp = CONN_02X05;
+IdModule  = Socket_Strips:Socket_Strip_Straight_2x05;
 EndCmp
 
 BeginCmp
-TimeStamp = /4C8EE071;
-Reference = P7;
-ValeurCmp = Targ.;
-IdModule  = pin_array_3x2;
-EndCmp
-
-BeginCmp
-TimeStamp = /48667A2A;
-Reference = R1;
-ValeurCmp = 1.5K;
-IdModule  = R3-LARGE_PADS;
-EndCmp
-
-BeginCmp
-TimeStamp = /48667A75;
-Reference = R2;
-ValeurCmp = 27;
-IdModule  = R3-LARGE_PADS;
-EndCmp
-
-BeginCmp
-TimeStamp = /48667A7D;
-Reference = R3;
-ValeurCmp = 27;
-IdModule  = R3-LARGE_PADS;
+TimeStamp = /54C32A2A;
+Reference = P3;
+ValeurCmp = CONN_01X06;
+IdModule  = Popurri_CDR:Socket_Strip_smd_1x06;
 EndCmp
 
 BeginCmp
 TimeStamp = /4869760C;
-Reference = R4;
+Reference = R1;
 ValeurCmp = 1.5K;
-IdModule  = R3-LARGE_PADS;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697611;
-Reference = R5;
+Reference = R2;
 ValeurCmp = 1.5K;
-IdModule  = R3-LARGE_PADS;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /48697D78;
-Reference = R6;
+Reference = R3;
 ValeurCmp = 10K;
-IdModule  = R3-LARGE_PADS;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4C8ED529;
-Reference = R7;
-ValeurCmp = 470k;
-IdModule  = R3-LARGE_PADS;
+TimeStamp = /48667A7D;
+Reference = R4;
+ValeurCmp = 22;
+IdModule  = SMD_Packages:SMD-0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /48667894;
+TimeStamp = /48667A75;
+Reference = R5;
+ValeurCmp = 22;
+IdModule  = SMD_Packages:SMD-0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /54B99658;
 Reference = U1;
-ValeurCmp = 74HC125N;
-IdModule  = 14DIP-ELL300;
+ValeurCmp = LD1117S33TR;
+IdModule  = SMD_Packages:SOT-223;
 EndCmp
 
 BeginCmp
-TimeStamp = /48667824;
+TimeStamp = /54BC7A08;
 Reference = U2;
-ValeurCmp = ATTINY2313DIP/SO;
-IdModule  = DIP-20__300_ELL;
+ValeurCmp = TXB0106;
+IdModule  = Housings_SSOP:TSSOP-16_4.4x5mm_Pitch0.65mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /486679B7;
 Reference = X1;
-ValeurCmp = 12MHz;
-IdModule  = HC-18UV;
+ValeurCmp = 8MHz;
+IdModule  = Crystals:Crystal_SMD_0603_2Pads_obsolete;
 EndCmp
 
 EndListe

@@ -138,7 +138,7 @@ static	byte_t	string_langid [] PROGMEM =
 #endif
 
 // Device Descriptor
-static	byte_t	descr_device [18] PROGMEM =
+static	const byte_t	descr_device [18] PROGMEM =
 {
 	18,				// bLength
 	DESCRIPTOR_TYPE_DEVICE,		// bDescriptorType
@@ -157,7 +157,7 @@ static	byte_t	descr_device [18] PROGMEM =
 };
 
 // Configuration Descriptor
-static	byte_t	descr_config [] PROGMEM =
+static	const byte_t	descr_config [] PROGMEM =
 {
 	9,				// bLength
 	DESCRIPTOR_TYPE_CONFIGURATION,	// bDescriptorType

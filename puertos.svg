@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Fritzing (http://www.fritzing.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.2"
+   x="0in"
+   y="0in"
+   width="1.3938in"
+   height="0.331674in"
+   viewBox="0 0 100.353 23.8805"
+   id="svg953"
+   sodipodi:docname="puertos.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata959">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs957" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1848"
+     inkscape:window-height="1009"
+     id="namedview955"
+     showgrid="false"
+     inkscape:zoom="6.5582065"
+     inkscape:cx="80.55392"
+     inkscape:cy="33.058126"
+     inkscape:window-x="72"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg953" />
+  <rect
+     style="fill:#808080;fill-opacity:1;stroke:none;stroke-width:2.83464217;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect965"
+     width="115.96144"
+     height="38.882534"
+     x="-4.4602971"
+     y="-5.9675636"
+     ry="0.808649" />
+  <g
+     partID="57730"
+     id="g911">
+    <g
+       transform="translate(8.21455,0)"
+       id="g909">
+      <g
+         id="breadboard">
+        <text
+           font-family="Droid Sans"
+           font-size="7.18111"
+           text-anchor="middle"
+           fill="#000000"
+           y="6.463"
+           xml:space="preserve"
+           id="label"
+           x="10.7717"
+           stroke-width="0"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.18109105px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan969">GND</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     partID="57710"
+     id="g919">
+    <g
+       transform="translate(39.0945,0.0327273)"
+       id="g917">
+      <g
+         id="g915">
+        <text
+           font-family="Droid Sans"
+           font-size="7.22835"
+           text-anchor="middle"
+           fill="#f57900"
+           y="6.50552"
+           xml:space="preserve"
+           id="text913"
+           x="14.4567"
+           stroke-width="0"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.22839133px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan967">MOSI</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     partID="57680"
+     id="g927">
+    <g
+       transform="translate(75.0509,0.0327273)"
+       id="g925">
+      <g
+         id="g923">
+        <text
+           font-family="Droid Sans"
+           font-size="7.18111"
+           text-anchor="middle"
+           fill="#cc0000"
+           y="6.463"
+           xml:space="preserve"
+           id="text921"
+           x="10.7717"
+           stroke-width="0"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.18109105px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan975">VCC</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     partID="57750"
+     id="g935">
+    <g
+       transform="translate(0,14.4473)"
+       id="g933">
+      <g
+         id="g931">
+        <text
+           font-family="Droid Sans"
+           font-size="7.2"
+           text-anchor="middle"
+           fill="#73d216"
+           y="6.48"
+           xml:space="preserve"
+           id="text929"
+           x="18"
+           stroke-width="0"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.19999095px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan971">RESET</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     partID="57780"
+     id="g943"
+     style="stroke:#000000;fill:#ffffff">
+    <g
+       transform="translate(43.0073,14.4691)"
+       id="g941"
+       style="stroke:#000000;fill:#ffffff">
+      <g
+         id="g939"
+         style="stroke:#000000;fill:#ffffff">
+        <text
+           font-family="Droid Sans"
+           font-size="7.18111"
+           text-anchor="middle"
+           fill="#ffffff"
+           y="6.463"
+           xml:space="preserve"
+           id="text937"
+           x="10.7717"
+           stroke-width="0"
+           style="stroke:#000000;fill:#ffffff"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.18109105px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan973">SCK</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g
+     partID="57810"
+     id="g951">
+    <g
+       transform="translate(71.44,14.4836)"
+       id="g949">
+      <g
+         id="g947">
+        <text
+           font-family="Droid Sans"
+           font-size="7.22835"
+           text-anchor="middle"
+           fill="#fce94f"
+           y="6.50552"
+           xml:space="preserve"
+           id="text945"
+           x="14.4567"
+           stroke-width="0"><tspan
+             style="-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:7.22839133px;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+             id="tspan977">MISO</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

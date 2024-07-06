@@ -29,6 +29,36 @@ La ubicación de cada pin en el puerto se muestra a continuación
 </p>
 
 
+## [Wiki](https://github.com/cdrfiuba/programador/wiki)
+
+En la [Wiki](https://github.com/cdrfiuba/programador/wiki) de este repositorio se detalla la construcción de un programador como su uso.
+
+- [Programador del Club de Robótica](https://github.com/cdrfiuba/programador/wiki#programador-del-club-de-rob%C3%B3tica)
+  - [¿Cómo armar el programador?](https://github.com/cdrfiuba/programador/wiki#c%C3%B3mo-armar-el-programador)
+    - [Versión 1.8](https://github.com/cdrfiuba/programador/wiki#versi%C3%B3n-18)
+    - [Versión 1.7](https://github.com/cdrfiuba/programador/wiki#versi%C3%B3n-17)
+    - [Versión 1.6](https://github.com/cdrfiuba/programador/wiki#versi%C3%B3n-16)
+  - [Lista de Materiales](https://github.com/cdrfiuba/programador/wiki#lista-de-materiales)
+    - [Versión 1.6 a 1.8:](https://github.com/cdrfiuba/programador/wiki#versi%C3%B3n-16-a-18)
+      - [Lista de materiales a soldar](https://github.com/cdrfiuba/programador/wiki#lista-de-materiales-a-soldar)
+      - [Lista de materiales para comprar](https://github.com/cdrfiuba/programador/wiki#lista-de-materiales-para-comprar)
+    - [Versión 1.5 o anteriores](https://github.com/cdrfiuba/programador/wiki#versi%C3%B3n-15-o-anteriores)
+    - [¿Qué firmware debe llevar mi programador?](https://github.com/cdrfiuba/programador/wiki#qu%C3%A9-firmware-debe-llevar-mi-programador)
+    - [Programar el microcontrolador del programador.](https://github.com/cdrfiuba/programador/wiki#programar-el-microcontrolador-del-programador)
+    - [¿Cómo armar el conector para programar tu microcontrolador?](https://github.com/cdrfiuba/programador/wiki#c%C3%B3mo-armar-el-conector-para-programar-tu-microcontrolador)
+      - [Configuración. Solución a problemas comunes](https://github.com/cdrfiuba/programador/wiki#configuraci%C3%B3n-soluci%C3%B3n-a-problemas-comunes)
+      - [No tengo permisos para acceder al dispositivo (Linux)](https://github.com/cdrfiuba/programador/wiki#no-tengo-permisos-para-acceder-al-dispositivo-linux)
+      - [Microcontrolador no reconocido.](https://github.com/cdrfiuba/programador/wiki#microcontrolador-no-reconocido)
+      - [Para el ATtiny4313](https://github.com/cdrfiuba/programador/wiki#para-el-attiny4313)
+      - [Para el ATmega88PA que adquirimos recientemente](https://github.com/cdrfiuba/programador/wiki#para-el-atmega88pa-que-adquirimos-recientemente)
+- [Windows necesita un driver](https://github.com/cdrfiuba/programador/wiki#windows-necesita-un-driver)
+  - [Licencias](https://github.com/cdrfiuba/programador/wiki#licencias)
+  - [Hojas de datos](https://github.com/cdrfiuba/programador/wiki#hojas-de--datos)
+  - [Archivos de fabricación](https://github.com/cdrfiuba/programador/wiki#archivos-de-fabricaci%C3%B3n)
+- [Fabricantes](https://github.com/cdrfiuba/programador/wiki/Fabricantes)
+- [Introducción súper básica a los microcontroladores](https://github.com/cdrfiuba/programador/wiki/Programaci%C3%B3n-de-microcontroladores-AVR-en-C)
+- [Quemar un bootloader de Arduino](https://github.com/cdrfiuba/programador/wiki/Quemar-un-bootloader-de-Arduino)
+
 ## Pequeña guía para programar un microcontrolador externo
 
 Se utiliza el microcontrolador `ATMEGA168A` a modo de ejemplo (ya que el club cuenta con varios).
